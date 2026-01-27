@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brave Pink Hero Green</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+      color: #fff;
+      margin: 0;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    h1 {
+      font-size: clamp(22px, 5vw, 38px);
+      margin: 12px 0;
+      background: linear-gradient(90deg, #ff4fa3, #03c66f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+    .preview-box {
+      background: #1e1e1e;
+      border-radius: 16px;
+      padding: 16px;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #upload { display: none; }
+    #uploadLabel {
+      display: inline-block;
+      background: #03c66f;
+      padding: 10px 18px;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      margin-bottom: 12px;
+      transition: 0.25s;
+    }
+    #uploadLabel:hover {
+      background: #04dd78;
+      transform: translateY(-2px);
+    }
+    #fileInfo {
+      margin: 8px 0;
+      font-size: 14px;
+      color: #ccc;
+      display: none;
+    }
+    #preview {
+      max-width: 100%;
+      max-height: min(65vh, 450px);
+      border-radius: 12px;
+      margin: 15px auto;
+      display: none;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+      object-fit: contain;
+    }
+    .controls {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+    }
+    .controls label {
+      font-size: 14px;
+      color: #ccc;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn {
+      background: #ff4fa3;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.25s;
+      flex: 1;
+      min-width: 120px;
+      text-align: center;
+    }
+    .btn:hover {
+      background: #ff66b5;
+      transform: translateY(-2px);
+    }
+    canvas { display: none; }
+  </style>
+</head>
+<body>
+  <h1>Brave Pink Hero Green</h1>
+  <p>Upload → auto jadi Pink x Green 💗💚</p>
+
+  <div class="preview-box">
+    <!-- Upload -->
+    <label id="uploadLabel" for="upload">📤 Upload Image</label>
+    <input type="file" id="upload" accept="image/*" />
+    <div id="fileInfo"></div>
+
+    <!-- Preview -->
+    <img id="preview" alt="Preview hasil edit" />
+
+    <!-- Controls -->
+    <div class="controls">
+      <label>
+        Shadow:
+        <input type="color" id="shadowColor" value="#105C28">
+      </label>
+      <label>
+        Highlight:
+        <input type="color" id="highlightColor" value="#FB89C4">
+      </label>
+    </div>
+
+    <div class="controls">
+      <button class="btn" id="reverseBtn">🔄 Reverse</button>
+      <button class="btn" id="downloadBtn">⬇️ Download</button>
+      <button class="btn" id="clearBtn">❌ Clear</button>
+    </div> 
+  </div>
+	
+  <div class="controls">
+     <p style="font-size:12px; text-align:center; margin:8px 0;">
+	  Photos/images are processed directly on your device and will not be stored on the server.
+	 </p>
+  </div>
+
+  <canvas id="canvas"></canvas>
+
+  <script>
+    const upload = document.getElementById("upload");
+    const uploadLabel = document.getElementById("uploadLabel");
+    const fileInfo = document.getElementById("fileInfo");
+    const preview = document.getElementById("preview");
+    const shadowColor = document.getElementById("shadowColor");
+    const highlightColor = document.getElementById("highlightColor");
+    const reverseBtn = document.getElementById("reverseBtn");
+    const downloadBtn = document.getElementById("downloadBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    let img = new Image();
+
+    function hexToRgb(hex) {
+      const bigint = parseInt(hex.slice(1), 16);
+      return [
+        (bigint >> 16) & 255,
+        (bigint >> 8) & 255,
+        bigint & 255
+      ];
+    }
+
+    function applyDuotone() {
+      if (!img.src) return;
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      ctx.drawImage(img, 0, 0);
+
+      let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      let data = imageData.data;
+
+      const shadow = hexToRgb(shadowColor.value);
+      const highlight = hexToRgb(highlightColor.value);
+
+      for (let i = 0; i < data.length; i += 4) {
+        const gray = 0.3 * data[i] + 0.59 * data[i + 1] + 0.11 * data[i + 2];
+        data[i]     = shadow[0] + (highlight[0] - shadow[0]) * (gray / 255);
+        data[i + 1] = shadow[1] + (highlight[1] - shadow[1]) * (gray / 255);
+        data[i + 2] = shadow[2] + (highlight[2] - shadow[2]) * (gray / 255);
+      }
+
+      ctx.putImageData(imageData, 0, 0);
+      preview.src = canvas.toDataURL("image/png");
+      preview.style.display = "block";
+    }
+
+    function formatBytes(bytes) {
+      if (bytes < 1024) return bytes + " B";
+      else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + " KB";
+      else return (bytes / 1048576).toFixed(1) + " MB";
+    }
+
+    upload.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      fileInfo.textContent = `Your image: ${file.name} (${formatBytes(file.size)})`;
+      fileInfo.style.display = "block";
+      uploadLabel.style.display = "none"; // hide upload after choose
+
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        img = new Image();
+        img.onload = applyDuotone;
+        img.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    shadowColor.addEventListener("input", applyDuotone);
+    highlightColor.addEventListener("input", applyDuotone);
+
+    reverseBtn.addEventListener("click", () => {
+      const temp = shadowColor.value;
+      shadowColor.value = highlightColor.value;
+      highlightColor.value = temp;
+      applyDuotone();
+    });
+
+    downloadBtn.addEventListener("click", () => {
+      if (!canvas.width) return;
+      canvas.toBlob((blob) => {
+        if (!blob) return;
+
+        let quality = 0.95;
+        function tryCompress() {
+          if (blob.size <= 5 * 1024 * 1024 || quality < 0.3) {
+            const link = document.createElement("a");
+            link.download = `duotone-${Date.now()}.jpg`;
+            link.href = URL.createObjectURL(blob);
+            link.click();
+          } else {
+            canvas.toBlob((newBlob) => {
+              blob = newBlob;
+              quality -= 0.1;
+              tryCompress();
+            }, "image/jpeg", quality);
+          }
+        }
+        tryCompress();
+      }, "image/jpeg", 0.95);
+    });
+
+    clearBtn.addEventListener("click", () => {
+      preview.src = "";
+      preview.style.display = "none";
+      fileInfo.textContent = "";
+      fileInfo.style.display = "none";
+      uploadLabel.style.display = "inline-block"; // show upload again
+      upload.value = "";
+    });
+  </script>
+</body>
+</html>
