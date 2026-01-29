@@ -14,7 +14,7 @@
         "full": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWvMwoB6GGssq0_Yk5nyjjcDifd7nYaEBj6hX7IBB9d8BfiykecuRo6d18_qIGmUs2rNy8xA_oiuFtIHyIDu0eGyPMHcT7Ym7zcT0DnHI7BZCTy8m9FaJHieJ3oA0y79RNiH9m9iL_WGVYt3WhDZEHoVcK2hMjKR3kpS63v-qtpLRgXkXOOwTsR3QJNejF/s1600/stepwgn-spada.webp"
       }
     ]
-  }
+  },
 
  "accord": {
     "price": 970900000,
@@ -25,7 +25,7 @@
     "angsuran": "Rp. 20.200.000",
     "seats": "5-Seater",
     "engine": "2.0L DOHC i-VTEC Engine + E-CVT"
-  }
+  },
 
  "civic": {
     "price": 699000000,
@@ -36,7 +36,7 @@
     "angsuran": "Rp. 14.600.000",
     "seats": "5-Seater",
     "engine": "2.0L DOHC i-VTEC Engine + DBW"
-  } 
+  },
 
  "city-hb": {
     "price": 384500000,
@@ -47,7 +47,7 @@
     "angsuran": "Rp. 8.200.000",
     "seats": "5-Seater",
     "engine": "1.5L DOHC i-VTEC Engine"
-  }  
+  }, 
 
  "cr-v": {
     "price": 759000000,
@@ -59,7 +59,7 @@
     "angsuran": "Rp. 15.900.000",
     "seats": "7-Seater",
     "engine": "1.5L DOHC i-VTEC Engine"
-  } 
+  },
 
  "wr-v": {
     "price": 285700000,
@@ -73,7 +73,7 @@
     "angsuran": "Rp. 6.200.000",
     "seats": "5-Seater",
     "engine": "1.5L DOHC i-VTEC Engine"
-  } 
+  },
 
  "hr-v": {
     "price": 401000000,
@@ -88,7 +88,7 @@
     "angsuran": "Rp. 8.500.000",
     "seats": "5-Seater",
     "engine": "1.5L DOHC i-VTEC Engine + DBW"
-  } 
+  },
 
  "br-v": {
     "price": 335700000,
@@ -101,7 +101,7 @@
     "angsuran": "Rp. 4.700.000",
     "seats": "7-Seater",
     "engine": "1.5L DOHC i-VTEC Engine"
-  } 
+  },
 
  "brio": {
     "price": 183500000,
@@ -115,6 +115,6 @@
     "angsuran": "Rp. 3.500.000",
     "seats": "5-Seater",
     "engine": "1.2L DOHC i-VTEC Engine"
-  } 
+  }
   
 }
