@@ -14,5 +14,107 @@
         "full": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWvMwoB6GGssq0_Yk5nyjjcDifd7nYaEBj6hX7IBB9d8BfiykecuRo6d18_qIGmUs2rNy8xA_oiuFtIHyIDu0eGyPMHcT7Ym7zcT0DnHI7BZCTy8m9FaJHieJ3oA0y79RNiH9m9iL_WGVYt3WhDZEHoVcK2hMjKR3kpS63v-qtpLRgXkXOOwTsR3QJNejF/s1600/stepwgn-spada.webp"
       }
     ]
+  },
+
+ "accord": {
+    "price": 970900000,
+    "variants": [
+      "2.0 RS e:HEV E-CVT OTR : Rp970.900.000"
+    ],
+    "dp": "Rp. 190.000.000",
+    "angsuran": "Rp. 20.200.000",
+    "seats": "5-Seater",
+    "engine": "2.0L DOHC i-VTEC Engine + E-CVT"
+  },
+
+ "civic": {
+    "price": 699000000,
+    "variants": [
+      "RS CVT OTR : Rp699.000.000"
+    ],
+    "dp": "Rp. 140.000.000",
+    "angsuran": "Rp. 14.600.000",
+    "seats": "5-Seater",
+    "engine": "2.0L DOHC i-VTEC Engine + DBW"
+  },
+
+ "city-hb": {
+    "price": 384500000,
+    "variants": [
+      "RS with Honda SENSING CVT OTR : 384.500.000"
+    ],
+    "dp": "Rp. 60.000.000",
+    "angsuran": "Rp. 8.200.000",
+    "seats": "5-Seater",
+    "engine": "1.5L DOHC i-VTEC Engine"
+  }, 
+
+ "cr-v": {
+    "price": 759000000,
+    "variants": [
+      "1.5 Turbo CVT OTR : Rp759.000.000",
+      "2.0 RS e:HEV E-CVT OTR : Rp825.800.000"
+    ],
+    "dp": "Rp. 150.000.000",
+    "angsuran": "Rp. 15.900.000",
+    "seats": "7-Seater",
+    "engine": "1.5L DOHC i-VTEC Engine"
+  },
+
+ "wr-v": {
+    "price": 285700000,
+    "variants": [
+      "1.5 E/MT OTR: Rp285.700.000",
+      "1.5 E/CVT OTR: Rp295.700.000",
+      "1.5 RS/CVT OTR: Rp315.700.000*",
+      "1.5 RS with SENSING/CVT OTR: Rp335.700.000*"
+    ],
+    "dp": "Rp. 20.000.000",
+    "angsuran": "Rp. 6.200.000",
+    "seats": "5-Seater",
+    "engine": "1.5L DOHC i-VTEC Engine"
+  },
+
+ "hr-v": {
+    "price": 401000000,
+    "variants": [
+      "1.5 E/CVT OTR: Rp401.000.000",
+      "1.5 E+/CVT OTR: Rp423.600.000",
+      "1.5L e:HEV/E-CVT OTR: Rp449.000.000",
+      "1.5T e:HEV/E-CVT Modulo OTR:Rp460.700.000",
+      "1.5T RS e:HEV/E-CVT OTR: Rp488.000.000"
+    ],
+    "dp": "Rp. 60.000.000",
+    "angsuran": "Rp. 8.500.000",
+    "seats": "5-Seater",
+    "engine": "1.5L DOHC i-VTEC Engine + DBW"
+  },
+
+ "br-v": {
+    "price": 335700000,
+    "variants": [
+      "E N7X Edition CVT OTR : Rp335.700.000",
+      "Prestige N7X Edition CVT OTR : Rp361.200.000",
+      "Prestige N7X Edition with Honda SENSING CVT OTR : Rp381.200.000"
+    ],
+    "dp": "Rp. 24.000.000",
+    "angsuran": "Rp. 4.700.000",
+    "seats": "7-Seater",
+    "engine": "1.5L DOHC i-VTEC Engine"
+  },
+
+ "brio": {
+    "price": 183500000,
+    "variants": [
+      "Satya S CVT OTR : Rp183.500.000",
+      "Satya E CVT SE OTR : Rp221.700.000",
+      "RS MT SE OTR : Rp264.100.000",
+      "RS CVT SE OTR : Rp274.100.000"
+    ],
+    "dp": "Rp. 29.000.000",
+    "angsuran": "Rp. 3.500.000",
+    "seats": "5-Seater",
+    "engine": "1.2L DOHC i-VTEC Engine"
   }
+  
 }
