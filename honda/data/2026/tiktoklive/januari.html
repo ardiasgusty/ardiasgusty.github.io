@@ -5,10 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Evaluasi Kinerja TikTok Live – Honda Bintaro</title>
 
-<!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
-
-<!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
@@ -20,7 +17,6 @@
 </head>
 
 <body class="bg-slate-50 text-slate-800">
-
 <div class="max-w-7xl mx-auto p-6 space-y-10">
 
 <!-- HEADER -->
@@ -70,96 +66,56 @@
   <div class="bg-white p-6 rounded-xl">
     <h3 class="font-bold mb-4">❌ Proporsi Kegagalan Jadwal</h3>
     <canvas id="donutChart"></canvas>
-    <p class="mt-4 text-sm bg-red-50 text-red-700 p-3 rounded">
-      <b>Insight:</b> Lebih dari setengah slot waktu (54%) terbuang percuma.
-    </p>
   </div>
 
   <div class="bg-white p-6 rounded-xl">
-    <h3 class="font-bold mb-4">⚠️ Sumber Masalah (12 Kasus Batal)</h3>
+    <h3 class="font-bold mb-4">⚠️ Sumber Masalah</h3>
     <canvas id="barIssue"></canvas>
-    <p class="mt-4 text-sm bg-orange-50 text-orange-700 p-3 rounded">
-      <b>Insight:</b> Masalah terbesar adalah <b>Manajerial/SS</b> (7 hari kosong),
-      diikuti ketidaksiapan tim.
-    </p>
   </div>
 </div>
 
 <!-- TEAM MATRIX -->
 <div class="bg-white p-6 rounded-xl">
-  <div class="flex justify-between items-center mb-4">
-    <h3 class="font-bold">👥 Matriks Kualitas vs Kedisiplinan</h3>
-    <span class="text-xs bg-slate-100 px-3 py-1 rounded-full">
-      Avg Likes (Biru) vs Pembatalan (Merah)
-    </span>
-  </div>
+  <h3 class="font-bold mb-4">👥 Matriks Kualitas vs Kedisiplinan</h3>
   <canvas id="teamChart"></canvas>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-    <div class="p-4 bg-blue-50 border rounded">
-      <b>SUDI – High Value, High Risk</b>
-      <p class="text-sm mt-1">
-        Rata-rata likes tertinggi (14.7k) tapi sering batal.
-      </p>
-    </div>
-    <div class="p-4 bg-red-50 border rounded">
-      <b>AANG – Disiplin Tapi Low Impact</b>
-      <p class="text-sm mt-1">
-        0 pembatalan, tapi likes 21× lebih rendah.
-      </p>
-    </div>
-  </div>
-</div>
+  <!-- NEW: LIVE COVERAGE BOX -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
 
-<!-- STRATEGY -->
-<div class="bg-slate-900 text-white p-6 rounded-2xl shadow-lg">
-  <h3 class="text-xl font-bold mb-4">Rekomendasi Perbaikan Strategis</h3>
-  <div class="border-t border-slate-700 mb-6"></div>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-    <div class="space-y-5">
-      <div class="flex items-start gap-3">
-        <div class="text-yellow-400 text-xl">⏱️</div>
-        <div>
-          <h4 class="font-semibold text-yellow-400">Implementasi SOP "2-Hour Check"</h4>
-          <p class="text-sm text-slate-300 mt-1">
-            Wajib konfirmasi kesiapan Live minimal 2 jam sebelum on-air. Mohon Sales Manager menetapkan konsekuensi ketidakhadiran.
-          </p>
-        </div>
+    <div class="p-4 rounded-lg border bg-yellow-50">
+      <div class="flex justify-between">
+        <strong>TEAM SUDI</strong>
+        <span class="text-xs bg-yellow-200 text-yellow-800 px-2 rounded">11.1%</span>
       </div>
-
-      <div class="flex items-start gap-3">
-        <div class="text-red-400 text-xl">⛔</div>
-        <div>
-          <h4 class="font-semibold text-red-400">KPI Kedisiplinan Baru</h4>
-          <p class="text-sm text-slate-300 mt-1">
-            Target maksimal Cancellation Rate = 10% per tim/bulan.
-          </p>
-        </div>
-      </div>
+      <p class="text-sm mt-1">Live: <b>3</b> hari</p>
+      <p class="text-xs text-slate-500">dari 27 hari operasional</p>
     </div>
 
-    <div class="space-y-5">
-      <div class="flex items-start gap-3">
-        <div class="text-blue-400 text-xl">📈</div>
-        <div>
-          <h4 class="font-semibold text-blue-400">Standardisasi Konten (Khusus Aang)</h4>
-          <p class="text-sm text-slate-300 mt-1">
-            Durasi Live distandardisasi 60–90 menit.
-          </p>
-        </div>
+    <div class="p-4 rounded-lg border bg-yellow-50">
+      <div class="flex justify-between">
+        <strong>TEAM RAKA</strong>
+        <span class="text-xs bg-yellow-200 text-yellow-800 px-2 rounded">11.1%</span>
       </div>
+      <p class="text-sm mt-1">Live: <b>3</b> hari</p>
+      <p class="text-xs text-slate-500">dari 27 hari operasional</p>
+    </div>
 
-      <div class="flex items-start gap-3">
-        <div class="text-green-400 text-xl">👥</div>
-        <div>
-          <h4 class="font-semibold text-green-400">Mandat Penjadwalan SS</h4>
-          <p class="text-sm text-slate-300 mt-1">
-            Jadwal minggu depan wajib dikunci setiap hari Jumat. Mohon arahan Manager terkait prosedur jika terjadi kekosongan.
-          </p>
-        </div>
+    <div class="p-4 rounded-lg border bg-yellow-50">
+      <div class="flex justify-between">
+        <strong>TEAM AANG</strong>
+        <span class="text-xs bg-yellow-200 text-yellow-800 px-2 rounded">11.1%</span>
       </div>
+      <p class="text-sm mt-1">Live: <b>3</b> hari</p>
+      <p class="text-xs text-slate-500">dari 27 hari operasional</p>
+    </div>
+
+    <div class="p-4 rounded-lg border bg-red-50">
+      <div class="flex justify-between">
+        <strong>TEAM HENRI</strong>
+        <span class="text-xs bg-red-200 text-red-800 px-2 rounded">7.4%</span>
+      </div>
+      <p class="text-sm mt-1">Live: <b>2</b> hari</p>
+      <p class="text-xs text-slate-500">dari 27 hari operasional</p>
     </div>
 
   </div>
@@ -168,87 +124,25 @@
 </div>
 
 <script>
-// Donut
-new Chart(donutChart, {
-  type: 'doughnut',
-  data: {
-    labels: ['Terlaksana', 'Dibatalkan'],
-    datasets: [{ data: [11,12], backgroundColor: ['#10B981','#EF4444'] }]
-  }
+new Chart(donutChart,{
+  type:'doughnut',
+  data:{labels:['Done','Cancel'],datasets:[{data:[11,12],backgroundColor:['#10B981','#EF4444']}]}
 });
-
-// Issue
-new Chart(barIssue, {
-  type: 'bar',
-  data: {
-    labels: ['SS Tidak Isi Jadwal','Tim Sales No Contact'],
-    datasets: [{ data: [7,5], backgroundColor: ['#F97316','#DC2626'] }]
-  },
-  options: { indexAxis: 'y' }
+new Chart(barIssue,{
+  type:'bar',
+  data:{labels:['SS Tidak Isi Jadwal','No Contact'],datasets:[{data:[7,5],backgroundColor:['#F97316','#DC2626']}]},
+  options:{indexAxis:'y'}
 });
-
-// Team Matrix
-const likes=[14700,12200,5536,674];
-const cancel=[2,1,2,0];
-const views=[1722,542,963,634];
-const notes=[
-  "Engagement King, Tapi Indisipliner",
-  "Potensi Besar, Fluktuatif",
-  "Medioker, Momentum Rusak",
-  "Sangat Disiplin, Konten Lemah"
-];
-
 new Chart(teamChart,{
   type:'bar',
   data:{
-    labels:['Team Sudi','Team Henri','Team Raka','Team Aang'],
+    labels:['Sudi','Henri','Raka','Aang'],
     datasets:[
-      {label:'Avg Likes',data:likes,backgroundColor:'#3B82F6',yAxisID:'y'},
-      {label:'Pembatalan',data:cancel,backgroundColor:'#EF4444',yAxisID:'y1'}
+      {label:'Avg Likes',data:[14700,12200,5536,674],backgroundColor:'#3B82F6',yAxisID:'y'},
+      {label:'Pembatalan',data:[2,1,2,0],backgroundColor:'#EF4444',yAxisID:'y1'}
     ]
   },
-  options:{
-    interaction:{mode:'index',intersect:false},
-    plugins: {
-      tooltip: {
-        backgroundColor: "#ffffff",
-        titleColor: "#0f172a",
-        bodyColor: "#334155",
-        borderColor: "#e2e8f0",
-        borderWidth: 1,
-        padding: 12,
-        displayColors: true,
-        callbacks: {
-          title(ctx) {
-            return ctx[0].label;
-          },
-          label(ctx) {
-            const i = ctx.dataIndex;
-            if (ctx.datasetIndex === 0) {
-              return `Avg Likes: ${likes[i].toLocaleString()}`;
-            }
-            if (ctx.datasetIndex === 1) {
-              return `Dibatalkan: ${cancel[i]} sesi`;
-            }
-            return '';
-          },
-          afterBody(ctx) {
-            const i = ctx[0].dataIndex;
-            return [
-              `Total Views: ${views[i].toLocaleString()}`,
-              ``,
-              `"${notes[i]}"`
-            ];
-          }
-        }
-      }
-    }
-  ,
-    scales:{
-      y:{title:{display:true,text:'Rata-rata Likes / Sesi'}},
-      y1:{position:'right',grid:{drawOnChartArea:false},ticks:{stepSize:1}}
-    }
-  }
+  options:{interaction:{mode:'index',intersect:false}}
 });
 </script>
 
