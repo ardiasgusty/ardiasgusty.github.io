@@ -123,13 +123,11 @@
   </div>
 </div>
 
-<!-- STRATEGY (FULL, TIDAK DIPOTONG) -->
+<!-- STRATEGY -->
 <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-lg">
   <h3 class="text-xl font-bold mb-4">Rekomendasi Perbaikan Strategis</h3>
   <div class="border-t border-slate-700 mb-6"></div>
-
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
     <div class="space-y-5">
       <div class="flex items-start gap-3">
         <div class="text-yellow-400 text-xl">⏱️</div>
@@ -141,7 +139,6 @@
           </p>
         </div>
       </div>
-
       <div class="flex items-start gap-3">
         <div class="text-red-400 text-xl">⛔</div>
         <div>
@@ -153,7 +150,6 @@
         </div>
       </div>
     </div>
-
     <div class="space-y-5">
       <div class="flex items-start gap-3">
         <div class="text-blue-400 text-xl">📈</div>
@@ -165,7 +161,6 @@
           </p>
         </div>
       </div>
-
       <div class="flex items-start gap-3">
         <div class="text-green-400 text-xl">👥</div>
         <div>
@@ -177,7 +172,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -188,13 +182,35 @@ new Chart(donutChart,{
   type:'doughnut',
   data:{labels:['Terlaksana','Dibatalkan'],datasets:[{data:[11,12],backgroundColor:['#10B981','#EF4444']}]}
 });
+
 new Chart(barIssue,{
   type:'bar',
   data:{labels:['SS Tidak Isi Jadwal','Tim Sales No Contact'],datasets:[{data:[7,5],backgroundColor:['#F97316','#DC2626']}]},
   options:{indexAxis:'y'}
 });
+
+/* === HOVER BACKGROUND PLUGIN (NEW) === */
+const hoverBackgroundPlugin = {
+  id: 'hoverBackground',
+  beforeDatasetsDraw(chart) {
+    const tooltip = chart.tooltip;
+    if (!tooltip || !tooltip.dataPoints?.length) return;
+    const ctx = chart.ctx;
+    const chartArea = chart.chartArea;
+    const index = tooltip.dataPoints[0].dataIndex;
+    const bar = chart.getDatasetMeta(0).data[index];
+    if (!bar) return;
+    ctx.save();
+    ctx.fillStyle = 'rgba(0,0,0,0.08)';
+    ctx.fillRect(bar.x - bar.width, chartArea.top, bar.width * 2, chartArea.bottom - chartArea.top);
+    ctx.restore();
+  }
+};
+
+/* === UPDATED TEAM CHART (ONLY THIS PART CHANGED) === */
 new Chart(teamChart,{
   type:'bar',
+  plugins:[hoverBackgroundPlugin],
   data:{
     labels:['Team Sudi','Team Henri','Team Raka','Team Aang'],
     datasets:[
@@ -202,7 +218,52 @@ new Chart(teamChart,{
       {label:'Pembatalan',data:[2,1,2,0],backgroundColor:'#EF4444',yAxisID:'y1'}
     ]
   },
-  options:{interaction:{mode:'index',intersect:false}}
+  options:{
+    interaction:{mode:'index',intersect:false},
+    plugins:{
+      tooltip:{
+        backgroundColor:'#ffffff',
+        titleColor:'#0f172a',
+        bodyColor:'#334155',
+        borderColor:'#e2e8f0',
+        borderWidth:1,
+        padding:12,
+        callbacks:{
+          title:c=>c[0].label,
+          label:c=>{
+            const i=c.dataIndex;
+            return c.datasetIndex===0
+              ? `Avg Likes: ${[14700,12200,5536,674][i].toLocaleString()}`
+              : `Dibatalkan: ${[2,1,2,0][i]} sesi`;
+          },
+          afterBody:c=>{
+            const i=c[0].dataIndex;
+            const views=[1722,542,963,634];
+            const notes=[
+              "Engagement King, Tapi Indisipliner",
+              "Potensi Besar, Fluktuatif",
+              "Medioker, Momentum Rusak",
+              "Sangat Disiplin, Konten Lemah"
+            ];
+            return [`Total Views: ${views[i].toLocaleString()}`,'',`"${notes[i]}"`];
+          }
+        }
+      }
+    },
+    scales:{
+      y:{
+        ticks:{callback:v=>v.toLocaleString()},
+        title:{display:true,text:'Rata-rata Likes / Sesi'}
+      },
+      y1:{
+        position:'right',
+        max:2,
+        ticks:{stepSize:1,color:'#EF4444'},
+        grid:{drawOnChartArea:false},
+        title:{display:true,text:'Jumlah Pembatalan'}
+      }
+    }
+  }
 });
 </script>
 
