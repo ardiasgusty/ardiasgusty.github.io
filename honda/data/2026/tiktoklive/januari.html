@@ -41,19 +41,16 @@
     <h2 class="text-3xl font-bold text-red-600">54%</h2>
     <p class="text-sm text-red-500">12 dari 23 sesi batal</p>
   </div>
-
   <div class="bg-white p-4 rounded-xl border-l-4 border-green-500">
     <p class="text-xs font-bold text-slate-400">SESI TERLAKSANA</p>
     <h2 class="text-3xl font-bold text-green-600">11</h2>
     <p class="text-sm text-green-500">Status "Done"</p>
   </div>
-
   <div class="bg-white p-4 rounded-xl border-l-4 border-blue-500">
     <p class="text-xs font-bold text-slate-400">TOP AVG LIKES / SESI</p>
     <h2 class="text-3xl font-bold text-blue-600">14.7k</h2>
     <p class="text-sm text-blue-500">Team Sudi</p>
   </div>
-
   <div class="bg-white p-4 rounded-xl border-l-4 border-orange-500">
     <p class="text-xs font-bold text-slate-400">KEGAGALAN PLANNING</p>
     <h2 class="text-3xl font-bold text-orange-600">7 Hari</h2>
@@ -67,55 +64,118 @@
     <h3 class="font-bold mb-4">❌ Proporsi Kegagalan Jadwal</h3>
     <canvas id="donutChart"></canvas>
   </div>
-
   <div class="bg-white p-6 rounded-xl">
-    <h3 class="font-bold mb-4">⚠️ Sumber Masalah</h3>
+    <h3 class="font-bold mb-4">⚠️ Sumber Masalah (12 Kasus Batal)</h3>
     <canvas id="barIssue"></canvas>
   </div>
 </div>
 
 <!-- TEAM MATRIX -->
 <div class="bg-white p-6 rounded-xl">
-  <h3 class="font-bold mb-4">👥 Matriks Kualitas vs Kedisiplinan</h3>
+  <div class="flex justify-between items-center mb-4">
+    <h3 class="font-bold">👥 Matriks Kualitas vs Kedisiplinan</h3>
+    <span class="text-xs bg-slate-100 px-3 py-1 rounded-full">
+      Avg Likes (Biru) vs Pembatalan (Merah)
+    </span>
+  </div>
   <canvas id="teamChart"></canvas>
 
-  <!-- NEW: LIVE COVERAGE BOX -->
+  <!-- INSIGHT BOX -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+    <div class="p-4 bg-blue-50 border rounded">
+      <b>SUDI – High Value, High Risk</b>
+      <p class="text-sm mt-1">
+        Rata-rata likes tertinggi (14.7k), tapi sering batal.
+        Aset berharga yang tidak stabil.
+      </p>
+    </div>
+    <div class="p-4 bg-red-50 border rounded">
+      <b>AANG – Disiplin Tapi Low Impact</b>
+      <p class="text-sm mt-1">
+        0 pembatalan, tapi likes 21× lebih rendah dari Sudi.
+        Durasi terlalu pendek (40 menit).
+      </p>
+    </div>
+  </div>
+
+  <!-- LIVE COVERAGE -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-
     <div class="p-4 rounded-lg border bg-yellow-50">
-      <div class="flex justify-between">
-        <strong>TEAM SUDI</strong>
-        <span class="text-xs bg-yellow-200 text-yellow-800 px-2 rounded">11.1%</span>
-      </div>
+      <strong>TEAM SUDI</strong>
       <p class="text-sm mt-1">Live: <b>3</b> hari</p>
-      <p class="text-xs text-slate-500">dari 27 hari operasional</p>
+      <p class="text-xs text-slate-500">11.1% dari 27 hari operasional</p>
     </div>
-
     <div class="p-4 rounded-lg border bg-yellow-50">
-      <div class="flex justify-between">
-        <strong>TEAM RAKA</strong>
-        <span class="text-xs bg-yellow-200 text-yellow-800 px-2 rounded">11.1%</span>
-      </div>
+      <strong>TEAM RAKA</strong>
       <p class="text-sm mt-1">Live: <b>3</b> hari</p>
-      <p class="text-xs text-slate-500">dari 27 hari operasional</p>
+      <p class="text-xs text-slate-500">11.1% dari 27 hari operasional</p>
     </div>
-
     <div class="p-4 rounded-lg border bg-yellow-50">
-      <div class="flex justify-between">
-        <strong>TEAM AANG</strong>
-        <span class="text-xs bg-yellow-200 text-yellow-800 px-2 rounded">11.1%</span>
-      </div>
+      <strong>TEAM AANG</strong>
       <p class="text-sm mt-1">Live: <b>3</b> hari</p>
-      <p class="text-xs text-slate-500">dari 27 hari operasional</p>
+      <p class="text-xs text-slate-500">11.1% dari 27 hari operasional</p>
     </div>
-
     <div class="p-4 rounded-lg border bg-red-50">
-      <div class="flex justify-between">
-        <strong>TEAM HENRI</strong>
-        <span class="text-xs bg-red-200 text-red-800 px-2 rounded">7.4%</span>
-      </div>
+      <strong>TEAM HENRI</strong>
       <p class="text-sm mt-1">Live: <b>2</b> hari</p>
-      <p class="text-xs text-slate-500">dari 27 hari operasional</p>
+      <p class="text-xs text-slate-500">7.4% dari 27 hari operasional</p>
+    </div>
+  </div>
+</div>
+
+<!-- STRATEGY (FULL, TIDAK DIPOTONG) -->
+<div class="bg-slate-900 text-white p-6 rounded-2xl shadow-lg">
+  <h3 class="text-xl font-bold mb-4">Rekomendasi Perbaikan Strategis</h3>
+  <div class="border-t border-slate-700 mb-6"></div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <div class="space-y-5">
+      <div class="flex items-start gap-3">
+        <div class="text-yellow-400 text-xl">⏱️</div>
+        <div>
+          <h4 class="font-semibold text-yellow-400">Implementasi SOP "2-Hour Check"</h4>
+          <p class="text-sm text-slate-300 mt-1">
+            Wajib konfirmasi kesiapan Live minimal 2 jam sebelum on-air.
+            Mohon Sales Manager menetapkan konsekuensi ketidakhadiran.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <div class="text-red-400 text-xl">⛔</div>
+        <div>
+          <h4 class="font-semibold text-red-400">KPI Kedisiplinan Baru</h4>
+          <p class="text-sm text-slate-300 mt-1">
+            Target Maksimal Cancellation Rate = 10% per tim/bulan.
+            Pelanggar direkomendasikan kehilangan slot Prime Time.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-5">
+      <div class="flex items-start gap-3">
+        <div class="text-blue-400 text-xl">📈</div>
+        <div>
+          <h4 class="font-semibold text-blue-400">Standardisasi Konten (Khusus Aang)</h4>
+          <p class="text-sm text-slate-300 mt-1">
+            Wajib observasi sesi Team Sudi.
+            Durasi Live minimal distandardisasi 60–90 menit.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <div class="text-green-400 text-xl">👥</div>
+        <div>
+          <h4 class="font-semibold text-green-400">Mandat Penjadwalan SS</h4>
+          <p class="text-sm text-slate-300 mt-1">
+            Jadwal minggu depan wajib dikunci setiap hari Jumat.
+            Mohon arahan Manager terkait prosedur jika terjadi kekosongan.
+          </p>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -126,17 +186,17 @@
 <script>
 new Chart(donutChart,{
   type:'doughnut',
-  data:{labels:['Done','Cancel'],datasets:[{data:[11,12],backgroundColor:['#10B981','#EF4444']}]}
+  data:{labels:['Terlaksana','Dibatalkan'],datasets:[{data:[11,12],backgroundColor:['#10B981','#EF4444']}]}
 });
 new Chart(barIssue,{
   type:'bar',
-  data:{labels:['SS Tidak Isi Jadwal','No Contact'],datasets:[{data:[7,5],backgroundColor:['#F97316','#DC2626']}]},
+  data:{labels:['SS Tidak Isi Jadwal','Tim Sales No Contact'],datasets:[{data:[7,5],backgroundColor:['#F97316','#DC2626']}]},
   options:{indexAxis:'y'}
 });
 new Chart(teamChart,{
   type:'bar',
   data:{
-    labels:['Sudi','Henri','Raka','Aang'],
+    labels:['Team Sudi','Team Henri','Team Raka','Team Aang'],
     datasets:[
       {label:'Avg Likes',data:[14700,12200,5536,674],backgroundColor:'#3B82F6',yAxisID:'y'},
       {label:'Pembatalan',data:[2,1,2,0],backgroundColor:'#EF4444',yAxisID:'y1'}
