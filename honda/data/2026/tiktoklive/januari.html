@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Evaluasi Kinerja TikTok Live - Honda Bintaro</title>
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+@media print {
+  body { background: white !important; }
+  canvas { max-height: 420px !important; }
+}
+</style>
+</head>
+
+<body class="bg-slate-50 text-slate-800">
+
+<div class="max-w-7xl mx-auto p-6 space-y-10">
+
+<!-- HEADER -->
+<div>
+  <h1 class="text-3xl font-bold flex items-center gap-2">
+    📈 Evaluasi Kinerja TikTok Live: Honda Bintaro
+  </h1>
+  <div class="mt-2 flex flex-wrap gap-4 text-sm">
+    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+      Periode: 8 – 31 Jan 2026
+    </span>
+    <span class="text-slate-500">
+      Data 1–7 Jan diabaikan (Masa transisi)
+    </span>
+  </div>
+</div>
+
+<!-- KPI -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="bg-white p-4 rounded-xl border-l-4 border-red-500">
+    <p class="text-xs font-bold text-slate-400">KEBOCORAN OPERASIONAL</p>
+    <h2 class="text-3xl font-bold text-red-600">54%</h2>
+    <p class="text-sm text-red-500">12 dari 23 sesi batal</p>
+  </div>
+
+  <div class="bg-white p-4 rounded-xl border-l-4 border-green-500">
+    <p class="text-xs font-bold text-slate-400">SESI TERLAKSANA</p>
+    <h2 class="text-3xl font-bold text-green-600">11</h2>
+    <p class="text-sm text-green-500">Status "Done"</p>
+  </div>
+
+  <div class="bg-white p-4 rounded-xl border-l-4 border-blue-500">
+    <p class="text-xs font-bold text-slate-400">TOP AVG LIKES / SESI</p>
+    <h2 class="text-3xl font-bold text-blue-600">14.7k</h2>
+    <p class="text-sm text-blue-500">Team Sudi</p>
+  </div>
+
+  <div class="bg-white p-4 rounded-xl border-l-4 border-orange-500">
+    <p class="text-xs font-bold text-slate-400">KEGAGALAN PLANNING</p>
+    <h2 class="text-3xl font-bold text-orange-600">7 Hari</h2>
+    <p class="text-sm text-orange-500">SS tidak isi jadwal</p>
+  </div>
+</div>
+
+<!-- CHARTS -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+  <div class="bg-white p-6 rounded-xl">
+    <h3 class="font-bold mb-4">❌ Proporsi Kegagalan Jadwal</h3>
+    <canvas id="donutChart"></canvas>
+    <p class="mt-4 text-sm bg-red-50 text-red-700 p-3 rounded">
+      <b>Insight:</b> Lebih dari setengah slot waktu (54%) terbuang percuma.
+    </p>
+  </div>
+
+  <div class="bg-white p-6 rounded-xl">
+    <h3 class="font-bold mb-4">⚠️ Sumber Masalah (12 Kasus Batal)</h3>
+    <canvas id="barIssue"></canvas>
+    <p class="mt-4 text-sm bg-orange-50 text-orange-700 p-3 rounded">
+      <b>Insight:</b> Masalah terbesar adalah <b>Manajerial/SS</b> (7 hari kosong),
+      diikuti ketidaksiapan tim.
+    </p>
+  </div>
+</div>
+
+<!-- TEAM MATRIX -->
+<div class="bg-white p-6 rounded-xl">
+  <h3 class="font-bold mb-4">👥 Matriks Kualitas vs Kedisiplinan</h3>
+  <canvas id="teamChart"></canvas>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+    <div class="p-4 bg-blue-50 border rounded">
+      <b>SUDI – High Value, High Risk</b>
+      <p class="text-sm mt-1">
+        Rata-rata likes tertinggi (14.7k) tapi sering batal.
+      </p>
+    </div>
+    <div class="p-4 bg-red-50 border rounded">
+      <b>AANG – Disiplin Tapi Low Impact</b>
+      <p class="text-sm mt-1">
+        0 pembatalan, tapi likes 21× lebih rendah. Durasi terlalu pendek.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- STRATEGY -->
+<div class="bg-slate-800 text-white p-6 rounded-xl">
+  <h3 class="text-xl font-bold mb-4">Rekomendasi Perbaikan Strategis</h3>
+
+  <ul class="space-y-3 text-sm">
+    <li>⏱️ <b>SOP "2-Hour Check"</b> sebelum live.</li>
+    <li>🚫 <b>KPI Kedisiplinan</b>: max cancellation 10%.</li>
+    <li>📈 <b>Standardisasi Konten</b> (khusus Aang).</li>
+    <li>📅 <b>Mandat Penjadwalan SS</b> setiap Jumat.</li>
+  </ul>
+</div>
+
+</div>
+
+<script>
+new Chart(donutChart, {
+  type: 'doughnut',
+  data: {
+    labels: ['Terlaksana', 'Dibatalkan'],
+    datasets: [{
+      data: [11, 12],
+      backgroundColor: ['#10B981', '#EF4444']
+    }]
+  }
+});
+
+new Chart(barIssue, {
+  type: 'bar',
+  data: {
+    labels: ['SS Tidak Isi Jadwal', 'Tim Sales No Contact'],
+    datasets: [{
+      data: [7, 5],
+      backgroundColor: ['#F97316', '#DC2626']
+    }]
+  },
+  options: { indexAxis: 'y' }
+});
+
+new Chart(teamChart, {
+  type: 'bar',
+  data: {
+    labels: ['Sudi', 'Henri', 'Raka', 'Aang'],
+    datasets: [
+      {
+        label: 'Avg Likes',
+        data: [14700, 12200, 5536, 674],
+        backgroundColor: '#3B82F6'
+      },
+      {
+        label: 'Pembatalan',
+        data: [2, 1, 2, 0],
+        backgroundColor: '#EF4444'
+      }
+    ]
+  }
+});
+</script>
+
+</body>
+</html>
