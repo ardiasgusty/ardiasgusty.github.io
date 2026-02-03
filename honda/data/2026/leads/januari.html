@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dashboard Sales – Team Henri</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+@media print {
+  body { background: white !important; }
+  canvas { max-height: 420px !important; }
+}
+</style>
+</head>
+
+<body class="bg-slate-100 text-slate-800">
+
+<div class="max-w-7xl mx-auto p-6 space-y-10">
+
+<!-- HEADER -->
+<div class="flex justify-between flex-wrap gap-4">
+  <div>
+    <h1 class="text-3xl font-bold">Dashboard Sales: Team Henri</h1>
+    <p class="text-slate-500">Laporan Akumulasi Leads & Performa Tim</p>
+  </div>
+  <span class="bg-white border px-4 py-2 rounded-xl text-sm">
+    📅 Periode: 1 Jan – 31 Jan 2026
+  </span>
+</div>
+
+<!-- KPI -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="bg-white p-4 rounded-xl border">
+    <p class="text-xs text-slate-400">TOTAL LEADS</p>
+    <h2 class="text-3xl font-bold">171</h2>
+  </div>
+  <div class="bg-white p-4 rounded-xl border">
+    <p class="text-xs text-slate-400">DALAM PROSES</p>
+    <h2 class="text-3xl font-bold text-blue-600">158</h2>
+    <p class="text-xs text-blue-500">92% Retensi</p>
+  </div>
+  <div class="bg-white p-4 rounded-xl border">
+    <p class="text-xs text-slate-400">LOSS (GAGAL)</p>
+    <h2 class="text-3xl font-bold text-red-500">12</h2>
+    <p class="text-xs text-red-400">7% Rate</p>
+  </div>
+  <div class="bg-white p-4 rounded-xl border">
+    <p class="text-xs text-slate-400">SPK (CLOSING)</p>
+    <h2 class="text-3xl font-bold text-orange-500">0</h2>
+    <span class="text-xs bg-orange-100 text-orange-600 px-2 py-0.5 rounded">Kritis</span>
+  </div>
+</div>
+
+<!-- DONUT + MODEL -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+  <div class="bg-white p-6 rounded-xl">
+    <h3 class="font-bold mb-4">Komposisi Status Leads</h3>
+    <canvas id="leadStatus"></canvas>
+    <div class="grid grid-cols-2 gap-2 text-sm mt-4">
+      <p class="text-blue-600">● Follow Up: 158</p>
+      <p class="text-red-500">● Loss: 12</p>
+      <p class="text-green-500">● Baru: 1</p>
+      <p class="text-orange-500">● SPK: 0</p>
+    </div>
+  </div>
+
+  <div class="bg-white p-6 rounded-xl">
+    <h3 class="font-bold mb-4">Minat Model Kendaraan</h3>
+    <canvas id="modelChart"></canvas>
+  </div>
+</div>
+
+<!-- DISTRIBUSI TIM -->
+<div class="bg-white p-6 rounded-xl">
+  <div class="flex justify-between items-center mb-4">
+    <h3 class="font-bold">Distribusi Beban & Loss Tim</h3>
+    <span class="text-xs text-slate-400">Update per 31 Jan 2026</span>
+  </div>
+  <canvas id="teamChart"></canvas>
+</div>
+
+<!-- SUMBER LEADS -->
+<div class="bg-white p-6 rounded-xl">
+  <h3 class="font-bold mb-2">Efektivitas Sumber Leads</h3>
+  <p class="text-sm text-slate-500 mb-4">
+    Media Sosial (Instagram) menyumbang volume leads tertinggi.
+  </p>
+
+  <div class="space-y-4">
+    <div>
+      <div class="flex justify-between text-sm"><span>Instagram</span><span>130 Leads</span></div>
+      <div class="h-2 bg-slate-200 rounded"><div class="h-2 bg-blue-500 rounded w-[76%]"></div></div>
+    </div>
+    <div>
+      <div class="flex justify-between text-sm"><span>WhatsApp</span><span>22 Leads</span></div>
+      <div class="h-2 bg-slate-200 rounded"><div class="h-2 bg-red-400 rounded w-[13%]"></div></div>
+    </div>
+    <div>
+      <div class="flex justify-between text-sm"><span>Website</span><span>12 Leads</span></div>
+      <div class="h-2 bg-slate-200 rounded"><div class="h-2 bg-green-500 rounded w-[7%]"></div></div>
+    </div>
+    <div>
+      <div class="flex justify-between text-sm"><span>Lainnya</span><span>7 Leads</span></div>
+      <div class="h-2 bg-slate-200 rounded"><div class="h-2 bg-orange-400 rounded w-[4%]"></div></div>
+    </div>
+  </div>
+
+  <p class="text-sm text-slate-500 mt-4">📍 Top Geo: Jabodetabek (Tangerang & Jakarta)</p>
+</div>
+
+<!-- STRATEGY -->
+<div class="bg-slate-900 text-white p-6 rounded-2xl">
+  <h3 class="text-xl font-bold mb-4">Analisis Strategis & Rekomendasi</h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="bg-slate-800 p-4 rounded-xl">
+      <h4 class="font-semibold text-orange-400">Konversi Closing</h4>
+      <p class="text-sm text-slate-300 mt-1">
+        Retensi tinggi (92%) belum berujung SPK. Perlu dorongan Hot Prospecting.
+      </p>
+    </div>
+    <div class="bg-slate-800 p-4 rounded-xl">
+      <h4 class="font-semibold text-red-400">Audit Kualitas Leads</h4>
+      <p class="text-sm text-slate-300 mt-1">
+        Loss tinggi pada sales tertentu (Vicky/Bayu). Perlu validasi kualitas leads IG.
+      </p>
+    </div>
+    <div class="bg-slate-800 p-4 rounded-xl">
+      <h4 class="font-semibold text-blue-400">Segmen “Belum Memilih”</h4>
+      <p class="text-sm text-slate-300 mt-1">
+        28 leads belum tentukan unit. Peluang cepat diarahkan ke ready stock.
+      </p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+// Donut
+new Chart(leadStatus,{
+  type:'doughnut',
+  data:{
+    labels:['Follow Up','Loss','Baru','SPK'],
+    datasets:[{
+      data:[158,12,1,0],
+      backgroundColor:['#3B82F6','#EF4444','#10B981','#F59E0B']
+    }]
+  }
+});
+
+// Model
+new Chart(modelChart,{
+  type:'bar',
+  data:{
+    labels:['Honda Brio','Honda HR-V','Belum Memilih','WR-V','Lainnya'],
+    datasets:[
+      {label:'Follow Up',data:[78,42,28,7,4],backgroundColor:'#3B82F6'},
+      {label:'Loss',data:[8,3,0,1,0],backgroundColor:'#EF4444'}
+    ]
+  },
+  options:{indexAxis:'y',interaction:{mode:'index',intersect:false}}
+});
+
+// Team
+new Chart(teamChart,{
+  type:'bar',
+  data:{
+    labels:['Vicky','Bayu01','Lutfi','Yudhi','Anggi','Awal','Benny'],
+    datasets:[
+      {label:'Sedang Proses',data:[18,20,23,24,25,25,24],backgroundColor:'#3B82F6'},
+      {label:'Loss (Gagal)',data:[6,4,2,0,0,0,0],backgroundColor:'#EF4444'}
+    ]
+  },
+  options:{interaction:{mode:'index',intersect:false}}
+});
+</script>
+
+</body>
+</html>
