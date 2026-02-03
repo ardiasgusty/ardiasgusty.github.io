@@ -209,26 +209,41 @@ new Chart(teamChart,{
   },
   options:{
     interaction:{mode:'index',intersect:false},
-    plugins:{
-      tooltip:{
-        backgroundColor:'#fff',
-        borderColor:'#e2e8f0',
-        borderWidth:1,
-        padding:12,
-        callbacks:{
-          title:c=>c[0].label,
-          afterBody:c=>{
-            const i=c[0].dataIndex;
+    plugins: {
+      tooltip: {
+        backgroundColor: "#ffffff",
+        titleColor: "#0f172a",
+        bodyColor: "#334155",
+        borderColor: "#e2e8f0",
+        borderWidth: 1,
+        padding: 12,
+        displayColors: true,
+        callbacks: {
+          title(ctx) {
+            return ctx[0].label;
+          },
+          label(ctx) {
+            const i = ctx.dataIndex;
+            if (ctx.datasetIndex === 0) {
+              return `Avg Likes: ${likes[i].toLocaleString()}`;
+            }
+            if (ctx.datasetIndex === 1) {
+              return `Dibatalkan: ${cancel[i]} sesi`;
+            }
+            return '';
+          },
+          afterBody(ctx) {
+            const i = ctx[0].dataIndex;
             return [
-              `Avg Likes: ${likes[i].toLocaleString()}`,
               `Total Views: ${views[i].toLocaleString()}`,
-              `Dibatalkan: ${cancel[i]} sesi`,
+              ``,
               `"${notes[i]}"`
             ];
           }
         }
       }
-    },
+    }
+  ,
     scales:{
       y:{title:{display:true,text:'Rata-rata Likes / Sesi'}},
       y1:{position:'right',grid:{drawOnChartArea:false},ticks:{stepSize:1}}
