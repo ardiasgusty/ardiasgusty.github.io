@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honda Features JSON Generator</title>
+    <title>Honda Features JSON Generator (with Rich Text)</title>
+    
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
     <style>
         :root {
-            --primary: #cc0000; /* Honda Red */
+            --primary: #cc0000; 
             --primary-hover: #a30000;
             --bg: #f4f6f9;
             --card: #ffffff;
@@ -16,27 +19,20 @@
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { margin: 0; padding: 0; background-color: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
         
-        /* Header */
         .header { background: #111; color: #fff; padding: 15px 20px; font-size: 20px; font-weight: bold; position: fixed; top: 0; width: 100%; z-index: 10; display: flex; justify-content: space-between; align-items: center; }
-        
-        /* Layout */
         .container { display: flex; width: 100%; margin-top: 60px; height: calc(100vh - 60px); }
         .editor-panel { flex: 6; padding: 20px; overflow-y: auto; background: var(--bg); border-right: 2px solid var(--border); }
         .output-panel { flex: 4; padding: 20px; display: flex; flex-direction: column; background: #fff; }
         
-        /* Cards */
         .category-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .category-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
         .item-card { background: #fdfdfd; border: 1px solid #eee; border-left: 4px solid var(--primary); border-radius: 4px; padding: 15px; margin-bottom: 15px; margin-left: 20px; position: relative;}
         
-        /* Form Elements */
         .form-group { margin-bottom: 12px; }
         .form-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px; color: #555; }
         .form-control { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
         .form-control:focus { border-color: var(--primary); outline: none; }
-        textarea.form-control { resize: vertical; min-height: 80px; font-family: monospace; }
         
-        /* Buttons */
         .btn { padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px; transition: background 0.2s; }
         .btn-primary { background: var(--primary); color: white; }
         .btn-primary:hover { background: var(--primary-hover); }
@@ -49,8 +45,10 @@
         .flex-row { display: flex; gap: 10px; }
         .flex-1 { flex: 1; }
         
-        /* Output Area */
         #json-output { width: 100%; flex: 1; padding: 15px; font-family: 'Courier New', Courier, monospace; font-size: 13px; background: #282c34; color: #d1d9e1; border-radius: 4px; border: none; resize: none; margin-top: 10px; margin-bottom: 10px;}
+        
+        /* Penyesuaian CKEditor */
+        .cke_chrome { border: 1px solid #ccc !important; border-radius: 4px !important; box-shadow: none !important; }
     </style>
 </head>
 <body>
@@ -62,6 +60,9 @@
 
     <div class="container">
         <div class="editor-panel">
+            <div style="background: #e9ecef; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; font-size: 13px; border-left: 4px solid #17a2b8;">
+                <strong>💡 Info:</strong> Untuk memasukkan kode HTML Tabel Spesifikasi, klik tombol <strong>"Source"</strong> di ujung kanan kotak deskripsi, lalu <i>paste</i> kodenya di sana.
+            </div>
             <div id="categories-container"></div>
             <button class="btn btn-primary" onclick="addCategory()" style="margin-top: 10px; width: 100%; padding: 12px; font-size: 16px;">
                 + Tambah Kategori Baru (Menu Utama)
@@ -80,21 +81,23 @@
     </div>
 
     <script>
-        // Array utama penyimpan data
         let appData = [];
 
-        // Fungsi membuat ID unik (Slug)
         function generateSlug(text) {
             return text.toString().toLowerCase()
-                .replace(/\s+/g, '-')           // Ganti spasi dengan -
-                .replace(/[^\w\-]+/g, '')       // Hapus karakter non-word
-                .replace(/\-\-+/g, '-')         // Hapus - ganda
-                .replace(/^-+/, '')             // Trim - dari awal
-                .replace(/-+$/, '');            // Trim - dari akhir
+                .replace(/\s+/g, '-')           
+                .replace(/[^\w\-]+/g, '')       
+                .replace(/\-\-+/g, '-')         
+                .replace(/^-+/, '')             
+                .replace(/-+$/, '');            
         }
 
-        // Render UI Editor
         function renderEditor() {
+            // Hancurkan instance CKEditor lama agar tidak error saat DOM di-refresh
+            for (let name in CKEDITOR.instances) {
+                CKEDITOR.instances[name].destroy(true);
+            }
+
             const container = document.getElementById('categories-container');
             container.innerHTML = '';
 
@@ -102,7 +105,6 @@
                 const catCard = document.createElement('div');
                 catCard.className = 'category-card';
                 
-                // Header Kategori
                 catCard.innerHTML = `
                     <div class="category-header">
                         <h3 style="margin: 0;">Menu Utama: ${category.label || 'Kategori Baru'}</h3>
@@ -124,11 +126,12 @@
                 
                 container.appendChild(catCard);
 
-                // Render Items (Sub-Menu) di dalam Kategori
                 const itemsContainer = document.getElementById(`items-container-${cIndex}`);
                 category.items.forEach((item, iIndex) => {
                     const itemCard = document.createElement('div');
                     itemCard.className = 'item-card';
+                    
+                    // Note: textareanya kita beri ID unik untuk ditempel CKEditor
                     itemCard.innerHTML = `
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                             <strong>Sub-Menu ${iIndex + 1}</strong>
@@ -149,15 +152,43 @@
                             <input type="text" class="form-control" value="${item.img}" oninput="updateItem(${cIndex}, ${iIndex}, 'img', this.value)" placeholder="https://cdn.argust.my.id/gambar.jpg">
                         </div>
                         <div class="form-group">
-                            <label>Deskripsi (Boleh pakai HTML / Tabel)</label>
-                            <textarea class="form-control" oninput="updateItem(${cIndex}, ${iIndex}, 'desc', this.value)" placeholder="Masukkan teks atau tag HTML <table> di sini...">${item.desc}</textarea>
+                            <label>Deskripsi Konten</label>
+                            <textarea id="editor-${cIndex}-${iIndex}" class="form-control desc-editor">${item.desc}</textarea>
                         </div>
                     `;
                     itemsContainer.appendChild(itemCard);
                 });
             });
 
+            // Inisialisasi CKEditor setelah elemen HTML terbuat
+            initCKEditors();
             updateOutput();
+        }
+
+        // ================= Inisialisasi Rich Text Editor =================
+        function initCKEditors() {
+            const textareas = document.querySelectorAll('.desc-editor');
+            textareas.forEach(ta => {
+                const editor = CKEDITOR.replace(ta.id, {
+                    allowedContent: true, // Mencegah CKEditor menghapus class CSS custom kamu (seperti tabel spesifikasi)
+                    height: 120,
+                    toolbar: [
+                        ['Bold', 'Italic', 'Underline', '-', 'RemoveFormat'],
+                        ['NumberedList', 'BulletedList'],
+                        ['Link', 'Unlink'],
+                        ['Table', 'Source'] // Tombol Source sangat penting untuk paste HTML Tabel
+                    ]
+                });
+
+                // Deteksi ketika teks diubah di dalam editor
+                editor.on('change', function() {
+                    const parts = ta.id.split('-');
+                    const c = parseInt(parts[1]);
+                    const idx = parseInt(parts[2]);
+                    // Update data array dan output JSON
+                    updateItem(c, idx, 'desc', this.getData());
+                });
+            });
         }
 
         // ================= Aksi Kategori =================
@@ -175,7 +206,6 @@
 
         function updateCategory(cIndex, field, value) {
             appData[cIndex][field] = value;
-            // Auto slug jika label diubah dan id masih kosong/default
             if (field === 'label' && !appData[cIndex].id) {
                 appData[cIndex].id = generateSlug(value);
             }
@@ -197,7 +227,6 @@
 
         function updateItem(cIndex, iIndex, field, value) {
             appData[cIndex].items[iIndex][field] = value;
-            // Auto slug jika title diubah
             if (field === 'title' && (!appData[cIndex].items[iIndex].slug || appData[cIndex].items[iIndex].slug === generateSlug(value.slice(0, -1)))) {
                 appData[cIndex].items[iIndex].slug = generateSlug(value);
             }
@@ -207,7 +236,6 @@
         // ================= Output & Load =================
         function updateOutput() {
             const outputArea = document.getElementById('json-output');
-            // Menghapus elemen kosong agar JSON tetap bersih
             outputArea.value = JSON.stringify(appData, null, 2);
         }
 
@@ -236,7 +264,6 @@
 
         // Inisiasi pertama
         window.onload = () => {
-            // Tambahkan 1 kategori kosong saat pertama buka
             if(appData.length === 0) addCategory(); 
         };
     </script>
