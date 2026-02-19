@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Honda Features JSON Generator (with Rich Text)</title>
     
-    <script src="https://cdn.ckeditor.com/4.25.1-lts/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 
     <style>
         :root {
@@ -93,6 +93,7 @@
         }
 
         function renderEditor() {
+            // Hancurkan instance CKEditor lama agar tidak error saat DOM di-refresh
             for (let name in CKEDITOR.instances) {
                 CKEDITOR.instances[name].destroy(true);
             }
@@ -130,6 +131,7 @@
                     const itemCard = document.createElement('div');
                     itemCard.className = 'item-card';
                     
+                    // Note: textareanya kita beri ID unik untuk ditempel CKEditor
                     itemCard.innerHTML = `
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                             <strong>Sub-Menu ${iIndex + 1}</strong>
@@ -158,34 +160,38 @@
                 });
             });
 
+            // Inisialisasi CKEditor setelah elemen HTML terbuat
             initCKEditors();
             updateOutput();
         }
 
+        // ================= Inisialisasi Rich Text Editor =================
         function initCKEditors() {
             const textareas = document.querySelectorAll('.desc-editor');
             textareas.forEach(ta => {
                 const editor = CKEDITOR.replace(ta.id, {
-                    allowedContent: true, 
+                    allowedContent: true, // Mencegah CKEditor menghapus class CSS custom kamu (seperti tabel spesifikasi)
                     height: 120,
-                    versionCheck: false, // Fitur ajaib untuk menghilangkan warning kuning/merah
                     toolbar: [
                         ['Bold', 'Italic', 'Underline', '-', 'RemoveFormat'],
                         ['NumberedList', 'BulletedList'],
                         ['Link', 'Unlink'],
-                        ['Table', 'Source']
+                        ['Table', 'Source'] // Tombol Source sangat penting untuk paste HTML Tabel
                     ]
                 });
 
+                // Deteksi ketika teks diubah di dalam editor
                 editor.on('change', function() {
                     const parts = ta.id.split('-');
                     const c = parseInt(parts[1]);
                     const idx = parseInt(parts[2]);
+                    // Update data array dan output JSON
                     updateItem(c, idx, 'desc', this.getData());
                 });
             });
         }
 
+        // ================= Aksi Kategori =================
         function addCategory() {
             appData.push({ id: "", label: "", items: [] });
             renderEditor();
@@ -206,6 +212,7 @@
             updateOutput();
         }
 
+        // ================= Aksi Item =================
         function addItem(cIndex) {
             appData[cIndex].items.push({ slug: "", title: "", desc: "", img: "" });
             renderEditor();
@@ -226,6 +233,7 @@
             updateOutput();
         }
 
+        // ================= Output & Load =================
         function updateOutput() {
             const outputArea = document.getElementById('json-output');
             outputArea.value = JSON.stringify(appData, null, 2);
@@ -254,6 +262,7 @@
             alert('JSON berhasil di-copy! Silakan paste ke file .json kamu.');
         }
 
+        // Inisiasi pertama
         window.onload = () => {
             if(appData.length === 0) addCategory(); 
         };
