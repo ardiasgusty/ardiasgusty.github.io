@@ -1,0 +1,362 @@
+[
+  {
+    "id": "exterior",
+    "label": "Exterior",
+    "items": [
+      {
+        "slug": "design",
+        "title": "Design",
+        "desc": "Honda STEP WGN e:HEV tampil memukau dengan desain kotak modern yang elegan, dilengkapi pencahayaan LED penuh dan fitur premium seperti power sliding door dan power tailgate yang menghadirkan kesan mewah sekaligus kenyamanan maksimal di setiap perjalanan keluarga.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/1__1753109964086.jpg?w=1000&s=3da6f8a2f78f99d7f5b58ca739d254f2"
+      },
+      {
+        "slug": "platinum-chrome-grille",
+        "title": "Platinum Chrome Grille",
+        "desc": "Sentuhan premium chrome yang memancarkan kesan eksklusif dan modern di setiap sudut pandang.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/2__1753185934328.png?w=1000&s=0ce7e4963feda2a8f416d85c2c2c74cd"
+      },
+      {
+        "slug": "led-headlight",
+        "title": "Full LED Headlights with LED Daytime Running Light",
+        "desc": "Pencahayaan maksimal yang tak hanya memperkuat visibilitas, tetapi juga menambah kesan elegan di siang maupun malam hari.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/3__1753185975176.png?w=1000&s=7dfdea842415bb5989e7caf563fb9e47"
+      },
+      {
+        "slug": "sequential-cornering-light",
+        "title": "Sequential Turning signal with Active Cornering Light",
+        "desc": "Teknologi lampu canggih yang menyesuaikan arah cahaya saat berbelok, untuk keamanan dan gaya yang lebih berkelas.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/4__1753186011209.png?w=1000&s=11a2cc3c5d63e36bc0eb004d999aaf8e"
+      },
+      {
+        "slug": "led-fog-lights",
+        "title": "LED Fog Lights",
+        "desc": "Tingkatkan visibilitas Anda ketika sedang berkendara di medan yang berkabut/hujan dengan sorotan LED Fog Light yang lebih fokus.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/5__1753186049046.png?w=1000&s=66824e6d50e5f9c2de199cd50360fb32"
+      },
+      {
+        "slug": "electrostatic-sliding-door",
+        "title": "Electrostatic Touch Sliding Door",
+        "desc": "Pintu geser elektrik yang responsif dengan sentuhan ringan, menghadirkan kenyamanan dan kemudahan tanpa kompromi.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/6__1753186097030.png?w=1000&s=6f3a5e04e9745f2683f4336065b6885f"
+      },
+      {
+        "slug": "led-tailight-with-led-mount-stop",
+        "title": "Upright LED Taillight with LED High Mount Stop Lamp",
+        "desc": "Full-Width Rear Lights Strip hadir sebagai elemen desain khas yang memperkuat identitas stylish New Honda HR-V di setiap perjalanan",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/7__1753186123920.png?w=1000&s=6d58cc9b628997bb91a391821c2b6650"
+      },
+      {
+        "slug": "wheels",
+        "title": "Elegant 16” Alloy Wheels",
+        "desc": "Velg elegant dengan desain dinamis yang memperkuat kesan tegas dan solid di setiap perjalanan.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/8__1753186153435.png?w=1000&s=9d76b4b85830718adc2d26e0a1e6d4e0"
+      },
+      {
+        "slug": "power-tailgate",
+        "title": "Power Tailgate with Memory Multi-Angle Adjustment",
+        "desc": "Akses bagasi yang fleksibel dan dapat disesuaikan—membuat setiap aktivitas keluarga menjadi lebih praktis dan nyaman.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/9__1753186182110.png?w=1000&s=4e5d8d8fed4c41e457d420c805f4133d"
+      }
+    ]
+  },
+  {
+    "id": "interior",
+    "label": "Interior",
+    "items": [
+      {
+        "slug": "prime-smooth-synthetic-leather",
+        "title": "“Prime Smooth” Synthetic Leather with “FABTECT” Water & Oil Repellent Fabric",
+        "desc": "Kenyamanan maksimal dengan material kombinasi kulit sintetis premium dengan fabric dilapisi teknologi anti-air dan anti-noda, praktis sekaligus elegan.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/1__1753186948214.png?w=1000&s=c9558e0624df8ed1837b0b723e8dd56c"
+      },
+      {
+        "slug": "1st-power-sliding-door-button",
+        "title": "1st Row Power Sliding Door Button",
+        "desc": "Kenyamanan di ujung jari. Buka atau tutup pintu geser hanya dengan satu sentuhan dari baris pertama.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/2__1753186974507.png?w=1000&s=145d077dfdfa5d51f753905e36bbbaef"
+      },
+      {
+        "slug": "meter-cluster",
+        "title": "10.2” TFT Meter Display",
+        "desc": "Panel instrumen digital berukuran besar dengan tampilan tajam dan informatif, menghadirkan pengalaman berkendara yang lebih intuitif.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/3__1753187018269.png?w=1000&s=4ec92567409fdd70a4cf5e51fae945fe"
+      },
+      {
+        "slug": "tri-zone-ac",
+        "title": "Tri-Zone Automatic Air Conditioner with Plasmacluster Technology",
+        "desc": "Sistem pendingin kabin canggih yang menjaga kualitas udara tetap bersih dan segar,dirancang untuk kenyamanan optimal bagi seluruh penumpang.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/4__1753187049974.png?w=1000&s=267baa288dd19328c75412f1da02e557"
+      },
+      {
+        "slug": "power-sliding-door-on-booth-sides",
+        "title": "Power Sliding Door on Both Sides",
+        "desc": "Akses mudah dan praktis melalui kedua sisi kendaraan, membuat setiap aktivitas keluarga semakin efisien dan nyaman.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/7__1753187184782.png?w=1000&s=74f08a9d6fcbab9d9a568f6dae89adb0"
+      },
+      {
+        "slug": "passenger-side-sunshade",
+        "title": "Passenger Side Sunshade",
+        "desc": "Perlindungan ekstra dari sinar matahari untuk penumpang, memberikan suasana kabin yang lebih sejuk dan privat.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/6__1753187119328.png?w=1000&s=ae012452c96146af977bd8267c5ed5f3"
+      },
+      {
+        "slug": "2nd-row-captain-seats-with-ottoman",
+        "title": "2nd Row Captain Seats with Ottoman",
+        "desc": "Kursi baris kedua dengan desain captain seat dan sandaran kaki (ottoman), menyuguhkan kenyamanan setara kelas bisnis dalam setiap perjalanan.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/5__1753187164625.png?w=1000&s=e222f31ed02f4ac5184443ed22f364bf"
+      },
+      {
+        "slug": "2nd-row-captain-seats-adjuster",
+        "title": "2nd Row Captain Seats Adjuster",
+        "desc": "Penyesuaian posisi kursi captain seat yang fleksibel untuk memberikan kenyamanan maksimal sesuai kebutuhan penumpang.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/8__1753187224882.png?w=1000&s=9dda38303a584d75133a73634467d27c"
+      },
+      {
+        "slug": "2nd-row-rear-paddle",
+        "title": "2nd Row Rear Paddle",
+        "desc": "Kendali kursi belakang yang mudah dijangkau dari baris ketiga, memberikan fleksibilitas tanpa perlu repot berpindah posisi.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/9__1753187254354.png?w=1000&s=7dbc477748b3749c5a446a99911b6a92"
+      },
+      {
+        "slug": "3rd-row-magic-seat",
+        "title": "3rd Row Magic Seat with Floor Mat",
+        "desc": "Kursi baris ketiga dapat dilipat rata dengan lantai untuk memberikan ruang ekstra—praktis dan rapi untuk gaya hidup dinamis.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/10__1753187288832.png?w=1000&s=d4f6470c1fdb829b30d8c8e548f6cfe6"
+      }
+    ]
+  },
+  {
+    "id": "technology",
+    "label": "Technology",
+    "items": [
+      {
+        "slug": "capacitive-touchscreen-display",
+        "title": "8” Advanced Capacitive Touchscreen Display Audio",
+        "desc": "Layar sentuh kapasitif berukuran 8 inci dengan respons cepat dan tampilan jernih, menghadirkan kontrol audio dan navigasi dalam satu sentuhan elegan.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/1__1753187355901.png?w=1000&s=f8f8338defa60127f8cdb7ae13a6f94c"
+      },
+      {
+        "slug": "smartphone-connection",
+        "title": "Smartphone Connection",
+        "desc": "Hubungkan perangkat pintar Anda dengan mulus, akses aplikasi favorit, panggilan, dan musik dengan kenyamanan dan keamanan maksimal saat berkendara.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/2__1753187386191.png?w=1000&s=89c893be3ad9a84b16b34b6be454a793"
+      },
+      {
+        "slug": "radio",
+        "title": "AM/FM Radio",
+        "desc": "Nikmati hiburan klasik dengan kualitas suara jernih, menghadirkan pilihan saluran favorit Anda kapan pun dibutuhkan.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/3__1753187461437.png?w=1000&s=c1ddaaab120ca6b8c8235ee8ee66ce40"
+      },
+      {
+        "slug": "usb-bluetooth",
+        "title": "USB/Bluetooth",
+        "desc": "Sambungan audio fleksibel melalui USB dan Bluetooth, memberikan kemudahan konektivitas untuk semua anggota keluarga.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/4__1753187490358.png?w=1000&s=95bb9f816be4213b45d14bce0cfeefd6"
+      },
+      {
+        "slug": "rear-view-camera",
+        "title": "Multi-Angle Rear View Camera",
+        "desc": "Kamera belakang dengan sudut pandang lebar yang menampilkan tiga mode tampilan—membantu parkir dan manuver dengan lebih percaya diri dan aman.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/5__1753187516259.png?w=1000&s=dee147a5de7d56aee0f492e8f61e0383"
+      },
+      {
+        "slug": "power-tailgate-with-memory-adjustable",
+        "title": "Power Tailgate with Memory Adjustable Height Button",
+        "desc": "Bukaan pintu bagasi elektrik yang dapat disesuaikan tinggi bukanya, untuk kemudahan akses yang praktis dan fleksibel di segala situasi.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/6__1753187565465.png?w=1000&s=397fdb9328c3bf16bb39c4cd6243cdd3"
+      }
+    ]
+  },
+  {
+    "id": "safety",
+    "label": "Safety",
+    "items": [
+      {
+        "slug": "honda-sensing",
+        "title": "Honda SENSING™",
+        "desc": "Honda SENSING™ sebagai sistem keamanan canggih Honda bantu Anda tetap aman dan fokus.<br><br><h3>Honda SENSING Features</h3><div class=\"custom-responsive-table-wrapper\"><table class=\"custom-responsive-table\"><tr><td><ul><li>CMBS™ (Collision Mitigation Braking System™)</li><li>LKAS (Lane Keeping Assist System)</li><li>ACC with LSF (Adaptive Cruise Control with Low-Speed Follow)</li></ul></td><td><ul><li>AHB (Auto High Beam)</li><li>RDM with LDW (Road Departure Mitigation System with Lane Departure Warning)</li></ul></td></tr></table></div>",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/1__1753188491685.png?w=1000&s=95e19f7e43589a94631422e77eeaa25e"
+      },
+      {
+        "slug": "6-airbags",
+        "title": "6 Airbags",
+        "desc": "Sistem keamanan 6 Airbags (front, side & side curtain) yang akan melindungi Anda secara menyeluruh dari berbagai sisi.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/2__1753188576611.png?w=1000&s=3d103aca76bf6b9d7fee418bbf0fbc51"
+      },
+      {
+        "slug": "walk-away-autolock",
+        "title": "Walk-Away Auto Lock",
+        "desc": "Ketika mesin mati dan kunci mobil tidak terdeteksi, sensor akan segera mengunci pintu secara otomatis saat pengemudi berjalan sejauh 2 meter meninggalkan mobil.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/3__1753188613414.png?w=1000&s=8cf973049f10fa352025fe89eae0eb0c"
+      },
+      {
+        "slug": "hsa",
+        "title": "Hill Start Assist (HSA)",
+        "desc": "Teknologi yang membantu menahan posisi mobil saat berhenti di tanjakan. Ketika kaki diangkat dari pedal rem, mobil tidak akan bergerak mundur selama beberapa detik.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/4__1753188642528.png?w=1000&s=b146ad26a0d3430050b27087631612c7"
+      },
+      {
+        "slug": "seatbelt-reminder",
+        "title": "Seatbelt Reminder",
+        "desc": "Mengingatkan Anda untuk selalu mengenakan sabuk pengaman (All Row)",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/5__1753188693821.png?w=1000&s=fed33d0aff12b615167c2ea7d8819854"
+      },
+      {
+        "slug": "g-con-ace",
+        "title": "G-CON + ACE™ with Side Impact Beam",
+        "desc": "Struktur rangka bodi G-Force Control dengan teknologi Advanced Compatibility Engineering (ACE™) berfungsi menjaga keutuhan rangka bodi saat terjadi benturan, dengan cara menyerap dan menyalurkan energi benturan secara merata.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/6__1753188738083.png?w=1000&s=220181fff8e27b6f18535fd3ada16c5d"
+      },
+      {
+        "slug": "vsa",
+        "title": "Vehicle Stability Assist (VSA)",
+        "desc": "Stabilkan manuver mobil ketika berada di tikungan agar tidak terjadi oversteer maupun understeer dalam kondisi jalan menikung.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/7__1753188891516.png?w=1000&s=60e4ba80a5f597bd15d788ab693ae092"
+      },
+      {
+        "slug": "alarm-system",
+        "title": "Alarm System",
+        "desc": "Tak hanya berbunyi, sistem alarm juga akan membuat mesin mobil tidak bisa dihidupkan tanpa keberadaan kunci di sekitar mobil.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/8__1753188927441.png?w=1000&s=42691d80177fa3847b2805855edc5e2e"
+      },
+      {
+        "slug": "8-points-parking-sensors",
+        "title": "8-Points Parking Sensors",
+        "desc": "Sensor parkir depan-belakang bantu Anda parkir lebih presisi dan aman di ruang sempit sekalipun.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/9__1753189031233.png?w=1000&s=5e0094e2d928c4593d9695cb48714896"
+      },
+      {
+        "slug": "electric-parking-brake",
+        "title": "Electric Parking Brake + Auto Brake Hold",
+        "desc": "Cukup dengan satu sentuhan, Anda dapat menahan rem dengan sempurna.<br><br>Selain itu, fitur Auto Brake Hold juga telah tersedia untuk membantu mobil Anda berhenti di tanjakan atau turunan saat kondisi macet, sehingga Anda tidak perlu menginjak rem terus-menerus.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/10__1753189081276.png?w=1000&s=4f660a1740236aab7325c50a9972071b"
+      },
+      {
+        "slug": "immobilizer",
+        "title": "Immobilizer",
+        "desc": "Honda STEP WGN e:HEV telah dilengkapi dengan sepasang chip di dalam kunci dan mesin mobil yang tidak bisa dinyalakan secara paksa dan menggunakan kunci palsu.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/11__1753189124811.png?w=1000&s=62da16aa7022e7bd68be4a60a5305b2d"
+      },
+      {
+        "slug": "isofix-tether",
+        "title": "ISOFIX + Tether",
+        "desc": "Kursi baris kedua sudah dirancang untuk bisa mengikat Child Car Seat dengan erat.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/12__1753189162563.png?w=1000&s=d7e0cbdbf192e7c5b5388a387568ea2c"
+      },
+      {
+        "slug": "seatbelt",
+        "title": "Pretensioner with Load Limiter Seatbelt",
+        "desc": "Ketika terjadi tabrakan, fitur Pretensioner Seatbelt akan mengencang sehingga tubuh tetap berada pada posisinya untuk mencegah gerakan dada ke depan.<br><br>Sementara itu, Load Limiter berfungsi mengurangi tekanan berlebih dan mencegah cedera pada bagian dada, serta memastikan posisi tubuh jatuh tepat pada airbag yang mengembang",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/13__1753189201669.png?w=1000&s=0048a8bf3a2611512741af498498c0aa"
+      },
+      {
+        "slug": "active-cornering-light",
+        "title": "Active Cornering Light",
+        "desc": "Fitur ini berfungsi secara otomatis ketika kendaaan melaju <40km/jam dan akan mengatur penerangan dari headlamp agar mengikuti arah setir, sehingga dapat menerangi area di depan pengemudi secara lebih akurat terutama saat Anda berkendara melewati jalan berliku di malam hari.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/14__1753189238870.png?w=1000&s=5034ed459fb4baf3df541923ae0c3852"
+      },
+      {
+        "slug": "emergency-stop-signal",
+        "title": "Emergency Stop Signal",
+        "desc": "Honda STEP WGN e:HEV telah dilengkapi fitur Emergency Stop Signal berfungsi memberikan peringatan pada kendaraan di belakang saat pengendara melakukan pengereman secara keras dan tiba-tiba.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/15__1753189274606.png?w=1000&s=f1125d63dd19003603336d38432c2ad4"
+      },
+      {
+        "slug": "abs-ebd-ba",
+        "title": "ABS + EBD + BA",
+        "desc": "Anti-Lock Braking System (ABS) mencegah roda terkunci saat pengereman mendadak di permukaan licin, sedangkan Electronic Braking Distribution (EBD) membagi daya pengereman ke setiap roda sesuai beban kendaraan.<br><br>Selain itu, Braking Assist (BA) turut menambah efektivitas pengereman.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/16__1753189319128.png?w=1000&s=a216b65fa16b8ac4fa65e76ac641e2d5"
+      }
+    ]
+  },
+  {
+    "id": "performance",
+    "label": "Performance",
+    "items": [
+      {
+        "slug": "fun-to-drive",
+        "title": "Fun to Drive",
+        "desc": "Dengan teknologi Honda e:HEV, Anda akan mendapatkan performa responsif dan tetap hemat bahan bakar<br><br><div><strong>Variant: RS e:HEV & e:HEV</strong></div><table class=\"custom-spec-table\"><tr><th>Type</th><td>2.0L DOHC i-VTEC Atkinson Cycle 4 Silinder Segaris, 16 Katup engine + DBW</td></tr><tr><th>Sistem Suplai Bahan Bakar</th><td>PGM-FI</td></tr><tr><th>Isi Silinder</th><td>1.993cc</td></tr><tr><th>Perbandingan Kompresi</th><td>13,5</td></tr><tr><th>Daya Maksimum</th><td>184 /5.000-6.000 (Electric Motor), 145/6.200 (Engine)</td></tr><tr><th>Momen Puntir Maksimum</th><td>315/0-2.000 (Motor), 175/3.500 (Engine)</td></tr></table>",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/1__1753189624859.png?w=1000&s=8e40ebefc97f0f84295e7ee086cf0550"
+      },
+      {
+        "slug": "deceleration-paddle-selectors",
+        "title": "Deceleration Paddle Selectors",
+        "desc": "Honda STEP WGN e:HEV telah dilengkapi dengan fitur Deceleration Paddle Selectors, Anda dapat mengurangi kecepatan mobil secara perlahan dengan mengatur intensitas deselerasi. Semakin besar intensitas deselerasi semakin besar sistem akan mengisi daya baterai (regeneratif braking)",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/2__1753189666688.png?w=1000&s=01397361a0168e98c1f5a836cac0a127"
+      },
+      {
+        "slug": "push-button-shifter",
+        "title": "Push Button Shifter",
+        "desc": "Sistem pemindah gigi modern dan praktis dengan tombol intuitif, memberikan pengalaman berkendara yang lebih nyaman dan futuristik.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/3__1753189700018.png?w=1000&s=e8025389d0112dd958973a7670df06e8"
+      },
+      {
+        "slug": "ehev-hybrid-system",
+        "title": "e:HEV Hybrid System",
+        "desc": "Kinerja electric motor yang dominan, menghasilkan sensasi berkendara yang lebih bertenaga sekaligus hemat bahan bakar.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/4__1753189749114.png?w=1000&s=00b7e7a320e0b9bf88386223a56a9f7e"
+      },
+      {
+        "slug": "euro-4-certified",
+        "title": "EURO 4 CERTIFIED",
+        "desc": "Honda STEP WGN e:HEV  telah lolos uji standar emisi Euro 4 karena menghasilkan gas buangan dengan kandungan karbon yang lebih rendah.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/5__1753189781781.png?w=1000&s=7b6f5e6f2064f5b3aa8b1b18addc4329"
+      }
+    ]
+  },
+  {
+    "id": "color-variant",
+    "label": "Color Variant",
+    "items": [
+      {
+        "slug": "step-into-preferences",
+        "title": "Step Into Preferences",
+        "desc": "",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/color_variants_8__1753189943114.png?w=1000&s=27424f03e7ae51f85fc0eaca5cfd203f"
+      }
+    ]
+  },
+  {
+    "id": "comfort-enhancement",
+    "label": "Comfort Enhancement",
+    "items": [
+      {
+        "slug": "pop-up-hook",
+        "title": "Pop-Up Hook",
+        "desc": "Gantungan serbaguna yang terintegrasi secara elegan, siap menopang tas atau barang ringan dengan praktis dan rapi di dalam kabin.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/1__1753190125586.png?w=1000&s=ce07a13b9815c07cd6a40d8744311dea"
+      },
+      {
+        "slug": "front-usb-charger",
+        "title": "New Front USB-C Charger",
+        "desc": "Memberikan kemudahan untuk Anda dalam mengisi daya baterai smartphone.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/2__1749298251403.png?w=1000&s=6f741dd75d80c96a0f4ee70dcc473a48"
+      },
+      {
+        "slug": "passenger-seat-dashboard-tray",
+        "title": "Passenger Seat Dashboard Tray",
+        "desc": "Ruang penyimpanan fungsional di sisi penumpang depan,ideal untuk meletakkan barang-barang kecil dengan tetap menjaga tampilan kabin tetap bersih dan tertata.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/2__1753190167455.png?w=1000&s=1cd5938e39917a463f59c8445dfa3d69"
+      },
+      {
+        "slug": "2nd-row-usb-c-charging-ports",
+        "title": "2nd Row USB-C Charging Ports",
+        "desc": "Port pengisian daya USB-C di baris kedua yang cepat dan efisien, memastikan seluruh penumpang tetap terhubung selama perjalanan",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/3__1753190207259.png?w=1000&s=2e1947257732e64cc3c268cc07f07b49"
+      },
+      {
+        "slug": "seat-back-table-with-store-hook",
+        "title": "Seat Back Table with Store Hook",
+        "desc": "Meja belakang kursi dengan kait penyimpanan, tempat sempurna untuk menikmati makanan ringan, bekerja, atau menyimpan barang bawaan dengan mudah.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/4__1753190241951.png?w=1000&s=7e025fb589c3a883da2ab9e0417fa4f2"
+      },
+      {
+        "slug": "3rd-row-storage-with-charging-port",
+        "title": "3rd Row Storage with Charging Port",
+        "desc": "Kenyamanan hingga baris terakhir dengan kompartemen penyimpanan dan port pengisian daya, dirancang untuk menghadirkan kepraktisan tanpa kompromi.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/5__1753190273545.png?w=1000&s=72ac7bffe7385899631ff0dd6842fe0d"
+      }
+    ]
+  }
+]
