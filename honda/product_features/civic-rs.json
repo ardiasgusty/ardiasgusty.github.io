@@ -1,0 +1,254 @@
+[
+  {
+    "id": "exterior",
+    "label": "Exterior",
+    "items": [
+      {
+        "slug": "design",
+        "title": "Design",
+        "desc": "Bukan tampil mencolok, tapi tak pernah luput dari perhatian dengan desain tajam dan siluet model legendaris Civic  ini pernyataan diri di setiap jalan yang Anda lewati",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/background__1746609867643.jpg?w=1000&s=0d80e8ad83479c565ed78550a6417f78"
+      },
+      {
+        "slug": "front-grill-bumper-design",
+        "title": "Front Grill & Bumper Design",
+        "desc": "Grill depan dan bumper dirancang dengan garis aerodinamis agresif namun elegan.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/background_(1)__1746609925898.jpg?w=1000&s=ad232e510a761c7357d2fca704b2a706"
+      },
+      {
+        "slug": "outer-handle",
+        "title": "Outer Handle",
+        "desc": "Handle pintu dengan aksen hitam dan desain ramping yang menyatu elegan dengan bodi mobil.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/background_(2)__1746609958454.jpg?w=1000&s=1d63c2e7a39912b9713073d7c01aeb2d"
+      },
+      {
+        "slug": "rear-light-design",
+        "title": "Rear Light Design",
+        "desc": "Desain lampu belakang tajam yang makin memperkuat kesan sporty",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/background_(3)__1746609985186.jpg?w=1000&s=05fdacbf2beb82718eb72b6b0382faa4"
+      }
+    ]
+  },
+  {
+    "id": "interior",
+    "label": "Interior",
+    "items": [
+      {
+        "slug": "meter-cluster",
+        "title": "Meter Cluster",
+        "desc": "Layar 10,2\" Interactive TFT Meter Cluster with Customized Display Setting pada Honda Civic RS menampilkan semua informasi penting secara jelas dan dapat disesuaikan melalui multi-functional steering wheel, sehingga Anda tetap fokus di jalan. Pantau status kendaraan hingga informasi keselamatan dalam satu pandangan.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/meter_cluster__1747197255210.png?w=1000&s=489618438eab544866c1d06c3e40a756"
+      },
+      {
+        "slug": "speakers-audio",
+        "title": "New BOSE 12 Speakers Audio System",
+        "desc": "Dilengkapi dengan speaker premium dari BOSE, hasilkan suara yang lebih jernih di sepanjang perjalanan Anda.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/background_(3)__1746609985186.jpg?w=1000&s=05fdacbf2beb82718eb72b6b0382faa4"
+      },
+      {
+        "slug": "dual-ac",
+        "title": "Dual Zone Auto A/C",
+        "desc": "Atur suhu kabin berbeda untuk pengemudi dan penumpang dengan kontrol digital.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/background_(2)__1746610383891.png?w=1000&s=c35714cfcaf7495d293f954cde7dd645"
+      },
+      {
+        "slug": "steering-wheel",
+        "title": "Steering Wheel Mounted Control",
+        "desc": "Setir sporty dengan fitur kontrol audio, cruise, dan informasi tepat di ujung jari.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/background_(3)__1746610412119.png?w=1000&s=66e19d732cdb7dd61998d02722f45395"
+      },
+      {
+        "slug": "seat",
+        "title": "New Seat Pattern",
+        "desc": "Jok dengan motif dan material baru yang nyaman dan stylish.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/background_(2)__1746610383891.png?w=1000&s=c35714cfcaf7495d293f954cde7dd645"
+      },
+      {
+        "slug": "driver-power-seat",
+        "title": "8-Way Driver Power Seat Adjustment",
+        "desc": "Atur suhu kabin berbeda untuk pengemudi dan penumpang dengan kontrol digital.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/background_(5)__1746610496912.png?w=1000&s=4c702cdade23896d5d21da8b3d1c0018"
+      },
+      {
+        "slug": "passanger-power-seat",
+        "title": "4-Way Front Passanger Power Seat Adjustment",
+        "desc": "",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/background_(10)__1746666624730.png?w=1000&s=92badae6deb904db4338c3894ef6e833"
+      },
+      {
+        "slug": "ambient-light",
+        "title": "New Red Pin Stripe & Ambient Light",
+        "desc": "Aksen dan pencahayaan merah yang eksklusif menciptakan suasana sporty dan berkelas untuk Anda setiap saat",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/background_(7)__1746610598068.png?w=1000&s=64560b096b59d43aa3f480c8851b5238"
+      },
+      {
+        "slug": "wireless-charger",
+        "title": "New Wireless Charger and USB Type-C Port",
+        "desc": "Cukup letakkan smartphone Anda dan biarkan Civic mengisi dayanya, tanpa kabel, tanpa repot.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/d_wireless_charging__1747382220288.jpg?w=1000&s=870e174b4ced9d6520da6d524afae1f7"
+      }
+    ]
+  },
+  {
+    "id": "technology",
+    "label": "Technology",
+    "items": [
+      {
+        "slug": "honda-connect",
+        "title": "Honda CONNECT",
+        "desc": "Honda CONNECT mempermudah Anda kendalikan dan pantau Honda Civic Anda dari jarak jauh hanya lewat smartphone Anda.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/techd01__1746682710430.jpg?w=1000&s=028607c01f1e646eebfe2ec29fabd2a6"
+      },
+      {
+        "slug": "google-built-in",
+        "title": "Google built-in",
+        "desc": "9” Display Audio with Google built-in dilengkapi dengan Asisten Google, Google Maps, dan lainnya di dalam Google Play untuk memberikan Anda pengalaman berkendara yang lebih praktis dan nyaman. Dilengkapi pula dengan In-Car Wifi*<br><br>*Fitur In-Car Wifi dapat diaktivasi melalui aplikasi Honda CONNECT",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/google_built_in__1747381603904.jpg?w=1000&s=69e9b8ab74ce4e5c3b71abac9af564b6"
+      },
+      {
+        "slug": "vehicle-setting",
+        "title": "Vehicle Setting",
+        "desc": "Personalisasi pengaturan mobil sesuai kebiasaan Anda, lebih simpel dan cepat untuk kenyamanan Anda",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/techd03__1746682980307.jpg?w=1000&s=92e358e80931af128945b3acde3132e6"
+      },
+      {
+        "slug": "honda-smart-key-card",
+        "title": "Honda Smart Key Card",
+        "desc": "Semakin praktis dalam mengakses fitur unggulan seperti One Push Ignition System, Smart Entry System dan Walk Away Auto Lock dengan teknologi terbaru, Honda Smart Key Card.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/techd04__1746682990827.jpg?w=1000&s=29941ad7d5d03b66ceec6768b3cf0b3f"
+      },
+      {
+        "slug": "honda-lanewatch",
+        "title": "Honda LaneWatch",
+        "desc": "Kamera di spion bantu Anda melihat sisi blind spot lebih jelas dan aman.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/techd05__1746683000207.jpg?w=1000&s=9e735fa760227471b2ed286cf0caf11c"
+      }
+    ]
+  },
+  {
+    "id": "safety",
+    "label": "Safety",
+    "items": [
+      {
+        "slug": "honda-sensing",
+        "title": "Honda SENSING",
+        "desc": "Honda SENSING™ sebagai sistem keamanan canggih Honda bantu Anda tetap aman dan fokus.<br><br><h3>Honda SENSING Features</h3><div class=\"custom-responsive-table-wrapper\"><table class=\"custom-responsive-table\"><tr><td><ul><li>CMBS™ (Collision Mitigation Braking System™)</li><li>LKAS (Lane Keeping Assist System)</li><li>ACC with LSF (Adaptive Cruise Control with Low-Speed Follow)</li></ul></td><td><ul><li>AHB (Auto High Beam)</li><li>LCDN (Lead Car Departure Notification System)</li><li>RDM with LDW (Road Departure Mitigation System with Lane Departure Warning)</li></ul></td></tr></table></div>",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/safetyd01__1746683354450.jpg?w=1000&s=ff3ce9a75af52f1d2ba1680bbbe11e77"
+      },
+      {
+        "slug": "g-con-ace",
+        "title": "G-CON + ACE™, with Side Impact Beam",
+        "desc": "Struktur bodi Honda Civic dirancang untuk meredam benturan dan melindungi kabin secara maksimal.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/safetyd02__1746683384708.jpg?w=1000&s=b5903bb7ce8c69c6896b8c2e3f04317c"
+      },
+      {
+        "slug": "hsa",
+        "title": "Hill Start Assist (HSA)",
+        "desc": "Cegah mobil mundur saat start di tanjakan sehingga Anda lebih percaya diri di medan menanjak.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/safetyd03__1746683397254.jpg?w=1000&s=2f5b51feb720b1fc3c9bb5225ef4e181"
+      },
+      {
+        "slug": "vsa",
+        "title": "Vehicle Stability Assist",
+        "desc": "Bantu jaga kestabilan mobil saat belok tajam atau kondisi jalan licin.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/safetyd04__1746683410165.jpg?w=1000&s=4564609816b783acb45b56be9feb5c92"
+      },
+      {
+        "slug": "walk-away-autolock",
+        "title": "Walk Away Auto Lock",
+        "desc": "Mobil terkunci otomatis saat Anda menjauh tanpa perlu tekan tombol apapun.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/safetyd05__1746683421455.jpg?w=1000&s=ee5f9ecf583aa65310dddac22f12cbf9"
+      },
+      {
+        "slug": "rear-seat-reminder",
+        "title": "Rear Seat Reminder",
+        "desc": "Mengingatkan Anda untuk memeriksa jok belakang sebelum meninggalkan mobil.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/safetyd06__1746683432759.jpg?w=1000&s=c02b97ea405fd14754d6c9d5fa95b037"
+      },
+      {
+        "slug": "emergency-stop-signal",
+        "title": "Emergency Stop Signal",
+        "desc": "Lampu hazard menyala otomatis saat pengereman mendadak untuk peringatan ke pengendara lain.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/safetyd07__1746683445996.jpg?w=1000&s=b683461f2694b091af512414d76751c7"
+      },
+      {
+        "slug": "electric-parking-brake",
+        "title": "Electric Parking Brake",
+        "desc": "Parkir jadi lebih praktis dan modern cukup dengan satu tombol.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/safetyd08__1746683461783.jpg?w=1000&s=eddc09fa48639fe67fa5189f2523e36f"
+      },
+      {
+        "slug": "8-parking-sensors",
+        "title": "8 Parking Sensors",
+        "desc": "Sensor parkir depan-belakang bantu Anda parkir lebih presisi dan aman di ruang sempit sekalipun.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/safetyd09__1746683472518.jpg?w=1000&s=2a7660df6ca22ccb647c0c992fc79fac"
+      },
+      {
+        "slug": "pop-up-hood-system",
+        "title": "Pop-up Hood System",
+        "desc": "Saat kendaraan mendeteksi terjadinya benturan, kap mobil bagian belakang akan terangkat hingga +100 mm untuk meminimalisir cedera kepala dari pejalan kaki.",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/civic_pop_up_hood__1747197446739.png?w=1000&s=87d663aef863099680855edac5e3ca8b"
+      }
+    ]
+  },
+  {
+    "id": "performance",
+    "label": "Performance",
+    "items": [
+      {
+        "slug": "new-engine",
+        "title": "New Engine",
+        "desc": "Dengan teknologi Honda e:HEV, Anda akan mendapatkan performa responsif dan tetap hemat bahan bakar<br><table class=\"spec-table\"><thead><tr><th>Spesifikasi</th><th>Satuan</th><th>Nilai</th></tr></thead><tbody><tr><td data-label=\"Spesifikasi\">Type</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">2.0L i-VTEC 4 Silinder Segaris, 16 Katup DOHC engine + DBW</td></tr><tr><td data-label=\"Spesifikasi\">Sistem Suplai Bahan Bakar</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">PGM - FI</td></tr><tr><td data-label=\"Spesifikasi\">Isi Silinder</td><td data-label=\"Satuan\">(cc)</td><td data-label=\"Nilai\">1.993</td></tr><tr><td data-label=\"Spesifikasi\">Perbandingan Kompresi</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">13,9 : 1</td></tr><tr><td data-label=\"Spesifikasi\">Perbandingan Kompresi</td><td data-label=\"Satuan\">PS/rpm</td><td data-label=\"Nilai\">184/5.000-6.000 (Electric Motor), 141/6.000 (Engine)</td></tr><tr><td data-label=\"Spesifikasi\">Perbandingan Kompresi</td><td data-label=\"Satuan\">PS/rpm</td><td data-label=\"Nilai\">203 (Total System: Engine + Electric Motor)</td></tr><tr><td data-label=\"Spesifikasi\">Momen Puntir Maksimum</td><td data-label=\"Satuan\">Nm/rpm</td><td data-label=\"Nilai\">315/0-2.000 (Motor), 182/4.500 (Engine)</td></tr></tbody></table>",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/perfd01__1746683841897.jpg?w=1000&s=b2bf81cf88834ef41a3f08b445e44eac"
+      },
+      {
+        "slug": "driving-mode",
+        "title": "4 Driving Mode System",
+        "desc": "Honda Civic menyediakan empat mode berkendara yang bisa kamu pilih sesuai kondisi jalan dan gaya mengemudi. (ECON, NORMAL, SPORT, INDIVIDUAL)",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/perfd02__1746683850345.jpg?w=1000&s=51782e88863c73e3b7cec450539e077a"
+      }
+    ]
+  },
+  {
+    "id": "specification",
+    "label": "Specification",
+    "items": [
+      {
+        "slug": "dimension-size",
+        "title": "Dimension/Size",
+        "desc": "",
+        "img": ""
+      },
+      {
+        "slug": "transmisi",
+        "title": "Transmisi",
+        "desc": "",
+        "img": ""
+      },
+      {
+        "slug": "sistem-kemudi",
+        "title": "Sistem Kemudi",
+        "desc": "",
+        "img": ""
+      },
+      {
+        "slug": "sistem-rem",
+        "title": "Sistem Rem",
+        "desc": "",
+        "img": ""
+      },
+      {
+        "slug": "sistem-suspensi",
+        "title": "Sistem Suspensi",
+        "desc": "",
+        "img": ""
+      },
+      {
+        "slug": "ban",
+        "title": "Ban",
+        "desc": "",
+        "img": ""
+      }
+    ]
+  }
+]
