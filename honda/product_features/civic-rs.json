@@ -216,37 +216,37 @@
       {
         "slug": "dimension-size",
         "title": "Dimension/Size",
-        "desc": "",
+        "desc": "<table class=\"spec-table\"><thead><tr><th>Spesifikasi</th><th>Satuan</th><th>Nilai</th></tr></thead><tbody><tr><td data-label=\"Spesifikasi\">Length x Width x Height</td><td data-label=\"Satuan\">mm</td><td data-label=\"Nilai\">4.681 x 1.802 x 1.415</td></tr><tr><td data-label=\"Spesifikasi\">Wheelbase</td><td data-label=\"Satuan\">mm</td><td data-label=\"Nilai\">2.735</td></tr><tr><td data-label=\"Spesifikasi\">Tread Front/Rear</td><td data-label=\"Satuan\">mm</td><td data-label=\"Nilai\">1.547 / 1.575</td></tr><tr><td data-label=\"Spesifikasi\">Tank Capacity</td><td data-label=\"Satuan\">Liter</td><td data-label=\"Nilai\">40</td></tr></tbody></table>",
         "img": ""
       },
       {
         "slug": "transmisi",
         "title": "Transmisi",
-        "desc": "",
+        "desc": "<table class=\"spec-table\"><thead><tr><th>Spesifikasi</th><th>Satuan</th><th>Nilai</th></tr></thead><tbody><tr><td data-label=\"Spesifikasi\">Type</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">E-CVT (Electrical Continuously Variable Transmission)</td></tr><tr><td data-label=\"Spesifikasi\">Perbandingan (Forward)</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">2.454 (Motor) 0.805 (Engine)</td></tr><tr><td data-label=\"Spesifikasi\">Perbandingan (Reverse)</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">2.454 (Motor) 0.805 (Engine)</td></tr><tr><td data-label=\"Spesifikasi\">Final Gear</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">8.367 (Motor) 3.757 (Engine)</td></tr></tbody></table>",
         "img": ""
       },
       {
         "slug": "sistem-kemudi",
         "title": "Sistem Kemudi",
-        "desc": "",
+        "desc": "<table class=\"spec-table\"><thead><tr><th>Spesifikasi</th><th>Satuan</th><th>Nilai</th></tr></thead><tbody><tr><td data-label=\"Spesifikasi\">Sistem</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">Rack & Pinion Electric Power Steering</td></tr><tr><td data-label=\"Spesifikasi\">Tilt & Telescopic Steering Wheel</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">Have</td></tr><tr><td data-label=\"Spesifikasi\">Paddle Shift</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">Deceleration Paddle Selectors</td></tr></tbody></table>",
         "img": ""
       },
       {
         "slug": "sistem-rem",
         "title": "Sistem Rem",
-        "desc": "",
+        "desc": "<table class=\"spec-table\"><thead><tr><th>Spesifikasi</th><th>Satuan</th><th>Nilai</th></tr></thead><tbody><tr><td data-label=\"Spesifikasi\">Type (Front)</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">Ventilated Disk</td></tr><tr><td data-label=\"Spesifikasi\">Type (Rear)</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">Ventilated Disk</td></tr><tr><td data-label=\"Spesifikasi\">Type (Parking Brake)</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">Electric Parking Brake</td></tr><tr><td data-label=\"Spesifikasi\">Auto Brake Hold</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">Have</td></tr></tbody></table>",
         "img": ""
       },
       {
         "slug": "sistem-suspensi",
         "title": "Sistem Suspensi",
-        "desc": "",
+        "desc": "<table class=\"spec-table\"><thead><tr><th>Spesifikasi</th><th>Satuan</th><th>Nilai</th></tr></thead><tbody><tr><td data-label=\"Spesifikasi\">Type (Front)</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">MacPherson Strut</td></tr><tr><td data-label=\"Spesifikasi\">Type (Rear)</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">Multi Link</td></tr></tbody></table>",
         "img": ""
       },
       {
         "slug": "ban",
         "title": "Ban",
-        "desc": "",
+        "desc": "<table class=\"spec-table\"><thead><tr><th>Spesifikasi</th><th>Satuan</th><th>Nilai</th></tr></thead><tbody><tr><td data-label=\"Spesifikasi\">Ban</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">17 x 7 J</td></tr><tr><td data-label=\"Spesifikasi\">Roda</td><td data-label=\"Satuan\"></td><td data-label=\"Nilai\">215/50R17</td></tr></tbody></table>",
         "img": ""
       }
     ]
