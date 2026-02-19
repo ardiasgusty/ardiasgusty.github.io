@@ -222,7 +222,7 @@
       {
         "slug": "transmisi",
         "title": "Transmisi",
-        "desc": "<table class=\"clean-spec-table\"><tbody><tr><td>Type</td><td></td><td>E-CVT (Electrical Continuously Variable Transmission)</td></tr><tr><td>Perbandingan</td><td>forward</td><td>2.454 (Motor) 0.805 (Engine)</td></tr><tr><td></td><td>Reverse</td><td>2.454 (Motor) 0.805 (Engine)</td></tr><tr><td></td><td>Final Gear</td><td>8.367 (Motor) 3.757 (Engine)</td></tr></tbody></table>",
+        "desc": "<table class=\"clean-spec-table\"><tbody><tr><td>Type</td><td></td><td>E-CVT (Electrical Continuously Variable Transmission)</td></tr><tr><td>Perbandingan</td><td><div style=\"margin-bottom:10px\">forward</div><div style=\"margin-bottom:10px\">Reverse</div><div>Final Gear</div></td><td><div style=\"margin-bottom:10px\">2.454 (Motor) 0.805 (Engine)</div><div style=\"margin-bottom:10px\">2.454 (Motor) 0.805 (Engine)</div><div>8.367 (Motor) 3.757 (Engine)</div></td></tr></tbody></table>",
         "img": ""
       },
       {
@@ -234,13 +234,13 @@
       {
         "slug": "sistem-rem",
         "title": "Sistem Rem",
-        "desc": "<table class=\"clean-spec-table\"><tbody><tr><td>Type</td><td>Front</td><td>Ventilated Disk</td></tr><tr><td></td><td>Rear</td><td>Ventilated Disk</td></tr><tr><td></td><td>Parking Brake</td><td>Electric Parking Brake</td></tr><tr><td>Auto Brake Hold</td><td></td><td>Have</td></tr></tbody></table>",
+        "desc": "<table class=\"clean-spec-table\"><tbody><tr><td>Type</td><td><div style=\"margin-bottom:10px\">Front</div><div style=\"margin-bottom:10px\">Rear</div><div>Parking Brake</div></td><td><div style=\"margin-bottom:10px\">Ventilated Disk</div><div style=\"margin-bottom:10px\">Ventilated Disk</div><div>Electric Parking Brake</div></td></tr><tr><td>Auto Brake Hold</td><td></td><td>Have</td></tr></tbody></table>",
         "img": ""
       },
       {
         "slug": "sistem-suspensi",
         "title": "Sistem Suspensi",
-        "desc": "<table class=\"clean-spec-table\"><tbody><tr><td>Type</td><td>front</td><td>MacPherson Strut</td></tr><tr><td></td><td>rear</td><td>Multi Link</td></tr></tbody></table>",
+        "desc": "<table class=\"clean-spec-table\"><tbody><tr><td>Type</td><td><div style=\"margin-bottom:10px\">front</div><div>rear</div></td><td><div style=\"margin-bottom:10px\">MacPherson Strut</div><div>Multi Link</div></td></tr></tbody></table>",
         "img": ""
       },
       {
