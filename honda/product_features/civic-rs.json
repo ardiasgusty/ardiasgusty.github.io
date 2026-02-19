@@ -216,37 +216,37 @@
       {
         "slug": "dimension-size",
         "title": "Dimension/Size",
-        "desc": "<table class=\"spec-table\"><tbody><tr><td style=\"width:30%;\">Length x Width x Height</td><td style=\"width:15%;\">mm</td><td>4.681 x 1.802 x 1.415</td></tr><tr><td>Wheelbase</td><td>mm</td><td>2.735</td></tr><tr><td>Tread Front/Rear</td><td>mm</td><td>1.547 / 1.575</td></tr><tr><td>Tank Capacity</td><td>Liter</td><td>40</td></tr></tbody></table>",
+        "desc": "<table class=\"clean-spec-table\"><tbody><tr><td>Length x Width x Height</td><td>mm</td><td>4.681 x 1.802 x 1.415</td></tr><tr><td>Wheelbase</td><td>mm</td><td>2.735</td></tr><tr><td>Tread Front/Rear</td><td>mm</td><td>1.547 / 1.575</td></tr><tr><td>Tank Capacity</td><td>Liter</td><td>40</td></tr></tbody></table>",
         "img": ""
       },
       {
         "slug": "transmisi",
         "title": "Transmisi",
-        "desc": "<table class=\"spec-table\"><tbody><tr><td style=\"width:30%;\">Type</td><td style=\"width:15%;\"></td><td>E-CVT (Electrical Continuously Variable Transmission)</td></tr><tr><td>Perbandingan</td><td>forward</td><td>2.454 (Motor) 0.805 (Engine)</td></tr><tr><td></td><td>Reverse</td><td>2.454 (Motor) 0.805 (Engine)</td></tr><tr><td></td><td>Final Gear</td><td>8.367 (Motor) 3.757 (Engine)</td></tr></tbody></table>",
+        "desc": "<table class=\"clean-spec-table\"><tbody><tr><td>Type</td><td></td><td>E-CVT (Electrical Continuously Variable Transmission)</td></tr><tr><td>Perbandingan</td><td>forward</td><td>2.454 (Motor) 0.805 (Engine)</td></tr><tr><td></td><td>Reverse</td><td>2.454 (Motor) 0.805 (Engine)</td></tr><tr><td></td><td>Final Gear</td><td>8.367 (Motor) 3.757 (Engine)</td></tr></tbody></table>",
         "img": ""
       },
       {
         "slug": "sistem-kemudi",
         "title": "Sistem Kemudi",
-        "desc": "<table class=\"spec-table\"><tbody><tr><td style=\"width:30%;\">Sistem</td><td style=\"width:15%;\"></td><td>Rack & Pinion Electric Power Steering</td></tr><tr><td>Tilt & Telescopic Steering Wheel</td><td></td><td>Have</td></tr><tr><td>Paddle Shift</td><td></td><td>Deceleration Paddle Selectors</td></tr></tbody></table>",
+        "desc": "<table class=\"clean-spec-table\"><tbody><tr><td>Sistem</td><td></td><td>Rack & Pinion Electric Power Steering</td></tr><tr><td>Tilt & Telescopic Steering Wheel</td><td></td><td>Have</td></tr><tr><td>Paddle Shift</td><td></td><td>Deceleration Paddle Selectors</td></tr></tbody></table>",
         "img": ""
       },
       {
         "slug": "sistem-rem",
         "title": "Sistem Rem",
-        "desc": "<table class=\"spec-table\"><tbody><tr><td style=\"width:30%;\">Type</td><td style=\"width:15%;\">Front</td><td>Ventilated Disk</td></tr><tr><td></td><td>Rear</td><td>Ventilated Disk</td></tr><tr><td></td><td>Parking Brake</td><td>Electric Parking Brake</td></tr><tr><td>Auto Brake Hold</td><td></td><td>Have</td></tr></tbody></table>",
+        "desc": "<table class=\"clean-spec-table\"><tbody><tr><td>Type</td><td>Front</td><td>Ventilated Disk</td></tr><tr><td></td><td>Rear</td><td>Ventilated Disk</td></tr><tr><td></td><td>Parking Brake</td><td>Electric Parking Brake</td></tr><tr><td>Auto Brake Hold</td><td></td><td>Have</td></tr></tbody></table>",
         "img": ""
       },
       {
         "slug": "sistem-suspensi",
         "title": "Sistem Suspensi",
-        "desc": "<table class=\"spec-table\"><tbody><tr><td style=\"width:30%;\">Type</td><td style=\"width:15%;\">front</td><td>MacPherson Strut</td></tr><tr><td></td><td>rear</td><td>Multi Link</td></tr></tbody></table>",
+        "desc": "<table class=\"clean-spec-table\"><tbody><tr><td>Type</td><td>front</td><td>MacPherson Strut</td></tr><tr><td></td><td>rear</td><td>Multi Link</td></tr></tbody></table>",
         "img": ""
       },
       {
         "slug": "ban",
         "title": "Ban",
-        "desc": "<table class=\"spec-table\"><tbody><tr><td style=\"width:30%;\">Ban</td><td style=\"width:15%;\"></td><td>17 x 7 J</td></tr><tr><td>Roda</td><td></td><td>215/50R17</td></tr></tbody></table>",
+        "desc": "<table class=\"clean-spec-table\"><tbody><tr><td>Ban</td><td></td><td>17 x 7 J</td></tr><tr><td>Roda</td><td></td><td>215/50R17</td></tr></tbody></table>",
         "img": ""
       }
     ]
