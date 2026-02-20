@@ -148,5 +148,59 @@
         "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0004s_0004_ahb_ssuv_hpm_min__1666708382451.jpg?w=1000&s=1d508378962e11dc6b91c2ab75543857"
       }
     ]
+  },
+  {
+    "id": "technology",
+    "label": "Technology",
+    "items": [
+      {
+        "slug": "1025-advanced-capacitive-touchscreen-display-audio",
+        "title": "10.25” Advanced Capacitive Touchscreen Display Audio",
+        "desc": "<p>Layar sentuh berukuran 10.25 inci menghadirkan tampilan yang luas dan responsif, memudahkan akses informasi tanpa mengganggu alur perjalanan.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/display_audio_d_8__1770277608777.png?w=1000&s=270dc5e3b98a975fe1fc3b8805f3846b"
+      },
+      {
+        "slug": "honda-lanewatch-rs-sensing-type",
+        "title": "Honda LaneWatch™ (RS SENSING Type)",
+        "desc": "<p>Honda WR-V telah dilengkapi dengan LaneWatch&trade; untuk meningkatkan penglihatan pada bagian samping kiri kendaraan, dan meminimalkan blind spot area.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/honda_lanewatch_d_8__1770277643794.png?w=1000&s=513e0dc4f01dc4bca78472eadb681fc7"
+      },
+      {
+        "slug": "amfm-radio",
+        "title": "AM/FM Radio",
+        "desc": "",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/radio_d_8__1770278559890.png?w=1000&s=f5e24e08ec43f1b02d3337d1a8d4c351"
+      },
+      {
+        "slug": "wireless-smartphone-connection",
+        "title": "Wireless Smartphone Connection",
+        "desc": "<p>Konektivitas nirkabel memungkinkan ponsel Anda terhubung dengan mudah, menjaga semuanya tetap terhubung tanpa perlu banyak langkah</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/wireless_smart_connection_d_8__1770277981121.png?w=1000&s=f962eff4513ad099159f10ca6839dbb4"
+      },
+      {
+        "slug": "remote-engine-start",
+        "title": "Remote Engine Start",
+        "desc": "<p><i>Remote engine start&nbsp;</i>akan menyalakan mesin dari jarak jauh melalui&nbsp;<i>keyless remote</i>. Saat ditekan, mesin kendaraan akan aktif dengan keadaan terkunci dan menyalakan AC secara otomatis, sehingga kabin terasa sejuk setelah Anda memasuki mobil.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/remote_engine_start_d_8__1770278476138.png?w=1000&s=ac4c61d77501ef3ad1fe60a53ca778e0"
+      },
+      {
+        "slug": "wireless-charging-console-rs-sensing-type",
+        "title": "Wireless Charging Console (RS SENSING Type)",
+        "desc": "<p>Cukup letakkan perangkat Anda, dan pengisian daya pun berjalan dengan sendirinya, detail kecil yang menjaga ritme tetap lancar.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/wireless_charger_d_8__1770278039229.png?w=1000&s=6d20549f7283cc94af5f1d48323d2447"
+      },
+      {
+        "slug": "multi-angle-rear-view-parking-camera",
+        "title": "Multi-Angle Rear View Parking Camera",
+        "desc": "<p>Kamera parkir multi-sudut membantu melihat sekitar kendaraan dengan lebih jelas, membuat manuver terasa lebih pasti di berbagai situasi.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/multi_angle_rear_parking_camera_d_8__1770278234281.png?w=1000&s=5acef0a7764e56c090a6c55f3faf241f"
+      },
+      {
+        "slug": "auto-foldable-mirror",
+        "title": "Auto Foldable Mirror",
+        "desc": "<p>Berkendara semakin praktis dengan Auto Foldable Mirror yang secara otomatis terbuka dan tertutup saat mobil tidak terkunci/terkunci.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0006s_0008_autofoldablemirror_ssuv_hpm_min__1666759424434.jpg?w=1000&s=97c9e68fbcb0c942e51a04204c238d68"
+      }
+    ]
   }
 ]
