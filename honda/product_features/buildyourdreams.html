@@ -170,8 +170,9 @@
             const textareas = document.querySelectorAll('.desc-editor');
             textareas.forEach(ta => {
                 const editor = CKEDITOR.replace(ta.id, {
-                    allowedContent: true, // Mencegah CKEditor menghapus class CSS custom kamu (seperti tabel spesifikasi)
+                    allowedContent: true, // Mencegah CKEditor menghapus class CSS custom kamu
                     height: 120,
+                    versionCheck: false, // MATIKAN POPUP UPGRADE CKEDITOR
                     toolbar: [
                         ['Bold', 'Italic', 'Underline', '-', 'RemoveFormat'],
                         ['NumberedList', 'BulletedList'],
