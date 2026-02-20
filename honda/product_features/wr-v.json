@@ -34,5 +34,119 @@
         "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/17_stylish_alloy_wheels_d_8__1770278858081.png?w=1000&s=52b2a52ce81c46223b3a62e8f8da55c0"
       }
     ]
+  },
+  {
+    "id": "interior",
+    "label": "Interior",
+    "items": [
+      {
+        "slug": "trust-in-comfort",
+        "title": "Trust in Comfort",
+        "desc": "<p>Interior New Honda WR-V dirancang sebagai ruang yang mendukung fokus dan rasa percaya diri. Memberi kenyamanan yang membuat Anda siap menjalani setiap proses dengan tenang</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/trust_the_comfort_d_8__1770276377102.png?w=1000&s=51dce672312bb6fae659ab85ab94fbb8"
+      },
+      {
+        "slug": "42-interactive-tft-meter-cluster",
+        "title": "4.2\" Interactive TFT Meter Cluster",
+        "desc": "<p>Sebagian besar informasi pada mobil akan ditampilkan melalui&nbsp;<i>meter cluster</i>, meliputi&nbsp;<i>Honda Sensing</i>, konsumsi bahan bakar,&nbsp;<i>rear seat reminder</i>&nbsp;dan lainnya.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0005s_0004_tftmetercluster_interactive_ssuv_hpm_min__1666708072007.jpg?w=1000&s=c8ba2d9971c8bf70272cd6d0bf23bb02"
+      },
+      {
+        "slug": "leather-wrapped-steering-wheel",
+        "title": "Leather Wrapped Steering Wheel",
+        "desc": "<p>Roda kemudi yang dilapisi dengan kulit berkualitas tinggi semakin meningkatkan kenyamanan di sepanjang perjalanan.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0005s_0006_leatherwrappedsteeringwheel_ssuv_hpm_min__1666710120735.jpg?w=1000&s=869513976a7f7f53cadae038cd21c304"
+      },
+      {
+        "slug": "spacious-trunk",
+        "title": "Spacious Trunk",
+        "desc": "<p>Ruang bagasi yang luas siap menampung berbagai kebutuhan, memberi keleluasaan untuk membawa apa pun yang mendukung langkah Anda.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/spacious_trunk_&_utility_mode_d_8__1770276809063.png?w=1000&s=45197255fc0b1340ace8888f01870fc9"
+      },
+      {
+        "slug": "2nd-row-armrest-rs-sensing-type",
+        "title": "2nd Row Armrest (RS SENSING Type)",
+        "desc": "<p>Perjalanan panjang tetap nyaman dan menyenangkan dengan adanya armrest di baris kedua bagi penumpang.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/2nd_row_armrest_d_8__1770276879766.png?w=1000&s=2ef1c0de0481e9706099885508dde2af"
+      },
+      {
+        "slug": "leather-wrapped-console-box-with-armrest",
+        "title": "Leather-Wrapped Console Box with Armrest",
+        "desc": "<p>Di desain dengan elegan menggunakan bahan kulit. Sandaran tangan berfungsi agar tidak lelah saat menyetir dan bisa menyimpan barang-barang Anda selama perjalanan.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/armrest__1666710085241.jpg?w=1000&s=7dd8e9f4df2e300bb89c654520a2c317"
+      },
+      {
+        "slug": "auto-ac",
+        "title": "Auto A/C",
+        "desc": "<p>Sistem pendingin otomatis menjaga suhu kabin tetap nyaman, membantu mempertahankan fokus di tengah perjalanan yang panjang.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/auto_ac_d_8__1770277853417.png?w=1000&s=cb7a75e8d844b092108ca376faed17cc"
+      },
+      {
+        "slug": "one-push-ignition-system",
+        "title": "One Push Ignition System",
+        "desc": "<p>Dengan fitur One Push Ignition System menghidupkan mesin mobil jauh lebih mudah hanya dalam satu sentuhan</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0005s_0005_rectangle_1_copy_20_min__1666760074982.jpg?w=1000&s=1cef01bf0724bb34728586d13b91d700"
+      },
+      {
+        "slug": "leather-trimmed-seat-with-red-stitches",
+        "title": "Leather Trimmed Seat With Red Stitches",
+        "desc": "<p>Jok berbalut kulit dengan jahitan merah menghadirkan suasana yang lebih intens dan berkarakter, memperkuat ambisi di setiap perjalanan</p>\n",
+        "img": ""
+      },
+      {
+        "slug": "tilt-steering-wheel",
+        "title": "Tilt Steering Wheel",
+        "desc": "<p>Anda bebas mengatur posisi naik atau turun roda kemudi sesuai dengan keinginan dan postur tubuh Anda.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0005s_0003_tiltsteeringwheel_ssuv_hpm_min__1666760339739.jpg?w=1000&s=04d017293f7fffeeca8a96890b7e72c9"
+      },
+      {
+        "slug": "red-ambient-light",
+        "title": "Red Ambient Light",
+        "desc": "<p>Sentuhan red ambient light di dalam kabin menciptakan suasana yang lebih fokus dan ambisius</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/red_ambient_light_d_8__1770277527619.png?w=1000&s=0ef0322f0ac1d14f767683cc8744e3de"
+      }
+    ]
+  },
+  {
+    "id": "honda-sensing",
+    "label": "Honda SENSING™",
+    "items": [
+      {
+        "slug": "colision-mitigation-braking-system-cmbs",
+        "title": "Colision Mitigation Braking System (CMBS)",
+        "desc": "<h3 :id=\"sectionItemId\" id=\"colision-mitigation-braking-system-cmbs\">Colision Mitigation Braking System (CMBS)</h3>\n\n<p>Collision Mitigation Braking System (CMBS&trade;) membantu Anda ketika terdapat kemungkinan kendaraan berbenturan dengan kendaraan lain atau pejalan kaki yang terdeteksi di depan. CMBS&trade; didesain untuk dapat memberi tanda ketika potensi berbenturan dapat terjadi, yang membantu mengurangi kecepatan kendaraan untuk mengurangi dampak benturan yang tidak terhindarkan.</p>\n\n<p>CMBS&trade; dirancang untuk mengurangi tingkat kekerasan tabrakan yang tak terelakkan. Sistem ini tidak mencegah tabrakan atau menghentikan kendaraan secara otomatis. Masih merupakan kewajiban Anda untuk menjalankan pedal rem dan roda kemudi secara benar sesuai kondisi berkendara. Untuk keterangan lebih lanjut mengenai ketentuan dan batasan kondisi tertentu, dapat merujuk pada buku pedoman Honda WR-V.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0004s_0003_cmbs_ssuv_hpm_min__1666708188962.jpg?w=1000&s=1d81b3c27a5972106e7cec7a6830f7bf"
+      },
+      {
+        "slug": "lane-keeping-assist-system-lkas",
+        "title": "Lane Keeping Assist System (LKAS)",
+        "desc": "<p>Lane Keeping Assist System (LKAS) membantu kemudi untuk menjaga kendaraan tetap berada pada jalur dengan mendeteksi marka jalan di kiri dan kanan mobil kemudian mengkoreksi setir jika mobil terdeteksi keluar dari jalur.</p>\n\n<p>Sistem ini bukanlah pengganti dari kontrol kendaraan. Masih merupakan kewajiban Anda untuk menjalankan pedal rem dan roda kemudi secara benar sesuai dengan kondisi berkendara. Untuk keterangan lebih lanjut mengenai ketentuan dan batas kondisi tertentu, dapat merujuk pada buku pedoman pemilik Honda WR-V.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0004s_0001_lkas_ssuv_hpm_min__1666708222821.jpg?w=1000&s=48e941f9aefeac16628e88c95de8d672"
+      },
+      {
+        "slug": "road-departure-mitigation-system-rdm",
+        "title": "Road Departure Mitigation System (RDM)",
+        "desc": "<p>Road Departure Mitigation (RDM) menjaga dan membantu Anda ketika sistem mendeteksi kemungkinan kendaraan Anda keluar dari garis jalur dan/atau meninggalkan jalan.</p>\n\n<p>Sistem RDM memiliki batas. Terlalu percaya pada sistem RDM mungkin akan berakibat pada tabrakan. Tetap menjadi kewajiban Anda untuk menjaga kendaraan tetap pada jalur berkendara Anda. Untuk keterangan lebih lanjut mengenai ketentuan dan batasan kondisi tertentu, dapat merujuk pada pedoman pemilik Honda WR-V.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0004s_0000_rdm_ssuv_hpm_min__1666708281493.jpg?w=1000&s=7f2a4f9ffd0f0d275993f243d8d61827"
+      },
+      {
+        "slug": "adaptive-cruise-control-acc",
+        "title": "Adaptive Cruise Control (ACC)",
+        "desc": "<p>Adaptive Cruise Control (ACC) membantu menjaga kestabilan&nbsp; kecepatan kendaraan dan mengatur jarak di belakang kendaraan&nbsp; yang terdeteksi di depan.</p>\n\n<p>Dengan sistem apa pun, ada batasan untuk ACC. Gunakan pedal rem kapan pun jika dibutuhkan dan selalu jaga jarak aman dengan kendaraan lain.</p>\n\n<p>Masih merupakan kewajiban Anda untuk menjalankan pedal rem dan roda kemudi secara benar sesuai kondisi berkendara. Untuk keterangan lebih lanjut mengenai ketentuan dan batasan kondisi tertentu, dapat merujuk pada buku pedoman Honda WR-V.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0004s_0005_acc_ssuv_hpm_min__1666708310085.jpg?w=1000&s=7c74916b97c6826e260d45979e9e9f03"
+      },
+      {
+        "slug": "lead-departure-notification-system-lcdn",
+        "title": "Lead Departure Notification System (LCDN)",
+        "desc": "<p>Lead-Car Departure Notification (LCDN) adalah fitur terbaru Honda Sensing&trade; yang hadir di Honda WR-V. Ketika dalam kondisi berhenti di jalan dan kendaraan di depan mulai berjalan, pada jarak tertentu bila Anda belum mulai berjalan, notifikasi ini akan membantu mengingatkan Anda.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0004s_0002_lcdn_ssuv_hpm_min__1666708353163.jpg?w=1000&s=e58743e6ba74b757854d9aeb82ce995b"
+      },
+      {
+        "slug": "auto-high-beam-ahb",
+        "title": "Auto High Beam (AHB)",
+        "desc": "<p>Auto High-Beam (AHB) dapat diaktifkan saat Anda berkendara di atas kecepatan 30 km/jam dengan posisi tuas lampu diputar dari OFF ke posisi AUTO.</p>\n\n<p>Sistem ini secara intuitif akan berganti antara lampu besar dan lampu normal tergantung pada situasi jalan.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0004s_0004_ahb_ssuv_hpm_min__1666708382451.jpg?w=1000&s=1d508378962e11dc6b91c2ab75543857"
+      }
+    ]
   }
 ]
