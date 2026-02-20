@@ -250,5 +250,119 @@
         "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/4_euro4__1683688055931.jpg?w=1000&s=dedfab5fd6a74c2eaeeea1aefa404370"
       }
     ]
+  },
+  {
+    "id": "safety",
+    "label": "Safety",
+    "items": [
+      {
+        "slug": "auto-door-lock-by-speed",
+        "title": "Auto Door Lock by Speed",
+        "desc": "<p>Dalam kondisi mobil mulai berjalan, pintu akan mengunci otomatis ketika mencapai kecepatan tertentu.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/f_panel__1707185605067.jpg?w=1000&s=a1137cae0868d7906bb8e525e5c15dbb"
+      },
+      {
+        "slug": "vehicle-stability-assist-vsa",
+        "title": "Vehicle Stability Assist (VSA)",
+        "desc": "<p>Stabilkan manuver mobil ketika berada di tikungan agar tidak oversteer maupun understeer dalam kondisi jalan menikung.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/4_vsa__1707831034714.jpg?w=1000&s=d24e33c3eaa92742e3123b51ea853c36"
+      },
+      {
+        "slug": "hill-start-assist",
+        "title": "Hill Start Assist",
+        "desc": "<p>Teknologi yang membantu menahan sesaat posisi mobil saat berada di tanjakan supaya kaki sempat menginjak pedal gas tanpa posisi mobil terlebih dulu mundur.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/f_hsa__1707300781965.jpg?w=1000&s=77b504b513186c9deb6d55917566b21d"
+      },
+      {
+        "slug": "abs-ebd-ba",
+        "title": "ABS • EBD • BA",
+        "desc": "<p>Anti-Lock Breaking System (ABS) mencegah roda terkunci saat pengereman mendadak di permukaan licin, sedangkan Electronic Braking Distribution (EBD) membagi daya pengereman ke setiap roda sesuai beban kendaraan. Selain itu, Braking Assist (BA) turut menambah efektivitas pengereman.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/f_wheelp__1705891957760.jpg?w=1000&s=d23803d53c33deadc8df2bd62ed86047"
+      },
+      {
+        "slug": "walk-away-auto-lock",
+        "title": "Walk-Away Auto Lock",
+        "desc": "<p>Ketika mesin mati dan kunci mobil tidak terdeteksi maka sensor segera mengunci pintu secara otomatis saat pengemudi jalan sejauh 2 meter meninggalkan mobil.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/f_walkaway__1699598389334.jpg?w=1000&s=7627100b4942eefc39eb25ff830fe6f5"
+      },
+      {
+        "slug": "brake-override-system",
+        "title": "Brake Override System",
+        "desc": "<p>Teknologi pengereman pintar yang membantu memprioritaskan pengereman saat pedal gas dan rem terinjak secara bersamaan.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/5_cvt_pedal__1683688317167.jpg?w=1000&s=2ced8d06e6c48219c82b0016d7d3f6e6"
+      },
+      {
+        "slug": "alarm-system",
+        "title": "Alarm System",
+        "desc": "<p>Tak hanya berbunyi, sistem alarm juga akan membuat mesin mobil tidak bisa dihidupkan tanpa keberadaan kunci di sekitar mobil.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/5_alarm__1683688344913.jpg?w=1000&s=a15f828fdd613fb521443a32135a69cd"
+      },
+      {
+        "slug": "immobilizer",
+        "title": "Immobilizer",
+        "desc": "<p>New Honda BR-V N7X telah dilengkapi dengan sepasang chip di dalam kunci dan mesin mobil yang tidak bisa dinyalakan secara paksa dan menggunakan kunci palsu.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/5_immobilizer__1683688360105.jpg?w=1000&s=22693f99b414dc88f7147920538a943e"
+      },
+      {
+        "slug": "isofix-tether",
+        "title": "ISOFIX & Tether",
+        "desc": "<p>Kursi baris kedua sudah dirancang untuk bisa mengikat Child Car Seat dengan erat.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/5_isofix__1683688303018.jpg?w=1000&s=6a078529f1316de3d414fe5b3b77a755"
+      },
+      {
+        "slug": "6-airbags",
+        "title": "6 Airbags",
+        "desc": "<p>Sistem keamanan dengan 6 Airbags dan pilihan Curtain Airbag pada tipe Prestige with Honda Sensing&trade;, dimana airbag sisi samping juga akan melindungi secara lebih menyeluruh dari berbagai sisi.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/5_airbag__1683688258911.jpg?w=1000&s=52954df0d80a898875f3255d0b0b7269"
+      },
+      {
+        "slug": "g-con-ace-with-side-impact-beam",
+        "title": "G-CON + ACE™ with Side Impact Beam",
+        "desc": "<p>Struktur rangka bodi G-Force Control dengan teknologi Advanced Compatibility Engineering (ACE&trade;) berfungsi menjaga keutuhan rangka bodi saat terjadi benturan, dengan cara menyerap dan menyalurkan energi benturan secara merata.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/5_gcon__1683688233307.jpg?w=1000&s=a5d3667773564a22764b3db5d48d1754"
+      }
+    ]
+  },
+  {
+    "id": "honda-sensing",
+    "label": "Honda SENSING",
+    "items": [
+      {
+        "slug": "road-departure-mitigation-system-rdm",
+        "title": "Road Departure Mitigation System (RDM)",
+        "desc": "<p>Road Departure Mitigation (RDM) menjaga dan membantu Anda ketika sistem mendeteksi kemungkinan kendaraan Anda keluar dari garis jalur dan/atau meninggalkan jalan.<br />\n&nbsp;</p>\n\n<p>Sistem RDM memiliki batas. Terlalu percaya pada sistem RDM mungkin akan berakibat pada tabrakan. Tetap menjadi kewajiban Anda untuk menjaga kendaraan tetap pada jalur berkendara Anda. Untuk keterangan lebih lanjut mengenai ketentuan dan batasan kondisi tertentu, dapat merujuk pada pedoman pemilik New Honda BR-V N7X Prestige with Honda SENSING.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/hs_rdms__1707455182991.jpg?w=1000&s=6674cfa9ee802d45aeaa1debb60c58e0"
+      },
+      {
+        "slug": "adaptive-cruise-control-acc",
+        "title": "Adaptive Cruise Control (ACC)",
+        "desc": "<p>Adaptive Cruise Control&nbsp; (ACC) membantu menjaga kestabilan&nbsp; kecepatan kendaraan dan mengatur jarak di belakang kendaraan&nbsp; yang terdeteksi di depan.</p>\n\n<p>Dengan sistem apa pun, ada batasan untuk ACC. Gunakan pedal rem kapan pun jika dibutuhkan dan selalu jaga jarak aman dengan kendaraan lain.</p>\n\n<p>Masih merupakan kewajiban Anda untuk menjalankan pedal rem dan roda kemudi secara benar sesuai kondisi berkendara. Untuk keterangan lebih lanjut mengenai ketentuan dan batasan kondisi tertentu, dapat merujuk pada buku pedoman New Honda BR-V N7X Prestige with Honda SENSING.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/hs_acc__1707455198664.jpg?w=1000&s=4939ca6c04d6662ba81e36f66353df1b"
+      },
+      {
+        "slug": "auto-high-beam-ahb",
+        "title": "Auto High-Beam (AHB)",
+        "desc": "<p>Auto High-Beam (AHB) dapat diaktifkan saat Anda berkendara di atas kecepatan 30 km/jam dengan posisi tuas lampu diputar dari OFF ke posisi AUTO.</p>\n\n<p>Sistem ini secara intuitif akan berganti antara lampu besar dan lampu normal tergantung pada situasi jalan.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/hs_ahb__1707455218233.jpg?w=1000&s=db134eca3ab0d76d172d108994184c82"
+      },
+      {
+        "slug": "collision-mitigation-braking-system-cmbs",
+        "title": "Collision Mitigation Braking System (CMBS™)",
+        "desc": "<p>Collision Mitigation Braking System (CMBS&trade;) membantu Anda ketika terdapat kemungkinan kendaraan berbenturan dengan kendaraan lain atau pejalan kaki yang terdeteksi di depan. CMBS&trade; didesain untuk dapat memberi tanda ketika potensi berbenturan dapat terjadi, yang membantu mengurangi kecepatan kendaraan untuk mengurangi dampak benturan yang tidak terhindarkan.</p>\n\n<p>&nbsp;</p>\n\n<p>CMBS&trade; dirancang untuk mengurangi tingkat kekerasan tabrakan yang tak terelakkan. Sistem ini tidak mencegah tabrakan atau menghentikan kendaraan secara otomatis. Masih merupakan kewajiban Anda untuk menjalankan pedal rem dan roda kemudi secara benar sesuai kondisi berkendara. Untuk keterangan lebih lanjut mengenai ketentuan dan batasan kondisi tertentu, dapat merujuk pada buku pedoman New Honda BR-V N7X Prestige with Honda SENSING.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/hs_cmbs__1707455236095.jpg?w=1000&s=a0a85c6748ddaf527a91a5272cbaa0ff"
+      },
+      {
+        "slug": "lane-keeping-assist-system-lkas",
+        "title": "Lane Keeping Assist System (LKAS)",
+        "desc": "<p>Lane Keeping Assist System (LKAS) membantu kemudi untuk menjaga kendaraan tetap berada pada jalur dengan mendeteksi marka jalan di kiri dan kanan mobil kemudian mengkoreksi setir jika mobil terdeteksi keluar dari jalur.</p>\n\n<p>&nbsp;</p>\n\n<p>Sistem ini bukanlah pengganti dari kontrol kendaraan. Masih merupakan kewajiban Anda untuk menjalankan pedal rem dan roda kemudi secara benar sesuai dengan kondisi berkendara. Untuk keterangan lebih lanjut mengenai ketentuan dan batas kondisi tertentu, dapat merujuk pada buku pedoman pemilik New Honda BR-V N7X Prestige with Honda SENSING.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/hs_lka__1707455252076.jpg?w=1000&s=9452bc0ad65ee3c598ab78f5ab171125"
+      },
+      {
+        "slug": "lead-car-departure-notification-lcdn",
+        "title": "Lead-Car Departure Notification (LCDN)",
+        "desc": "<p>Lead-Car Departure Notification (LCDN) adalah fitur terbaru Honda SENSING yang hadir pertama kali di New Honda BR-V N7X Prestige with Honda SENSING. Ketika dalam kondisi berhenti di jalan dan kendaraan di depan mulai berjalan, pada jarak tertentu bila Anda belum mulai berjalan, notifikasi ini akan membantu mengingatkan Anda.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/hs_lcdn__1707455267933.jpg?w=1000&s=5dad8701a99ed2d90493bf0ff7fe5f64"
+      }
+    ]
   }
 ]
