@@ -1,1 +1,38 @@
-no
+[
+  {
+    "id": "exterior",
+    "label": "Exterior",
+    "items": [
+      {
+        "slug": "rs-front-grille",
+        "title": "RS Front Grille",
+        "desc": "<p>Desain front grille yang tegas dan modern, mendorong kepercayaan diri Anda untuk melangkah.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/rs_front_grille_d_8__1770275923849.png?w=1000&s=72985d8f5c1fe48a2ca953a64a6b68d1"
+      },
+      {
+        "slug": "led-fog-lights",
+        "title": "LED Fog Lights",
+        "desc": "<p>LED Fog Lights membantu menjaga visibilitas di berbagai kondisi, mendukung langkah Anda untuk tetap pasti saat jalanan tak selalu ideal</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/led_fog_lights_d_8__1770276004158.png?w=1000&s=0e978ded22b984c3c5b45fa6ab3c913d"
+      },
+      {
+        "slug": "roof-garnish-rs-sensing-type",
+        "title": "Roof Garnish (RS Sensing Type)",
+        "desc": "<p>Sentuhan roof garnish hitam menambah karakter yang lebih berani, menyempurnakan siluet New Honda WR-V</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/roof_garnish_(rs_sensing_type)_d_8__1770797953524.png?w=1000&s=af208e9056767ad0db69647b670614ed"
+      },
+      {
+        "slug": "rear-combi-lights-with-led-light-bars",
+        "title": "Rear Combi Lights with LED Light Bars",
+        "desc": "<p>Rear Combi Lights with LED Light Bars menghadirkan tampilan modern yang mendukung rasa percaya diri, bahkan saat berkendara di malam hari</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/rear_combi_lights_with_led_lights_bars_d_8__1770276166124.png?w=1000&s=9c07db2bde0bb219e9e044c93cc80c99"
+      },
+      {
+        "slug": "17-stylish-alloy-wheel",
+        "title": "17” Stylish Alloy Wheel",
+        "desc": "<p>Desain velg dengan proporsi yang seimbang dan tampilan yang mantap, pas untuk ritme hidup Anda yang terus bergerak</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/17_stylish_alloy_wheels_d_8__1770278858081.png?w=1000&s=52b2a52ce81c46223b3a62e8f8da55c0"
+      }
+    ]
+  }
+]
