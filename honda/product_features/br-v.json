@@ -158,6 +158,96 @@
         "title": "9” Advanced Capacitive Touchscreen Display Audio",
         "desc": "<p>Layar sentuh berukuran 9 inch dengan desain imersif mempermudah Anda untuk mengakses berbagai fitur.</p>\n\n<p>*Khusus untuk tipe S M/T, E M/T, E CVT, Prestige CVT, N7X E CVT, N7X Prestige</p>\n",
         "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/n7x_prestige_9_inch_hu_res__1737347154255.jpg?w=1000&s=feb2e6bec747e4892ee43eaf2541c478"
+      },
+      {
+        "slug": "7-advanced-capacitive-touchscreen-display-audio",
+        "title": "7” Advanced Capacitive Touchscreen Display Audio",
+        "desc": "<p>Layar sentuh berukuran 7 inch dengan desain imersif permudah Anda untuk mengakses berbagai fitur.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/3_hu1__1706088495499.jpg?w=1000&s=3d70000076d2214de3671dad5a3a4b4c"
+      },
+      {
+        "slug": "usb-bluetooth-connectivity",
+        "title": "USB & Bluetooth Connectivity",
+        "desc": "<p>2 pilihan konektivitas dengan perangkat eksternal lewat USB 2.0 outlet maupun nirkabel menggunakan Bluetooth Connectivity.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/3_hu2__1706088558021.jpg?w=1000&s=b7a96dab43663172207dec405a421256"
+      },
+      {
+        "slug": "smartphone-connection",
+        "title": "Smartphone Connection",
+        "desc": "<p>Hubungkan beberapa aplikasi seluler Anda untuk menikmati tampilan yang lebih besar dan nyaman di layar.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/3_humap__1706088608262.jpg?w=1000&s=5fa1864c2ca4ec0f1b3f4c08998e5920"
+      },
+      {
+        "slug": "hands-free-telephone",
+        "title": "Hands-Free Telephone",
+        "desc": "<p>Hubungkan perangkat dan terima panggilan telepon dengan bantuan layar sentuh dan speaker. Sentuh tombol kembali ke perangkat bila ingin menerima panggilan secara personal.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/3_huphone__1706088667749.jpg?w=1000&s=e23e7541dd663d388fc5206d0555ee8a"
+      },
+      {
+        "slug": "honda-lanewatch-display",
+        "title": "Honda LaneWatch™ Display",
+        "desc": "<p>Tersedia di tipe Prestige with Honda SENSING, fitur ini memberikan tampilan di sisi kiri belakang kendaraan untuk mengurangi blind spot.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/3_hulanew__1683687874493.jpg?w=1000&s=7d6bde9670ac4b4376f218ab5dcfc4aa"
+      },
+      {
+        "slug": "rear-parking-camera",
+        "title": "Rear Parking Camera",
+        "desc": "<p>Saat transmisi ada pada posisi &ldquo;R&rdquo;, Rear Parking Camera akan aktif dan menampikan area belakang mobil pada layar.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/3_huparking__1683687894760.jpg?w=1000&s=8aa4923bb11b86ab97fb8236befe2a15"
+      },
+      {
+        "slug": "6-speaker-audio-system",
+        "title": "6-Speaker Audio System",
+        "desc": "<p>Nikmati kualitas suara jernih dari 6 speaker di 6 titik kabin.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/3_speaker__1683687917433.jpg?w=1000&s=cb390b67a37b095208be3f17522e6705"
+      },
+      {
+        "slug": "smart-entry-system",
+        "title": "Smart Entry System",
+        "desc": "<p>Cukup bawa kunci mobil bersama Anda, kunci akan terbuka saat tangan berada di Door Handle.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/f_smartentry__1707190140609.jpg?w=1000&s=8fce1c7bd866d5dd5e4a2b03119413d6"
+      },
+      {
+        "slug": "remote-engine-start",
+        "title": "Remote Engine Start",
+        "desc": "<p>Nyalakan mesin dari luar mobil dengan fitur ini. A/C juga akan secara otomatis menyala supaya kabin sejuk saat pengendara masuk.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/f_remoteenginestart__1707190275159.jpg?w=1000&s=dabc67732bfebd70b22cb03924898d6e"
+      }
+    ]
+  },
+  {
+    "id": "performance",
+    "label": "Performance",
+    "items": [
+      {
+        "slug": "15l-dohc-i-vtec-engine",
+        "title": "1.5L DOHC i-VTEC Engine",
+        "desc": "<p>Mesin i-VTEC generasi baru dengan konfigurasi DOHC yang menghasilkan tenaga paling optimal di kelasnya, 121 PS.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/4_engine__1683688005773.jpg?w=1000&s=b7f91a33005f9f924d18b14e35cc628f"
+      },
+      {
+        "slug": "cvt-continuously-variable-transmission",
+        "title": "CVT (Continuously Variable Transmission)",
+        "desc": "<p>Sistem transmisi dengan perpindahan gigi halus yang juga mengoptimalkan efisiensi bahan bakar. Tersedia pada New Honda BR-V N7X tipe E, tipe Prestige dan tipe Prestige with Honda SENSING.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/4_cvt__1683688089241.jpg?w=1000&s=423db33449b235d1f33d2e79c87e7207"
+      },
+      {
+        "slug": "6-speed-mt",
+        "title": "6-Speed M/T",
+        "desc": "<p>Rasakan performa responsif dan bertenaga dengan pilihan transmisi manual 6 percepatan untuk tipe E dan S.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/4_manual__1683688109777.jpg?w=1000&s=ee3c9da6fce1e312cc255ff11b3344f1"
+      },
+      {
+        "slug": "macpherson-strut-h-shape-torsion-beam-suspension",
+        "title": "MacPherson Strut & H-Shape Torsion Beam Suspension",
+        "desc": "<p>Kombinasi sistem suspensi yang disempurnakan untuk menghasilkan performa stabil, tanpa gejala limbung, dan handling yang optimal di berbagai lintasan.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/f_mcpherson__1707830745240.jpg?w=1000&s=b58a54cac9e85168b24d42993e6704d4"
+      },
+      {
+        "slug": "euro-4-certified",
+        "title": "Euro 4 Certified",
+        "desc": "<p>New Honda BR-V N7X telah lolos uji standar emisi Euro 4 karena menghasilkan gas buang dengan kandungan karbon lebih rendah.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/4_euro4__1683688055931.jpg?w=1000&s=dedfab5fd6a74c2eaeeea1aefa404370"
       }
     ]
   }
