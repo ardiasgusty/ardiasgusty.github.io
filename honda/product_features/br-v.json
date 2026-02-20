@@ -364,5 +364,17 @@
         "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/hs_lcdn__1707455267933.jpg?w=1000&s=5dad8701a99ed2d90493bf0ff7fe5f64"
       }
     ]
+  },
+  {
+    "id": "colors",
+    "label": "Colors",
+    "items": [
+      {
+        "slug": "colors",
+        "title": "Colors",
+        "desc": "",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/br_v_color_d_8__1770282886852.png?w=1000&s=2480b775d1d71f7427b371d30c4cb8ba"
+      }
+    ]
   }
 ]
