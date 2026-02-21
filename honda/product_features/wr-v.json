@@ -202,5 +202,131 @@
         "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0006s_0008_autofoldablemirror_ssuv_hpm_min__1666759424434.jpg?w=1000&s=97c9e68fbcb0c942e51a04204c238d68"
       }
     ]
+  },
+  {
+    "id": "safety",
+    "label": "Safety",
+    "items": [
+      {
+        "slug": "vehicle-stabillity-assist-vsa",
+        "title": "Vehicle Stabillity Assist (VSA)",
+        "desc": "<p>Dilengkapi teknologi keselamatan terkini yang didesain secara khusus untuk menstabilkan manuver kendaraan Anda sehingga mencegah gejala understeer dan oversteer.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0002s_0000_vsa_ssuv_hpm_min__1666711955649.jpg?w=1000&s=02412a4e604a64f24c22722e71caeb18"
+      },
+      {
+        "slug": "6-airbags",
+        "title": "6 Airbags",
+        "desc": "<p>Mengemudi dengan Honda WR-V semakin aman dengan fitur 6 airbags untuk tipe RS with Honda Sensing, dan 4 airbags untuk tipe RS dan E.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0002s_0001_rectangle_1_copy_17_min__1666711991979.jpg?w=1000&s=bb0169a2047c6c119f94ae8341f5ba3f"
+      },
+      {
+        "slug": "hill-start-assist-hsa",
+        "title": "Hill Start Assist (HSA)",
+        "desc": "<p>Fitur untuk memudahkan saat stop and go di tanjakan, sehingga mencegah mobil mundur saat mulai melaju dari posisi berhenti.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/hsa_d_8__1770364827635.png?w=1000&s=3c25231ee2fc45be04ca8c2b9d3acfbb"
+      },
+      {
+        "slug": "abs-ebd-ba",
+        "title": "ABS + EBD + BA",
+        "desc": "<p>Anti-Lock Breaking System (ABS) mencegah roda terkunci saat pengereman mendadak di permukaan licin, sedangkan Electronic Braking Distribution (EBD) membagi daya pengereman ke setiap roda sesuai beban kendaraan. Selain itu, Braking Assist (BA) turut menambah efektivitas pengereman.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/abs_ebd_d_copy_8__1770367253566.png?w=1000&s=c7cee4e7512c61606ad3cb84c4dba4c0"
+      },
+      {
+        "slug": "emergency-stop-signal",
+        "title": "Emergency Stop Signal",
+        "desc": "<p>Fitur keselamatan guna memperkecil resiko kecelakaan, berfungsi memberikan peringatan pada pengendara lain di belakang ketika melakukan rem mendadak.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/emergency_stop_signal_d_copy_2_8__1770367282954.png?w=1000&s=f416f09d45b296c469c3573f11081849"
+      },
+      {
+        "slug": "walk-away-auto-lock",
+        "title": "Walk-Away Auto Lock",
+        "desc": "<p>Fitur teknologi terkini berfungsi mengaktifkan &amp; mengunci pintu mobil secara otomatis&nbsp; pada jarak sekitar 2 meter dari mobil.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/walk_away_auto_lock_d_copy_3_8__1770798429218.png?w=1000&s=11f8008d4efcd910056b651d04303240"
+      },
+      {
+        "slug": "rear-seat-reminder",
+        "title": "Rear Seat Reminder",
+        "desc": "<p>Fitur canggih guna mendeteksi saat Anda meninggalkan barang di baris kedua kendaraan dan akan ada peringatan melalui layar MID.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0001s_0001_rearseatreminder_ssuv_hpm_min__1666712159540.jpg?w=1000&s=4e0f5b2d163257a945add681d74ddcf1"
+      }
+    ]
+  },
+  {
+    "id": "comfort-enhancement",
+    "label": "Comfort Enhancement",
+    "items": [
+      {
+        "slug": "front-rear-door-pocket-with-drink-holder",
+        "title": "Front & Rear Door Pocket With Drink Holder",
+        "desc": "<p>Berkendara menjadi lebih mudah dan tetap terhidrasi di perjalanan dengan cup holder di bagian depan kabin.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/side_cup_holder_d_8__1770279392650.png?w=1000&s=59cd9f0d3a4dfaae976303553b0cd517"
+      },
+      {
+        "slug": "cup-holder",
+        "title": "Cup Holder",
+        "desc": "<p>Dengan adanya cup holder, Anda semakin nyaman membawa botol minuman selama perjalanan panjang.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/cup_holder_d_8__1770279080197.png?w=1000&s=46e55f15c6c63d7ae40ef33f7597c936"
+      },
+      {
+        "slug": "1st-row-power-outlet-usb-type-a-and-usb-type-c",
+        "title": "1st Row Power Outlet, USB Type A, and USB Type C",
+        "desc": "<p>Kemanapun perjalanan Anda, tidak perlu khawatir kehabisan daya baterai ponsel dan gagdet. Anda dapat mengisi daya baterai ponsel sambil berjalan ke tempat tujuan.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/power_outlet_d_copy_2_8__1770279041132.png?w=1000&s=83f0bd6f66f72de8acbd321c80223087"
+      },
+      {
+        "slug": "spacious-glove-box",
+        "title": "Spacious Glove Box",
+        "desc": "<p>Honda WR-V memiliki banyak ruang penyimpanan yang multi-fungsi, seperti&nbsp;<i>glove box&nbsp;</i>yang satu ini.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0007s_0003_rectangle_1_copy_27_min__1666789309985.jpg?w=1000&s=58a844e2bd78d685f070a4b78550f961"
+      },
+      {
+        "slug": "day-night-rear-view-mirror-map-light",
+        "title": "Day Night Rear View Mirror & Map Light",
+        "desc": "<p>Dengan fitur ini, Anda dapat mengatur kaca spion tengah dengan lebih mudah dan menghindari pantulan cahaya dari kendaraan lain dibelakang.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/mirrormap__1666789274481.jpg?w=1000&s=be35c5d150949b13f06f92b19048d82d"
+      },
+      {
+        "slug": "sun-visor-with-vanity-mirror-lamp",
+        "title": "Sun Visor With Vanity Mirror & Lamp",
+        "desc": "<p>Kehadiran&nbsp;<i>sun visor&nbsp;</i>dirancang sebagai pelindung penglihatan pengendara agar tidak terganggu sinar matahari yang menyilaukan, dan dilengkapi kaca untuk bercermin.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/sunvisor__1666789068074.jpg?w=1000&s=6dbe3cc6398d060c766a3f5bf617cad3"
+      }
+    ]
+  },
+  {
+    "id": "performance",
+    "label": "Performance",
+    "items": [
+      {
+        "slug": "15l-dohc-i-vtec-engine",
+        "title": "1.5L DOHC i-VTEC Engine",
+        "desc": "<p>Rasakan sensasi mesin 1500cc yang menghasilkan tenaga 121 PS pada torsi maksimal 145 Nm&nbsp; untuk aktivitas harian Anda.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0003s_0000_rectangle_1_copy_22_min__1666712300880.jpg?w=1000&s=d98c100cb0304e8a2d62f7ce59c4b08b"
+      },
+      {
+        "slug": "transmission-cvt",
+        "title": "Transmission CVT",
+        "desc": "<p>Dilengkapi dengan teknologi terbaru yang merupakan pengembangan dari transmisi matik konvensional, transmisi CVT membuat pengalaman berkendara Anda lebih mudah.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0003s_0001_rectangle_1_copy_21_min__1666788413551.jpg?w=1000&s=9bd49c822d2e60008ede062e6df0a22b"
+      },
+      {
+        "slug": "paddle-shift",
+        "title": "Paddle Shift",
+        "desc": "<p>Paddle shift memberi kendali di ujung jari, saat kamu ingin berkendara dengan ritme yang lebih pas.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/paddle_shift_d_8__1770279243720.png?w=1000&s=5046224681ee1566544d770ca64cd4be"
+      }
+    ]
+  },
+  {
+    "id": "colors",
+    "label": "Colors",
+    "items": [
+      {
+        "slug": "colors",
+        "title": "Colors",
+        "desc": "",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/wr_v_color_d_8__1770282980159.png?w=1000&s=a09d2b1f470a1ba62fbd6364838f9b40"
+      }
+    ]
   }
 ]
