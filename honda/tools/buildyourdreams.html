@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honda Features JSON Generator (with Rich Text)</title>
+    
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
+    <style>
+        :root {
+            --primary: #cc0000; 
+            --primary-hover: #a30000;
+            --bg: #f4f6f9;
+            --card: #ffffff;
+            --border: #ddd;
+            --text: #333;
+        }
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { margin: 0; padding: 0; background-color: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+        
+        .header { background: #111; color: #fff; padding: 15px 20px; font-size: 20px; font-weight: bold; position: fixed; top: 0; width: 100%; z-index: 10; display: flex; justify-content: space-between; align-items: center; }
+        .container { display: flex; width: 100%; margin-top: 60px; height: calc(100vh - 60px); }
+        .editor-panel { flex: 6; padding: 20px; overflow-y: auto; background: var(--bg); border-right: 2px solid var(--border); }
+        .output-panel { flex: 4; padding: 20px; display: flex; flex-direction: column; background: #fff; }
+        
+        .category-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .category-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
+        .item-card { background: #fdfdfd; border: 1px solid #eee; border-left: 4px solid var(--primary); border-radius: 4px; padding: 15px; margin-bottom: 15px; margin-left: 20px; position: relative;}
+        
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px; color: #555; }
+        .form-control { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+        .form-control:focus { border-color: var(--primary); outline: none; }
+        
+        .btn { padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px; transition: background 0.2s; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-hover); }
+        .btn-secondary { background: #555; color: white; }
+        .btn-secondary:hover { background: #333; }
+        .btn-danger { background: #dc3545; color: white; padding: 6px 12px; font-size: 12px; }
+        .btn-danger:hover { background: #c82333; }
+        .btn-outline { background: transparent; border: 1px solid #ccc; color: #333; }
+        
+        .flex-row { display: flex; gap: 10px; }
+        .flex-1 { flex: 1; }
+        
+        #json-output { width: 100%; flex: 1; padding: 15px; font-family: 'Courier New', Courier, monospace; font-size: 13px; background: #282c34; color: #d1d9e1; border-radius: 4px; border: none; resize: none; margin-top: 10px; margin-bottom: 10px;}
+        
+        /* Penyesuaian CKEditor */
+        .cke_chrome { border: 1px solid #ccc !important; border-radius: 4px !important; box-shadow: none !important; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div>Honda Features JSON Generator</div>
+        <div style="font-size: 14px; font-weight: normal;">Created for Argust</div>
+    </div>
+
+    <div class="container">
+        <div class="editor-panel">
+            <div style="background: #e9ecef; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; font-size: 13px; border-left: 4px solid #17a2b8;">
+                <strong>💡 Info:</strong> Untuk memasukkan kode HTML Tabel Spesifikasi, klik tombol <strong>"Source"</strong> di ujung kanan kotak deskripsi, lalu <i>paste</i> kodenya di sana.
+            </div>
+            <div id="categories-container"></div>
+            <button class="btn btn-primary" onclick="addCategory()" style="margin-top: 10px; width: 100%; padding: 12px; font-size: 16px;">
+                + Tambah Kategori Baru (Menu Utama)
+            </button>
+        </div>
+
+        <div class="output-panel">
+            <h3 style="margin-top: 0;">Preview & Output JSON</h3>
+            <p style="font-size: 13px; color: #666; margin-top: -10px;">Data di bawah ini akan terupdate otomatis. Kamu juga bisa paste JSON lamamu ke sini, lalu klik Load.</p>
+            <textarea id="json-output"></textarea>
+            <div class="flex-row">
+                <button class="btn btn-primary flex-1" onclick="copyJSON()">Copy JSON</button>
+                <button class="btn btn-secondary flex-1" onclick="loadJSON()">Load Data dari JSON</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let appData = [];
+
+        function generateSlug(text) {
+            return text.toString().toLowerCase()
+                .replace(/\s+/g, '-')           
+                .replace(/[^\w\-]+/g, '')       
+                .replace(/\-\-+/g, '-')         
+                .replace(/^-+/, '')             
+                .replace(/-+$/, '');            
+        }
+
+        function renderEditor() {
+            // Hancurkan instance CKEditor lama agar tidak error saat DOM di-refresh
+            for (let name in CKEDITOR.instances) {
+                CKEDITOR.instances[name].destroy(true);
+            }
+
+            const container = document.getElementById('categories-container');
+            container.innerHTML = '';
+
+            appData.forEach((category, cIndex) => {
+                const catCard = document.createElement('div');
+                catCard.className = 'category-card';
+                
+                catCard.innerHTML = `
+                    <div class="category-header">
+                        <h3 style="margin: 0;">Menu Utama: ${category.label || 'Kategori Baru'}</h3>
+                        <button class="btn btn-danger" onclick="removeCategory(${cIndex})">Hapus Kategori</button>
+                    </div>
+                    <div class="flex-row">
+                        <div class="form-group flex-1">
+                            <label>Nama Menu (Label)</label>
+                            <input type="text" class="form-control" value="${category.label}" oninput="updateCategory(${cIndex}, 'label', this.value)" placeholder="Contoh: Exterior">
+                        </div>
+                        <div class="form-group flex-1">
+                            <label>ID (Slug - Otomatis)</label>
+                            <input type="text" class="form-control" value="${category.id}" oninput="updateCategory(${cIndex}, 'id', this.value)" placeholder="contoh: exterior">
+                        </div>
+                    </div>
+                    <div id="items-container-${cIndex}"></div>
+                    <button class="btn btn-outline" onclick="addItem(${cIndex})" style="margin-top: 10px;">+ Tambah Sub-Menu (Konten)</button>
+                `;
+                
+                container.appendChild(catCard);
+
+                const itemsContainer = document.getElementById(`items-container-${cIndex}`);
+                category.items.forEach((item, iIndex) => {
+                    const itemCard = document.createElement('div');
+                    itemCard.className = 'item-card';
+                    
+                    // Note: textareanya kita beri ID unik untuk ditempel CKEditor
+                    itemCard.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <strong>Sub-Menu ${iIndex + 1}</strong>
+                            <button class="btn btn-danger" onclick="removeItem(${cIndex}, ${iIndex})" style="padding: 2px 8px;">X</button>
+                        </div>
+                        <div class="flex-row">
+                            <div class="form-group flex-1">
+                                <label>Judul Konten</label>
+                                <input type="text" class="form-control" value="${item.title}" oninput="updateItem(${cIndex}, ${iIndex}, 'title', this.value)" placeholder="Contoh: Front Grille">
+                            </div>
+                            <div class="form-group flex-1">
+                                <label>Slug ID</label>
+                                <input type="text" class="form-control" value="${item.slug}" oninput="updateItem(${cIndex}, ${iIndex}, 'slug', this.value)" placeholder="Otomatis terisi dari judul">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Link Gambar (URL)</label>
+                            <input type="text" class="form-control" value="${item.img}" oninput="updateItem(${cIndex}, ${iIndex}, 'img', this.value)" placeholder="https://cdn.argust.my.id/gambar.jpg">
+                        </div>
+                        <div class="form-group">
+                            <label>Deskripsi Konten</label>
+                            <textarea id="editor-${cIndex}-${iIndex}" class="form-control desc-editor">${item.desc}</textarea>
+                        </div>
+                    `;
+                    itemsContainer.appendChild(itemCard);
+                });
+            });
+
+            // Inisialisasi CKEditor setelah elemen HTML terbuat
+            initCKEditors();
+            updateOutput();
+        }
+
+        // ================= Inisialisasi Rich Text Editor =================
+        function initCKEditors() {
+            const textareas = document.querySelectorAll('.desc-editor');
+            textareas.forEach(ta => {
+                const editor = CKEDITOR.replace(ta.id, {
+                    allowedContent: true, // Mencegah CKEditor menghapus class CSS custom kamu
+                    height: 120,
+                    versionCheck: false, // MATIKAN POPUP UPGRADE CKEDITOR
+                    toolbar: [
+                        ['Bold', 'Italic', 'Underline', '-', 'RemoveFormat'],
+                        ['NumberedList', 'BulletedList'],
+                        ['Link', 'Unlink'],
+                        ['Table', 'Source'] // Tombol Source sangat penting untuk paste HTML Tabel
+                    ]
+                });
+
+                // Deteksi ketika teks diubah di dalam editor
+                editor.on('change', function() {
+                    const parts = ta.id.split('-');
+                    const c = parseInt(parts[1]);
+                    const idx = parseInt(parts[2]);
+                    // Update data array dan output JSON
+                    updateItem(c, idx, 'desc', this.getData());
+                });
+            });
+        }
+
+        // ================= Aksi Kategori =================
+        function addCategory() {
+            appData.push({ id: "", label: "", items: [] });
+            renderEditor();
+        }
+
+        function removeCategory(cIndex) {
+            if(confirm('Yakin ingin menghapus kategori ini beserta isinya?')) {
+                appData.splice(cIndex, 1);
+                renderEditor();
+            }
+        }
+
+        function updateCategory(cIndex, field, value) {
+            appData[cIndex][field] = value;
+            if (field === 'label' && !appData[cIndex].id) {
+                appData[cIndex].id = generateSlug(value);
+            }
+            updateOutput();
+        }
+
+        // ================= Aksi Item =================
+        function addItem(cIndex) {
+            appData[cIndex].items.push({ slug: "", title: "", desc: "", img: "" });
+            renderEditor();
+        }
+
+        function removeItem(cIndex, iIndex) {
+            if(confirm('Hapus sub-menu ini?')) {
+                appData[cIndex].items.splice(iIndex, 1);
+                renderEditor();
+            }
+        }
+
+        function updateItem(cIndex, iIndex, field, value) {
+            appData[cIndex].items[iIndex][field] = value;
+            if (field === 'title' && (!appData[cIndex].items[iIndex].slug || appData[cIndex].items[iIndex].slug === generateSlug(value.slice(0, -1)))) {
+                appData[cIndex].items[iIndex].slug = generateSlug(value);
+            }
+            updateOutput();
+        }
+
+        // ================= Output & Load =================
+        function updateOutput() {
+            const outputArea = document.getElementById('json-output');
+            outputArea.value = JSON.stringify(appData, null, 2);
+        }
+
+        function loadJSON() {
+            const outputArea = document.getElementById('json-output');
+            try {
+                const parsed = JSON.parse(outputArea.value);
+                if (Array.isArray(parsed)) {
+                    appData = parsed;
+                    renderEditor();
+                    alert('Data JSON berhasil di-load!');
+                } else {
+                    alert('Format JSON tidak valid (Harus diawali kurung siku [ ] )');
+                }
+            } catch (e) {
+                alert('Gagal membaca JSON. Pastikan formatnya benar tanpa ada koma yang berlebih.');
+            }
+        }
+
+        function copyJSON() {
+            const outputArea = document.getElementById('json-output');
+            outputArea.select();
+            document.execCommand('copy');
+            alert('JSON berhasil di-copy! Silakan paste ke file .json kamu.');
+        }
+
+        // Inisiasi pertama
+        window.onload = () => {
+            if(appData.length === 0) addCategory(); 
+        };
+    </script>
+</body>
+</html>
