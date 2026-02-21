@@ -1,0 +1,84 @@
+[
+  {
+    "id": "brio-satya",
+    "label": "New Honda BRIO SATYA",
+    "items": [
+      { "tipe": "S / E SE", "trans": "CVT", "harga": "Rp183,500,000", "essential": "Rp187,140,000", "extra": "Rp189,300,000" },
+      { "tipe": "E SE", "trans": "CVT", "harga": "Rp221,700,000", "essential": "Rp225,340,000", "extra": "Rp227,500,000" }
+    ]
+  },
+  {
+    "id": "brio-rs",
+    "label": "New Honda BRIO RS**",
+    "items": [
+      { "tipe": "RS SE", "trans": "MT", "harga": "Rp264,100,000", "essential": "Rp267,430,000", "extra": "Rp269,590,000" },
+      { "tipe": "RS SE", "trans": "CVT", "harga": "Rp274,100,000", "essential": "Rp277,740,000", "extra": "Rp279,900,000" }
+    ]
+  },
+  {
+    "id": "wr-v",
+    "label": "New Honda WR-V**",
+    "items": [
+      { "tipe": "E", "trans": "CVT", "harga": "Rp289,100,000", "essential": "Rp293,250,000", "extra": "Rp294,980,000" },
+      { "tipe": "RS**", "trans": "CVT", "harga": "Rp302,600,000", "essential": "Rp306,750,000", "extra": "Rp308,480,000" },
+      { "tipe": "RS with Honda Sensing**", "trans": "CVT", "harga": "Rp326,100,000", "essential": "Rp330,250,000", "extra": "Rp331,980,000" }
+    ]
+  },
+  {
+    "id": "city-hatchback",
+    "label": "New Honda CITY HATCHBACK RS**",
+    "items": [
+      { "tipe": "RS with Honda Sensing**", "trans": "CVT", "harga": "Rp384,500,000", "essential": "Rp388,640,000", "extra": "Rp390,370,000" }
+    ]
+  },
+  {
+    "id": "br-v",
+    "label": "All New Honda BR-V",
+    "items": [
+      { "tipe": "S / E", "trans": "MT", "harga": "Rp307,100,000", "essential": "Rp310,840,000", "extra": "Rp312,560,000" },
+      { "tipe": "E / E N7X Edition", "trans": "CVT", "harga": "Rp323,000,000", "essential": "Rp326,740,000", "extra": "Rp328,460,000" },
+      { "tipe": "PRES N7X Edition", "trans": "CVT", "harga": "Rp361,200,000", "essential": "Rp365,240,000", "extra": "Rp366,970,000" },
+      { "tipe": "PRES with Sensing N7X", "trans": "CVT", "harga": "Rp381,200,000", "essential": "Rp385,240,000", "extra": "Rp386,970,000" }
+    ]
+  },
+  {
+    "id": "hr-v",
+    "label": "New Honda HR-V**",
+    "items": [
+      { "tipe": "1.5 E**", "trans": "CVT", "harga": "Rp388,700,000", "essential": "Rp393,390,000", "extra": "Rp395,110,000" },
+      { "tipe": "1.5 E+**", "trans": "CVT", "harga": "Rp411,300,000", "essential": "Rp415,990,000", "extra": "Rp417,710,000" },
+      { "tipe": "1.5 e:HEV**", "trans": "E-CVT", "harga": "Rp449,000,000", "essential": "Rp453,720,000", "extra": "Rp455,440,000" },
+      { "tipe": "1.5 e:HEV Modulo**", "trans": "E-CVT", "harga": "Rp460,700,000", "essential": "Rp465,420,000", "extra": "Rp467,140,000" },
+      { "tipe": "1.5 RS e:HEV**", "trans": "E-CVT", "harga": "Rp488,000,000", "essential": "Rp492,720,000", "extra": "Rp494,440,000" }
+    ]
+  },
+  {
+    "id": "cr-v",
+    "label": "All New Honda CR-V",
+    "items": [
+      { "tipe": "e:HEV", "trans": "E-CVT", "harga": "Rp775,000,000", "essential": "Rp780,600,000", "extra": "Rp781,750,000" },
+      { "tipe": "2.0 RS e:HEV", "trans": "CVT", "harga": "Rp825,800,000", "essential": "Rp831,400,000", "extra": "Rp832,550,000" }
+    ]
+  },
+  {
+    "id": "civic-rs",
+    "label": "New Honda CIVIC RS",
+    "items": [
+      { "tipe": "2.0 RS e:HEV", "trans": "E-CVT", "harga": "Rp699,000,000", "essential": "Rp704,600,000", "extra": "Rp705,750,000" }
+    ]
+  },
+  {
+    "id": "accord",
+    "label": "All New Honda ACCORD",
+    "items": [
+      { "tipe": "2.0 RS e:HEV", "trans": "E-CVT", "harga": "Rp970,900,000", "essential": "-", "extra": "Rp981,070,000" }
+    ]
+  },
+  {
+    "id": "step-wgn",
+    "label": "Honda STEP WGN e:HEV",
+    "items": [
+      { "tipe": "2.0 e:HEV", "trans": "E-CVT", "harga": "Rp637,800,000", "essential": "Rp644,940,000", "extra": "Rp646,360,000" }
+    ]
+  }
+]
