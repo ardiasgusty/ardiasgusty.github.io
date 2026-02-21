@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honda Pricelist JSON Generator</title>
+    
+    <style>
+        :root {
+            --primary: #cc0000; 
+            --primary-hover: #a30000;
+            --bg: #f4f6f9;
+            --card: #ffffff;
+            --border: #ddd;
+            --text: #333;
+        }
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { margin: 0; padding: 0; background-color: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+        
+        .header { background: #111; color: #fff; padding: 15px 20px; font-size: 20px; font-weight: bold; position: fixed; top: 0; width: 100%; z-index: 10; display: flex; justify-content: space-between; align-items: center; }
+        .container { display: flex; width: 100%; margin-top: 60px; height: calc(100vh - 60px); }
+        .editor-panel { flex: 6; padding: 20px; overflow-y: auto; background: var(--bg); border-right: 2px solid var(--border); }
+        .output-panel { flex: 4; padding: 20px; display: flex; flex-direction: column; background: #fff; }
+        
+        .category-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .category-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
+        .item-card { background: #fdfdfd; border: 1px solid #eee; border-left: 4px solid var(--primary); border-radius: 4px; padding: 15px; margin-bottom: 15px; margin-left: 20px; position: relative;}
+        
+        .note-card { background: #fff3f3; border: 1px solid #ffcccc; border-left: 4px solid var(--primary); border-radius: 4px; padding: 15px; margin-bottom: 10px; display: flex; gap: 10px; align-items: flex-start;}
+        
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 13px; color: #555; }
+        .form-control { width: 100%; padding: 8px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px; }
+        .form-control:focus { border-color: var(--primary); outline: none; }
+        
+        .btn { padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px; transition: background 0.2s; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-hover); }
+        .btn-secondary { background: #555; color: white; }
+        .btn-secondary:hover { background: #333; }
+        .btn-danger { background: #dc3545; color: white; padding: 6px 12px; font-size: 12px; }
+        .btn-danger:hover { background: #c82333; }
+        .btn-outline { background: transparent; border: 1px solid #ccc; color: #333; }
+        
+        .flex-row { display: flex; gap: 10px; }
+        .flex-1 { flex: 1; }
+        .flex-2 { flex: 2; }
+        
+        #json-output { width: 100%; flex: 1; padding: 15px; font-family: 'Courier New', Courier, monospace; font-size: 13px; background: #282c34; color: #d1d9e1; border-radius: 4px; border: none; resize: none; margin-top: 10px; margin-bottom: 10px;}
+        
+        .section-title { font-size: 18px; color: #333; margin-top: 30px; margin-bottom: 15px; border-bottom: 2px solid #ccc; padding-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div>Honda Bintaro Pricelist JSON Generator</div>
+        <div style="font-size: 14px; font-weight: normal;">Created for Argust</div>
+    </div>
+
+    <div class="container">
+        <div class="editor-panel">
+            
+            <div class="section-title">1. Data Tabel Mobil (Models)</div>
+            <div id="models-container"></div>
+            <button class="btn btn-primary" onclick="addModel()" style="margin-top: 10px; width: 100%; padding: 12px; font-size: 16px;">
+                + Tambah Grup Model Mobil
+            </button>
+
+            <div class="section-title">2. Syarat & Ketentuan (Notes)</div>
+            <div id="notes-container"></div>
+            <button class="btn btn-outline" onclick="addNote()" style="margin-top: 10px; width: 100%; padding: 12px; font-size: 14px; border-style: dashed;">
+                + Tambah Baris Keterangan / S&K
+            </button>
+            <div style="height: 50px;"></div> </div>
+
+        <div class="output-panel">
+            <h3 style="margin-top: 0;">Preview & Output JSON</h3>
+            <p style="font-size: 13px; color: #666; margin-top: -10px;">Paste JSON lamamu ke sini, lalu klik Load untuk mengedit.</p>
+            <textarea id="json-output"></textarea>
+            <div class="flex-row">
+                <button class="btn btn-primary flex-1" onclick="copyJSON()">Copy JSON</button>
+                <button class="btn btn-secondary flex-1" onclick="loadJSON()">Load Data dari JSON</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Struktur dasar JSON untuk Pricelist
+        let appData = {
+            models: [],
+            notes: []
+        };
+
+        function generateSlug(text) {
+            return text.toString().toLowerCase()
+                .replace(/\s+/g, '-')           
+                .replace(/[^\w\-]+/g, '')       
+                .replace(/\-\-+/g, '-')         
+                .replace(/^-+/, '')             
+                .replace(/-+$/, '');            
+        }
+
+        function renderEditor() {
+            // Render Bagian Models (Mobil)
+            const modelsContainer = document.getElementById('models-container');
+            modelsContainer.innerHTML = '';
+
+            appData.models.forEach((modelGroup, mIndex) => {
+                const modelCard = document.createElement('div');
+                modelCard.className = 'category-card';
+                
+                modelCard.innerHTML = `
+                    <div class="category-header">
+                        <h3 style="margin: 0;">Model: ${modelGroup.label || 'Nama Mobil Baru'}</h3>
+                        <button class="btn btn-danger" onclick="removeModel(${mIndex})">Hapus Model</button>
+                    </div>
+                    <div class="flex-row">
+                        <div class="form-group flex-1">
+                            <label>Nama Model (Akan otomatis di-bold & merge)</label>
+                            <input type="text" class="form-control" value="${modelGroup.label}" oninput="updateModel(${mIndex}, 'label', this.value)" placeholder="Contoh: New Honda BRIO SATYA">
+                        </div>
+                        <div class="form-group flex-1">
+                            <label>ID (Slug - Opsional)</label>
+                            <input type="text" class="form-control" value="${modelGroup.id}" oninput="updateModel(${mIndex}, 'id', this.value)" placeholder="contoh: brio-satya">
+                        </div>
+                    </div>
+                    <div id="items-container-${mIndex}"></div>
+                    <button class="btn btn-outline" onclick="addModelItem(${mIndex})" style="margin-top: 10px; font-size: 12px;">+ Tambah Varian / Tipe</button>
+                `;
+                
+                modelsContainer.appendChild(modelCard);
+
+                // Render Varian Tipe di dalam Model
+                const itemsContainer = document.getElementById(`items-container-${mIndex}`);
+                modelGroup.items.forEach((item, iIndex) => {
+                    const itemCard = document.createElement('div');
+                    itemCard.className = 'item-card';
+                    
+                    itemCard.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <strong style="color:var(--primary);">Varian ${iIndex + 1}</strong>
+                            <button class="btn btn-danger" onclick="removeModelItem(${mIndex}, ${iIndex})" style="padding: 2px 8px;">X</button>
+                        </div>
+                        <div class="flex-row">
+                            <div class="form-group flex-2">
+                                <label>TIPE</label>
+                                <input type="text" class="form-control" value="${item.tipe || ''}" oninput="updateModelItem(${mIndex}, ${iIndex}, 'tipe', this.value)" placeholder="Contoh: E SE">
+                            </div>
+                            <div class="form-group flex-1">
+                                <label>TRANS</label>
+                                <input type="text" class="form-control" value="${item.trans || ''}" oninput="updateModelItem(${mIndex}, ${iIndex}, 'trans', this.value)" placeholder="Contoh: CVT">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="form-group flex-1">
+                                <label>HARGA OTR</label>
+                                <input type="text" class="form-control" value="${item.harga || ''}" oninput="updateModelItem(${mIndex}, ${iIndex}, 'harga', this.value)" placeholder="Rp183,500,000">
+                            </div>
+                            <div class="form-group flex-1">
+                                <label>PAKET ESSENTIAL</label>
+                                <input type="text" class="form-control" value="${item.essential || ''}" oninput="updateModelItem(${mIndex}, ${iIndex}, 'essential', this.value)" placeholder="Rp187,140,000">
+                            </div>
+                            <div class="form-group flex-1">
+                                <label>PAKET EXTRA</label>
+                                <input type="text" class="form-control" value="${item.extra || ''}" oninput="updateModelItem(${mIndex}, ${iIndex}, 'extra', this.value)" placeholder="Rp189,300,000">
+                            </div>
+                        </div>
+                    `;
+                    itemsContainer.appendChild(itemCard);
+                });
+            });
+
+            // Render Bagian Notes (S&K)
+            const notesContainer = document.getElementById('notes-container');
+            notesContainer.innerHTML = '';
+            
+            appData.notes.forEach((note, nIndex) => {
+                const noteCard = document.createElement('div');
+                noteCard.className = 'note-card';
+                noteCard.innerHTML = `
+                    <textarea class="form-control flex-1" rows="2" oninput="updateNote(${nIndex}, this.value)" placeholder="Masukkan teks keterangan di sini...">${note}</textarea>
+                    <button class="btn btn-danger" onclick="removeNote(${nIndex})">X</button>
+                `;
+                notesContainer.appendChild(noteCard);
+            });
+
+            updateOutput();
+        }
+
+        // ================= Aksi Model =================
+        function addModel() {
+            appData.models.push({ id: "", label: "", items: [] });
+            renderEditor();
+        }
+
+        function removeModel(mIndex) {
+            if(confirm('Yakin ingin menghapus model ini beserta semua variannya?')) {
+                appData.models.splice(mIndex, 1);
+                renderEditor();
+            }
+        }
+
+        function updateModel(mIndex, field, value) {
+            appData.models[mIndex][field] = value;
+            if (field === 'label' && !appData.models[mIndex].id) {
+                appData.models[mIndex].id = generateSlug(value);
+            }
+            updateOutput();
+        }
+
+        // ================= Aksi Item (Varian) =================
+        function addModelItem(mIndex) {
+            appData.models[mIndex].items.push({ tipe: "", trans: "", harga: "", essential: "", extra: "" });
+            renderEditor();
+        }
+
+        function removeModelItem(mIndex, iIndex) {
+            if(confirm('Hapus varian ini?')) {
+                appData.models[mIndex].items.splice(iIndex, 1);
+                renderEditor();
+            }
+        }
+
+        function updateModelItem(mIndex, iIndex, field, value) {
+            appData.models[mIndex].items[iIndex][field] = value;
+            updateOutput();
+        }
+
+        // ================= Aksi Notes (S&K) =================
+        function addNote() {
+            appData.notes.push("");
+            renderEditor();
+        }
+
+        function removeNote(nIndex) {
+            appData.notes.splice(nIndex, 1);
+            renderEditor();
+        }
+
+        function updateNote(nIndex, value) {
+            appData.notes[nIndex] = value;
+            updateOutput();
+        }
+
+        // ================= Output & Load =================
+        function updateOutput() {
+            const outputArea = document.getElementById('json-output');
+            outputArea.value = JSON.stringify(appData, null, 2);
+        }
+
+        function loadJSON() {
+            const outputArea = document.getElementById('json-output');
+            try {
+                const parsed = JSON.parse(outputArea.value);
+                // Validasi sederhana apakah JSON memiliki property models dan notes
+                if (parsed && typeof parsed === 'object') {
+                    appData.models = parsed.models || [];
+                    appData.notes = parsed.notes || [];
+                    renderEditor();
+                    alert('Data JSON berhasil di-load! Silakan mulai mengedit.');
+                } else {
+                    alert('Format JSON tidak valid.');
+                }
+            } catch (e) {
+                alert('Gagal membaca JSON. Pastikan formatnya benar.');
+            }
+        }
+
+        function copyJSON() {
+            const outputArea = document.getElementById('json-output');
+            outputArea.select();
+            document.execCommand('copy');
+            alert('JSON berhasil di-copy! Paste langsung ke file honda-pricelist.json di GitHub kamu.');
+        }
+
+        // Inisiasi pertama saat dibuka
+        window.onload = () => {
+            if(appData.models.length === 0) addModel(); 
+        };
+    </script>
+</body>
+</html>
