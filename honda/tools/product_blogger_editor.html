@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honda Products JSON Generator - Argust</title>
+    
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
+    <style>
+        :root {
+            --primary: #cc0000; 
+            --primary-hover: #a30000;
+            --bg: #f4f6f9;
+            --card: #ffffff;
+            --border: #ddd;
+            --text: #333;
+        }
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { margin: 0; padding: 0; background-color: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+        
+        .header { background: #111; color: #fff; padding: 15px 20px; font-size: 20px; font-weight: bold; position: fixed; top: 0; width: 100%; z-index: 10; display: flex; justify-content: space-between; align-items: center; }
+        .container { display: flex; width: 100%; margin-top: 60px; height: calc(100vh - 60px); }
+        .editor-panel { flex: 6; padding: 20px; overflow-y: auto; background: var(--bg); border-right: 2px solid var(--border); }
+        .output-panel { flex: 4; padding: 20px; display: flex; flex-direction: column; background: #fff; }
+        
+        .car-card { background: var(--card); border: 1px solid var(--border); border-top: 4px solid var(--primary); border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .car-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px; color: #555; }
+        .form-control { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+        .form-control:focus { border-color: var(--primary); outline: none; }
+        textarea.form-control { resize: vertical; min-height: 80px; }
+        
+        .btn { padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px; transition: background 0.2s; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-hover); }
+        .btn-secondary { background: #555; color: white; }
+        .btn-secondary:hover { background: #333; }
+        .btn-danger { background: #dc3545; color: white; padding: 6px 12px; font-size: 12px; }
+        .btn-danger:hover { background: #c82333; }
+        
+        .flex-row { display: flex; gap: 15px; }
+        .flex-1 { flex: 1; }
+        
+        #json-output { width: 100%; flex: 1; padding: 15px; font-family: 'Courier New', Courier, monospace; font-size: 13px; background: #282c34; color: #d1d9e1; border-radius: 4px; border: none; resize: none; margin-top: 10px; margin-bottom: 10px;}
+        
+        .cke_chrome { border: 1px solid #ccc !important; border-radius: 4px !important; box-shadow: none !important; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div>Honda Products JSON Generator</div>
+        <div style="font-size: 14px; font-weight: normal;">Created for Argust</div>
+    </div>
+
+    <div class="container">
+        <div class="editor-panel">
+            <div style="background: #e9ecef; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; font-size: 13px; border-left: 4px solid #17a2b8;">
+                <strong>💡 Info:</strong> Varian dipisahkan dengan baris baru (Enter). Untuk URL gambar, gunakan tautan langsung dari Blogger/GitHub CDN kamu.
+            </div>
+            <div id="cars-container"></div>
+            <button class="btn btn-primary" onclick="addCar()" style="margin-top: 10px; width: 100%; padding: 12px; font-size: 16px;">
+                + Tambah Mobil Baru
+            </button>
+        </div>
+
+        <div class="output-panel">
+            <h3 style="margin-top: 0;">Preview & Output JSON</h3>
+            <p style="font-size: 13px; color: #666; margin-top: -10px;">Paste JSON lama kamu di sini, lalu klik Load untuk mengeditnya.</p>
+            <textarea id="json-output"></textarea>
+            <div class="flex-row">
+                <button class="btn btn-primary flex-1" onclick="copyJSON()">Copy JSON</button>
+                <button class="btn btn-secondary flex-1" onclick="loadJSON()">Load Data dari JSON</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data sementara untuk UI (Array agar mudah di-render)
+        let uiData = [];
+
+        function renderEditor() {
+            // Hancurkan instance CKEditor lama agar tidak bentrok
+            for (let name in CKEDITOR.instances) {
+                CKEDITOR.instances[name].destroy(true);
+            }
+
+            const container = document.getElementById('cars-container');
+            container.innerHTML = '';
+
+            uiData.forEach((car, index) => {
+                const card = document.createElement('div');
+                card.className = 'car-card';
+                
+                card.innerHTML = `
+                    <div class="car-header">
+                        <h3 style="margin: 0; color: var(--primary);">${car.carId ? car.carId.toUpperCase() : 'MOBIL BARU'}</h3>
+                        <button class="btn btn-danger" onclick="removeCar(${index})">Hapus Mobil</button>
+                    </div>
+                    
+                    <div class="flex-row">
+                        <div class="form-group flex-1">
+                            <label>ID Mobil / Slug (Tanpa spasi)</label>
+                            <input type="text" class="form-control" value="${car.carId}" oninput="updateCar(${index}, 'carId', this.value)" placeholder="contoh: stepwgn, brio, civic">
+                        </div>
+                        <div class="form-group flex-1">
+                            <label>Harga Mulai Dari (Angka Saja)</label>
+                            <input type="number" class="form-control" value="${car.price}" oninput="updateCar(${index}, 'price', this.value)" placeholder="contoh: 637800000">
+                        </div>
+                    </div>
+
+                    <div class="flex-row">
+                        <div class="form-group flex-1">
+                            <label>DP (Down Payment)</label>
+                            <input type="text" class="form-control" value="${car.dp}" oninput="updateCar(${index}, 'dp', this.value)" placeholder="contoh: Rp. 20.000.000">
+                        </div>
+                        <div class="form-group flex-1">
+                            <label>Angsuran</label>
+                            <input type="text" class="form-control" value="${car.angsuran}" oninput="updateCar(${index}, 'angsuran', this.value)" placeholder="contoh: Rp. 4.500.000">
+                        </div>
+                    </div>
+
+                    <div class="flex-row">
+                        <div class="form-group flex-1">
+                            <label>Seats (Kapasitas)</label>
+                            <input type="text" class="form-control" value="${car.seats}" oninput="updateCar(${index}, 'seats', this.value)" placeholder="contoh: 7-Seater">
+                        </div>
+                        <div class="form-group flex-1">
+                            <label>Mesin (Engine)</label>
+                            <input type="text" class="form-control" value="${car.engine}" oninput="updateCar(${index}, 'engine', this.value)" placeholder="contoh: 1.5L DOHC i-VTEC">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Varian Harga (Pisahkan dengan Enter)</label>
+                        <textarea class="form-control" oninput="updateCar(${index}, 'variants', this.value)" placeholder="1.5 E/MT OTR: Rp285.700.000\n1.5 RS/CVT OTR: Rp315.700.000">${car.variants}</textarea>
+                    </div>
+
+                    <div class="flex-row">
+                        <div class="form-group flex-1">
+                            <label>URL Gambar Thumbnail</label>
+                            <input type="text" class="form-control" value="${car.imgThumb}" oninput="updateCar(${index}, 'imgThumb', this.value)" placeholder="https://...">
+                        </div>
+                        <div class="form-group flex-1">
+                            <label>URL Gambar Full (Besar)</label>
+                            <input type="text" class="form-control" value="${car.imgFull}" oninput="updateCar(${index}, 'imgFull', this.value)" placeholder="https://...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Deskripsi Konten (Rich Text)</label>
+                        <textarea id="editor-${index}" class="form-control desc-editor">${car.description}</textarea>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            initCKEditors();
+            updateOutput();
+        }
+
+        // ================= Inisialisasi Rich Text Editor =================
+        function initCKEditors() {
+            const textareas = document.querySelectorAll('.desc-editor');
+            textareas.forEach(ta => {
+                const editor = CKEDITOR.replace(ta.id, {
+                    allowedContent: true,
+                    height: 150,
+                    versionCheck: false,
+                    toolbar: [
+                        ['Bold', 'Italic', 'Underline', '-', 'RemoveFormat'],
+                        ['NumberedList', 'BulletedList'],
+                        ['Link', 'Unlink'],
+                        ['Source']
+                    ]
+                });
+
+                editor.on('change', function() {
+                    const idx = parseInt(ta.id.split('-')[1]);
+                    updateCar(idx, 'description', this.getData());
+                });
+            });
+        }
+
+        // ================= Aksi Mobil =================
+        function addCar() {
+            uiData.push({ 
+                carId: "", price: "", variants: "", dp: "", angsuran: "", 
+                seats: "", engine: "", description: "", imgThumb: "", imgFull: "" 
+            });
+            renderEditor();
+        }
+
+        function removeCar(index) {
+            if(confirm('Yakin ingin menghapus data mobil ini?')) {
+                uiData.splice(index, 1);
+                renderEditor();
+            }
+        }
+
+        function updateCar(index, field, value) {
+            uiData[index][field] = value;
+            updateOutput();
+        }
+
+        // ================= Build Format Object JSON =================
+        function buildFinalJSON() {
+            let finalData = {};
+            uiData.forEach(car => {
+                if(!car.carId || car.carId.trim() === '') return;
+                
+                // Konversi varian dari textarea (enter) menjadi array
+                let variantArray = car.variants.split('\n').map(v => v.trim()).filter(v => v !== '');
+
+                let carObj = {
+                    price: Number(car.price) || 0,
+                    variants: variantArray,
+                    dp: car.dp || "",
+                    angsuran: car.angsuran || "",
+                    seats: car.seats || "",
+                    engine: car.engine || ""
+                };
+
+                // Masukkan deskripsi hanya jika ada
+                if (car.description && car.description.trim() !== '') {
+                    // Bersihkan enter yang berlebih agar JSON rapi satu baris
+                    carObj.description = car.description.replace(/(\r\n|\n|\r)/gm, "");
+                }
+
+                // Masukkan array images
+                if (car.imgThumb || car.imgFull) {
+                    carObj.images = [{
+                        thumb: car.imgThumb || "",
+                        full: car.imgFull || ""
+                    }];
+                }
+
+                finalData[car.carId] = carObj;
+            });
+            return finalData;
+        }
+
+        function updateOutput() {
+            const outputArea = document.getElementById('json-output');
+            outputArea.value = JSON.stringify(buildFinalJSON(), null, 2);
+        }
+
+        // ================= Load dari JSON =================
+        function loadJSON() {
+            const outputArea = document.getElementById('json-output');
+            try {
+                const parsed = JSON.parse(outputArea.value);
+                if (typeof parsed === 'object' && !Array.isArray(parsed)) {
+                    let newUiData = [];
+                    for (let key in parsed) {
+                        let car = parsed[key];
+                        newUiData.push({
+                            carId: key,
+                            price: car.price || "",
+                            variants: Array.isArray(car.variants) ? car.variants.join('\n') : "",
+                            dp: car.dp || "",
+                            angsuran: car.angsuran || "",
+                            seats: car.seats || "",
+                            engine: car.engine || "",
+                            description: car.description || "",
+                            imgThumb: (car.images && car.images.length > 0) ? car.images[0].thumb : "",
+                            imgFull: (car.images && car.images.length > 0) ? car.images[0].full : ""
+                        });
+                    }
+                    uiData = newUiData;
+                    renderEditor();
+                    alert('Data JSON berhasil di-load! Silakan mulai edit.');
+                } else {
+                    alert('Format JSON tidak valid! Pastikan formatnya adalah Object yang diawali dengan {');
+                }
+            } catch (e) {
+                alert('Gagal membaca JSON. Pastikan formatnya benar tanpa ada koma yang berlebih.');
+            }
+        }
+
+        function copyJSON() {
+            const outputArea = document.getElementById('json-output');
+            outputArea.select();
+            document.execCommand('copy');
+            alert('JSON berhasil di-copy! Silakan paste ke file produk kamu di GitHub.');
+        }
+
+        // Inisiasi pertama
+        window.onload = () => {
+            if(uiData.length === 0) addCar(); 
+        };
+    </script>
+</body>
+</html>
