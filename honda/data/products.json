@@ -25,7 +25,13 @@
     "angsuran": "Rp. 20.200.000",
     "seats": "5-Seater",
     "engine": "2.0L DOHC i-VTEC Engine + E-CVT",
-    "description": "<p>Nikmati kemewahan berkendara dengan <b>Honda Accord</b>. Sedan premium yang memadukan desain elegan dengan teknologi <i>hybrid</i> mutakhir untuk kenyamanan maksimal.</p>"
+    "description": "<p>Nikmati kemewahan berkendara dengan <b>Honda Accord</b>. Sedan premium yang memadukan desain elegan dengan teknologi <i>hybrid</i> mutakhir untuk kenyamanan maksimal.</p>",
+    "images": [
+      {
+        "thumb": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWvMwoB6GGssq0_Yk5nyjjcDifd7nYaEBj6hX7IBB9d8BfiykecuRo6d18_qIGmUs2rNy8xA_oiuFtIHyIDu0eGyPMHcT7Ym7zcT0DnHI7BZCTy8m9FaJHieJ3oA0y79RNiH9m9iL_WGVYt3WhDZEHoVcK2hMjKR3kpS63v-qtpLRgXkXOOwTsR3QJNejF/s1600/stepwgn-spada.webp",
+        "full": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWvMwoB6GGssq0_Yk5nyjjcDifd7nYaEBj6hX7IBB9d8BfiykecuRo6d18_qIGmUs2rNy8xA_oiuFtIHyIDu0eGyPMHcT7Ym7zcT0DnHI7BZCTy8m9FaJHieJ3oA0y79RNiH9m9iL_WGVYt3WhDZEHoVcK2hMjKR3kpS63v-qtpLRgXkXOOwTsR3QJNejF/s1600/stepwgn-spada.webp"
+      }
+    ]
   },
   "civic": {
     "price": 699000000,
@@ -36,7 +42,13 @@
     "angsuran": "Rp. 14.600.000",
     "seats": "5-Seater",
     "engine": "2.0L DOHC i-VTEC Engine + DBW",
-    "description": "<p>Tampil sporty dan elegan dengan <b>Honda Civic RS</b>. Dilengkapi mesin bertenaga dan fitur keselamatan terdepan.</p>"
+    "description": "<p>Tampil sporty dan elegan dengan <b>Honda Civic RS</b>. Dilengkapi mesin bertenaga dan fitur keselamatan terdepan.</p>",
+    "images": [
+      {
+        "thumb": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWvMwoB6GGssq0_Yk5nyjjcDifd7nYaEBj6hX7IBB9d8BfiykecuRo6d18_qIGmUs2rNy8xA_oiuFtIHyIDu0eGyPMHcT7Ym7zcT0DnHI7BZCTy8m9FaJHieJ3oA0y79RNiH9m9iL_WGVYt3WhDZEHoVcK2hMjKR3kpS63v-qtpLRgXkXOOwTsR3QJNejF/s1600/stepwgn-spada.webp",
+        "full": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWvMwoB6GGssq0_Yk5nyjjcDifd7nYaEBj6hX7IBB9d8BfiykecuRo6d18_qIGmUs2rNy8xA_oiuFtIHyIDu0eGyPMHcT7Ym7zcT0DnHI7BZCTy8m9FaJHieJ3oA0y79RNiH9m9iL_WGVYt3WhDZEHoVcK2hMjKR3kpS63v-qtpLRgXkXOOwTsR3QJNejF/s1600/stepwgn-spada.webp"
+      }
+    ]
   },
   "city-hb": {
     "price": 384500000,
@@ -47,7 +59,13 @@
     "angsuran": "Rp. 8.200.000",
     "seats": "5-Seater",
     "engine": "1.5L DOHC i-VTEC Engine",
-    "description": "<p>Hatchback stylish dengan performa tinggi. <b>Honda City Hatchback RS</b> siap menemani gaya hidup aktif Anda.</p>"
+    "description": "<p>Hatchback stylish dengan performa tinggi. <b>Honda City Hatchback RS</b> siap menemani gaya hidup aktif Anda.</p>",
+    "images": [
+      {
+        "thumb": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWvMwoB6GGssq0_Yk5nyjjcDifd7nYaEBj6hX7IBB9d8BfiykecuRo6d18_qIGmUs2rNy8xA_oiuFtIHyIDu0eGyPMHcT7Ym7zcT0DnHI7BZCTy8m9FaJHieJ3oA0y79RNiH9m9iL_WGVYt3WhDZEHoVcK2hMjKR3kpS63v-qtpLRgXkXOOwTsR3QJNejF/s1600/stepwgn-spada.webp",
+        "full": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWvMwoB6GGssq0_Yk5nyjjcDifd7nYaEBj6hX7IBB9d8BfiykecuRo6d18_qIGmUs2rNy8xA_oiuFtIHyIDu0eGyPMHcT7Ym7zcT0DnHI7BZCTy8m9FaJHieJ3oA0y79RNiH9m9iL_WGVYt3WhDZEHoVcK2hMjKR3kpS63v-qtpLRgXkXOOwTsR3QJNejF/s1600/stepwgn-spada.webp"
+      }
+    ]
   },
   "cr-v": {
     "price": 759000000,
@@ -59,7 +77,13 @@
     "angsuran": "Rp. 15.900.000",
     "seats": "7-Seater",
     "engine": "1.5L DOHC i-VTEC Engine",
-    "description": "<p>SUV Premium dengan teknologi canggih. <b>Honda CR-V</b> memberikan ketangguhan dan kenyamanan ekstra untuk perjalanan jauh.</p>"
+    "description": "<p>SUV Premium dengan teknologi canggih. <b>Honda CR-V</b> memberikan ketangguhan dan kenyamanan ekstra untuk perjalanan jauh.</p>",
+    "images": [
+      {
+        "thumb": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWvMwoB6GGssq0_Yk5nyjjcDifd7nYaEBj6hX7IBB9d8BfiykecuRo6d18_qIGmUs2rNy8xA_oiuFtIHyIDu0eGyPMHcT7Ym7zcT0DnHI7BZCTy8m9FaJHieJ3oA0y79RNiH9m9iL_WGVYt3WhDZEHoVcK2hMjKR3kpS63v-qtpLRgXkXOOwTsR3QJNejF/s1600/stepwgn-spada.webp",
+        "full": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWvMwoB6GGssq0_Yk5nyjjcDifd7nYaEBj6hX7IBB9d8BfiykecuRo6d18_qIGmUs2rNy8xA_oiuFtIHyIDu0eGyPMHcT7Ym7zcT0DnHI7BZCTy8m9FaJHieJ3oA0y79RNiH9m9iL_WGVYt3WhDZEHoVcK2hMjKR3kpS63v-qtpLRgXkXOOwTsR3QJNejF/s1600/stepwgn-spada.webp"
+      }
+    ]
   },
   "wr-v": {
     "price": 285700000,
@@ -73,7 +97,13 @@
     "angsuran": "Rp. 6.200.000",
     "seats": "5-Seater",
     "engine": "1.5L DOHC i-VTEC Engine",
-    "description": "<p>Compact SUV yang siap menemani petualangan Anda. <b>Honda WR-V</b> gesit di perkotaan dan tangguh di luar kota.</p>"
+    "description": "<p>Compact SUV yang siap menemani petualangan Anda. <b>Honda WR-V</b> gesit di perkotaan dan tangguh di luar kota.</p>",
+    "images": [
+      {
+        "thumb": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWvMwoB6GGssq0_Yk5nyjjcDifd7nYaEBj6hX7IBB9d8BfiykecuRo6d18_qIGmUs2rNy8xA_oiuFtIHyIDu0eGyPMHcT7Ym7zcT0DnHI7BZCTy8m9FaJHieJ3oA0y79RNiH9m9iL_WGVYt3WhDZEHoVcK2hMjKR3kpS63v-qtpLRgXkXOOwTsR3QJNejF/s1600/stepwgn-spada.webp",
+        "full": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWvMwoB6GGssq0_Yk5nyjjcDifd7nYaEBj6hX7IBB9d8BfiykecuRo6d18_qIGmUs2rNy8xA_oiuFtIHyIDu0eGyPMHcT7Ym7zcT0DnHI7BZCTy8m9FaJHieJ3oA0y79RNiH9m9iL_WGVYt3WhDZEHoVcK2hMjKR3kpS63v-qtpLRgXkXOOwTsR3QJNejF/s1600/stepwgn-spada.webp"
+      }
+    ]
   },
   "hr-v": {
     "price": 401000000,
@@ -88,7 +118,13 @@
     "angsuran": "Rp. 8.500.000",
     "seats": "5-Seater",
     "engine": "1.5L DOHC i-VTEC Engine + DBW",
-    "description": "<p>Tampil luar biasa dengan desain SUV yang tangguh. <b>Honda HR-V</b> menawarkan fitur modern dan performa mengesankan.</p>"
+    "description": "<p>Tampil luar biasa dengan desain SUV yang tangguh. <b>Honda HR-V</b> menawarkan fitur modern dan performa mengesankan.</p>",
+    "images": [
+      {
+        "thumb": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWvMwoB6GGssq0_Yk5nyjjcDifd7nYaEBj6hX7IBB9d8BfiykecuRo6d18_qIGmUs2rNy8xA_oiuFtIHyIDu0eGyPMHcT7Ym7zcT0DnHI7BZCTy8m9FaJHieJ3oA0y79RNiH9m9iL_WGVYt3WhDZEHoVcK2hMjKR3kpS63v-qtpLRgXkXOOwTsR3QJNejF/s1600/stepwgn-spada.webp",
+        "full": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWvMwoB6GGssq0_Yk5nyjjcDifd7nYaEBj6hX7IBB9d8BfiykecuRo6d18_qIGmUs2rNy8xA_oiuFtIHyIDu0eGyPMHcT7Ym7zcT0DnHI7BZCTy8m9FaJHieJ3oA0y79RNiH9m9iL_WGVYt3WhDZEHoVcK2hMjKR3kpS63v-qtpLRgXkXOOwTsR3QJNejF/s1600/stepwgn-spada.webp"
+      }
+    ]
   },
   "br-v": {
     "price": 335700000,
@@ -101,7 +137,13 @@
     "angsuran": "Rp. 4.700.000",
     "seats": "7-Seater",
     "engine": "1.5L DOHC i-VTEC Engine",
-    "description": "<p>Kenyamanan ekstra untuk seluruh keluarga. <b>Honda BR-V</b> dilengkapi kabin lapang dan fitur keselamatan terdepan.</p>"
+    "description": "<p>Kenyamanan ekstra untuk seluruh keluarga. <b>Honda BR-V</b> dilengkapi kabin lapang dan fitur keselamatan terdepan.</p>",
+    "images": [
+      {
+        "thumb": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWvMwoB6GGssq0_Yk5nyjjcDifd7nYaEBj6hX7IBB9d8BfiykecuRo6d18_qIGmUs2rNy8xA_oiuFtIHyIDu0eGyPMHcT7Ym7zcT0DnHI7BZCTy8m9FaJHieJ3oA0y79RNiH9m9iL_WGVYt3WhDZEHoVcK2hMjKR3kpS63v-qtpLRgXkXOOwTsR3QJNejF/s1600/stepwgn-spada.webp",
+        "full": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWvMwoB6GGssq0_Yk5nyjjcDifd7nYaEBj6hX7IBB9d8BfiykecuRo6d18_qIGmUs2rNy8xA_oiuFtIHyIDu0eGyPMHcT7Ym7zcT0DnHI7BZCTy8m9FaJHieJ3oA0y79RNiH9m9iL_WGVYt3WhDZEHoVcK2hMjKR3kpS63v-qtpLRgXkXOOwTsR3QJNejF/s1600/stepwgn-spada.webp"
+      }
+    ]
   },
   "brio": {
     "price": 183500000,
@@ -115,6 +157,12 @@
     "angsuran": "Rp. 3.500.000",
     "seats": "5-Seater",
     "engine": "1.2L DOHC i-VTEC Engine",
-    "description": "<p>Mobil compact yang lincah dan irit bahan bakar. <b>Honda Brio</b> sangat cocok untuk keseharian Anda yang dinamis.</p>"
+    "description": "<p>Mobil compact yang lincah dan irit bahan bakar. <b>Honda Brio</b> sangat cocok untuk keseharian Anda yang dinamis.</p>",
+    "images": [
+      {
+        "thumb": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEib1J396izrCcV9hPRDsQ7SVM2manWlqrZk5iH8Xe1T2LfaN9fzvU-KVgLiZGHGaXDoX67XW4DE1At8k5gccPKnKF8C4FftAtRHWyVU2NzLBW7welv6KGmblQYKFNlWohG5uG-bC87puPOM7irPjLfxcIGVrwvskhlTGR-RL4t_1IxFz9i56S4IUYMpCsqq/s1600/brio-rs.webp",
+        "full": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEib1J396izrCcV9hPRDsQ7SVM2manWlqrZk5iH8Xe1T2LfaN9fzvU-KVgLiZGHGaXDoX67XW4DE1At8k5gccPKnKF8C4FftAtRHWyVU2NzLBW7welv6KGmblQYKFNlWohG5uG-bC87puPOM7irPjLfxcIGVrwvskhlTGR-RL4t_1IxFz9i56S4IUYMpCsqq/s1600/brio-rs.webp"
+      }
+    ]
   }
 }
