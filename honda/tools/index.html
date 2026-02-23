@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honda Bintaro - Admin Tools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background-color: #f8fafc; }
+        .tool-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="min-h-screen flex flex-col items-center py-12 px-4">
+        <div class="text-center mb-12">
+            <h1 class="text-3xl font-bold text-slate-800 mb-2">Internal Marketing Tools</h1>
+            <p class="text-slate-500">Dashboard pengelolaan data JSON - Honda Bintaro</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full">
+            
+            <a href="product_blogger_editor.html" class="tool-card block p-6 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md hover:border-red-500">
+                <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center mb-4 text-2xl">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </div>
+                <h2 class="text-xl font-semibold text-slate-800 mb-2">Blogger Editor</h2>
+                <p class="text-slate-600 text-sm">Update konten produk dan script untuk postingan Blogger secara instan.</p>
+            </a>
+
+            <a href="pricelist-editor.html" class="tool-card block p-6 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md hover:border-blue-500">
+                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-4 text-2xl">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+                <h2 class="text-xl font-semibold text-slate-800 mb-2">Pricelist Editor</h2>
+                <p class="text-slate-600 text-sm">Ubah daftar harga kendaraan dan simulasi kredit tanpa menyentuh code.</p>
+            </a>
+
+            <a href="buildyourdreams.html" class="tool-card block p-6 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md hover:border-emerald-500">
+                <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center mb-4 text-2xl">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <h2 class="text-xl font-semibold text-slate-800 mb-2">Build Your Dreams</h2>
+                <p class="text-slate-600 text-sm">Tools konfigurasi atau fitur khusus lainnya untuk marketing campaign.</p>
+            </a>
+
+        </div>
+
+        <footer class="mt-auto pt-12 text-slate-400 text-xs">
+            &copy; 2026 Honda Bintaro Digital Division • Logged as Argust
+        </footer>
+    </div>
+
+</body>
+</html>
