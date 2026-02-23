@@ -3,88 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Argust | Creative & Digital Marketing</title>
+    <title>Argust | Digital Space</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #0f172a; 
+            background-color: #0c0c0e; 
             color: #f8fafc;
         }
         .gradient-text {
-            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .glass-card:hover {
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            background: rgba(255, 255, 255, 0.05);
-            transition: all 0.4s ease;
+            border: 1px solid rgba(167, 139, 250, 0.5);
+            background: rgba(167, 139, 250, 0.05);
+            transform: scale(1.02);
+        }
+        /* Custom Cursor Style */
+        .typed-cursor {
+            color: #a78bfa;
+            font-size: 0.8em;
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-center items-center overflow-x-hidden">
 
-    <div class="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] bg-blue-600/20 rounded-full blur-[120px] -z-10"></div>
-    <div class="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[120px] -z-10"></div>
+    <div class="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] -z-10"></div>
+    <div class="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] -z-10"></div>
 
     <main class="max-w-4xl w-full px-6 py-12 text-center">
-        <div class="inline-block px-4 py-1.5 mb-6 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-bold tracking-widest uppercase">
-            Digital Marketing & Creative Assets
+        <div class="inline-block px-4 py-1.5 mb-8 rounded-full border border-white/10 bg-white/5 text-slate-400 text-[10px] font-bold tracking-[0.3em] uppercase">
+            Argust Digital Lab
         </div>
 
-        <h1 class="text-6xl md:text-8xl font-extrabold mb-4 tracking-tighter">
-            <span class="gradient-text uppercase">ARGUST</span>
-        </h1>
+        <div class="h-24 md:h-32 flex items-center justify-center">
+            <h1 class="text-4xl md:text-7xl font-extrabold tracking-tighter">
+                <span id="typed" class="gradient-text uppercase"></span>
+            </h1>
+        </div>
         
-        <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12">
-            Menggabungkan strategi digital dengan eksekusi kreatif untuk menciptakan pengalaman yang berdampak.
+        <p class="text-slate-500 text-lg max-w-xl mx-auto mb-16 mt-4">
+            Digital Strategist at Honda Bintaro. Crafting creative solutions through code and marketing.
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
             
-            <a href="/honda/tools/" class="glass-card p-6 rounded-2xl flex items-center justify-between group">
-                <div class="text-left">
-                    <h3 class="font-bold text-lg">Marketing Tools</h3>
-                    <p class="text-slate-500 text-sm">Internal dashboard & editors</p>
-                </div>
-                <div class="bg-blue-500/20 p-3 rounded-xl group-hover:bg-blue-500 group-hover:text-white transition-all">
+            <a href="/honda/tools/" class="glass-card p-8 rounded-3xl flex flex-col items-start group">
+                <div class="bg-blue-500/20 text-blue-400 p-3 rounded-2xl mb-4 group-hover:bg-blue-500 group-hover:text-white transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a2 2 0 012 2v1a2 2 0 110 4H7a2 2 0 110-4v-1a2 2 0 012-2V4z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12v5a2 2 0 002 2h6a2 2 0 002-2v-5" />
                     </svg>
                 </div>
+                <h3 class="font-bold text-xl mb-1 text-white">Internal Tools</h3>
+                <p class="text-slate-500 text-sm text-left">Dashboard khusus untuk operasional digital marketing Honda Bintaro.</p>
             </a>
 
-            <a href="https://tiktok.com/@hororteknik" target="_blank" class="glass-card p-6 rounded-2xl flex items-center justify-between group">
-                <div class="text-left">
-                    <h3 class="font-bold text-lg">Creative Assets</h3>
-                    <p class="text-slate-500 text-sm">Technical tutorials & content</p>
-                </div>
-                <div class="bg-purple-500/20 p-3 rounded-xl group-hover:bg-purple-500 group-hover:text-white transition-all">
+            <a href="https://argust.my.id" target="_blank" class="glass-card p-8 rounded-3xl flex flex-col items-start group">
+                <div class="bg-pink-500/20 text-pink-400 p-3 rounded-2xl mb-4 group-hover:bg-pink-500 group-hover:text-white transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                     </svg>
                 </div>
+                <h3 class="font-bold text-xl mb-1 text-white">Personal Blog</h3>
+                <p class="text-slate-500 text-sm text-left">Berbagi insight tentang teknologi, marketing, dan catatan harian Argust.</p>
             </a>
 
-        </div>
-
-        <div class="mt-16 pt-8 border-t border-slate-800 flex justify-center space-x-8 text-slate-500">
-            <span class="hover:text-sky-400 cursor-default transition">Strategy</span>
-            <span class="hover:text-sky-400 cursor-default transition">Code</span>
-            <span class="hover:text-sky-400 cursor-default transition">Design</span>
         </div>
     </main>
 
-    <footer class="mt-auto py-8 text-slate-600 text-[10px] tracking-[0.2em] uppercase font-bold">
-        &copy; 2026 Gusti Ardias Riantono. Built for Scale.
+    <footer class="mt-auto py-10 text-slate-700 text-[9px] tracking-[0.4em] uppercase font-bold">
+        &copy; 2026 Gusti Ardias Riantono &bull; Made with Love
     </footer>
+
+    <script>
+        var typed = new Typed('#typed', {
+            strings: [
+                'Welcome to my space!', // Inggris
+                'Selamat datang!',      // Indonesia
+                'Sugeng rawuh!',        // Jawa (Biar ada sentuhan lokal)
+                'Bienvenue!',           // Perancis
+                'Irasshaimase!',        // Jepang
+                'Benvenuti!'            // Italia
+            ],
+            typeSpeed: 60,
+            backSpeed: 40,
+            backDelay: 2000,
+            loop: true
+        });
+    </script>
 
 </body>
 </html>
