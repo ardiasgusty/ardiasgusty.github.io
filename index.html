@@ -10,35 +10,95 @@
     <style>
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #0f172a; /* Warna awal yang kamu suka */
+            background-color: #050810; /* Lebih gelap sedikit untuk kontras luar angkasa */
             color: #f8fafc;
+            overflow: hidden; /* Mencegah scroll karena animasi */
         }
+
+        /* --- SPACE BACKGROUND CSS --- */
+        .space-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+        }
+
+        /* Bintang-bintang */
+        .stars {
+            position: absolute;
+            width: 2px; height: 2px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: blink 3s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Meteor/Shooting Star */
+        .meteor {
+            position: absolute;
+            width: 2px; height: 2px;
+            background: linear-gradient(90deg, white, transparent);
+            box-shadow: 0 0 10px white;
+            animation: shoot 10s linear infinite;
+        }
+
+        @keyframes shoot {
+            0% { transform: translateX(120vw) translateY(-10vh) rotate(-45deg); opacity: 1; }
+            10% { transform: translateX(-20vw) translateY(80vh) rotate(-45deg); opacity: 0; }
+            100% { transform: translateX(-20vw) translateY(80vh) rotate(-45deg); opacity: 0; }
+        }
+
+        /* Planet Kecil */
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #38bdf8, #1e3a8a);
+            box-shadow: inset -10px -10px 20px rgba(0,0,0,0.5), 0 0 20px rgba(56, 189, 248, 0.2);
+            z-index: -2;
+        }
+
+        /* --- UI STYLES --- */
         .gradient-text {
             background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
         }
+
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.4s ease;
         }
+
         .glass-card:hover {
             border: 1px solid rgba(56, 189, 248, 0.4);
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.07);
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-center items-center overflow-x-hidden">
+<body class="min-h-screen flex flex-col justify-center items-center">
 
-    <div class="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] bg-blue-600/20 rounded-full blur-[120px] -z-10"></div>
-    <div class="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[120px] -z-10"></div>
+    <div class="space-bg">
+        <div class="planet w-32 h-32 top-[15%] right-[10%] opacity-40"></div>
+        <div class="planet w-12 h-12 bottom-[20%] left-[15%] opacity-20 bg-purple-600"></div>
+        
+        <div class="meteor" style="top: 10%; animation-delay: 2s;"></div>
+        <div class="meteor" style="top: 40%; animation-delay: 7s;"></div>
 
-    <main class="max-w-4xl w-full px-6 py-12 text-center">
+        </div>
+
+    <main class="relative z-10 max-w-4xl w-full px-6 py-12 text-center">
         <div class="inline-block px-4 py-1.5 mb-6 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-bold tracking-widest uppercase">
-            Digital Marketing & Creative Assets
+            Argust • Digital Voyager
         </div>
 
         <div class="h-32 md:h-48 flex items-center justify-center">
@@ -78,19 +138,30 @@
         </div>
     </main>
 
-    <footer class="mt-auto py-8 text-slate-600 text-[10px] tracking-[0.2em] uppercase font-bold">
+    <footer class="relative z-10 mt-auto py-8 text-slate-600 text-[10px] tracking-[0.2em] uppercase font-bold">
         &copy; 2026 Gusti Ardias Riantono.
     </footer>
 
     <script>
+        // Generate Bintang secara acak
+        const space = document.querySelector('.space-bg');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'stars';
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.animationDelay = `${Math.random() * 3}s`;
+            space.appendChild(star);
+        }
+
         var typed = new Typed('#typed', {
             strings: [
-                'Welcome to my space!',       // Inggris
-                'Selamat datang di ruangku!', // Indonesia
-                'Sugeng rawuh ing papan kulo!', // Jawa
-                'Bienvenue dans mon espace!',  // Perancis
-                'Benvenuti nel mio spazio!',   // Italia
-                'Watashi no basho e yokoso!'   // Jepang (Romaji)
+                'Welcome to my space!',
+                'Selamat datang di ruangku!',
+                'Sugeng rawuh ing papan kulo!',
+                'Bienvenue dans mon espace!',
+                'Benvenuti nel mio spazio!',
+                'Watashi no basho e yokoso!'
             ],
             typeSpeed: 50,
             backSpeed: 30,
