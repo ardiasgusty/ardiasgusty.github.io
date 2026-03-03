@@ -53,7 +53,7 @@
 
     <div class="header">
         <div>Honda Products JSON Generator</div>
-        <div style="font-size: 14px; font-weight: normal;">Created for Argust</div>
+        <div style="font-size: 14px; font-weight: normal;">Created for Argust by Shiba</div>
     </div>
 
     <div class="container">
@@ -79,11 +79,9 @@
     </div>
 
     <script>
-        // Data sementara untuk UI (Array agar mudah di-render)
         let uiData = [];
 
         function renderEditor() {
-            // Hancurkan instance CKEditor lama agar tidak bentrok
             for (let name in CKEDITOR.instances) {
                 CKEDITOR.instances[name].destroy(true);
             }
@@ -95,9 +93,12 @@
                 const card = document.createElement('div');
                 card.className = 'car-card';
                 
+                // Jika nama mobil sudah diisi, jadikan judul card, kalau belum pakai carId
+                let cardTitle = car.name ? car.name : (car.carId ? car.carId.toUpperCase() : 'MOBIL BARU');
+
                 card.innerHTML = `
                     <div class="car-header">
-                        <h3 style="margin: 0; color: var(--primary);">${car.carId ? car.carId.toUpperCase() : 'MOBIL BARU'}</h3>
+                        <h3 style="margin: 0; color: var(--primary);">${cardTitle}</h3>
                         <button class="btn btn-danger" onclick="removeCar(${index})">Hapus Mobil</button>
                     </div>
                     
@@ -107,12 +108,16 @@
                             <input type="text" class="form-control" value="${car.carId}" oninput="updateCar(${index}, 'carId', this.value)" placeholder="contoh: stepwgn, brio, civic">
                         </div>
                         <div class="form-group flex-1">
-                            <label>Harga Mulai Dari (Angka Saja)</label>
-                            <input type="number" class="form-control" value="${car.price}" oninput="updateCar(${index}, 'price', this.value)" placeholder="contoh: 637800000">
+                            <label>Nama Lengkap Mobil</label>
+                            <input type="text" class="form-control" value="${car.name}" oninput="updateCar(${index}, 'name', this.value)" placeholder="contoh: Honda Civic RS">
                         </div>
                     </div>
 
                     <div class="flex-row">
+                        <div class="form-group flex-1">
+                            <label>Harga Mulai Dari (Angka Saja)</label>
+                            <input type="number" class="form-control" value="${car.price}" oninput="updateCar(${index}, 'price', this.value)" placeholder="contoh: 637800000">
+                        </div>
                         <div class="form-group flex-1">
                             <label>DP (Down Payment)</label>
                             <input type="text" class="form-control" value="${car.dp}" oninput="updateCar(${index}, 'dp', this.value)" placeholder="contoh: Rp. 20.000.000">
@@ -162,7 +167,6 @@
             updateOutput();
         }
 
-        // ================= Inisialisasi Rich Text Editor =================
         function initCKEditors() {
             const textareas = document.querySelectorAll('.desc-editor');
             textareas.forEach(ta => {
@@ -185,10 +189,9 @@
             });
         }
 
-        // ================= Aksi Mobil =================
         function addCar() {
             uiData.push({ 
-                carId: "", price: "", variants: "", dp: "", angsuran: "", 
+                carId: "", name: "", price: "", variants: "", dp: "", angsuran: "", 
                 seats: "", engine: "", description: "", imgThumb: "", imgFull: "" 
             });
             renderEditor();
@@ -203,19 +206,22 @@
 
         function updateCar(index, field, value) {
             uiData[index][field] = value;
+            // Re-render hanya jika mengganti nama/ID agar judul card terupdate
+            if(field === 'name' || field === 'carId'){
+                 // Biar tidak mengganggu ketikan, biarkan saja, atau panggil fungsi ganti judul spesifik (Di-skip biar gak reset cursor CKEditor)
+            }
             updateOutput();
         }
 
-        // ================= Build Format Object JSON =================
         function buildFinalJSON() {
             let finalData = {};
             uiData.forEach(car => {
                 if(!car.carId || car.carId.trim() === '') return;
                 
-                // Konversi varian dari textarea (enter) menjadi array
                 let variantArray = car.variants.split('\n').map(v => v.trim()).filter(v => v !== '');
 
                 let carObj = {
+                    name: car.name || "",
                     price: Number(car.price) || 0,
                     variants: variantArray,
                     dp: car.dp || "",
@@ -224,13 +230,10 @@
                     engine: car.engine || ""
                 };
 
-                // Masukkan deskripsi hanya jika ada
                 if (car.description && car.description.trim() !== '') {
-                    // Bersihkan enter yang berlebih agar JSON rapi satu baris
                     carObj.description = car.description.replace(/(\r\n|\n|\r)/gm, "");
                 }
 
-                // Masukkan array images
                 if (car.imgThumb || car.imgFull) {
                     carObj.images = [{
                         thumb: car.imgThumb || "",
@@ -248,7 +251,6 @@
             outputArea.value = JSON.stringify(buildFinalJSON(), null, 2);
         }
 
-        // ================= Load dari JSON =================
         function loadJSON() {
             const outputArea = document.getElementById('json-output');
             try {
@@ -259,6 +261,7 @@
                         let car = parsed[key];
                         newUiData.push({
                             carId: key,
+                            name: car.name || "",
                             price: car.price || "",
                             variants: Array.isArray(car.variants) ? car.variants.join('\n') : "",
                             dp: car.dp || "",
@@ -288,7 +291,6 @@
             alert('JSON berhasil di-copy! Silakan paste ke file produk kamu di GitHub.');
         }
 
-        // Inisiasi pertama
         window.onload = () => {
             if(uiData.length === 0) addCar(); 
         };
