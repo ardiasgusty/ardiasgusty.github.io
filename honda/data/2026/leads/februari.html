@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laporan Analisis Leads HBOS - Tim Raka</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{
+background:#f8fafc;
+}
+</style>
+
+</head>
+
+<body class="p-6">
+
+<div class="max-w-7xl mx-auto">
+
+<!-- HEADER -->
+
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-8">
+
+<div>
+<h1 class="text-2xl font-bold text-slate-900">
+Laporan Analisis Leads HBOS: Tim Raka
+</h1>
+
+<p class="text-slate-500 text-sm">
+Monitoring Kinerja Sales & Distribusi Leads
+</p>
+</div>
+
+<div class="bg-white border px-4 py-2 rounded-xl text-sm font-semibold">
+📅 Periode: 01-02-2026 s/d 28-02-2026
+</div>
+
+</div>
+
+<!-- KPI -->
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+
+<div class="bg-white p-5 rounded-xl shadow border-b-4 border-slate-200">
+<p class="text-xs text-slate-400 font-bold">TOTAL LEADS</p>
+<h2 class="text-3xl font-black">137</h2>
+</div>
+
+<div class="bg-white p-5 rounded-xl shadow border-b-4 border-blue-500">
+<p class="text-xs text-slate-400 font-bold">FOLLOW UP</p>
+<h2 class="text-3xl font-black text-blue-600">88</h2>
+<span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">64% Aktif</span>
+</div>
+
+<div class="bg-white p-5 rounded-xl shadow border-b-4 border-orange-500">
+<p class="text-xs text-slate-400 font-bold">DISTRIBUSI</p>
+<h2 class="text-3xl font-black text-orange-500">29</h2>
+<span class="text-xs bg-orange-500 text-white px-2 py-1 rounded">Kritis</span>
+</div>
+
+<div class="bg-white p-5 rounded-xl shadow border-b-4 border-red-500">
+<p class="text-xs text-slate-400 font-bold">LOSS</p>
+<h2 class="text-3xl font-black text-red-500">19</h2>
+<span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">14% Rate</span>
+</div>
+
+<div class="bg-white p-5 rounded-xl shadow border-b-4 border-green-500">
+<p class="text-xs text-slate-400 font-bold">SPK</p>
+<h2 class="text-3xl font-black text-green-600">1</h2>
+<span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Success</span>
+</div>
+
+</div>
+
+<!-- CHART ROW -->
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+
+<!-- DONUT -->
+
+<div class="bg-white p-6 rounded-xl shadow">
+
+<h3 class="font-bold mb-4 text-sm uppercase text-slate-600">
+Komposisi Status Leads
+</h3>
+
+<canvas id="statusChart"></canvas>
+
+</div>
+
+
+<!-- MODEL -->
+
+<div class="bg-white p-6 rounded-xl shadow">
+
+<h3 class="font-bold mb-4 text-sm uppercase text-slate-600">
+Minat Model Kendaraan
+</h3>
+
+<canvas id="modelChart"></canvas>
+
+</div>
+
+</div>
+
+<!-- SALES PERFORMANCE -->
+
+<div class="bg-white p-6 rounded-xl shadow mb-8">
+
+<div class="flex justify-between mb-4">
+
+<h3 class="font-bold text-sm uppercase text-slate-600">
+Beban Kerja & Status Per Sales
+</h3>
+
+<span class="text-xs text-slate-400 font-bold">
+Update per 28 Feb 2026
+</span>
+
+</div>
+
+<canvas id="salesChart"></canvas>
+
+</div>
+
+<!-- SOURCE -->
+
+<div class="bg-white p-6 rounded-xl shadow mb-8">
+
+<h3 class="font-bold text-sm uppercase text-slate-600 mb-2">
+Efektivitas Sumber Leads
+</h3>
+
+<p class="text-xs text-slate-500 mb-6 italic">
+Data menunjukkan 21% leads tertahan di status distribusi tanpa update status.
+</p>
+
+
+<div class="space-y-4">
+
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span>Instagram</span>
+<span>92 Leads</span>
+</div>
+<div class="h-2 bg-slate-200 rounded">
+<div class="h-2 bg-blue-500 rounded" style="width:67%"></div>
+</div>
+</div>
+
+
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span>WhatsApp</span>
+<span>31 Leads</span>
+</div>
+<div class="h-2 bg-slate-200 rounded">
+<div class="h-2 bg-orange-500 rounded" style="width:23%"></div>
+</div>
+</div>
+
+
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span>Website</span>
+<span>13 Leads</span>
+</div>
+<div class="h-2 bg-slate-200 rounded">
+<div class="h-2 bg-green-500 rounded" style="width:9%"></div>
+</div>
+</div>
+
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span>Lainnya</span>
+<span>1 Leads</span>
+</div>
+<div class="h-2 bg-slate-200 rounded">
+<div class="h-2 bg-slate-400 rounded" style="width:1%"></div>
+</div>
+</div>
+
+</div>
+
+<p class="text-xs text-slate-500 mt-6">
+📍 Top Geo Area: Tangerang & Jakarta
+</p>
+
+</div>
+
+<!-- STRATEGY -->
+
+<div class="bg-slate-900 text-white p-8 rounded-2xl border-t-4 border-orange-500">
+
+<h2 class="text-lg font-bold mb-6">
+Analisis Strategis & Rekomendasi
+</h2>
+
+<div class="grid md:grid-cols-3 gap-6">
+
+<div class="bg-slate-800 p-5 rounded-xl">
+<h4 class="text-orange-400 font-bold text-sm mb-2">
+BOTTLENECK DISTRIBUSI
+</h4>
+<p class="text-xs text-slate-300">
+Rico memiliki 15 leads di Distribusi. Perlu pengecekan apakah ada kendala sistem atau kelalaian update status.
+</p>
+</div>
+
+<div class="bg-slate-800 p-5 rounded-xl">
+<h4 class="text-green-400 font-bold text-sm mb-2">
+APRESIASI CLOSING
+</h4>
+<p class="text-xs text-slate-300">
+Aldi SH mencetak 1 SPK dari Website. Ini membuktikan kualitas leads website tinggi.
+</p>
+</div>
+
+<div class="bg-slate-800 p-5 rounded-xl">
+<h4 class="text-blue-400 font-bold text-sm mb-2">
+REDISTRIBUSI SEGERA
+</h4>
+<p class="text-xs text-slate-300">
+Sales dengan beban rendah (Putra1, David, Andrew F) dapat menerima redistribusi leads.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+// DONUT
+
+new Chart(statusChart,{
+type:'doughnut',
+data:{
+labels:['Follow Up','Distribusi','Loss','SPK'],
+datasets:[{
+data:[88,29,19,1],
+backgroundColor:['#3b82f6','#f59e0b','#ef4444','#10b981']
+}]
+}
+});
+
+
+// MODEL
+
+new Chart(modelChart,{
+type:'bar',
+data:{
+labels:['Honda Brio','Honda HR-V','Belum Memilih','Lainnya'],
+datasets:[
+{label:'Follow Up',data:[37,25,16,10],backgroundColor:'#3b82f6'},
+{label:'Distribusi',data:[10,11,3,5],backgroundColor:'#f59e0b'},
+{label:'Loss',data:[7,3,5,4],backgroundColor:'#ef4444'}
+]
+},
+options:{indexAxis:'y'}
+});
+
+
+// SALES
+
+new Chart(salesChart,{
+type:'bar',
+data:{
+labels:['Salim','Putra1','David','Aldi SH','Qodir','Andrew F','Rico','Hakim01'],
+datasets:[
+{label:'Follow Up',data:[19,1,2,17,23,2,6,18],backgroundColor:'#3b82f6'},
+{label:'Distribusi',data:[0,4,3,0,1,3,15,3],backgroundColor:'#f59e0b'},
+{label:'Loss',data:[6,0,0,7,0,0,3,3],backgroundColor:'#ef4444'},
+{label:'SPK',data:[0,0,0,1,0,0,0,0],backgroundColor:'#10b981'}
+]
+}
+});
+
+</script>
+
+</body>
+</html>
