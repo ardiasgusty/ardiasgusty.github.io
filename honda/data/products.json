@@ -35,7 +35,7 @@
       }
     ]
   },
-  "civic": {
+  "civic-rs": {
     "name": "New Honda Civic RS",
     "price": 699000000,
     "variants": [
@@ -53,7 +53,7 @@
       }
     ]
   },
-  "city-hb": {
+  "city-hatchback-rs": {
     "name": "New Honda City Hatchback",
     "price": 384500000,
     "variants": [
