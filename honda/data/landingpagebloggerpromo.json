@@ -1,0 +1,78 @@
+{
+  "dealer": "Honda Bintaro",
+  "phone": "6282299185425",
+
+  "cars": [
+    {
+      "name": "New BR-V N7X",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxsb00VVlHYmdzKe-KdJ8waE_PzMKzh7VTwoNOoqeka7-BLgxTfCJqnNq1c2evDADDtksNp9svoKNAd6h69XqAMlQzVlqe0_BCk-OKtoz-5TWAEAW8_FFEn3KD7_SBTYoHiIxeU85QnFKolfL6gA_PgSttpy2BZTyJs9suSIoQGKGM0x1QSXQNTEUy1I2_/s1600/thumb-honda-brv.jpg",
+      "link": "/2024/05/br-v.html",
+      "desc": "New Honda BR-V N7X hadir dengan Exclusive Aero Kit untuk tampilan lebih stylish, jadikan perjalanan Anda begitu istimewa."
+    },
+    {
+      "name": "New Brio",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhOLS-PRvyNqghyphenhypheniKb8EXIM8UkmvnVMoq8FrapYE2FCmZY8BELQMBzFr3150wfJAapXsCGaWIJXtQQ29LizPaAwmrpAXKOwz2itQ71wHtVa4G191Fa-ZY1nZwq0qSZqO7-R7hKPJm0dNYnwWIC-wGoVz7QekW3-29BrNdJu9w5GzcozYwSbZCFsjgmU-10i/s1600/thumb-honda-brio.jpg",
+      "link": "/2024/05/brio.html",
+      "desc": "Nikmati pengalaman berkendara penuh gaya dan kenyamanan dengan mobil yang sporty, stylish, dan sophisticated. It’s time to show the world who you really are!"
+    },
+    {
+      "name": "New WR-V",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitauRvjnrPAHsPUEUoEzY_W09t4FOB3EGRb45Mzf9wfEPjsK8QzFneAz-TJCD2FXzN0drW02ukjVimWrgOqJvQhZPNfVOZBjI_xDFOGdMEZJMAL0E_pzTxu8-84yQ4L7lOS2ibU8GsxRbMFE7Ruv4cs0jQhs3nQrpAApaUQn0bMr_lTi86t7Li467-fkz1/s1600/thumb-honda-wrv.jpg",
+      "link": "/2024/04/wr-v.html",
+      "desc": "Melaju lebih percaya diri untuk raih impianmu bersama Honda WR-V!"
+    },
+    {
+      "name": "All New HR-V",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhfJr4t2xveS1oBAYqrpMt8C9dKpcZatiaZ1xnSsBSM3emADAoNef-KEzUk0MII9Qd0bW0Wul8m6kVlNKWCtRuGnmLqwpwuzIDpScpFgmzZpFGuNNNHjewrcRYOydEOlPyPUnYEnLEg_UKTK8Uz0IZhhDsJQ_x1DfZhL1wB1yg9RrbaSr9TTIceFKaPE06f/s1600/thumb-honda-hrv.jpg",
+      "link": "/2024/04/hr-v.html",
+      "desc": "Jelajahi era baru bersama mobil berteknologi tinggi, didesain untuk memenuhi visi dan ambisi Anda."
+    },
+    {
+      "name": "All New CR-V",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhzurOD0BzR5S2kq4gjqq2BmZJZ9Wf4BLVPrqnxe64-eI0LvO4GaV_jhJ7xWIon10qwDCZ0og0oI16Dw3-smXtJxlS1ZHwa5WLZ28Z3lAhdE6gDDLn7eeMQt2PIF2zHbayRAUdAEc3CImYBq1vmqxD3qVAcCRhRE0hnS3mHKdiIi-gx2nwcmdnWVYtvh2gX/s1600/thumb-honda-crv.jpg",
+      "link": "/2024/04/cr-v.html",
+      "desc": "Jadilah yang terdepan dengan SUV andalan terbaru dari Honda, All New Honda CR-V yang kini hadir dalam pilihan mesin hybrid untuk konsumsi bahan bakar lebih hemat dan tenaga powerful."
+    },
+    {
+      "name": "All New Accord",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDtYcelPItuCeXmOurG_pVuQq69hKZZgkZWch5K9Ry6tQdEgP-FaqVQJ3tMOkZtlY6muXCxPa-uLSFjPN-gFmXZrpO1XLhj3sDkuZfbwlzZeV66npjN6SfWr40RSXZwc5m9piC_Awu0AI6c8CknnBghEosMl-G7ShwqsVacMfqdn_qmOJNcgrrgXbCo7q5/s1600/thumb-honda-accord.jpg",
+      "link": "/2024/05/accord.html",
+      "desc": "Shape the new world together with the partner that offers you the freedom to choose between Electric, Hybrid and Fuel Engine. All in one drive."
+    },
+    {
+      "name": "New City Hatchback RS",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-DyZ_6GfxHdzz0qUXF_KZIBwb2H9hyphenhyphenQaiQLUFiCAWwafDm4rShxFIRwY2nBV7pVafcwh0ivlpOzWilJjNScpMj2mmWdx4y3Fz0-ryT4QWhwLo1D7oC1CZw919avJiqzO0QrTxfAAvNidrPVrbq_jJJA3JVD1LGw8wxiiI3F4eV3qEDf_c0m8Sf_AIgJo1/s1600/thumb-honda-city-hatchback-rs.jpg",
+      "link": "/2024/04/city-hatchback.html",
+      "desc": "Saatnya masuki level baru dalam berkendara dengan mobil impian yang dirancang untuk mendukung kepribadian Anda yang ambisius dan tidak pernah berhenti untuk menginspirasi dengan inovasi."
+    },
+    {
+      "name": "New City",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZ_q6tKPKOPc4Qwi_KpFq3yP9ayyD3yaJKulkrx8zarujXMAGCGkwnyLP-ifxm3VtywEErEZ2gbLhdBLJOaDD5iDwKzuW5Wj9mLR9zyaHxENBC6bC-14AmvSfxxNeylQfwx1cClbq2IAr6Bj-LBHTvpPVEJDtt0InrkCFF9enlYGEJHsieTwNRBXmQAkkl/s1600/thumb-honda-city.jpg",
+      "link": "/2024/05/city.html",
+      "desc": "Bersama New Honda City, lampaui ekspetasi lewat aksi, buktikan pencapaian mutlak milik Anda."
+    }
+  ],
+
+  "faq": [
+    {
+      "q": "Kenapa membeli mobil di Honda Bintaro?",
+      "a": "Honda Bintaro merupakan distributor utama mobil Honda di wilayah Tangerang Selatan."
+    },
+    {
+      "q": "Apa bisa melakukan pemesanan kendaraan dengan KTP luar Jabodetabek?",
+      "a": "Pemesanan kendaraan harus menggunakan KTP sesuai wilayah untuk pengurusan STNK."
+    },
+    {
+      "q": "Apa saja persyaratan kredit agar disetujui leasing?",
+      "a": "Pendapatan minimal biasanya tiga kali dari jumlah angsuran bulanan."
+    },
+    {
+      "q": "Apakah pemesanan kendaraan online aman?",
+      "a": "Pembayaran menggunakan virtual account resmi Honda."
+    },
+    {
+      "q": "Apakah ada promo DP minimal?",
+      "a": "Promo tersedia dengan syarat dan ketentuan yang berlaku."
+    }
+  ]
+}
