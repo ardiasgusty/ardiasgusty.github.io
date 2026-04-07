@@ -1,0 +1,33 @@
+{
+  "banners": {
+    "desktop": [
+      {
+        "id": "8rio-sales-desktop",
+        "image": "https://www.honda-bintaro.com/wp-content/uploads/2026/04/WEBSITE-BANNER-SALES-APRIL.webp",
+        "link": "#"
+      },
+      {
+        "id": "8rio-service-desktop",
+        "image": "https://www.honda-bintaro.com/wp-content/uploads/2026/04/WEBSITE-BANNER-SERVICE-APRIL.webp",
+        "link": "#"
+      }
+    ],
+    "mobile": [
+      {
+        "id": "8rio-sales-mobile",
+        "image": "https://www.honda-bintaro.com/wp-content/uploads/2026/04/WEBSITE-MOBILE-BANNER-SALES-APRIL.webp",
+        "link": "#"
+      },
+      {
+        "id": "8rio-sales-mobile",
+        "image": "https://www.honda-bintaro.com/wp-content/uploads/2026/04/WEBSITE-MOBILE-BANNER-SERVICE-APRIL.webp",
+        "link": "#"
+      },
+      {
+        "id": "8rio-detil-mobile",
+        "image": "https://www.honda-bintaro.com/wp-content/uploads/2026/04/WEBSITE-MOBILE-BANNER-INFO-DEALER-APRIL.webp",
+        "link": "#"
+      }
+    ]
+  }
+}
