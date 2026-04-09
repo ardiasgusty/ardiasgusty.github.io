@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banner JSON Generator</title>
+
+<style>
+:root {
+  --primary: #cc0000;
+  --bg: #f4f6f9;
+  --card: #fff;
+  --border: #ddd;
+}
+body {
+  margin:0;
+  font-family: sans-serif;
+  display:flex;
+  height:100vh;
+}
+.header {
+  position:fixed;
+  top:0;
+  width:100%;
+  background:#111;
+  color:#fff;
+  padding:15px;
+  z-index:10;
+}
+.container {
+  display:flex;
+  width:100%;
+  margin-top:60px;
+}
+.editor { flex:6; padding:20px; overflow:auto; background:var(--bg);}
+.output { flex:4; padding:20px; }
+
+.card {
+  background:#fff;
+  border:1px solid var(--border);
+  padding:15px;
+  margin-bottom:15px;
+}
+
+input {
+  width:100%;
+  padding:8px;
+  margin-bottom:8px;
+}
+
+button {
+  padding:8px 12px;
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">Banner JSON Generator</div>
+
+<div class="container">
+
+<div class="editor">
+
+<h3>Desktop Banner</h3>
+<div id="desktop"></div>
+<button onclick="addBanner('desktop')">+ Tambah Desktop</button>
+
+<h3>Mobile Banner</h3>
+<div id="mobile"></div>
+<button onclick="addBanner('mobile')">+ Tambah Mobile</button>
+
+</div>
+
+<div class="output">
+<textarea id="output" style="width:100%;height:80%;"></textarea>
+<br>
+<button onclick="copyJSON()">Copy</button>
+<button onclick="loadJSON()">Load</button>
+</div>
+
+</div>
+
+<script>
+let appData = {
+  banners: {
+    desktop: [],
+    mobile: []
+  }
+};
+
+function render() {
+  ['desktop','mobile'].forEach(type => {
+    const container = document.getElementById(type);
+    container.innerHTML = '';
+
+    appData.banners[type].forEach((b,i)=>{
+      const el = document.createElement('div');
+      el.className='card';
+
+      el.innerHTML=`
+        <input placeholder="ID" value="${b.id||''}" oninput="update('${type}',${i},'id',this.value)">
+        <input placeholder="Image URL" value="${b.image||''}" oninput="update('${type}',${i},'image',this.value)">
+        <input placeholder="Link" value="${b.link||''}" oninput="update('${type}',${i},'link',this.value)">
+        <input placeholder="Alt Text" value="${b.alt||''}" oninput="update('${type}',${i},'alt',this.value)">
+        <button onclick="removeBanner('${type}',${i})">Hapus</button>
+      `;
+
+      container.appendChild(el);
+    });
+  });
+
+  document.getElementById('output').value = JSON.stringify(appData, null, 2);
+}
+
+function addBanner(type){
+  appData.banners[type].push({id:'',image:'',link:'#',alt:''});
+  render();
+}
+
+function removeBanner(type,i){
+  appData.banners[type].splice(i,1);
+  render();
+}
+
+function update(type,i,key,val){
+  appData.banners[type][i][key]=val;
+  render();
+}
+
+function copyJSON(){
+  navigator.clipboard.writeText(document.getElementById('output').value);
+  alert('Copied!');
+}
+
+function loadJSON(){
+  try{
+    const data = JSON.parse(document.getElementById('output').value);
+    appData = data;
+    render();
+  }catch{
+    alert('JSON error');
+  }
+}
+
+render();
+</script>
+
+</body>
+</html>
