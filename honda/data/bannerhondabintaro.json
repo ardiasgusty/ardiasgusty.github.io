@@ -2,6 +2,16 @@
   "banners": {
     "desktop": [
       {
+        "id": "hrv-slp",
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3Gf6ApzOOD7bxKPEIoT2wMcthAkZX9e9s7cjxXyo41wbzkoqjaQM7wEgsdrqiLta5r-tIQQmuQbVrsu25hzdYk9AeoAv-S28AMbam7RMieGFdBj1AUjuRnT-SZWZ1j2UmiZhTa-pt33EMs1Baj7-iZirjJD-yHdT3zCr3oIlwOPlzOnn4jBOaIuPOYVg/s1600/WEBSITE-HR-V-EXTRA-CASHBACK.webp",
+        "link": "#"
+      },
+      {
+        "id": "brio-slp",
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXG-Q3Ya0C_EwdiGoUvRNIb1YE62TsKmH1C_zbsIt6vbUv_oXv3GaNicOh28Um00TSQJyHcPrJORgQuArIc_Yx-VQweSOQYuhD6QKY2jC7-jbWdEPgLxHtfIw_O4R679Lq7DgEQ6aQ3CiHxo7HC1XSXbBocLgRU8qPb94QpJ4PsmtPMOznBcTMAYHAR14/s1600/WEBSITE-BRIO-EXTRA-CASHBACK.webp",
+        "link": "#"
+      },
+      {
         "id": "8rio-sales-desktop",
         "image": "https://www.honda-bintaro.com/wp-content/uploads/2026/04/WEBSITE-BANNER-SALES-APRIL.webp",
         "link": "#"
