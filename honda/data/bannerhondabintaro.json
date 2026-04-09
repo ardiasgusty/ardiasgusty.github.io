@@ -24,12 +24,27 @@
     ],
     "mobile": [
       {
+        "id": "hrv-slp-mobile",
+        "image": "https://www.honda-bintaro.com/wp-content/uploads/2026/04/WEBSITE-MOBILE-BANNER-SALES-APRIL.webp",
+        "link": "#"
+      },
+      {
+        "id": "brio-slp-mobile",
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMnTQplUJkugvM-n7Vp6N4uryhkgqQO0Zd1arpDcMQ-lOfL9DLrG00N3hdjzRhSi6hMEYl4lCBTuwfurFFm6wZK-PH-Mbw8f8JBP9P_0BO6MssKVkselWncr4k5B6m9LZblmc5PKSYw59eV94Cnrpk72iM_ARC0UORcol5iHitPVp-LhsYzj8tWs9hxH0/s1600/WEBSITE-MOBILE-HR-V-EXTRA-CASHBACK.webp",
+        "link": "#"
+      },
+      {
+        "id": "8rio-detil-mobile",
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZ8TKFi6bAC00IMwpwDreo1xr4vF_GdZMplR0romPzqdgvKwAu4jBWVkczxr5a42TCDmtsJ22QhyWCRbid2t8DYAy3Jl3sNCegwmDdJJA5IuiXbjvWn7Q2bpVQd2-f8gSQBggJDwQb7C5XyP1RN0Di2crp3U_vdil_p19rcnmWVzQtK82rtQqDY6RvnV0/s1600/WEBSITE-MOBILE-BRIO-EXTRA-CASHBACK.webp",
+        "link": "#"
+      },
+      {
         "id": "8rio-sales-mobile",
         "image": "https://www.honda-bintaro.com/wp-content/uploads/2026/04/WEBSITE-MOBILE-BANNER-SALES-APRIL.webp",
         "link": "#"
       },
       {
-        "id": "8rio-sales-mobile",
+        "id": "8rio-service-mobile",
         "image": "https://www.honda-bintaro.com/wp-content/uploads/2026/04/WEBSITE-MOBILE-BANNER-SERVICE-APRIL.webp",
         "link": "#"
       },
