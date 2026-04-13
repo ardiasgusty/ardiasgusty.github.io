@@ -14,119 +14,72 @@
     --border: #ddd;
     --text: #333;
 }
+* { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { margin: 0; padding: 0; background-color: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
 
-* {
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-}
+.header { background: #111; color: #fff; padding: 15px 20px; font-size: 20px; font-weight: bold; position: fixed; top: 0; width: 100%; z-index: 10; display: flex; justify-content: space-between; align-items: center; }
+.container { display: flex; width: 100%; margin-top: 60px; height: calc(100vh - 60px); }
+.editor-panel { flex: 6; padding: 20px; overflow-y: auto; background: var(--bg); border-right: 2px solid var(--border); }
+.output-panel { flex: 4; padding: 20px; display: flex; flex-direction: column; background: #fff; }
 
-body {
-    margin: 0;
-    display: flex;
-    height: 100vh;
-    background: var(--bg);
-}
+.category-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.category-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
+.item-card { background: #fdfdfd; border: 1px solid #eee; border-left: 4px solid var(--primary); border-radius: 4px; padding: 15px; margin-bottom: 15px; margin-left: 20px; }
 
-.header {
-    background: #111;
-    color: #fff;
-    padding: 15px 20px;
-    font-size: 20px;
-    font-weight: bold;
-    position: fixed;
-    top: 0;
+.form-group { margin-bottom: 12px; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 13px; color: #555; }
+.form-control { width: 100%; padding: 8px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px; }
+
+.btn { padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-secondary { background: #555; color: white; }
+.btn-danger { background: #dc3545; color: white; padding: 6px 12px; font-size: 12px; }
+.btn-outline { background: transparent; border: 1px solid #ccc; color: #333; }
+
+.flex-row { display: flex; gap: 10px; }
+.flex-1 { flex: 1; }
+
+#json-output {
     width: 100%;
-    z-index: 10;
-}
-
-.container {
-    display: flex;
-    width: 100%;
-    margin-top: 60px;
-}
-
-.editor-panel {
-    flex: 6;
-    padding: 20px;
-    overflow-y: auto;
-}
-
-.output-panel {
-    flex: 4;
-    padding: 20px;
-    background: #fff;
-}
-
-.category-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.category-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    border-bottom: 2px solid var(--primary);
-}
-
-.item-card {
-    background: #fafafa;
-    border-left: 4px solid var(--primary);
+    flex: 1;
     padding: 15px;
-    margin-bottom: 10px;
-}
-
-.form-control {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 8px;
-}
-
-.btn {
-    padding: 8px 12px;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background: var(--primary);
-    color: #fff;
-}
-
-.btn-danger {
-    background: #dc3545;
-    color: #fff;
-}
-
-textarea {
-    width: 100%;
-    height: 80%;
+    font-family: monospace;
     background: #282c34;
-    color: #fff;
-    padding: 10px;
+    color: #d1d9e1;
+    border-radius: 4px;
+    border: none;
+}
+
+.section-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">Honda Banner JSON Generator</div>
+<div class="header">
+    <div>Honda Banner JSON Generator</div>
+    <div style="font-size: 14px;">Created for Argust</div>
+</div>
 
 <div class="container">
 
 <div class="editor-panel">
-<div id="editor"></div>
+    <div class="section-title">Banner (Desktop & Mobile)</div>
+    <div id="models-container"></div>
 </div>
 
 <div class="output-panel">
-<h3>Preview JSON</h3>
-<textarea id="output"></textarea>
-<br><br>
-<button class="btn btn-primary" onclick="copyJSON()">Copy JSON</button>
-<button class="btn" onclick="loadJSON()">Load JSON</button>
+    <h3>Preview & Output JSON</h3>
+    <textarea id="json-output"></textarea>
+    <div class="flex-row">
+        <button class="btn btn-primary flex-1" onclick="copyJSON()">Copy JSON</button>
+        <button class="btn btn-secondary flex-1" onclick="loadJSON()">Load JSON</button>
+    </div>
 </div>
 
 </div>
@@ -134,105 +87,117 @@ textarea {
 <script>
 
 let appData = {
-  banners: {
-    desktop: [],
-    mobile: []
-  }
+    models: [
+        { label: "Desktop Banner", items: [] },
+        { label: "Mobile Banner", items: [] }
+    ]
 };
 
-function render() {
-  const editor = document.getElementById('editor');
-  editor.innerHTML = '';
+function renderEditor() {
+    const container = document.getElementById('models-container');
+    container.innerHTML = '';
 
-  ['desktop','mobile'].forEach(type => {
+    appData.models.forEach((group, gIndex) => {
 
-    const section = document.createElement('div');
-    section.className = 'category-card';
+        const card = document.createElement('div');
+        card.className = 'category-card';
 
-    section.innerHTML = `
-      <div class="category-header">
-        <h3>${type.toUpperCase()} Banner</h3>
-        <button class="btn btn-primary" onclick="add('${type}')">+ Tambah</button>
-      </div>
-      <div id="${type}"></div>
-    `;
+        card.innerHTML = `
+            <div class="category-header">
+                <h3>${group.label}</h3>
+                <button class="btn btn-primary" onclick="addBanner(${gIndex})">+ Tambah</button>
+            </div>
+            <div id="items-${gIndex}"></div>
+        `;
 
-    editor.appendChild(section);
+        container.appendChild(card);
 
-    const container = section.querySelector(`#${type}`);
+        const items = card.querySelector(`#items-${gIndex}`);
 
-    appData.banners[type].forEach((b,i)=>{
-      const el = document.createElement('div');
-      el.className='item-card';
+        group.items.forEach((item, iIndex) => {
+            const el = document.createElement('div');
+            el.className = 'item-card';
 
-      el.innerHTML=`
-        <div style="display:flex;justify-content:space-between;">
-          <strong>Banner ${i+1}</strong>
-          <button class="btn btn-danger" onclick="remove('${type}',${i})">X</button>
-        </div>
+            el.innerHTML = `
+                <div style="display:flex;justify-content:space-between;">
+                    <strong>Banner ${iIndex+1}</strong>
+                    <button class="btn btn-danger" onclick="removeBanner(${gIndex},${iIndex})">X</button>
+                </div>
 
-        <input class="form-control" placeholder="ID"
-          value="${b.id||''}" oninput="update('${type}',${i},'id',this.value)">
+                <div class="form-group">
+                    <label>ID</label>
+                    <input class="form-control" value="${item.id||''}" oninput="update(${gIndex},${iIndex},'id',this.value)">
+                </div>
 
-        <input class="form-control" placeholder="Image URL"
-          value="${b.image||''}" oninput="update('${type}',${i},'image',this.value)">
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input class="form-control" value="${item.image||''}" oninput="update(${gIndex},${iIndex},'image',this.value)">
+                </div>
 
-        <input class="form-control" placeholder="Link"
-          value="${b.link||''}" oninput="update('${type}',${i},'link',this.value)">
+                <div class="form-group">
+                    <label>Link</label>
+                    <input class="form-control" value="${item.link||''}" oninput="update(${gIndex},${iIndex},'link',this.value)">
+                </div>
 
-        <input class="form-control" placeholder="Alt Text"
-          value="${b.alt||''}" oninput="update('${type}',${i},'alt',this.value)">
-      `;
+                <div class="form-group">
+                    <label>Alt Text</label>
+                    <input class="form-control" value="${item.alt||''}" oninput="update(${gIndex},${iIndex},'alt',this.value)">
+                </div>
+            `;
 
-      container.appendChild(el);
+            items.appendChild(el);
+        });
+
     });
 
-  });
-
-  document.getElementById('output').value =
-    JSON.stringify(appData,null,2);
+    updateOutput();
 }
 
-// ACTION
-function add(type){
-  appData.banners[type].push({
-    id:'',
-    image:'',
-    link:'#',
-    alt:''
-  });
-  render();
+function addBanner(group){
+    appData.models[group].items.push({id:'',image:'',link:'#',alt:''});
+    renderEditor();
 }
 
-function remove(type,i){
-  appData.banners[type].splice(i,1);
-  render();
+function removeBanner(group,i){
+    appData.models[group].items.splice(i,1);
+    renderEditor();
 }
 
-function update(type,i,key,val){
-  appData.banners[type][i][key]=val;
-  document.getElementById('output').value =
-    JSON.stringify(appData,null,2);
+function update(group,i,key,val){
+    appData.models[group].items[i][key]=val;
+    updateOutput();
 }
 
-// OUTPUT
-function copyJSON(){
-  const el = document.getElementById('output');
-  el.select();
-  document.execCommand('copy');
-  alert('Copied!');
+function updateOutput(){
+    const json = {
+        banners: {
+            desktop: appData.models[0].items,
+            mobile: appData.models[1].items
+        }
+    };
+
+    document.getElementById('json-output').value =
+        JSON.stringify(json,null,2);
 }
 
 function loadJSON(){
-  try{
-    appData = JSON.parse(document.getElementById('output').value);
-    render();
-  }catch{
-    alert('JSON error!');
-  }
+    try{
+        const data = JSON.parse(document.getElementById('json-output').value);
+        appData.models[0].items = data.banners?.desktop || [];
+        appData.models[1].items = data.banners?.mobile || [];
+        renderEditor();
+    }catch{
+        alert('JSON error');
+    }
 }
 
-// INIT
+function copyJSON(){
+    const el = document.getElementById('json-output');
+    el.select();
+    document.execCommand('copy');
+    alert('Copied!');
+}
+
 render();
 
 </script>
