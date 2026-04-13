@@ -3,89 +3,136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banner JSON Generator</title>
+<title>Honda Banner JSON Generator</title>
 
 <style>
 :root {
-  --primary: #cc0000;
-  --bg: #f4f6f9;
-  --card: #fff;
-  --border: #ddd;
+    --primary: #cc0000; 
+    --primary-hover: #a30000;
+    --bg: #f4f6f9;
+    --card: #ffffff;
+    --border: #ddd;
+    --text: #333;
 }
+
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
 body {
-  margin:0;
-  font-family: sans-serif;
-  display:flex;
-  height:100vh;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    background: var(--bg);
 }
+
 .header {
-  position:fixed;
-  top:0;
-  width:100%;
-  background:#111;
-  color:#fff;
-  padding:15px;
-  z-index:10;
+    background: #111;
+    color: #fff;
+    padding: 15px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
 }
+
 .container {
-  display:flex;
-  width:100%;
-  margin-top:60px;
-}
-.editor { flex:6; padding:20px; overflow:auto; background:var(--bg);}
-.output { flex:4; padding:20px; }
-
-.card {
-  background:#fff;
-  border:1px solid var(--border);
-  padding:15px;
-  margin-bottom:15px;
+    display: flex;
+    width: 100%;
+    margin-top: 60px;
 }
 
-input {
-  width:100%;
-  padding:8px;
-  margin-bottom:8px;
+.editor-panel {
+    flex: 6;
+    padding: 20px;
+    overflow-y: auto;
 }
 
-button {
-  padding:8px 12px;
-  background:var(--primary);
-  color:#fff;
-  border:none;
-  cursor:pointer;
+.output-panel {
+    flex: 4;
+    padding: 20px;
+    background: #fff;
+}
+
+.category-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary);
+}
+
+.item-card {
+    background: #fafafa;
+    border-left: 4px solid var(--primary);
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+}
+
+.btn {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: #fff;
+}
+
+textarea {
+    width: 100%;
+    height: 80%;
+    background: #282c34;
+    color: #fff;
+    padding: 10px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">Banner JSON Generator</div>
+<div class="header">Honda Banner JSON Generator</div>
 
 <div class="container">
 
-<div class="editor">
-
-<h3>Desktop Banner</h3>
-<div id="desktop"></div>
-<button onclick="addBanner('desktop')">+ Tambah Desktop</button>
-
-<h3>Mobile Banner</h3>
-<div id="mobile"></div>
-<button onclick="addBanner('mobile')">+ Tambah Mobile</button>
-
+<div class="editor-panel">
+<div id="editor"></div>
 </div>
 
-<div class="output">
-<textarea id="output" style="width:100%;height:80%;"></textarea>
-<br>
-<button onclick="copyJSON()">Copy</button>
-<button onclick="loadJSON()">Load</button>
+<div class="output-panel">
+<h3>Preview JSON</h3>
+<textarea id="output"></textarea>
+<br><br>
+<button class="btn btn-primary" onclick="copyJSON()">Copy JSON</button>
+<button class="btn" onclick="loadJSON()">Load JSON</button>
 </div>
 
 </div>
 
 <script>
+
 let appData = {
   banners: {
     desktop: [],
@@ -94,60 +141,100 @@ let appData = {
 };
 
 function render() {
+  const editor = document.getElementById('editor');
+  editor.innerHTML = '';
+
   ['desktop','mobile'].forEach(type => {
-    const container = document.getElementById(type);
-    container.innerHTML = '';
+
+    const section = document.createElement('div');
+    section.className = 'category-card';
+
+    section.innerHTML = `
+      <div class="category-header">
+        <h3>${type.toUpperCase()} Banner</h3>
+        <button class="btn btn-primary" onclick="add('${type}')">+ Tambah</button>
+      </div>
+      <div id="${type}"></div>
+    `;
+
+    editor.appendChild(section);
+
+    const container = section.querySelector(`#${type}`);
 
     appData.banners[type].forEach((b,i)=>{
       const el = document.createElement('div');
-      el.className='card';
+      el.className='item-card';
 
       el.innerHTML=`
-        <input placeholder="ID" value="${b.id||''}" oninput="update('${type}',${i},'id',this.value)">
-        <input placeholder="Image URL" value="${b.image||''}" oninput="update('${type}',${i},'image',this.value)">
-        <input placeholder="Link" value="${b.link||''}" oninput="update('${type}',${i},'link',this.value)">
-        <input placeholder="Alt Text" value="${b.alt||''}" oninput="update('${type}',${i},'alt',this.value)">
-        <button onclick="removeBanner('${type}',${i})">Hapus</button>
+        <div style="display:flex;justify-content:space-between;">
+          <strong>Banner ${i+1}</strong>
+          <button class="btn btn-danger" onclick="remove('${type}',${i})">X</button>
+        </div>
+
+        <input class="form-control" placeholder="ID"
+          value="${b.id||''}" oninput="update('${type}',${i},'id',this.value)">
+
+        <input class="form-control" placeholder="Image URL"
+          value="${b.image||''}" oninput="update('${type}',${i},'image',this.value)">
+
+        <input class="form-control" placeholder="Link"
+          value="${b.link||''}" oninput="update('${type}',${i},'link',this.value)">
+
+        <input class="form-control" placeholder="Alt Text"
+          value="${b.alt||''}" oninput="update('${type}',${i},'alt',this.value)">
       `;
 
       container.appendChild(el);
     });
+
   });
 
-  document.getElementById('output').value = JSON.stringify(appData, null, 2);
+  document.getElementById('output').value =
+    JSON.stringify(appData,null,2);
 }
 
-function addBanner(type){
-  appData.banners[type].push({id:'',image:'',link:'#',alt:''});
+// ACTION
+function add(type){
+  appData.banners[type].push({
+    id:'',
+    image:'',
+    link:'#',
+    alt:''
+  });
   render();
 }
 
-function removeBanner(type,i){
+function remove(type,i){
   appData.banners[type].splice(i,1);
   render();
 }
 
 function update(type,i,key,val){
   appData.banners[type][i][key]=val;
-  render();
+  document.getElementById('output').value =
+    JSON.stringify(appData,null,2);
 }
 
+// OUTPUT
 function copyJSON(){
-  navigator.clipboard.writeText(document.getElementById('output').value);
+  const el = document.getElementById('output');
+  el.select();
+  document.execCommand('copy');
   alert('Copied!');
 }
 
 function loadJSON(){
   try{
-    const data = JSON.parse(document.getElementById('output').value);
-    appData = data;
+    appData = JSON.parse(document.getElementById('output').value);
     render();
   }catch{
-    alert('JSON error');
+    alert('JSON error!');
   }
 }
 
+// INIT
 render();
+
 </script>
 
 </body>
