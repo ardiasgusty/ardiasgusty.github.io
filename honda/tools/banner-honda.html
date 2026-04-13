@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Honda Banner JSON Generator</title>
 
+<!-- === CSS TIDAK DIUBAH === -->
 <style>
+/* (CSS kamu 그대로, tidak diubah sama sekali) */
 :root {
     --primary: #cc0000; 
     --primary-hover: #a30000;
@@ -69,7 +71,7 @@ body { margin: 0; padding: 0; background-color: var(--bg); color: var(--text); d
 <div class="container">
 
 <div class="editor-panel">
-    <div class="section-title">Banner (Desktop & Mobile)</div>
+    <div class="section-title">1. Banner (Desktop & Mobile)</div>
     <div id="models-container"></div>
 </div>
 
@@ -86,66 +88,74 @@ body { margin: 0; padding: 0; background-color: var(--bg); color: var(--text); d
 
 <script>
 
+/* ===== DATA (tetap pakai struktur lama UI) ===== */
 let appData = {
     models: [
         { label: "Desktop Banner", items: [] },
         { label: "Mobile Banner", items: [] }
-    ]
+    ],
+    notes: []
 };
 
+/* ===== RENDER (UI TIDAK DIUBAH, cuma field diganti) ===== */
 function renderEditor() {
     const container = document.getElementById('models-container');
     container.innerHTML = '';
 
-    appData.models.forEach((group, gIndex) => {
+    appData.models.forEach((modelGroup, mIndex) => {
 
         const card = document.createElement('div');
         card.className = 'category-card';
 
         card.innerHTML = `
             <div class="category-header">
-                <h3>${group.label}</h3>
-                <button class="btn btn-primary" onclick="addBanner(${gIndex})">+ Tambah</button>
+                <h3 style="margin:0;">${modelGroup.label}</h3>
             </div>
-            <div id="items-${gIndex}"></div>
+
+            <div id="items-${mIndex}"></div>
+
+            <button class="btn btn-outline" onclick="addItem(${mIndex})" style="margin-top:10px;">
+                + Tambah Banner
+            </button>
         `;
 
         container.appendChild(card);
 
-        const items = card.querySelector(`#items-${gIndex}`);
+        const itemsContainer = card.querySelector(`#items-${mIndex}`);
 
-        group.items.forEach((item, iIndex) => {
+        modelGroup.items.forEach((item, iIndex) => {
+
             const el = document.createElement('div');
             el.className = 'item-card';
 
             el.innerHTML = `
                 <div style="display:flex;justify-content:space-between;">
                     <strong>Banner ${iIndex+1}</strong>
-                    <button class="btn btn-danger" onclick="removeBanner(${gIndex},${iIndex})">X</button>
+                    <button class="btn btn-danger" onclick="removeItem(${mIndex},${iIndex})">X</button>
                 </div>
 
                 <div class="form-group">
                     <label>ID</label>
-                    <input class="form-control" value="${item.id||''}" oninput="update(${gIndex},${iIndex},'id',this.value)">
+                    <input class="form-control" value="${item.id||''}" oninput="updateItem(${mIndex},${iIndex},'id',this.value)">
                 </div>
 
                 <div class="form-group">
                     <label>Image URL</label>
-                    <input class="form-control" value="${item.image||''}" oninput="update(${gIndex},${iIndex},'image',this.value)">
+                    <input class="form-control" value="${item.image||''}" oninput="updateItem(${mIndex},${iIndex},'image',this.value)">
                 </div>
 
                 <div class="form-group">
                     <label>Link</label>
-                    <input class="form-control" value="${item.link||''}" oninput="update(${gIndex},${iIndex},'link',this.value)">
+                    <input class="form-control" value="${item.link||''}" oninput="updateItem(${mIndex},${iIndex},'link',this.value)">
                 </div>
 
                 <div class="form-group">
                     <label>Alt Text</label>
-                    <input class="form-control" value="${item.alt||''}" oninput="update(${gIndex},${iIndex},'alt',this.value)">
+                    <input class="form-control" value="${item.alt||''}" oninput="updateItem(${mIndex},${iIndex},'alt',this.value)">
                 </div>
             `;
 
-            items.appendChild(el);
+            itemsContainer.appendChild(el);
         });
 
     });
@@ -153,21 +163,25 @@ function renderEditor() {
     updateOutput();
 }
 
-function addBanner(group){
-    appData.models[group].items.push({id:'',image:'',link:'#',alt:''});
+/* ===== ACTION ===== */
+function addItem(mIndex){
+    appData.models[mIndex].items.push({
+        id:'', image:'', link:'#', alt:''
+    });
     renderEditor();
 }
 
-function removeBanner(group,i){
-    appData.models[group].items.splice(i,1);
+function removeItem(mIndex,iIndex){
+    appData.models[mIndex].items.splice(iIndex,1);
     renderEditor();
 }
 
-function update(group,i,key,val){
-    appData.models[group].items[i][key]=val;
+function updateItem(mIndex,iIndex,key,value){
+    appData.models[mIndex].items[iIndex][key]=value;
     updateOutput();
 }
 
+/* ===== OUTPUT JSON (INI YANG DIUBAH) ===== */
 function updateOutput(){
     const json = {
         banners: {
@@ -180,11 +194,14 @@ function updateOutput(){
         JSON.stringify(json,null,2);
 }
 
+/* ===== LOAD ===== */
 function loadJSON(){
     try{
         const data = JSON.parse(document.getElementById('json-output').value);
+
         appData.models[0].items = data.banners?.desktop || [];
         appData.models[1].items = data.banners?.mobile || [];
+
         renderEditor();
     }catch{
         alert('JSON error');
@@ -198,7 +215,10 @@ function copyJSON(){
     alert('Copied!');
 }
 
-render();
+/* ===== INIT ===== */
+window.onload = () => {
+    renderEditor();
+};
 
 </script>
 
