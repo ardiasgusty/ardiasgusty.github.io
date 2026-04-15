@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image to WebP Converter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md text-center">
+    <h1 class="text-xl font-bold mb-4">Convert JPG/PNG ke WebP (30% Compress)</h1>
+    
+    <input type="file" id="upload" accept="image/*" class="mb-4 w-full" />
+    
+    <button onclick="convertImage()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+      Convert
+    </button>
+
+    <div id="result" class="mt-4 hidden">
+      <p class="mb-2 text-sm text-gray-600">Download hasil:</p>
+      <a id="downloadLink" class="text-blue-500 underline">Download WebP</a>
+    </div>
+  </div>
+
+<script>
+function convertImage() {
+  const fileInput = document.getElementById('upload');
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert('Pilih gambar dulu!');
+    return;
+  }
+
+  const img = new Image();
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+    img.src = e.target.result;
+  };
+
+  img.onload = function() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    ctx.drawImage(img, 0, 0);
+
+    // Quality 0.7 = kira-kira compress 30%
+    const webpData = canvas.toDataURL('image/webp', 0.7);
+
+    const link = document.getElementById('downloadLink');
+    link.href = webpData;
+    link.download = 'converted.webp';
+
+    document.getElementById('result').classList.remove('hidden');
+  };
+
+  reader.readAsDataURL(file);
+}
+</script>
+
+</body>
+</html>
