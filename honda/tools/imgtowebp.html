@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image to WebP Converter</title>
+  <title>Smart WebP Compressor</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
   <div class="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md text-center">
-    <h1 class="text-xl font-bold mb-4">Convert JPG/PNG ke WebP (30% Compress)</h1>
+    <h1 class="text-xl font-bold mb-2">Smart WebP Compressor</h1>
+    <p class="text-sm text-gray-500 mb-4">Target size: ±20–30KB</p>
     
     <input type="file" id="upload" accept="image/*" class="mb-4 w-full" />
     
@@ -20,11 +21,12 @@
     <div id="result" class="mt-4 hidden">
       <p class="mb-2 text-sm text-gray-600">Download hasil:</p>
       <a id="downloadLink" class="text-blue-500 underline">Download WebP</a>
+      <p id="info" class="text-xs text-gray-400 mt-2"></p>
     </div>
   </div>
 
 <script>
-function convertImage() {
+async function convertImage() {
   const fileInput = document.getElementById('upload');
   const file = fileInput.files[0];
 
@@ -40,21 +42,58 @@ function convertImage() {
     img.src = e.target.result;
   };
 
-  img.onload = function() {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
+  img.onload = async function() {
+    let canvas = document.createElement('canvas');
+    let ctx = canvas.getContext('2d');
 
-    canvas.width = img.width;
-    canvas.height = img.height;
+    // Resize logic (max width 1200px)
+    let maxWidth = 1200;
+    let scale = Math.min(1, maxWidth / img.width);
 
-    ctx.drawImage(img, 0, 0);
+    canvas.width = img.width * scale;
+    canvas.height = img.height * scale;
 
-    // Quality 0.7 = kira-kira compress 30%
-    const webpData = canvas.toDataURL('image/webp', 0.7);
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+    let quality = 0.8;
+    let blob;
+
+    // Loop until size target (20–30KB)
+    for (let i = 0; i < 10; i++) {
+      blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/webp', quality));
+      let sizeKB = blob.size / 1024;
+
+      if (sizeKB <= 30 && sizeKB >= 20) break;
+
+      if (sizeKB > 30) {
+        quality -= 0.1;
+      } else {
+        quality += 0.05;
+      }
+
+      if (quality < 0.1) break;
+    }
+
+    // If still too big → reduce dimension again
+    if (blob.size / 1024 > 30) {
+      canvas.width *= 0.7;
+      canvas.height *= 0.7;
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/webp', 0.6));
+    }
+
+    const url = URL.createObjectURL(blob);
+
+    const originalName = file.name.replace(/\.[^/.]+$/, "");
+    const newName = originalName + "_convert.webp";
 
     const link = document.getElementById('downloadLink');
-    link.href = webpData;
-    link.download = 'converted.webp';
+    link.href = url;
+    link.download = newName;
+
+    document.getElementById('info').innerText =
+      `Final size: ${(blob.size / 1024).toFixed(1)} KB`;
 
     document.getElementById('result').classList.remove('hidden');
   };
