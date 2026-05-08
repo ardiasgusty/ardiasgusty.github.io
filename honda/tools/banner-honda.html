@@ -114,6 +114,21 @@ body {
     border-radius: 4px;
 }
 
+/* IMAGE PREVIEW */
+.image-preview {
+    margin-top: 10px;
+}
+
+.image-preview img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #f5f5f5;
+    display: block;
+}
+
 /* BUTTON */
 .btn {
     padding: 8px 14px;
@@ -202,9 +217,15 @@ body {
 <div class="output-panel">
     <h3>Preview & Output JSON</h3>
     <textarea id="json-output"></textarea>
+
     <div class="flex-row">
-        <button class="btn btn-primary flex-1" onclick="copyJSON()">Copy JSON</button>
-        <button class="btn btn-secondary flex-1" onclick="loadJSON()">Load JSON</button>
+        <button class="btn btn-primary flex-1" onclick="copyJSON()">
+            Copy JSON
+        </button>
+
+        <button class="btn btn-secondary flex-1" onclick="loadJSON()">
+            Load JSON
+        </button>
     </div>
 </div>
 
@@ -222,6 +243,7 @@ let appData = {
 
 /* RENDER */
 function renderEditor() {
+
     const container = document.getElementById('models-container');
     container.innerHTML = '';
 
@@ -253,28 +275,68 @@ function renderEditor() {
 
             el.innerHTML = `
                 <div style="display:flex;justify-content:space-between;">
-                    <strong>Banner ${iIndex+1}</strong>
-                    <button class="btn btn-danger" onclick="removeBanner(${gIndex},${iIndex})">X</button>
+                    <strong>Banner ${iIndex + 1}</strong>
+
+                    <button 
+                        class="btn btn-danger" 
+                        onclick="removeBanner(${gIndex},${iIndex})"
+                    >
+                        X
+                    </button>
                 </div>
 
                 <div class="form-group">
                     <label>ID</label>
-                    <input class="form-control" value="${item.id||''}" oninput="update(${gIndex},${iIndex},'id',this.value)">
+
+                    <input 
+                        class="form-control" 
+                        value="${item.id || ''}" 
+                        oninput="update(${gIndex},${iIndex},'id',this.value)"
+                    >
                 </div>
 
                 <div class="form-group">
                     <label>Image URL</label>
-                    <input class="form-control" value="${item.image||''}" oninput="update(${gIndex},${iIndex},'image',this.value)">
+
+                    <input 
+                        class="form-control" 
+                        value="${item.image || ''}" 
+                        oninput="update(${gIndex},${iIndex},'image',this.value)"
+                    >
+
+                    ${
+                        item.image
+                        ? `
+                        <div class="image-preview">
+                            <img 
+                                src="${item.image}" 
+                                alt="preview"
+                                onerror="this.style.display='none'"
+                            >
+                        </div>
+                        `
+                        : ''
+                    }
                 </div>
 
                 <div class="form-group">
                     <label>Link</label>
-                    <input class="form-control" value="${item.link||''}" oninput="update(${gIndex},${iIndex},'link',this.value)">
+
+                    <input 
+                        class="form-control" 
+                        value="${item.link || ''}" 
+                        oninput="update(${gIndex},${iIndex},'link',this.value)"
+                    >
                 </div>
 
                 <div class="form-group">
                     <label>Alt Text</label>
-                    <input class="form-control" value="${item.alt||''}" oninput="update(${gIndex},${iIndex},'alt',this.value)">
+
+                    <input 
+                        class="form-control" 
+                        value="${item.alt || ''}" 
+                        oninput="update(${gIndex},${iIndex},'alt',this.value)"
+                    >
                 </div>
             `;
 
@@ -287,23 +349,35 @@ function renderEditor() {
 }
 
 /* ACTION */
-function addBanner(g){
-    appData.models[g].items.push({id:'',image:'',link:'#',alt:''});
+function addBanner(g) {
+
+    appData.models[g].items.push({
+        id:'',
+        image:'',
+        link:'#',
+        alt:''
+    });
+
     renderEditor();
 }
 
-function removeBanner(g,i){
-    appData.models[g].items.splice(i,1);
+function removeBanner(g, i) {
+
+    appData.models[g].items.splice(i, 1);
+
     renderEditor();
 }
 
-function update(g,i,k,v){
-    appData.models[g].items[i][k]=v;
-    updateOutput();
+function update(g, i, k, v) {
+
+    appData.models[g].items[i][k] = v;
+
+    renderEditor();
 }
 
 /* OUTPUT */
-function updateOutput(){
+function updateOutput() {
+
     const json = {
         banners: {
             desktop: appData.models[0].items,
@@ -312,24 +386,36 @@ function updateOutput(){
     };
 
     document.getElementById('json-output').value =
-        JSON.stringify(json,null,2);
+        JSON.stringify(json, null, 2);
 }
 
-function loadJSON(){
-    try{
-        const data = JSON.parse(document.getElementById('json-output').value);
+function loadJSON() {
+
+    try {
+
+        const data = JSON.parse(
+            document.getElementById('json-output').value
+        );
+
         appData.models[0].items = data.banners?.desktop || [];
         appData.models[1].items = data.banners?.mobile || [];
+
         renderEditor();
-    }catch{
+
+    } catch {
+
         alert('JSON error');
     }
 }
 
-function copyJSON(){
+function copyJSON() {
+
     const el = document.getElementById('json-output');
+
     el.select();
+
     document.execCommand('copy');
+
     alert('Copied!');
 }
 
