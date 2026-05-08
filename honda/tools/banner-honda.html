@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Honda Banner JSON Generator</title>
 
 <style>
 :root {
-    --primary: #cc0000; 
+    --primary: #cc0000;
     --primary-hover: #a30000;
     --bg: #f4f6f9;
     --card: #ffffff;
@@ -15,187 +15,195 @@
     --text: #333;
 }
 
-* {
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+*{
+    box-sizing:border-box;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
 }
 
-body {
-    margin: 0;
-    background-color: var(--bg);
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
+body{
+    margin:0;
+    background:var(--bg);
+    display:flex;
+    height:100vh;
+    overflow:hidden;
 }
 
 /* HEADER */
-.header {
-    background: #111;
-    color: #fff;
-    padding: 15px 25px;
-    font-size: 20px;
-    font-weight: bold;
-    position: fixed;
-    width: 100%;
-    z-index: 10;
-    display: flex;
-    justify-content: space-between;
+.header{
+    background:#111;
+    color:#fff;
+    padding:15px 25px;
+    font-size:20px;
+    font-weight:bold;
+    position:fixed;
+    width:100%;
+    z-index:10;
+    display:flex;
+    justify-content:space-between;
 }
 
 /* LAYOUT */
-.container {
-    display: flex;
-    width: 100%;
-    margin-top: 60px;
-    height: calc(100vh - 60px);
+.container{
+    display:flex;
+    width:100%;
+    margin-top:60px;
+    height:calc(100vh - 60px);
 }
 
-.editor-panel {
-    flex: 6;
-    padding: 25px;
-    overflow-y: auto;
-    border-right: 1px solid var(--border);
+.editor-panel{
+    flex:6;
+    padding:25px;
+    overflow-y:auto;
+    border-right:1px solid var(--border);
 }
 
-.output-panel {
-    flex: 4;
-    padding: 25px;
-    background: #fff;
-    display: flex;
-    flex-direction: column;
+.output-panel{
+    flex:4;
+    padding:25px;
+    background:#fff;
+    display:flex;
+    flex-direction:column;
 }
 
 /* CARD */
-.category-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px 25px;
-    margin-bottom: 20px;
-    transition: 0.2s;
+.category-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:20px 25px;
+    margin-bottom:20px;
+    transition:.2s;
 }
 
-.category-card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+.category-card:hover{
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
 }
 
-.category-header {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 2px solid var(--primary);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+.category-header{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:2px solid var(--primary);
+    padding-bottom:10px;
+    margin-bottom:20px;
 }
 
 /* ITEM */
-.item-card {
-    background: #fdfdfd;
-    border: 1px solid #eee;
-    border-left: 4px solid var(--primary);
-    border-radius: 6px;
-    padding: 18px;
-    margin: 10px 0 15px 20px;
+.item-card{
+    background:#fdfdfd;
+    border:1px solid #eee;
+    border-left:4px solid var(--primary);
+    border-radius:6px;
+    padding:18px;
+    margin:10px 0 15px 20px;
 }
 
 /* FORM */
-.form-group {
-    margin-bottom: 12px;
+.form-group{
+    margin-bottom:12px;
 }
 
-.form-group label {
-    font-size: 13px;
-    font-weight: 600;
+.form-group label{
+    font-size:13px;
+    font-weight:600;
+    display:block;
+    margin-bottom:6px;
 }
 
-.form-control {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.form-control{
+    width:100%;
+    padding:8px;
+    border:1px solid #ccc;
+    border-radius:4px;
+    outline:none;
+}
+
+.form-control:focus{
+    border-color:var(--primary);
 }
 
 /* IMAGE PREVIEW */
-.image-preview {
-    margin-top: 10px;
+.image-preview{
+    margin-top:10px;
 }
 
-.image-preview img {
-    width: 100%;
-    max-height: 180px;
-    object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    background: #f5f5f5;
-    display: block;
+.image-preview img{
+    width:100%;
+    max-height:180px;
+    object-fit:cover;
+    border-radius:6px;
+    border:1px solid #ddd;
+    background:#f5f5f5;
+    display:block;
 }
 
 /* BUTTON */
-.btn {
-    padding: 8px 14px;
-    border-radius: 4px;
-    cursor: pointer;
-    border: none;
-    font-weight: bold;
-    transition: 0.2s;
+.btn{
+    padding:8px 14px;
+    border-radius:4px;
+    cursor:pointer;
+    border:none;
+    font-weight:bold;
+    transition:.2s;
 }
 
-.btn-primary {
-    background: var(--primary);
-    color: white;
+.btn-primary{
+    background:var(--primary);
+    color:white;
 }
 
-.btn-primary:hover {
-    background: var(--primary-hover);
+.btn-primary:hover{
+    background:var(--primary-hover);
 }
 
-.btn-secondary {
-    background: #555;
-    color: white;
+.btn-secondary{
+    background:#555;
+    color:white;
 }
 
-.btn-danger {
-    background: #dc3545;
-    color: white;
+.btn-danger{
+    background:#dc3545;
+    color:white;
 }
 
-.btn-outline {
-    border: 1px solid #ccc;
-    background: transparent;
+.btn-outline{
+    border:1px solid #ccc;
+    background:transparent;
 }
 
-.btn:hover {
-    transform: translateY(-1px);
+.btn:hover{
+    transform:translateY(-1px);
 }
 
 /* OUTPUT */
-#json-output {
-    flex: 1;
-    margin-top: 10px;
-    padding: 15px;
-    font-family: monospace;
-    background: #282c34;
-    color: #d1d9e1;
-    border-radius: 6px;
-    border: none;
+#json-output{
+    flex:1;
+    margin-top:10px;
+    padding:15px;
+    font-family:monospace;
+    background:#282c34;
+    color:#d1d9e1;
+    border-radius:6px;
+    border:none;
+    resize:none;
 }
 
 /* FLEX */
-.flex-row {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
+.flex-row{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
 }
 
-.flex-1 {
-    flex: 1;
+.flex-1{
+    flex:1;
 }
 
 /* TITLE */
-.section-title {
-    font-size: 18px;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 5px;
+.section-title{
+    font-size:18px;
+    margin-bottom:15px;
+    border-bottom:2px solid #ccc;
+    padding-bottom:5px;
 }
 </style>
 </head>
@@ -209,25 +217,43 @@ body {
 
 <div class="container">
 
-<div class="editor-panel">
-    <div class="section-title">1. Banner (Desktop & Mobile)</div>
-    <div id="models-container"></div>
-</div>
+    <!-- LEFT -->
+    <div class="editor-panel">
 
-<div class="output-panel">
-    <h3>Preview & Output JSON</h3>
-    <textarea id="json-output"></textarea>
+        <div class="section-title">
+            1. Banner (Desktop & Mobile)
+        </div>
 
-    <div class="flex-row">
-        <button class="btn btn-primary flex-1" onclick="copyJSON()">
-            Copy JSON
-        </button>
+        <div id="models-container"></div>
 
-        <button class="btn btn-secondary flex-1" onclick="loadJSON()">
-            Load JSON
-        </button>
     </div>
-</div>
+
+    <!-- RIGHT -->
+    <div class="output-panel">
+
+        <h3>Preview & Output JSON</h3>
+
+        <textarea id="json-output"></textarea>
+
+        <div class="flex-row">
+
+            <button 
+                class="btn btn-primary flex-1" 
+                onclick="copyJSON()"
+            >
+                Copy JSON
+            </button>
+
+            <button 
+                class="btn btn-secondary flex-1" 
+                onclick="loadJSON()"
+            >
+                Load JSON
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -236,20 +262,28 @@ body {
 /* DATA */
 let appData = {
     models: [
-        { label: "Desktop Banner", items: [] },
-        { label: "Mobile Banner", items: [] }
+        {
+            label: "Desktop Banner",
+            items: []
+        },
+        {
+            label: "Mobile Banner",
+            items: []
+        }
     ]
 };
 
 /* RENDER */
-function renderEditor() {
+function renderEditor(){
 
     const container = document.getElementById('models-container');
+
     container.innerHTML = '';
 
-    appData.models.forEach((group, gIndex) => {
+    appData.models.forEach((group, gIndex)=>{
 
         const card = document.createElement('div');
+
         card.className = 'category-card';
 
         card.innerHTML = `
@@ -259,7 +293,10 @@ function renderEditor() {
 
             <div id="items-${gIndex}"></div>
 
-            <button class="btn btn-outline" onclick="addBanner(${gIndex})">
+            <button 
+                class="btn btn-outline"
+                onclick="addBanner(${gIndex})"
+            >
                 + Tambah Banner
             </button>
         `;
@@ -268,17 +305,18 @@ function renderEditor() {
 
         const items = card.querySelector(`#items-${gIndex}`);
 
-        group.items.forEach((item, iIndex) => {
+        group.items.forEach((item, iIndex)=>{
 
             const el = document.createElement('div');
+
             el.className = 'item-card';
 
             el.innerHTML = `
-                <div style="display:flex;justify-content:space-between;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;">
                     <strong>Banner ${iIndex + 1}</strong>
 
                     <button 
-                        class="btn btn-danger" 
+                        class="btn btn-danger"
                         onclick="removeBanner(${gIndex},${iIndex})"
                     >
                         X
@@ -288,9 +326,9 @@ function renderEditor() {
                 <div class="form-group">
                     <label>ID</label>
 
-                    <input 
-                        class="form-control" 
-                        value="${item.id || ''}" 
+                    <input
+                        class="form-control"
+                        value="${item.id || ''}"
                         oninput="update(${gIndex},${iIndex},'id',this.value)"
                     >
                 </div>
@@ -298,9 +336,9 @@ function renderEditor() {
                 <div class="form-group">
                     <label>Image URL</label>
 
-                    <input 
-                        class="form-control" 
-                        value="${item.image || ''}" 
+                    <input
+                        class="form-control"
+                        value="${item.image || ''}"
                         oninput="update(${gIndex},${iIndex},'image',this.value)"
                     >
 
@@ -308,8 +346,8 @@ function renderEditor() {
                         item.image
                         ? `
                         <div class="image-preview">
-                            <img 
-                                src="${item.image}" 
+                            <img
+                                src="${item.image}"
                                 alt="preview"
                                 onerror="this.style.display='none'"
                             >
@@ -322,9 +360,9 @@ function renderEditor() {
                 <div class="form-group">
                     <label>Link</label>
 
-                    <input 
-                        class="form-control" 
-                        value="${item.link || ''}" 
+                    <input
+                        class="form-control"
+                        value="${item.link || ''}"
                         oninput="update(${gIndex},${iIndex},'link',this.value)"
                     >
                 </div>
@@ -332,15 +370,16 @@ function renderEditor() {
                 <div class="form-group">
                     <label>Alt Text</label>
 
-                    <input 
-                        class="form-control" 
-                        value="${item.alt || ''}" 
+                    <input
+                        class="form-control"
+                        value="${item.alt || ''}"
                         oninput="update(${gIndex},${iIndex},'alt',this.value)"
                     >
                 </div>
             `;
 
             items.appendChild(el);
+
         });
 
     });
@@ -349,7 +388,7 @@ function renderEditor() {
 }
 
 /* ACTION */
-function addBanner(g) {
+function addBanner(g){
 
     appData.models[g].items.push({
         id:'',
@@ -361,22 +400,28 @@ function addBanner(g) {
     renderEditor();
 }
 
-function removeBanner(g, i) {
+function removeBanner(g,i){
 
-    appData.models[g].items.splice(i, 1);
+    appData.models[g].items.splice(i,1);
 
     renderEditor();
 }
 
-function update(g, i, k, v) {
+/* FIX INPUT LAG */
+function update(g,i,k,v){
 
     appData.models[g].items[i][k] = v;
 
-    renderEditor();
+    updateOutput();
+
+    /* rerender hanya untuk image preview */
+    if(k === 'image'){
+        renderEditor();
+    }
 }
 
 /* OUTPUT */
-function updateOutput() {
+function updateOutput(){
 
     const json = {
         banners: {
@@ -386,29 +431,32 @@ function updateOutput() {
     };
 
     document.getElementById('json-output').value =
-        JSON.stringify(json, null, 2);
+        JSON.stringify(json,null,2);
 }
 
-function loadJSON() {
+function loadJSON(){
 
-    try {
+    try{
 
         const data = JSON.parse(
             document.getElementById('json-output').value
         );
 
-        appData.models[0].items = data.banners?.desktop || [];
-        appData.models[1].items = data.banners?.mobile || [];
+        appData.models[0].items =
+            data.banners?.desktop || [];
+
+        appData.models[1].items =
+            data.banners?.mobile || [];
 
         renderEditor();
 
-    } catch {
+    }catch{
 
         alert('JSON error');
     }
 }
 
-function copyJSON() {
+function copyJSON(){
 
     const el = document.getElementById('json-output');
 
