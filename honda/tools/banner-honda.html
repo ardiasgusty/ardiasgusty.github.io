@@ -170,8 +170,14 @@ body{
     background:transparent;
 }
 
-.btn:hover{
+.btn:hover:not(:disabled){
     transform:translateY(-1px);
+}
+
+/* Tambahan CSS untuk tombol yang dinonaktifkan */
+.btn:disabled{
+    opacity: 0.4;
+    cursor: not-allowed;
 }
 
 /* OUTPUT */
@@ -217,7 +223,6 @@ body{
 
 <div class="container">
 
-    <!-- LEFT -->
     <div class="editor-panel">
 
         <div class="section-title">
@@ -228,7 +233,6 @@ body{
 
     </div>
 
-    <!-- RIGHT -->
     <div class="output-panel">
 
         <h3>Preview & Output JSON</h3>
@@ -315,12 +319,33 @@ function renderEditor(){
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;">
                     <strong>Banner ${iIndex + 1}</strong>
 
-                    <button 
-                        class="btn btn-danger"
-                        onclick="removeBanner(${gIndex},${iIndex})"
-                    >
-                        X
-                    </button>
+                    <div style="display:flex; gap:5px;">
+                        <button 
+                            class="btn btn-secondary" 
+                            onclick="moveUp(${gIndex},${iIndex})"
+                            title="Geser ke Atas"
+                            ${iIndex === 0 ? 'disabled' : ''}
+                        >
+                            ↑
+                        </button>
+                        
+                        <button 
+                            class="btn btn-secondary" 
+                            onclick="moveDown(${gIndex},${iIndex})"
+                            title="Geser ke Bawah"
+                            ${iIndex === group.items.length - 1 ? 'disabled' : ''}
+                        >
+                            ↓
+                        </button>
+
+                        <button 
+                            class="btn btn-danger"
+                            onclick="removeBanner(${gIndex},${iIndex})"
+                            title="Hapus Banner"
+                        >
+                            X
+                        </button>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -389,29 +414,45 @@ function renderEditor(){
 
 /* ACTION */
 function addBanner(g){
-
     appData.models[g].items.push({
         id:'',
         image:'',
         link:'#',
         alt:''
     });
-
     renderEditor();
 }
 
 function removeBanner(g,i){
-
     appData.models[g].items.splice(i,1);
-
     renderEditor();
+}
+
+/* FITUR BARU: Geser ke Atas */
+function moveUp(g, i) {
+    if (i > 0) {
+        // Tukar posisi item saat ini dengan item sebelumnya
+        let temp = appData.models[g].items[i];
+        appData.models[g].items[i] = appData.models[g].items[i - 1];
+        appData.models[g].items[i - 1] = temp;
+        renderEditor();
+    }
+}
+
+/* FITUR BARU: Geser ke Bawah */
+function moveDown(g, i) {
+    if (i < appData.models[g].items.length - 1) {
+        // Tukar posisi item saat ini dengan item setelahnya
+        let temp = appData.models[g].items[i];
+        appData.models[g].items[i] = appData.models[g].items[i + 1];
+        appData.models[g].items[i + 1] = temp;
+        renderEditor();
+    }
 }
 
 /* FIX INPUT LAG */
 function update(g,i,k,v){
-
     appData.models[g].items[i][k] = v;
-
     updateOutput();
 
     /* rerender hanya untuk image preview */
@@ -422,7 +463,6 @@ function update(g,i,k,v){
 
 /* OUTPUT */
 function updateOutput(){
-
     const json = {
         banners: {
             desktop: appData.models[0].items,
@@ -435,9 +475,7 @@ function updateOutput(){
 }
 
 function loadJSON(){
-
     try{
-
         const data = JSON.parse(
             document.getElementById('json-output').value
         );
@@ -451,19 +489,14 @@ function loadJSON(){
         renderEditor();
 
     }catch{
-
         alert('JSON error');
     }
 }
 
 function copyJSON(){
-
     const el = document.getElementById('json-output');
-
     el.select();
-
     document.execCommand('copy');
-
     alert('Copied!');
 }
 
