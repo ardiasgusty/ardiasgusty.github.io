@@ -232,6 +232,67 @@ body{
     border-bottom:2px solid #ccc;
     padding-bottom:5px;
 }
+
+/* MODAL FILE BROWSER */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 100;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    width: 500px;
+    max-height: 80vh;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.modal-header {
+    padding: 15px 20px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-list {
+    padding: 10px;
+    overflow-y: auto;
+    flex: 1;
+    background: #fafafa;
+}
+
+.file-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eaeaea;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    transition: 0.1s;
+}
+
+.file-item:hover {
+    background: #eef2f5;
+}
+
+.file-item.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+.file-item.disabled:hover {
+    background: transparent;
+}
 </style>
 </head>
 
@@ -258,25 +319,31 @@ body{
             
             <div class="flex-row">
                 <div class="form-group flex-1">
-                    <label>GitHub Username / Owner</label>
-                    <input type="text" id="gh-owner" class="form-control" placeholder="Contoh: argust-dev" oninput="saveConfig()">
+                    <label>Username / Owner</label>
+                    <input type="text" id="gh-owner" class="form-control" placeholder="Contoh: ardiasgusty" oninput="saveConfig()">
                 </div>
                 <div class="form-group flex-1">
-                    <label>Repository Name</label>
-                    <input type="text" id="gh-repo" class="form-control" placeholder="Contoh: honda-bintaro" oninput="saveConfig()">
+                    <label>Repository</label>
+                    <input type="text" id="gh-repo" class="form-control" placeholder="Contoh: ardiasgusty.github.io" oninput="saveConfig()">
                 </div>
-                <div class="form-group flex-1">
-                    <label>File Path (.json)</label>
-                    <input type="text" id="gh-path" class="form-control" placeholder="Contoh: data/banners.json" oninput="saveConfig()">
+            </div>
+
+            <div class="form-group">
+                <label>File Path (.json)</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="gh-path" class="form-control" placeholder="Contoh: honda/data/bannerhondabintaro.json" oninput="saveConfig()">
+                    <button class="btn btn-secondary" onclick="openFileBrowser()" style="white-space: nowrap;">
+                        📁 Browse
+                    </button>
                 </div>
             </div>
             
             <div class="flex-row" style="margin-top: 15px;">
                 <button class="btn btn-github flex-1" onclick="fetchFromGitHub()">
-                    ↓ Tarik dari GitHub
+                    ↓ Tarik Data
                 </button>
                 <button class="btn btn-success flex-1" onclick="saveToGitHub()">
-                    ↑ Simpan Langsung ke GitHub
+                    ↑ Simpan Langsung
                 </button>
             </div>
         </div>
@@ -297,19 +364,8 @@ body{
 
         <div class="flex-row">
 
-            <button 
-                class="btn btn-primary flex-1" 
-                onclick="copyJSON()"
-            >
-                Copy JSON
-            </button>
-
-            <button 
-                class="btn btn-secondary flex-1" 
-                onclick="loadJSON()"
-            >
-                Load JSON
-            </button>
+            <button class="btn btn-primary flex-1" onclick="copyJSON()">Copy JSON</button>
+            <button class="btn btn-secondary flex-1" onclick="loadJSON()">Load JSON</button>
 
         </div>
 
@@ -317,168 +373,86 @@ body{
 
 </div>
 
+<div id="fileBrowserModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 style="margin:0; font-size: 16px;">📂 Pilih File Repository</h3>
+            <button class="btn btn-danger" onclick="closeFileBrowser()" style="padding:4px 8px;">X</button>
+        </div>
+        <div id="file-list" class="file-list">
+            </div>
+    </div>
+</div>
+
 <script>
 
 /* DATA */
 let appData = {
     models: [
-        {
-            label: "Desktop Banner",
-            items: []
-        },
-        {
-            label: "Mobile Banner",
-            items: []
-        }
+        { label: "Desktop Banner", items: [] },
+        { label: "Mobile Banner", items: [] }
     ]
 };
 
-// Global variable untuk melacak SHA file GitHub saat ini (wajib untuk mekanisme update)
 let currentFileSha = "";
 
 /* RENDER */
 function renderEditor(){
-
     const container = document.getElementById('models-container');
-
     container.innerHTML = '';
 
     appData.models.forEach((group, gIndex)=>{
-
         const card = document.createElement('div');
-
         card.className = 'category-card';
-
         card.innerHTML = `
             <div class="category-header">
                 <h3>${group.label}</h3>
             </div>
-
             <div id="items-${gIndex}"></div>
-
-            <button 
-                class="btn btn-outline"
-                onclick="addBanner(${gIndex})"
-            >
-                + Tambah Banner
-            </button>
+            <button class="btn btn-outline" onclick="addBanner(${gIndex})">+ Tambah Banner</button>
         `;
-
         container.appendChild(card);
 
         const items = card.querySelector(`#items-${gIndex}`);
-
         group.items.forEach((item, iIndex)=>{
-
             const el = document.createElement('div');
-
             el.className = 'item-card';
-
             el.innerHTML = `
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;">
                     <strong>Banner ${iIndex + 1}</strong>
-
                     <div style="display:flex; gap:5px;">
-                        <button 
-                            class="btn btn-secondary" 
-                            onclick="moveUp(${gIndex},${iIndex})"
-                            title="Geser ke Atas"
-                            ${iIndex === 0 ? 'disabled' : ''}
-                        >
-                            ↑
-                        </button>
-                        
-                        <button 
-                            class="btn btn-secondary" 
-                            onclick="moveDown(${gIndex},${iIndex})"
-                            title="Geser ke Bawah"
-                            ${iIndex === group.items.length - 1 ? 'disabled' : ''}
-                        >
-                            ↓
-                        </button>
-
-                        <button 
-                            class="btn btn-danger"
-                            onclick="removeBanner(${gIndex},${iIndex})"
-                            title="Hapus Banner"
-                        >
-                            X
-                        </button>
+                        <button class="btn btn-secondary" onclick="moveUp(${gIndex},${iIndex})" ${iIndex === 0 ? 'disabled' : ''}>↑</button>
+                        <button class="btn btn-secondary" onclick="moveDown(${gIndex},${iIndex})" ${iIndex === group.items.length - 1 ? 'disabled' : ''}>↓</button>
+                        <button class="btn btn-danger" onclick="removeBanner(${gIndex},${iIndex})">X</button>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label>ID</label>
-
-                    <input
-                        class="form-control"
-                        value="${item.id || ''}"
-                        oninput="update(${gIndex},${iIndex},'id',this.value)"
-                    >
+                    <input class="form-control" value="${item.id || ''}" oninput="update(${gIndex},${iIndex},'id',this.value)">
                 </div>
-
                 <div class="form-group">
                     <label>Image URL</label>
-
-                    <input
-                        class="form-control"
-                        value="${item.image || ''}"
-                        oninput="update(${gIndex},${iIndex},'image',this.value)"
-                    >
-
-                    ${
-                        item.image
-                        ? `
-                        <div class="image-preview">
-                            <img
-                                src="${item.image}"
-                                alt="preview"
-                                onerror="this.style.display='none'"
-                            >
-                        </div>
-                        `
-                        : ''
-                    }
+                    <input class="form-control" value="${item.image || ''}" oninput="update(${gIndex},${iIndex},'image',this.value)">
+                    ${ item.image ? `<div class="image-preview"><img src="${item.image}" onerror="this.style.display='none'"></div>` : '' }
                 </div>
-
                 <div class="form-group">
                     <label>Link</label>
-
-                    <input
-                        class="form-control"
-                        value="${item.link || ''}"
-                        oninput="update(${gIndex},${iIndex},'link',this.value)"
-                    >
+                    <input class="form-control" value="${item.link || ''}" oninput="update(${gIndex},${iIndex},'link',this.value)">
                 </div>
-
                 <div class="form-group">
                     <label>Alt Text</label>
-
-                    <input
-                        class="form-control"
-                        value="${item.alt || ''}"
-                        oninput="update(${gIndex},${iIndex},'alt',this.value)"
-                    >
+                    <input class="form-control" value="${item.alt || ''}" oninput="update(${gIndex},${iIndex},'alt',this.value)">
                 </div>
             `;
-
             items.appendChild(el);
-
         });
-
     });
-
     updateOutput();
 }
 
 /* ACTION */
 function addBanner(g){
-    appData.models[g].items.push({
-        id:'',
-        image:'',
-        link:'#',
-        alt:''
-    });
+    appData.models[g].items.push({ id:'', image:'', link:'#', alt:'' });
     renderEditor();
 }
 
@@ -487,7 +461,6 @@ function removeBanner(g,i){
     renderEditor();
 }
 
-/* Geser ke Atas */
 function moveUp(g, i) {
     if (i > 0) {
         let temp = appData.models[g].items[i];
@@ -497,7 +470,6 @@ function moveUp(g, i) {
     }
 }
 
-/* Geser ke Bawah */
 function moveDown(g, i) {
     if (i < appData.models[g].items.length - 1) {
         let temp = appData.models[g].items[i];
@@ -507,40 +479,23 @@ function moveDown(g, i) {
     }
 }
 
-/* FIX INPUT LAG */
 function update(g,i,k,v){
     appData.models[g].items[i][k] = v;
     updateOutput();
-
-    if(k === 'image'){
-        renderEditor();
-    }
+    if(k === 'image') renderEditor();
 }
 
-/* OUTPUT */
 function updateOutput(){
-    const json = {
-        banners: {
-            desktop: appData.models[0].items,
-            mobile: appData.models[1].items
-        }
-    };
-
-    document.getElementById('json-output').value =
-        JSON.stringify(json,null,2);
+    const json = { banners: { desktop: appData.models[0].items, mobile: appData.models[1].items } };
+    document.getElementById('json-output').value = JSON.stringify(json,null,2);
 }
 
 function loadJSON(){
     try{
-        const data = JSON.parse(
-            document.getElementById('json-output').value
-        );
-
+        const data = JSON.parse(document.getElementById('json-output').value);
         appData.models[0].items = data.banners?.desktop || [];
         appData.models[1].items = data.banners?.mobile || [];
-
         renderEditor();
-
     }catch{
         alert('JSON error');
     }
@@ -548,15 +503,10 @@ function loadJSON(){
 
 function copyJSON(){
     const el = document.getElementById('json-output');
-    el.select();
-    document.execCommand('copy');
-    alert('Copied!');
+    el.select(); document.execCommand('copy'); alert('Copied!');
 }
 
-
-/* =======================================================
-   FITUR BARU: GITHUB INTEGRATION LOGIC (FETCH & COMMIT)
-   ======================================================= */
+/* GITHUB INTEGRATION LOGIC */
 
 function saveConfig() {
     localStorage.setItem('gh_token', document.getElementById('gh-token').value.trim());
@@ -572,16 +522,24 @@ function loadConfig() {
     document.getElementById('gh-path').value = localStorage.getItem('gh_path') || '';
 }
 
-async function fetchFromGitHub() {
+/* =======================================================
+   FITUR BARU: FILE BROWSER MODAL (GITHUB API)
+   ======================================================= */
+async function openFileBrowser(path = '') {
     const token = document.getElementById('gh-token').value.trim();
     const owner = document.getElementById('gh-owner').value.trim();
     const repo = document.getElementById('gh-repo').value.trim();
-    const path = document.getElementById('gh-path').value.trim();
 
-    if (!token || !owner || !repo || !path) {
-        alert('Harap isi semua konfigurasi GitHub Integration terlebih dahulu!');
+    if (!token || !owner || !repo) {
+        alert("Harap isi Token PAT, Username, dan Repository terlebih dahulu untuk browsing file!");
         return;
     }
+
+    const modal = document.getElementById('fileBrowserModal');
+    const fileListEl = document.getElementById('file-list');
+    
+    modal.style.display = 'flex';
+    fileListEl.innerHTML = '<div style="padding: 20px; text-align: center;">⏳ Loading folder contents...</div>';
 
     const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
 
@@ -594,13 +552,83 @@ async function fetchFromGitHub() {
         });
 
         if (!response.ok) {
-            throw new Error(`Gagal mengambil data (${response.status}). Periksa Token/Konfigurasi Repo.`);
+            throw new Error(`Folder tidak ditemukan atau Token salah (${response.status})`);
         }
 
         const data = await response.json();
-        currentFileSha = data.sha; // Ambil SHA file untuk proses update nanti
+        renderFileList(data, path);
+    } catch (error) {
+        fileListEl.innerHTML = `<div style="padding: 20px; color: red;">❌ Error: ${error.message}</div>`;
+    }
+}
 
-        // Decode Base64 dari GitHub dengan aman agar support karakter UTF-8
+function renderFileList(items, currentPath) {
+    const fileListEl = document.getElementById('file-list');
+    let html = '';
+
+    // Tombol kembali (Back) jika bukan di folder utama (root)
+    if (currentPath !== '') {
+        const parentPath = currentPath.split('/').slice(0, -1).join('/');
+        html += `<div class="file-item" onclick="openFileBrowser('${parentPath}')" style="background:#e8f4fd;">🔙 <strong>.. (Kembali ke folder sebelumnya)</strong></div>`;
+    }
+
+    // Urutkan agar Folder (dir) selalu di atas, lalu File (file)
+    items.sort((a, b) => {
+        if (a.type === b.type) return a.name.localeCompare(b.name);
+        return a.type === 'dir' ? -1 : 1;
+    });
+
+    items.forEach(item => {
+        if (item.type === 'dir') {
+            // FOLDER
+            html += `<div class="file-item" onclick="openFileBrowser('${item.path}')">📁 <strong>${item.name}</strong></div>`;
+        } else if (item.name.endsWith('.json')) {
+            // FILE JSON (Bisa diklik)
+            html += `<div class="file-item" onclick="selectFilePath('${item.path}')">📄 <span style="color:var(--primary); font-weight:bold;">${item.name}</span></div>`;
+        } else {
+            // FILE LAIN (Disable, tidak bisa diklik)
+            html += `<div class="file-item disabled">📄 ${item.name}</div>`;
+        }
+    });
+
+    fileListEl.innerHTML = html || '<div style="padding: 20px; text-align: center;">Folder kosong</div>';
+}
+
+function selectFilePath(path) {
+    const inputPath = document.getElementById('gh-path');
+    inputPath.value = path;
+    saveConfig();
+    closeFileBrowser();
+}
+
+function closeFileBrowser() {
+    document.getElementById('fileBrowserModal').style.display = 'none';
+}
+
+/* ------------------------------------------------------- */
+
+async function fetchFromGitHub() {
+    const token = document.getElementById('gh-token').value.trim();
+    const owner = document.getElementById('gh-owner').value.trim();
+    const repo = document.getElementById('gh-repo').value.trim();
+    const path = document.getElementById('gh-path').value.trim();
+
+    if (!token || !owner || !repo || !path) {
+        alert('Harap isi semua konfigurasi GitHub Integration!');
+        return;
+    }
+
+    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+
+    try {
+        const response = await fetch(url, {
+            headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+
+        if (!response.ok) throw new Error(`Gagal menarik data (${response.status}). Periksa Token/Path.`);
+
+        const data = await response.json();
+        currentFileSha = data.sha; 
         const decodedContent = decodeURIComponent(escape(atob(data.content)));
         const json = JSON.parse(decodedContent);
 
@@ -608,7 +636,7 @@ async function fetchFromGitHub() {
         appData.models[1].items = json.banners?.mobile || [];
 
         renderEditor();
-        alert('Data Berhasil ditarik dari GitHub!');
+        alert('✅ Data Berhasil ditarik dari GitHub!');
     } catch (error) {
         alert(error.message);
     }
@@ -621,68 +649,37 @@ async function saveToGitHub() {
     const path = document.getElementById('gh-path').value.trim();
 
     if (!token || !owner || !repo || !path) {
-        alert('Harap isi semua konfigurasi GitHub Integration terlebih dahulu!');
+        alert('Harap isi semua konfigurasi GitHub Integration!');
         return;
     }
 
-    // Mengambil manifestasi JSON string terbaru dari state aplikasi
-    const jsonContent = {
-        banners: {
-            desktop: appData.models[0].items,
-            mobile: appData.models[1].items
-        }
-    };
+    const jsonContent = { banners: { desktop: appData.models[0].items, mobile: appData.models[1].items } };
     const stringContent = JSON.stringify(jsonContent, null, 2);
-    
-    // Encode string JSON ke Base64 dengan aman (mendukung UTF-8)
     const encodedContent = btoa(unescape(encodeURIComponent(stringContent)));
 
     const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
 
-    // Jika currentFileSha kosong, kita lakukan silent check ke GitHub untuk mendapatkan SHA terbaru agar tidak menimbulkan konflik 409
     if (!currentFileSha) {
         try {
-            const checkRes = await fetch(url, {
-                headers: { 'Authorization': `token ${token}` }
-            });
-            if (checkRes.ok) {
-                const checkData = await checkRes.json();
-                currentFileSha = checkData.sha;
-            }
-        } catch (e) {
-            console.log("Gagal melakukan verifikasi awal SHA:", e);
-        }
+            const checkRes = await fetch(url, { headers: { 'Authorization': `token ${token}` } });
+            if (checkRes.ok) currentFileSha = (await checkRes.json()).sha;
+        } catch (e) {}
     }
 
-    const bodyData = {
-        message: "⚡ Update banners.json via Honda Banner JSON Generator Tool",
-        content: encodedContent
-    };
-
-    // GitHub mewajibkan parameter SHA lama jika kita mengedit/mengganti file lama
-    if (currentFileSha) {
-        bodyData.sha = currentFileSha;
-    }
+    const bodyData = { message: "⚡ Update banners via Generator", content: encodedContent };
+    if (currentFileSha) bodyData.sha = currentFileSha;
 
     try {
         const response = await fetch(url, {
             method: 'PUT',
-            headers: {
-                'Authorization': `token ${token}`,
-                'Accept': 'application/vnd.github.v3+json',
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
             body: JSON.stringify(bodyData)
         });
 
-        if (!response.ok) {
-            const errData = await response.json();
-            throw new Error(`Gagal menyimpan: ${errData.message || response.statusText}`);
-        }
+        if (!response.ok) throw new Error(`Gagal menyimpan file.`);
 
-        const resData = await response.json();
-        currentFileSha = resData.content.sha; // Perbarui SHA global dengan kode SHA commit terbaru
-        alert('Hebat! File JSON Anda berhasil disimpan/dikomit langsung ke GitHub!');
+        currentFileSha = (await response.json()).content.sha; 
+        alert('🎉 Hebat! File JSON berhasil disimpan/dikomit ke GitHub!');
     } catch (error) {
         alert(error.message);
     }
