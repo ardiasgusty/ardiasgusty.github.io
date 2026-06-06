@@ -15,6 +15,10 @@
             --card: #ffffff;
             --border: #ddd;
             --text: #333;
+            --github: #24292e;
+            --github-hover: #1a1e22;
+            --success: #2cbe4e;
+            --success-hover: #228b3a;
         }
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { margin: 0; padding: 0; background-color: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
@@ -41,6 +45,12 @@
         .btn-danger { background: #dc3545; color: white; padding: 6px 12px; font-size: 12px; }
         .btn-danger:hover { background: #c82333; }
         .btn-outline { background: transparent; border: 1px solid #ccc; color: #333; }
+
+        /* GITHUB BUTTONS */
+        .btn-github { background: var(--github); color: white; }
+        .btn-github:hover { background: var(--github-hover); }
+        .btn-success { background: var(--success); color: white; }
+        .btn-success:hover { background: var(--success-hover); }
         
         .flex-row { display: flex; gap: 10px; }
         .flex-1 { flex: 1; }
@@ -49,6 +59,32 @@
         
         /* Penyesuaian CKEditor */
         .cke_chrome { border: 1px solid #ccc !important; border-radius: 4px !important; box-shadow: none !important; }
+
+        /* MODAL FILE BROWSER */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6); z-index: 100;
+            display: none; justify-content: center; align-items: center;
+        }
+        .modal-content {
+            background: #fff; width: 500px; max-height: 80vh;
+            border-radius: 8px; display: flex; flex-direction: column;
+            overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        .modal-header {
+            padding: 15px 20px; background: var(--bg);
+            border-bottom: 1px solid var(--border); display: flex;
+            justify-content: space-between; align-items: center;
+        }
+        .file-list { padding: 10px; overflow-y: auto; flex: 1; background: #fafafa; }
+        .file-item {
+            padding: 12px 15px; border-bottom: 1px solid #eaeaea;
+            cursor: pointer; display: flex; align-items: center;
+            gap: 10px; font-size: 14px; transition: 0.1s;
+        }
+        .file-item:hover { background: #eef2f5; }
+        .file-item.disabled { opacity: 0.4; cursor: not-allowed; }
+        .file-item.disabled:hover { background: transparent; }
     </style>
 </head>
 <body>
@@ -60,13 +96,52 @@
 
     <div class="container">
         <div class="editor-panel">
+
+            <div class="category-card" style="border-left: 4px solid var(--github); margin-top: 10px;">
+                <div class="category-header" style="border-bottom: 2px solid var(--github); margin-bottom: 15px; padding-bottom: 10px;">
+                    <h3 style="margin: 0; font-size: 16px; color: var(--github);">🔗 GitHub Integration Sync</h3>
+                </div>
+                
+                <div class="form-group">
+                    <label>Personal Access Token (PAT)</label>
+                    <input type="password" id="gh-token" class="form-control" placeholder="ghp_xxxxxxxxxxxx" oninput="saveConfig()">
+                </div>
+                
+                <div class="flex-row">
+                    <div class="form-group flex-1">
+                        <label>Username / Owner</label>
+                        <input type="text" id="gh-owner" class="form-control" placeholder="Contoh: ardiasgusty" oninput="saveConfig()">
+                    </div>
+                    <div class="form-group flex-1">
+                        <label>Repository</label>
+                        <input type="text" id="gh-repo" class="form-control" placeholder="Contoh: ardiasgusty.github.io" oninput="saveConfig()">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>File Path (.json)</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="gh-path" class="form-control" placeholder="Contoh: data/product_features/brio.json" oninput="saveConfig()">
+                        <button class="btn btn-secondary" onclick="openFileBrowser()" style="white-space: nowrap;">📁 Browse</button>
+                    </div>
+                </div>
+                
+                <div class="flex-row" style="margin-top: 15px;">
+                    <button class="btn btn-github flex-1" onclick="fetchFromGitHub()">↓ Tarik Data</button>
+                    <button class="btn btn-success flex-1" onclick="saveToGitHub()">↑ Simpan Langsung</button>
+                </div>
+            </div>
+
             <div style="background: #e9ecef; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; font-size: 13px; border-left: 4px solid #17a2b8;">
                 <strong>💡 Info:</strong> Untuk memasukkan kode HTML Tabel Spesifikasi, klik tombol <strong>"Source"</strong> di ujung kanan kotak deskripsi, lalu <i>paste</i> kodenya di sana.
             </div>
+
             <div id="categories-container"></div>
+
             <button class="btn btn-primary" onclick="addCategory()" style="margin-top: 10px; width: 100%; padding: 12px; font-size: 16px;">
                 + Tambah Kategori Baru (Menu Utama)
             </button>
+            <div style="height: 50px;"></div>
         </div>
 
         <div class="output-panel">
@@ -80,8 +155,19 @@
         </div>
     </div>
 
+    <div id="fileBrowserModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="margin:0; font-size: 16px;">📂 Pilih File Features</h3>
+                <button class="btn btn-danger" onclick="closeFileBrowser()" style="padding:4px 8px;">X</button>
+            </div>
+            <div id="file-list" class="file-list"></div>
+        </div>
+    </div>
+
     <script>
         let appData = [];
+        let currentFileSha = ""; // Tracker untuk GitHub Commit
 
         function generateSlug(text) {
             return text.toString().toLowerCase()
@@ -113,11 +199,11 @@
                     <div class="flex-row">
                         <div class="form-group flex-1">
                             <label>Nama Menu (Label)</label>
-                            <input type="text" class="form-control" value="${category.label}" oninput="updateCategory(${cIndex}, 'label', this.value)" placeholder="Contoh: Exterior">
+                            <input type="text" class="form-control" value="${category.label || ''}" oninput="updateCategory(${cIndex}, 'label', this.value)" placeholder="Contoh: Exterior">
                         </div>
                         <div class="form-group flex-1">
                             <label>ID (Slug - Otomatis)</label>
-                            <input type="text" class="form-control" value="${category.id}" oninput="updateCategory(${cIndex}, 'id', this.value)" placeholder="contoh: exterior">
+                            <input type="text" class="form-control" value="${category.id || ''}" oninput="updateCategory(${cIndex}, 'id', this.value)" placeholder="contoh: exterior">
                         </div>
                     </div>
                     <div id="items-container-${cIndex}"></div>
@@ -127,37 +213,42 @@
                 container.appendChild(catCard);
 
                 const itemsContainer = document.getElementById(`items-container-${cIndex}`);
-                category.items.forEach((item, iIndex) => {
-                    const itemCard = document.createElement('div');
-                    itemCard.className = 'item-card';
-                    
-                    // Note: textareanya kita beri ID unik untuk ditempel CKEditor
-                    itemCard.innerHTML = `
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <strong>Sub-Menu ${iIndex + 1}</strong>
-                            <button class="btn btn-danger" onclick="removeItem(${cIndex}, ${iIndex})" style="padding: 2px 8px;">X</button>
-                        </div>
-                        <div class="flex-row">
-                            <div class="form-group flex-1">
-                                <label>Judul Konten</label>
-                                <input type="text" class="form-control" value="${item.title}" oninput="updateItem(${cIndex}, ${iIndex}, 'title', this.value)" placeholder="Contoh: Front Grille">
+                if (category.items) {
+                    category.items.forEach((item, iIndex) => {
+                        const itemCard = document.createElement('div');
+                        itemCard.className = 'item-card';
+                        
+                        itemCard.innerHTML = `
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <strong>Sub-Menu ${iIndex + 1}</strong>
+                                <div style="display:flex; gap:5px;">
+                                    <button class="btn btn-secondary" onclick="moveItemUp(${cIndex}, ${iIndex})" ${iIndex === 0 ? 'disabled' : ''} style="padding: 2px 8px;">↑</button>
+                                    <button class="btn btn-secondary" onclick="moveItemDown(${cIndex}, ${iIndex})" ${iIndex === category.items.length - 1 ? 'disabled' : ''} style="padding: 2px 8px;">↓</button>
+                                    <button class="btn btn-danger" onclick="removeItem(${cIndex}, ${iIndex})" style="padding: 2px 8px;">X</button>
+                                </div>
                             </div>
-                            <div class="form-group flex-1">
-                                <label>Slug ID</label>
-                                <input type="text" class="form-control" value="${item.slug}" oninput="updateItem(${cIndex}, ${iIndex}, 'slug', this.value)" placeholder="Otomatis terisi dari judul">
+                            <div class="flex-row">
+                                <div class="form-group flex-1">
+                                    <label>Judul Konten</label>
+                                    <input type="text" class="form-control" value="${item.title || ''}" oninput="updateItem(${cIndex}, ${iIndex}, 'title', this.value)" placeholder="Contoh: Front Grille">
+                                </div>
+                                <div class="form-group flex-1">
+                                    <label>Slug ID</label>
+                                    <input type="text" class="form-control" value="${item.slug || ''}" oninput="updateItem(${cIndex}, ${iIndex}, 'slug', this.value)" placeholder="Otomatis terisi dari judul">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Link Gambar (URL)</label>
-                            <input type="text" class="form-control" value="${item.img}" oninput="updateItem(${cIndex}, ${iIndex}, 'img', this.value)" placeholder="https://cdn.argust.my.id/gambar.jpg">
-                        </div>
-                        <div class="form-group">
-                            <label>Deskripsi Konten</label>
-                            <textarea id="editor-${cIndex}-${iIndex}" class="form-control desc-editor">${item.desc}</textarea>
-                        </div>
-                    `;
-                    itemsContainer.appendChild(itemCard);
-                });
+                            <div class="form-group">
+                                <label>Link Gambar (URL)</label>
+                                <input type="text" class="form-control" value="${item.img || ''}" oninput="updateItem(${cIndex}, ${iIndex}, 'img', this.value)" placeholder="https://cdn.argust.my.id/gambar.jpg">
+                            </div>
+                            <div class="form-group">
+                                <label>Deskripsi Konten</label>
+                                <textarea id="editor-${cIndex}-${iIndex}" class="form-control desc-editor">${item.desc || ''}</textarea>
+                            </div>
+                        `;
+                        itemsContainer.appendChild(itemCard);
+                    });
+                }
             });
 
             // Inisialisasi CKEditor setelah elemen HTML terbuat
@@ -215,6 +306,7 @@
 
         // ================= Aksi Item =================
         function addItem(cIndex) {
+            if (!appData[cIndex].items) appData[cIndex].items = [];
             appData[cIndex].items.push({ slug: "", title: "", desc: "", img: "" });
             renderEditor();
         }
@@ -232,6 +324,25 @@
                 appData[cIndex].items[iIndex].slug = generateSlug(value);
             }
             updateOutput();
+        }
+
+        // Fitur Geser Item (Biar gampang atur posisi fitur mobil)
+        function moveItemUp(cIndex, iIndex) {
+            if (iIndex > 0) {
+                let temp = appData[cIndex].items[iIndex];
+                appData[cIndex].items[iIndex] = appData[cIndex].items[iIndex - 1];
+                appData[cIndex].items[iIndex - 1] = temp;
+                renderEditor();
+            }
+        }
+
+        function moveItemDown(cIndex, iIndex) {
+            if (iIndex < appData[cIndex].items.length - 1) {
+                let temp = appData[cIndex].items[iIndex];
+                appData[cIndex].items[iIndex] = appData[cIndex].items[iIndex + 1];
+                appData[cIndex].items[iIndex + 1] = temp;
+                renderEditor();
+            }
         }
 
         // ================= Output & Load =================
@@ -263,9 +374,178 @@
             alert('JSON berhasil di-copy! Silakan paste ke file .json kamu.');
         }
 
+        /* ================= GITHUB INTEGRATION LOGIC ================= */
+        function saveConfig() {
+            localStorage.setItem('gh_token', document.getElementById('gh-token').value.trim());
+            localStorage.setItem('gh_owner', document.getElementById('gh-owner').value.trim());
+            localStorage.setItem('gh_repo', document.getElementById('gh-repo').value.trim());
+            localStorage.setItem('gh_path_features', document.getElementById('gh-path').value.trim()); // Key Unik
+        }
+
+        function loadConfig() {
+            document.getElementById('gh-token').value = localStorage.getItem('gh_token') || '';
+            document.getElementById('gh-owner').value = localStorage.getItem('gh_owner') || '';
+            document.getElementById('gh-repo').value = localStorage.getItem('gh_repo') || '';
+            document.getElementById('gh-path').value = localStorage.getItem('gh_path_features') || '';
+        }
+
+        async function openFileBrowser(path = '') {
+            const token = document.getElementById('gh-token').value.trim();
+            const owner = document.getElementById('gh-owner').value.trim();
+            const repo = document.getElementById('gh-repo').value.trim();
+
+            if (!token || !owner || !repo) {
+                alert("Harap isi Token PAT, Username, dan Repository terlebih dahulu untuk browsing file!");
+                return;
+            }
+
+            const modal = document.getElementById('fileBrowserModal');
+            const fileListEl = document.getElementById('file-list');
+            modal.style.display = 'flex';
+            fileListEl.innerHTML = '<div style="padding: 20px; text-align: center;">⏳ Loading folder contents...</div>';
+
+            const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+
+            try {
+                const response = await fetch(url, {
+                    headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+                });
+                if (!response.ok) throw new Error(`Folder tidak ditemukan atau Token salah (${response.status})`);
+
+                const data = await response.json();
+                renderFileList(data, path);
+            } catch (error) {
+                fileListEl.innerHTML = `<div style="padding: 20px; color: red;">❌ Error: ${error.message}</div>`;
+            }
+        }
+
+        function renderFileList(items, currentPath) {
+            const fileListEl = document.getElementById('file-list');
+            let html = '';
+
+            if (currentPath !== '') {
+                const parentPath = currentPath.split('/').slice(0, -1).join('/');
+                html += `<div class="file-item" onclick="openFileBrowser('${parentPath}')" style="background:#e8f4fd;">🔙 <strong>.. (Kembali)</strong></div>`;
+            }
+
+            items.sort((a, b) => {
+                if (a.type === b.type) return a.name.localeCompare(b.name);
+                return a.type === 'dir' ? -1 : 1;
+            });
+
+            items.forEach(item => {
+                if (item.type === 'dir') {
+                    html += `<div class="file-item" onclick="openFileBrowser('${item.path}')">📁 <strong>${item.name}</strong></div>`;
+                } else if (item.name.endsWith('.json')) {
+                    html += `<div class="file-item" onclick="selectFilePath('${item.path}')">📄 <span style="color:var(--primary); font-weight:bold;">${item.name}</span></div>`;
+                } else {
+                    html += `<div class="file-item disabled">📄 ${item.name}</div>`;
+                }
+            });
+
+            fileListEl.innerHTML = html || '<div style="padding: 20px; text-align: center;">Folder kosong</div>';
+        }
+
+        function selectFilePath(path) {
+            const inputPath = document.getElementById('gh-path');
+            inputPath.value = path;
+            saveConfig();
+            closeFileBrowser();
+        }
+
+        function closeFileBrowser() {
+            document.getElementById('fileBrowserModal').style.display = 'none';
+        }
+
+        async function fetchFromGitHub() {
+            const token = document.getElementById('gh-token').value.trim();
+            const owner = document.getElementById('gh-owner').value.trim();
+            const repo = document.getElementById('gh-repo').value.trim();
+            const path = document.getElementById('gh-path').value.trim();
+
+            if (!token || !owner || !repo || !path) {
+                alert('Harap isi semua konfigurasi GitHub Integration!');
+                return;
+            }
+
+            const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+
+            try {
+                const response = await fetch(url, {
+                    headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+                });
+
+                if (!response.ok) throw new Error(`Gagal menarik data (${response.status}). Periksa Token/Path.`);
+
+                const data = await response.json();
+                currentFileSha = data.sha; 
+                
+                const decodedContent = decodeURIComponent(escape(atob(data.content)));
+                const parsed = JSON.parse(decodedContent);
+
+                if (Array.isArray(parsed)) {
+                    appData = parsed;
+                    renderEditor();
+                    alert('✅ Data Features Berhasil ditarik dari GitHub!');
+                } else {
+                    throw new Error("Format JSON di GitHub tidak valid. Harusnya berformat Array [ ].");
+                }
+
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+
+        async function saveToGitHub() {
+            const token = document.getElementById('gh-token').value.trim();
+            const owner = document.getElementById('gh-owner').value.trim();
+            const repo = document.getElementById('gh-repo').value.trim();
+            const path = document.getElementById('gh-path').value.trim();
+
+            if (!token || !owner || !repo || !path) {
+                alert('Harap isi semua konfigurasi GitHub Integration!');
+                return;
+            }
+
+            const stringContent = JSON.stringify(appData, null, 2);
+            const encodedContent = btoa(unescape(encodeURIComponent(stringContent)));
+
+            const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+
+            if (!currentFileSha) {
+                try {
+                    const checkRes = await fetch(url, { headers: { 'Authorization': `token ${token}` } });
+                    if (checkRes.ok) currentFileSha = (await checkRes.json()).sha;
+                } catch (e) {}
+            }
+
+            const bodyData = { message: "⚡ Update Features Data via Generator", content: encodedContent };
+            if (currentFileSha) bodyData.sha = currentFileSha;
+
+            try {
+                const response = await fetch(url, {
+                    method: 'PUT',
+                    headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify(bodyData)
+                });
+
+                if (!response.ok) throw new Error(`Gagal menyimpan file.`);
+
+                currentFileSha = (await response.json()).content.sha; 
+                alert('🎉 Data fitur berhasil disimpan/dikomit ke GitHub!');
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+
         // Inisiasi pertama
         window.onload = () => {
-            if(appData.length === 0) addCategory(); 
+            loadConfig();
+            if(appData.length === 0) {
+                addCategory(); 
+            } else {
+                renderEditor();
+            }
         };
     </script>
 </body>
