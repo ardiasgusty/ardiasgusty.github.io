@@ -114,7 +114,7 @@ body{ margin:0; background:var(--bg); display:flex; height:100vh; overflow:hidde
             <div class="form-group">
                 <label>File Path JSON Utama (.json)</label>
                 <div style="display: flex; gap: 10px;">
-                    <input type="text" id="gh-path" class="form-control" placeholder="Contoh: data/banners.json" oninput="saveConfig()">
+                    <input type="text" id="gh-path" class="form-control" placeholder="Contoh: honda/data/banners.json" oninput="saveConfig()">
                     <button class="btn btn-secondary" onclick="openFileBrowser('', 'file')" style="white-space: nowrap;">📁 Browse File</button>
                 </div>
             </div>
@@ -123,7 +123,7 @@ body{ margin:0; background:var(--bg); display:flex; height:100vh; overflow:hidde
             <div class="form-group" style="margin-top: 10px;">
                 <label>Folder Upload Gambar (Tanpa slash di akhir)</label>
                 <div style="display: flex; gap: 10px;">
-                    <input type="text" id="gh-img-folder" class="form-control" placeholder="Contoh: assets/images/banners" oninput="saveConfig()">
+                    <input type="text" id="gh-img-folder" class="form-control" placeholder="Contoh: honda/assets/images/banner" oninput="saveConfig()">
                     <button class="btn btn-secondary" onclick="openFileBrowser('', 'folder')" style="white-space: nowrap;">📁 Browse Folder</button>
                 </div>
                 <small style="color: #666; font-size: 11px;">*Gambar yang kamu upload akan disimpan ke folder ini di GitHub.</small>
@@ -216,7 +216,7 @@ function renderEditor(){
 
                 <div class="form-group">
                     <label>ID / Slug</label>
-                    <input class="form-control" value="${item.id || ''}" oninput="update(${gIndex},${iIndex},'id',this.value)" placeholder="contoh: promo-brio">
+                    <input class="form-control" value="${item.id || ''}" oninput="update(${gIndex},${iIndex},'id',this.value)" placeholder="contoh: hrv-slp">
                 </div>
 
                 <div class="form-group">
@@ -259,21 +259,31 @@ function renderEditor(){
 /* ACTION */
 function addBanner(g){
     appData.models[g].items.push({
-        id:'', image:'', link:'#', alt:'',
-        gh_path: '', gh_sha: '', _tempImage: ''
+        id:'', image:'', link:'#', alt:'', _tempImage: ''
     });
     renderEditor();
 }
 
 function removeBanner(g,i){
     const item = appData.models[g].items[i];
-    if (item.gh_path && item.gh_sha) {
-        if(confirm('Banner ini punya file gambar di GitHub. Ingin menghapus gambarnya sekalian agar tidak menuhin storage?')) {
-            deleteOldImageFromGitHub(item.gh_path, item.gh_sha);
+    
+    // Jika gambar berasal dari github.io, tawarkan untuk menghapus gambarnya sekalian
+    if (item.image && item.image.includes('github.io')) {
+        if(confirm('Hapus banner ini? Gambarnya akan otomatis dihapus dari repository GitHub agar tidak memenuh-menuhi storage.')) {
+            let imgFolder = document.getElementById('gh-img-folder').value.trim();
+            if(imgFolder.endsWith('/')) imgFolder = imgFolder.slice(0, -1);
+            
+            // Jalankan fungsi delete file secara background
+            deleteOldImageByUrl(item.image, imgFolder);
+            
+            appData.models[g].items.splice(i,1);
+            renderEditor();
         }
+    } else {
+        // Jika dari blogger atau link luar, langsung hapus saja array-nya
+        appData.models[g].items.splice(i,1);
+        renderEditor();
     }
-    appData.models[g].items.splice(i,1);
-    renderEditor();
 }
 
 function moveUp(g, i) {
@@ -297,7 +307,6 @@ function moveDown(g, i) {
 function update(g,i,k,v){
     appData.models[g].items[i][k] = v;
     
-    // Hapus preview lokal jika user manual mengetik Image URL baru
     if(k === 'image' && appData.models[g].items[i]._tempImage) {
         appData.models[g].items[i]._tempImage = '';
     }
@@ -308,29 +317,50 @@ function update(g,i,k,v){
 
 
 /* =======================================================
-   AUTO UPLOAD & DELETE GAMBAR KE GITHUB
+   SISTEM BARU: AUTO CLEANUP GAMBAR BERDASARKAN URL
    ======================================================= */
 
-async function deleteOldImageFromGitHub(oldPath, oldSha) {
+async function deleteOldImageByUrl(imageUrl, imgFolder) {
+    if (!imageUrl || !imageUrl.includes('github.io')) return;
+
     const token = document.getElementById('gh-token').value.trim();
     const owner = document.getElementById('gh-owner').value.trim();
     const repo = document.getElementById('gh-repo').value.trim();
 
-    if (!token || !owner || !repo || !oldPath || !oldSha) return;
+    if (!token || !owner || !repo || !imgFolder) return;
+
+    // Ekstrak nama file asli dari URL panjang
+    const fileName = imageUrl.substring(imageUrl.lastIndexOf('/') + 1);
+    if (!fileName) return;
 
     try {
-        const delUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${oldPath}`;
-        await fetch(delUrl, {
-            method: 'DELETE',
-            headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                message: `🗑️ Auto-delete old banner image: ${oldPath}`, 
-                sha: oldSha 
-            })
+        // 1. Cek isi direktori folder gambar di GitHub
+        const listUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${imgFolder}`;
+        const listRes = await fetch(listUrl, {
+            headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
         });
-        console.log("Gambar lama berhasil dihapus dari repository.");
+        
+        if (!listRes.ok) return;
+        const files = await listRes.json();
+        
+        // 2. Cari kecocokan nama file dari direktori untuk mendapatkan nilai "SHA" nya
+        const targetFile = files.find(f => f.name === fileName);
+        
+        // 3. Jika ketemu, HAPUS!
+        if (targetFile) {
+            const delUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${targetFile.path}`;
+            await fetch(delUrl, {
+                method: 'DELETE',
+                headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    message: `🗑️ Auto-delete replaced/removed image: ${fileName}`,
+                    sha: targetFile.sha
+                })
+            });
+            console.log(`Gambar lama ${fileName} berhasil dihapus dari repository!`);
+        }
     } catch (e) {
-        console.error("Gagal menghapus gambar lama", e);
+        console.error("Gagal melakukan auto-cleanup gambar", e);
     }
 }
 
@@ -352,13 +382,14 @@ async function uploadImageToGitHub(gIndex, iIndex, inputEl) {
     if(imgFolder.endsWith('/')) imgFolder = imgFolder.slice(0, -1);
 
     const statusEl = document.getElementById(`upload-status-${gIndex}-${iIndex}`);
-    statusEl.innerHTML = "⏳ Sedang mengupload ke GitHub... Harap tunggu.";
+    statusEl.innerHTML = "⏳ Sedang memproses... Harap tunggu.";
     
     const item = appData.models[gIndex].items[iIndex];
 
-    if (item.gh_path && item.gh_sha) {
-        statusEl.innerHTML = "🗑️ Menghapus gambar lama...";
-        await deleteOldImageFromGitHub(item.gh_path, item.gh_sha);
+    // Jika di dalam kotak teks Image URL sudah ada gambar dari GitHub lama, Hapus File Lamanya Dulu!
+    if (item.image && item.image.includes('github.io')) {
+        statusEl.innerHTML = "🗑️ Membersihkan gambar lama dari repository...";
+        await deleteOldImageByUrl(item.image, imgFolder);
     }
 
     const reader = new FileReader();
@@ -366,18 +397,16 @@ async function uploadImageToGitHub(gIndex, iIndex, inputEl) {
         const base64Data = e.target.result.split(',')[1];
         const ext = file.name.split('.').pop();
         
-        // Aturan Penamaan SEO Friendly dari ID/Slug
         const rawSlug = item.id ? item.id.replace(/[^a-zA-Z0-9-]/g, '').toLowerCase() : 'banner';
         const cleanSlug = rawSlug === '' ? 'banner' : rawSlug;
         const uniqueFileName = `${cleanSlug}_${Date.now()}.${ext}`;
         
         const fullPath = imgFolder ? `${imgFolder}/${uniqueFileName}` : uniqueFileName;
 
-        // Tampilkan Gambar Preview Secara Instan Secara Lokal
         item._tempImage = e.target.result;
         renderEditor();
 
-        statusEl.innerHTML = "🚀 Mengirim gambar ke server GitHub...";
+        statusEl.innerHTML = "🚀 Mengirim gambar baru ke server GitHub...";
 
         try {
             const putUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${fullPath}`;
@@ -390,12 +419,9 @@ async function uploadImageToGitHub(gIndex, iIndex, inputEl) {
                 })
             });
 
-            if (!res.ok) throw new Error("Gagal upload gambar. Cek Token/Folder.");
+            if (!res.ok) throw new Error("Gagal upload. Cek folder & permission.");
             
             const data = await res.json();
-
-            item.gh_path = data.content.path;
-            item.gh_sha = data.content.sha;
             
             let publicUrl = "";
             if (repo.includes('.github.io')) {
@@ -406,11 +432,10 @@ async function uploadImageToGitHub(gIndex, iIndex, inputEl) {
 
             item.image = publicUrl;
             
-            // Re-select element because renderEditor might have refreshed the DOM
             const newStatusEl = document.getElementById(`upload-status-${gIndex}-${iIndex}`);
-            if(newStatusEl) newStatusEl.innerHTML = "✅ Upload Berhasil! Link tersimpan.";
+            if(newStatusEl) newStatusEl.innerHTML = "✅ Upload Berhasil! Link otomatis terganti.";
             
-            updateOutput(); // Update output JSON dengan link GitHub baru
+            updateOutput(); 
 
         } catch (err) {
             const errEl = document.getElementById(`upload-status-${gIndex}-${iIndex}`);
@@ -429,8 +454,6 @@ async function uploadImageToGitHub(gIndex, iIndex, inputEl) {
    ======================================================= */
 
 function updateOutput(){
-    // Fungsi khusus untuk memastikan temporary item/variabel sistem
-    // tidak ikut masuk (bleeding) ke hasil akhir JSON.
     const filterItem = (item) => ({
         id: item.id,
         image: item.image,
@@ -479,7 +502,6 @@ function loadConfig() {
     document.getElementById('gh-img-folder').value = localStorage.getItem('gh_img_folder') || '';
 }
 
-// LOGIKA BROWSER MODAL (DUAL MODE)
 async function openFileBrowser(path = '', mode = currentBrowserMode) {
     const token = document.getElementById('gh-token').value.trim();
     const owner = document.getElementById('gh-owner').value.trim();
@@ -614,7 +636,6 @@ async function saveToGitHub() {
         return;
     }
 
-    // Gunakan updateOutput logic untuk memfilter variabel sampah
     const filterItem = (item) => ({
         id: item.id, image: item.image, link: item.link, alt: item.alt
     });
