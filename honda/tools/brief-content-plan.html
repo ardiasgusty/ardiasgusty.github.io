@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internal Marketing Tools - Honda Bintaro</title>
+    
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #e74c3c;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #2d3436;
+            --text-muted: #636e72;
+            --border: #eaedf1;
+        }
+
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body { 
+            margin: 0; 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh;
+        }
+
+        /* ================= LOGIN SCREEN ================= */
+        #login-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .login-box {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-box h2 { margin-top: 0; color: var(--primary); }
+        .login-box p { color: var(--text-muted); font-size: 14px; margin-bottom: 25px; }
+
+        .form-control {
+            width: 100%; padding: 12px 15px;
+            border: 2px solid var(--border); border-radius: 8px;
+            font-size: 16px; margin-bottom: 15px;
+            outline: none; transition: 0.3s;
+        }
+        .form-control:focus { border-color: var(--primary); }
+
+        .btn {
+            width: 100%; padding: 12px;
+            border: none; border-radius: 8px;
+            background: var(--primary); color: white;
+            font-size: 16px; font-weight: bold;
+            cursor: pointer; transition: 0.2s;
+        }
+        .btn:hover { background: #1a252f; transform: translateY(-1px); }
+
+        .error-msg { color: var(--accent); font-size: 13px; margin-bottom: 15px; display: none; font-weight: bold; }
+
+        /* Rahasia Dev: Tombol Generate Hash */
+        .dev-tool { margin-top: 20px; font-size: 12px; color: #aaa; cursor: pointer; text-decoration: underline; }
+
+        /* ================= DASHBOARD SCREEN ================= */
+        #dashboard-screen { display: none; flex: 1; flex-direction: column; }
+
+        .header {
+            background: var(--card-bg);
+            padding: 20px 5%;
+            border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 10;
+        }
+        
+        .header-title h1 { margin: 0; font-size: 22px; color: var(--primary); }
+        .header-title p { margin: 4px 0 0 0; font-size: 13px; color: var(--text-muted); }
+
+        .btn-logout {
+            background: transparent; border: 1px solid var(--accent);
+            color: var(--accent); padding: 8px 16px;
+            border-radius: 6px; cursor: pointer; font-weight: bold;
+            transition: 0.2s;
+        }
+        .btn-logout:hover { background: var(--accent); color: white; }
+
+        .main-content { padding: 40px 5%; flex: 1; }
+
+        /* Grid Kartu Menu */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px; margin-bottom: 50px;
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            padding: 25px; border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            text-decoration: none; color: inherit;
+            transition: 0.2s; display: block;
+        }
+        .tool-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transform: translateY(-3px);
+            border-color: #d1d8e0;
+        }
+
+        .tool-icon {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 45px; height: 45px; border-radius: 10px;
+            font-size: 20px; margin-bottom: 15px;
+        }
+        
+        /* Variasi Warna Ikon */
+        .icon-red { background: #ffeaa7; color: #d63031; }
+        .icon-blue { background: #dfe6e9; color: #0984e3; }
+        .icon-green { background: #dff9fb; color: #22a6b3; }
+        .icon-purple { background: #f3a683; color: #574b90; }
+        .icon-yellow { background: #fefad5; color: #f39c12; }
+        .icon-dark { background: #ecf0f1; color: #2c3e50; }
+
+        .tool-card h3 { margin: 0 0 8px 0; font-size: 18px; color: var(--primary); }
+        .tool-card p { margin: 0; font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+        /* Spreadsheet Section */
+        .spreadsheet-container {
+            background: var(--card-bg);
+            padding: 20px; border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .spreadsheet-container h2 {
+            margin: 0 0 15px 0; font-size: 20px; color: var(--primary);
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        iframe {
+            width: 100%; height: 750px;
+            border: 1px solid var(--border); border-radius: 8px;
+            background: #fafafa;
+        }
+
+        .footer {
+            text-align: center; padding: 20px;
+            color: var(--text-muted); font-size: 13px;
+            border-top: 1px solid var(--border);
+            background: var(--card-bg);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header { flex-direction: column; gap: 15px; text-align: center; }
+            .btn-logout { width: 100%; }
+            .main-content { padding: 20px 5%; }
+            iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-screen">
+        <div class="login-box">
+            <h2>Restricted Access</h2>
+            <p>Sistem Manajemen Internal Honda Bintaro</p>
+            
+            <div id="error-msg" class="error-msg">Password yang kamu masukkan salah!</div>
+            
+            <input type="password" id="password-input" class="form-control" placeholder="Masukkan Password" onkeypress="handleEnter(event)">
+            <button class="btn" onclick="verifyPassword()">Masuk ke Dashboard</button>
+            
+            <div class="dev-tool" onclick="generateNewHash()">Ubah Password (Generate Hash)</div>
+        </div>
+    </div>
+
+
+    <div id="dashboard-screen">
+        <header class="header">
+            <div class="header-title">
+                <h1>Internal Marketing Tools</h1>
+                <p>Dashboard pengelolaan data JSON - Honda Bintaro</p>
+            </div>
+            <button class="btn-logout" onclick="logout()">Keluar Sistem</button>
+        </header>
+
+        <main class="main-content">
+            
+            <div class="tools-grid">
+                <a href="blogger-editor.html" class="tool-card">
+                    <div class="tool-icon icon-red">📝</div>
+                    <h3>Blogger Editor</h3>
+                    <p>Update konten produk dan script untuk postingan Blogger secara instan.</p>
+                </a>
+                
+                <a href="pricelist-editor.html" class="tool-card">
+                    <div class="tool-icon icon-blue">📇</div>
+                    <h3>Pricelist Editor</h3>
+                    <p>Ubah daftar harga kendaraan dan simulasi kredit tanpa menyentuh code.</p>
+                </a>
+                
+                <a href="build-your-dreams.html" class="tool-card">
+                    <div class="tool-icon icon-green">🪄</div>
+                    <h3>Build Your Dreams</h3>
+                    <p>Tools konfigurasi atau fitur khusus lainnya untuk marketing campaign.</p>
+                </a>
+                
+                <a href="website-banner.html" class="tool-card">
+                    <div class="tool-icon icon-purple">💻</div>
+                    <h3>Website Banner</h3>
+                    <p>Mengubah gambar banner desktop dan mobile langsung terhubung ke GitHub.</p>
+                </a>
+                
+                <a href="image-to-webp.html" class="tool-card">
+                    <div class="tool-icon icon-yellow">🖼️</div>
+                    <h3>Image to WEBP</h3>
+                    <p>Gambarmu terlalu besar? convert dulu jadi webp. Lebih kecil, lebih hemat!</p>
+                </a>
+
+                <a href="#spreadsheet-section" class="tool-card">
+                    <div class="tool-icon icon-dark">📊</div>
+                    <h3>Content Plan 2026</h3>
+                    <p>Akses cepat ke database Social Media & Briefing langsung di halaman ini.</p>
+                </a>
+            </div>
+
+            <div id="spreadsheet-section" class="spreadsheet-container">
+                <h2>📊 Brief & Content Plan DM Honda Bintaro 2026</h2>
+                <iframe 
+                    src="https://docs.google.com/spreadsheets/d/10YB8WrOiEVxYczKKh5auSEThddoD9NUvQXqGFHsh3d4/edit?rm=minimal" 
+                    title="DM Content Plan 2026">
+                </iframe>
+            </div>
+
+        </main>
+
+        <footer class="footer">
+            &copy; 2026 Honda Bintaro Digital Division • Logged as Argust
+        </footer>
+    </div>
+
+
+    <script>
+        // 1. Ini adalah Hash SHA-256 dari teks "123456"
+        // Jika ingin ganti password, ganti teks di dalam kutip ini dengan hasil generate hash yang baru.
+        const TARGET_HASH = "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92";
+
+        // Fungsi Enkripsi Teks menjadi SHA-256
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // Fungsi Verifikasi Password
+        async function verifyPassword() {
+            const input = document.getElementById('password-input').value;
+            const errorMsg = document.getElementById('error-msg');
+            
+            if (!input) return;
+
+            const inputHash = await sha256(input);
+
+            if (inputHash === TARGET_HASH) {
+                // Login Berhasil
+                sessionStorage.setItem('auth_honda_bintaro', 'true');
+                errorMsg.style.display = 'none';
+                showDashboard();
+            } else {
+                // Login Gagal
+                errorMsg.style.display = 'block';
+                document.getElementById('password-input').value = "";
+            }
+        }
+
+        // Tangkap tombol Enter
+        function handleEnter(event) {
+            if (event.key === "Enter") {
+                verifyPassword();
+            }
+        }
+
+        // Tampilkan Dashboard
+        function showDashboard() {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('dashboard-screen').style.display = 'flex';
+        }
+
+        // Fungsi Logout
+        function logout() {
+            sessionStorage.removeItem('auth_honda_bintaro');
+            document.getElementById('login-screen').style.display = 'flex';
+            document.getElementById('dashboard-screen').style.display = 'none';
+            document.getElementById('password-input').value = "";
+        }
+
+        // Cek Sesi saat Halaman Dimuat
+        window.onload = () => {
+            if (sessionStorage.getItem('auth_honda_bintaro') === 'true') {
+                showDashboard();
+            }
+        };
+
+        // ALAT BANTU DEVELOPER: Untuk mengganti password aslimu nanti
+        async function generateNewHash() {
+            const newPassword = prompt("Masukkan password BARU yang ingin kamu buat:");
+            if (newPassword) {
+                const newHash = await sha256(newPassword);
+                alert("Ini adalah Hash untuk password barumu:\n\n" + newHash + "\n\nCopy kode di atas, lalu paste/ganti di bagian 'const TARGET_HASH' di dalam source code HTML ini.");
+                console.log("Hash Baru Anda:", newHash);
+            }
+        }
+    </script>
+</body>
+</html>
