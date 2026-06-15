@@ -80,7 +80,7 @@ body{ margin:0; background:var(--bg); display:flex; height:100vh; overflow:hidde
 
 <div class="header">
     <div>Honda Banner JSON Generator</div>
-    <div style="font-size:14px;">Created for Argust</div>
+    <div style="font-size:14px;">Created for Argust by Shiba</div>
 </div>
 
 <div class="container">
@@ -112,13 +112,16 @@ body{ margin:0; background:var(--bg); display:flex; height:100vh; overflow:hidde
                 <label>File Path JSON Utama (.json)</label>
                 <div style="display: flex; gap: 10px;">
                     <input type="text" id="gh-path" class="form-control" placeholder="Contoh: data/banners.json" oninput="saveConfig()">
-                    <button class="btn btn-secondary" onclick="openFileBrowser()" style="white-space: nowrap;">📁 Browse</button>
+                    <button class="btn btn-secondary" onclick="openFileBrowser('', 'file')" style="white-space: nowrap;">📁 Browse File</button>
                 </div>
             </div>
 
             <div class="form-group" style="margin-top: 10px;">
                 <label>Folder Upload Gambar (Tanpa slash di akhir)</label>
-                <input type="text" id="gh-img-folder" class="form-control" placeholder="Contoh: assets/images/banners" oninput="saveConfig()">
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="gh-img-folder" class="form-control" placeholder="Contoh: assets/images/banners" oninput="saveConfig()">
+                    <button class="btn btn-secondary" onclick="openFileBrowser('', 'folder')" style="white-space: nowrap;">📁 Browse Folder</button>
+                </div>
                 <small style="color: #666; font-size: 11px;">*Gambar yang kamu upload akan disimpan ke folder ini di GitHub.</small>
             </div>
             
@@ -147,8 +150,11 @@ body{ margin:0; background:var(--bg); display:flex; height:100vh; overflow:hidde
 <div id="fileBrowserModal" class="modal-overlay">
     <div class="modal-content">
         <div class="modal-header">
-            <h3 style="margin:0; font-size: 16px;">📂 Pilih File JSON</h3>
-            <button class="btn btn-danger" onclick="closeFileBrowser()" style="padding:4px 8px;">X</button>
+            <h3 id="modal-title" style="margin:0; font-size: 16px;">📂 Pilih File JSON</h3>
+            <div style="display: flex; gap: 10px;">
+                <button id="btn-select-folder" class="btn btn-success" onclick="confirmFolderSelection()" style="display: none; padding:4px 8px;">Pilih Folder Ini</button>
+                <button class="btn btn-danger" onclick="closeFileBrowser()" style="padding:4px 8px;">X</button>
+            </div>
         </div>
         <div id="file-list" class="file-list"></div>
     </div>
@@ -165,6 +171,10 @@ let appData = {
 };
 
 let currentFileSha = "";
+
+// Variabel Global untuk Modal Browser
+let currentBrowserMode = 'file'; // 'file' atau 'folder'
+let currentBrowsePath = '';
 
 /* RENDER */
 function renderEditor(){
@@ -253,7 +263,6 @@ function addBanner(g){
 
 function removeBanner(g,i){
     const item = appData.models[g].items[i];
-    // Jika ada gambar yang pernah diupload ke GitHub, tawari untuk menghapusnya sekalian
     if (item.gh_path && item.gh_sha) {
         if(confirm('Banner ini punya file gambar di GitHub. Ingin menghapus gambarnya sekalian agar tidak menuhin storage?')) {
             deleteOldImageFromGitHub(item.gh_path, item.gh_sha);
@@ -289,7 +298,7 @@ function update(g,i,k,v){
 
 
 /* =======================================================
-   FITUR BARU: AUTO UPLOAD & DELETE GAMBAR KE GITHUB
+   AUTO UPLOAD & DELETE GAMBAR KE GITHUB
    ======================================================= */
 
 async function deleteOldImageFromGitHub(oldPath, oldSha) {
@@ -324,13 +333,12 @@ async function uploadImageToGitHub(gIndex, iIndex, inputEl) {
     const repo = document.getElementById('gh-repo').value.trim();
     let imgFolder = document.getElementById('gh-img-folder').value.trim();
 
-    if (!token || !owner || !repo || !imgFolder) {
-        alert("Harap lengkapi semua konfigurasi GitHub (termasuk Folder Gambar) sebelum mengupload!");
+    if (!token || !owner || !repo) {
+        alert("Harap lengkapi semua konfigurasi GitHub Token, Username, dan Repo!");
         inputEl.value = "";
         return;
     }
 
-    // Hilangkan slash di akhir folder jika user tidak sengaja mengetiknya
     if(imgFolder.endsWith('/')) imgFolder = imgFolder.slice(0, -1);
 
     const statusEl = document.getElementById(`upload-status-${gIndex}-${iIndex}`);
@@ -338,25 +346,22 @@ async function uploadImageToGitHub(gIndex, iIndex, inputEl) {
     
     const item = appData.models[gIndex].items[iIndex];
 
-    // 1. Jika ada gambar lama yang dihosting di GitHub, HAPUS DULU agar tidak penuh!
     if (item.gh_path && item.gh_sha) {
         statusEl.innerHTML = "🗑️ Menghapus gambar lama...";
         await deleteOldImageFromGitHub(item.gh_path, item.gh_sha);
     }
 
-    // 2. Persiapkan file gambar baru (konversi ke Base64)
     const reader = new FileReader();
     reader.onload = async function(e) {
         const base64Data = e.target.result.split(',')[1];
         const ext = file.name.split('.').pop();
         
-        // Buat nama file unik dengan timestamp agar cache web otomatis ter-refresh
         const uniqueFileName = `banner_${Date.now()}.${ext}`;
-        const fullPath = `${imgFolder}/${uniqueFileName}`;
+        // Jika imgFolder kosong, simpan di root direktori
+        const fullPath = imgFolder ? `${imgFolder}/${uniqueFileName}` : uniqueFileName;
 
         statusEl.innerHTML = "🚀 Mengirim gambar baru...";
 
-        // 3. Upload via GitHub API
         try {
             const putUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${fullPath}`;
             const res = await fetch(putUrl, {
@@ -372,11 +377,9 @@ async function uploadImageToGitHub(gIndex, iIndex, inputEl) {
             
             const data = await res.json();
 
-            // 4. Update JSON data
             item.gh_path = data.content.path;
             item.gh_sha = data.content.sha;
             
-            // Generate link publik (Otomatis mendeteksi format nama repo github.io)
             let publicUrl = "";
             if (repo.includes('.github.io')) {
                 publicUrl = `https://${repo}/${data.content.path}`;
@@ -385,10 +388,8 @@ async function uploadImageToGitHub(gIndex, iIndex, inputEl) {
             }
 
             item.image = publicUrl;
-
             statusEl.innerHTML = "✅ Upload Berhasil!";
             
-            // Re-render editor setelah 1 detik agar preview gambar langsung muncul
             setTimeout(() => renderEditor(), 1000);
 
         } catch (err) {
@@ -401,7 +402,7 @@ async function uploadImageToGitHub(gIndex, iIndex, inputEl) {
 
 
 /* =======================================================
-   OUTPUT & GITHUB JSON INTEGRATION LOGIC
+   OUTPUT & GITHUB BROWSER LOGIC
    ======================================================= */
 
 function updateOutput(){
@@ -446,7 +447,8 @@ function loadConfig() {
     document.getElementById('gh-img-folder').value = localStorage.getItem('gh_img_folder') || '';
 }
 
-async function openFileBrowser(path = '') {
+// LOGIKA BROWSER MODAL (DUAL MODE)
+async function openFileBrowser(path = '', mode = currentBrowserMode) {
     const token = document.getElementById('gh-token').value.trim();
     const owner = document.getElementById('gh-owner').value.trim();
     const repo = document.getElementById('gh-repo').value.trim();
@@ -454,6 +456,21 @@ async function openFileBrowser(path = '') {
     if (!token || !owner || !repo) {
         alert("Harap isi Token PAT, Username, dan Repository terlebih dahulu untuk browsing file!");
         return;
+    }
+
+    currentBrowserMode = mode;
+    currentBrowsePath = path;
+
+    const modalTitle = document.getElementById('modal-title');
+    const btnSelectFolder = document.getElementById('btn-select-folder');
+    
+    // Sesuaikan UI modal berdasarkan mode yang diklik
+    if (mode === 'folder') {
+        modalTitle.innerText = "📂 Pilih Folder Gambar";
+        btnSelectFolder.style.display = "block";
+    } else {
+        modalTitle.innerText = "📂 Pilih File JSON";
+        btnSelectFolder.style.display = "none";
     }
 
     const modal = document.getElementById('fileBrowserModal');
@@ -477,12 +494,13 @@ async function openFileBrowser(path = '') {
 }
 
 function renderFileList(items, currentPath) {
+    currentBrowsePath = currentPath; // Catat path terkini saat modal terbuka
     const fileListEl = document.getElementById('file-list');
     let html = '';
 
     if (currentPath !== '') {
         const parentPath = currentPath.split('/').slice(0, -1).join('/');
-        html += `<div class="file-item" onclick="openFileBrowser('${parentPath}')" style="background:#e8f4fd;">🔙 <strong>.. (Kembali)</strong></div>`;
+        html += `<div class="file-item" onclick="openFileBrowser('${parentPath}', '${currentBrowserMode}')" style="background:#e8f4fd;">🔙 <strong>.. (Kembali)</strong></div>`;
     }
 
     items.sort((a, b) => {
@@ -492,10 +510,11 @@ function renderFileList(items, currentPath) {
 
     items.forEach(item => {
         if (item.type === 'dir') {
-            html += `<div class="file-item" onclick="openFileBrowser('${item.path}')">📁 <strong>${item.name}</strong></div>`;
-        } else if (item.name.endsWith('.json')) {
+            html += `<div class="file-item" onclick="openFileBrowser('${item.path}', '${currentBrowserMode}')">📁 <strong>${item.name}</strong></div>`;
+        } else if (item.name.endsWith('.json') && currentBrowserMode === 'file') {
             html += `<div class="file-item" onclick="selectFilePath('${item.path}')">📄 <span style="color:var(--primary); font-weight:bold;">${item.name}</span></div>`;
         } else {
+            // File lain atau jika sedang mode folder, file dibuat tidak bisa diklik
             html += `<div class="file-item disabled">📄 ${item.name}</div>`;
         }
     });
@@ -505,6 +524,12 @@ function renderFileList(items, currentPath) {
 
 function selectFilePath(path) {
     document.getElementById('gh-path').value = path;
+    saveConfig();
+    closeFileBrowser();
+}
+
+function confirmFolderSelection() {
+    document.getElementById('gh-img-folder').value = currentBrowsePath;
     saveConfig();
     closeFileBrowser();
 }
