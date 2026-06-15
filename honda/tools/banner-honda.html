@@ -13,204 +13,66 @@
     --card: #ffffff;
     --border: #ddd;
     --text: #333;
+    --github: #24292e;
+    --github-hover: #1a1e22;
+    --success: #2cbe4e;
+    --success-hover: #228b3a;
 }
 
-*{
-    box-sizing:border-box;
-    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-}
+*{ box-sizing:border-box; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; }
 
-body{
-    margin:0;
-    background:var(--bg);
-    display:flex;
-    height:100vh;
-    overflow:hidden;
-}
+body{ margin:0; background:var(--bg); display:flex; height:100vh; overflow:hidden; }
 
-/* HEADER */
-.header{
-    background:#111;
-    color:#fff;
-    padding:15px 25px;
-    font-size:20px;
-    font-weight:bold;
-    position:fixed;
-    width:100%;
-    z-index:10;
-    display:flex;
-    justify-content:space-between;
-}
+.header{ background:#111; color:#fff; padding:15px 25px; font-size:20px; font-weight:bold; position:fixed; width:100%; z-index:10; display:flex; justify-content:space-between; }
+.container{ display:flex; width:100%; margin-top:60px; height:calc(100vh - 60px); }
+.editor-panel{ flex:6; padding:25px; overflow-y:auto; border-right:1px solid var(--border); }
+.output-panel{ flex:4; padding:25px; background:#fff; display:flex; flex-direction:column; }
 
-/* LAYOUT */
-.container{
-    display:flex;
-    width:100%;
-    margin-top:60px;
-    height:calc(100vh - 60px);
-}
+.category-card{ background:var(--card); border:1px solid var(--border); border-radius:10px; padding:20px 25px; margin-bottom:20px; transition:.2s; }
+.category-card:hover{ box-shadow:0 4px 12px rgba(0,0,0,.08); }
+.category-header{ display:flex; justify-content:space-between; border-bottom:2px solid var(--primary); padding-bottom:10px; margin-bottom:20px; }
 
-.editor-panel{
-    flex:6;
-    padding:25px;
-    overflow-y:auto;
-    border-right:1px solid var(--border);
-}
+.item-card{ background:#fdfdfd; border:1px solid #eee; border-left:4px solid var(--primary); border-radius:6px; padding:18px; margin:10px 0 15px 20px; }
 
-.output-panel{
-    flex:4;
-    padding:25px;
-    background:#fff;
-    display:flex;
-    flex-direction:column;
-}
+.form-group{ margin-bottom:12px; }
+.form-group label{ font-size:13px; font-weight:600; display:block; margin-bottom:6px; }
+.form-control{ width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; outline:none; }
+.form-control:focus{ border-color:var(--primary); }
 
-/* CARD */
-.category-card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:10px;
-    padding:20px 25px;
-    margin-bottom:20px;
-    transition:.2s;
-}
+.image-preview{ margin-top:10px; position: relative; }
+.image-preview img{ width:100%; max-height:180px; object-fit:cover; border-radius:6px; border:1px solid #ddd; background:#f5f5f5; display:block; }
 
-.category-card:hover{
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
-}
+.btn{ padding:8px 14px; border-radius:4px; cursor:pointer; border:none; font-weight:bold; transition:.2s; font-size: 13px; }
+.btn-primary{ background:var(--primary); color:white; }
+.btn-primary:hover{ background:var(--primary-hover); }
+.btn-secondary{ background:#555; color:white; }
+.btn-danger{ background:#dc3545; color:white; }
+.btn-outline{ border:1px solid #ccc; background:transparent; }
+.btn-github { background: var(--github); color: white; }
+.btn-github:hover { background: var(--github-hover); }
+.btn-success { background: var(--success); color: white; }
+.btn-success:hover { background: var(--success-hover); }
 
-.category-header{
-    display:flex;
-    justify-content:space-between;
-    border-bottom:2px solid var(--primary);
-    padding-bottom:10px;
-    margin-bottom:20px;
-}
+.btn:hover:not(:disabled){ transform:translateY(-1px); }
+.btn:disabled{ opacity: 0.4; cursor: not-allowed; }
 
-/* ITEM */
-.item-card{
-    background:#fdfdfd;
-    border:1px solid #eee;
-    border-left:4px solid var(--primary);
-    border-radius:6px;
-    padding:18px;
-    margin:10px 0 15px 20px;
-}
+#json-output{ flex:1; margin-top:10px; padding:15px; font-family:monospace; background:#282c34; color:#d1d9e1; border-radius:6px; border:none; resize:none; }
+.flex-row{ display:flex; gap:10px; margin-top:10px; }
+.flex-1{ flex:1; }
+.section-title{ font-size:18px; margin-bottom:15px; border-bottom:2px solid #ccc; padding-bottom:5px; margin-top: 30px;}
 
-/* FORM */
-.form-group{
-    margin-bottom:12px;
-}
+.upload-box { border: 2px dashed #ccc; padding: 15px; text-align: center; border-radius: 6px; background: #fafafa; margin-top: 5px; }
+.upload-box input[type="file"] { display: none; }
+.upload-box label { cursor: pointer; color: var(--primary); font-weight: bold; display: inline-block; padding: 5px 10px; }
 
-.form-group label{
-    font-size:13px;
-    font-weight:600;
-    display:block;
-    margin-bottom:6px;
-}
-
-.form-control{
-    width:100%;
-    padding:8px;
-    border:1px solid #ccc;
-    border-radius:4px;
-    outline:none;
-}
-
-.form-control:focus{
-    border-color:var(--primary);
-}
-
-/* IMAGE PREVIEW */
-.image-preview{
-    margin-top:10px;
-}
-
-.image-preview img{
-    width:100%;
-    max-height:180px;
-    object-fit:cover;
-    border-radius:6px;
-    border:1px solid #ddd;
-    background:#f5f5f5;
-    display:block;
-}
-
-/* BUTTON */
-.btn{
-    padding:8px 14px;
-    border-radius:4px;
-    cursor:pointer;
-    border:none;
-    font-weight:bold;
-    transition:.2s;
-}
-
-.btn-primary{
-    background:var(--primary);
-    color:white;
-}
-
-.btn-primary:hover{
-    background:var(--primary-hover);
-}
-
-.btn-secondary{
-    background:#555;
-    color:white;
-}
-
-.btn-danger{
-    background:#dc3545;
-    color:white;
-}
-
-.btn-outline{
-    border:1px solid #ccc;
-    background:transparent;
-}
-
-.btn:hover:not(:disabled){
-    transform:translateY(-1px);
-}
-
-/* Tambahan CSS untuk tombol yang dinonaktifkan */
-.btn:disabled{
-    opacity: 0.4;
-    cursor: not-allowed;
-}
-
-/* OUTPUT */
-#json-output{
-    flex:1;
-    margin-top:10px;
-    padding:15px;
-    font-family:monospace;
-    background:#282c34;
-    color:#d1d9e1;
-    border-radius:6px;
-    border:none;
-    resize:none;
-}
-
-/* FLEX */
-.flex-row{
-    display:flex;
-    gap:10px;
-    margin-top:10px;
-}
-
-.flex-1{
-    flex:1;
-}
-
-/* TITLE */
-.section-title{
-    font-size:18px;
-    margin-bottom:15px;
-    border-bottom:2px solid #ccc;
-    padding-bottom:5px;
-}
+/* MODAL FILE BROWSER */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 100; display: none; justify-content: center; align-items: center; }
+.modal-content { background: #fff; width: 500px; max-height: 80vh; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
+.modal-header { padding: 15px 20px; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.file-list { padding: 10px; overflow-y: auto; flex: 1; background: #fafafa; }
+.file-item { padding: 12px 15px; border-bottom: 1px solid #eaeaea; cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 14px; transition: 0.1s; }
+.file-item:hover { background: #eef2f5; }
+.file-item.disabled { opacity: 0.4; cursor: not-allowed; }
 </style>
 </head>
 
@@ -225,40 +87,71 @@ body{
 
     <div class="editor-panel">
 
-        <div class="section-title">
-            1. Banner (Desktop & Mobile)
+        <div class="category-card" style="border-left: 4px solid var(--github);">
+            <div class="category-header" style="border-bottom: 2px solid var(--github); margin-bottom: 15px;">
+                <h3 style="margin: 0; font-size: 16px;">🔗 GitHub Integration Sync</h3>
+            </div>
+            
+            <div class="form-group">
+                <label>Personal Access Token (PAT)</label>
+                <input type="password" id="gh-token" class="form-control" placeholder="ghp_xxxxxxxxxxxx" oninput="saveConfig()">
+            </div>
+            
+            <div class="flex-row">
+                <div class="form-group flex-1">
+                    <label>Username / Owner</label>
+                    <input type="text" id="gh-owner" class="form-control" placeholder="Contoh: ardiasgusty" oninput="saveConfig()">
+                </div>
+                <div class="form-group flex-1">
+                    <label>Repository</label>
+                    <input type="text" id="gh-repo" class="form-control" placeholder="Contoh: ardiasgusty.github.io" oninput="saveConfig()">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>File Path JSON Utama (.json)</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="gh-path" class="form-control" placeholder="Contoh: data/banners.json" oninput="saveConfig()">
+                    <button class="btn btn-secondary" onclick="openFileBrowser()" style="white-space: nowrap;">📁 Browse</button>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 10px;">
+                <label>Folder Upload Gambar (Tanpa slash di akhir)</label>
+                <input type="text" id="gh-img-folder" class="form-control" placeholder="Contoh: assets/images/banners" oninput="saveConfig()">
+                <small style="color: #666; font-size: 11px;">*Gambar yang kamu upload akan disimpan ke folder ini di GitHub.</small>
+            </div>
+            
+            <div class="flex-row" style="margin-top: 15px;">
+                <button class="btn btn-github flex-1" onclick="fetchFromGitHub()">↓ Tarik Data JSON</button>
+                <button class="btn btn-success flex-1" onclick="saveToGitHub()">↑ Simpan JSON Langsung</button>
+            </div>
         </div>
 
+        <div class="section-title">1. Banner (Desktop & Mobile)</div>
         <div id="models-container"></div>
 
     </div>
 
     <div class="output-panel">
-
         <h3>Preview & Output JSON</h3>
-
         <textarea id="json-output"></textarea>
-
         <div class="flex-row">
-
-            <button 
-                class="btn btn-primary flex-1" 
-                onclick="copyJSON()"
-            >
-                Copy JSON
-            </button>
-
-            <button 
-                class="btn btn-secondary flex-1" 
-                onclick="loadJSON()"
-            >
-                Load JSON
-            </button>
-
+            <button class="btn btn-primary flex-1" onclick="copyJSON()">Copy JSON</button>
+            <button class="btn btn-secondary flex-1" onclick="loadJSON()">Load JSON</button>
         </div>
-
     </div>
 
+</div>
+
+<div id="fileBrowserModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 style="margin:0; font-size: 16px;">📂 Pilih File JSON</h3>
+            <button class="btn btn-danger" onclick="closeFileBrowser()" style="padding:4px 8px;">X</button>
+        </div>
+        <div id="file-list" class="file-list"></div>
+    </div>
 </div>
 
 <script>
@@ -266,147 +159,84 @@ body{
 /* DATA */
 let appData = {
     models: [
-        {
-            label: "Desktop Banner",
-            items: []
-        },
-        {
-            label: "Mobile Banner",
-            items: []
-        }
+        { label: "Desktop Banner", items: [] },
+        { label: "Mobile Banner", items: [] }
     ]
 };
 
+let currentFileSha = "";
+
 /* RENDER */
 function renderEditor(){
-
     const container = document.getElementById('models-container');
-
     container.innerHTML = '';
 
     appData.models.forEach((group, gIndex)=>{
-
         const card = document.createElement('div');
-
         card.className = 'category-card';
 
         card.innerHTML = `
             <div class="category-header">
                 <h3>${group.label}</h3>
             </div>
-
             <div id="items-${gIndex}"></div>
-
-            <button 
-                class="btn btn-outline"
-                onclick="addBanner(${gIndex})"
-            >
-                + Tambah Banner
-            </button>
+            <button class="btn btn-outline" onclick="addBanner(${gIndex})">+ Tambah Banner</button>
         `;
-
         container.appendChild(card);
 
         const items = card.querySelector(`#items-${gIndex}`);
 
         group.items.forEach((item, iIndex)=>{
-
             const el = document.createElement('div');
-
             el.className = 'item-card';
 
             el.innerHTML = `
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;">
                     <strong>Banner ${iIndex + 1}</strong>
-
                     <div style="display:flex; gap:5px;">
-                        <button 
-                            class="btn btn-secondary" 
-                            onclick="moveUp(${gIndex},${iIndex})"
-                            title="Geser ke Atas"
-                            ${iIndex === 0 ? 'disabled' : ''}
-                        >
-                            ↑
-                        </button>
-                        
-                        <button 
-                            class="btn btn-secondary" 
-                            onclick="moveDown(${gIndex},${iIndex})"
-                            title="Geser ke Bawah"
-                            ${iIndex === group.items.length - 1 ? 'disabled' : ''}
-                        >
-                            ↓
-                        </button>
-
-                        <button 
-                            class="btn btn-danger"
-                            onclick="removeBanner(${gIndex},${iIndex})"
-                            title="Hapus Banner"
-                        >
-                            X
-                        </button>
+                        <button class="btn btn-secondary" onclick="moveUp(${gIndex},${iIndex})" title="Geser ke Atas" ${iIndex === 0 ? 'disabled' : ''}>↑</button>
+                        <button class="btn btn-secondary" onclick="moveDown(${gIndex},${iIndex})" title="Geser ke Bawah" ${iIndex === group.items.length - 1 ? 'disabled' : ''}>↓</button>
+                        <button class="btn btn-danger" onclick="removeBanner(${gIndex},${iIndex})" title="Hapus Banner">X</button>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>ID</label>
-
-                    <input
-                        class="form-control"
-                        value="${item.id || ''}"
-                        oninput="update(${gIndex},${iIndex},'id',this.value)"
-                    >
+                    <label>ID / Slug</label>
+                    <input class="form-control" value="${item.id || ''}" oninput="update(${gIndex},${iIndex},'id',this.value)">
                 </div>
 
                 <div class="form-group">
                     <label>Image URL</label>
-
-                    <input
-                        class="form-control"
-                        value="${item.image || ''}"
-                        oninput="update(${gIndex},${iIndex},'image',this.value)"
-                    >
+                    <input class="form-control" value="${item.image || ''}" oninput="update(${gIndex},${iIndex},'image',this.value)" placeholder="Atau biarkan kosong dan upload di bawah">
+                    
+                    <div class="upload-box" id="upload-box-${gIndex}-${iIndex}">
+                        <label for="file-${gIndex}-${iIndex}">📸 Pilih & Upload Gambar ke GitHub</label>
+                        <input type="file" id="file-${gIndex}-${iIndex}" accept="image/*" onchange="uploadImageToGitHub(${gIndex}, ${iIndex}, this)">
+                        <div id="upload-status-${gIndex}-${iIndex}" style="font-size: 12px; color: var(--success); margin-top: 5px; font-weight: bold;"></div>
+                    </div>
 
                     ${
                         item.image
                         ? `
                         <div class="image-preview">
-                            <img
-                                src="${item.image}"
-                                alt="preview"
-                                onerror="this.style.display='none'"
-                            >
+                            <img src="${item.image}" alt="preview" onerror="this.style.display='none'">
                         </div>
-                        `
-                        : ''
+                        ` : ''
                     }
                 </div>
 
                 <div class="form-group">
-                    <label>Link</label>
-
-                    <input
-                        class="form-control"
-                        value="${item.link || ''}"
-                        oninput="update(${gIndex},${iIndex},'link',this.value)"
-                    >
+                    <label>Link Tujuan (Opsional)</label>
+                    <input class="form-control" value="${item.link || ''}" oninput="update(${gIndex},${iIndex},'link',this.value)">
                 </div>
 
                 <div class="form-group">
                     <label>Alt Text</label>
-
-                    <input
-                        class="form-control"
-                        value="${item.alt || ''}"
-                        oninput="update(${gIndex},${iIndex},'alt',this.value)"
-                    >
+                    <input class="form-control" value="${item.alt || ''}" oninput="update(${gIndex},${iIndex},'alt',this.value)">
                 </div>
             `;
-
             items.appendChild(el);
-
         });
-
     });
 
     updateOutput();
@@ -415,23 +245,26 @@ function renderEditor(){
 /* ACTION */
 function addBanner(g){
     appData.models[g].items.push({
-        id:'',
-        image:'',
-        link:'#',
-        alt:''
+        id:'', image:'', link:'#', alt:'',
+        gh_path: '', gh_sha: '' // Menyimpan data spesifik file di repo
     });
     renderEditor();
 }
 
 function removeBanner(g,i){
+    const item = appData.models[g].items[i];
+    // Jika ada gambar yang pernah diupload ke GitHub, tawari untuk menghapusnya sekalian
+    if (item.gh_path && item.gh_sha) {
+        if(confirm('Banner ini punya file gambar di GitHub. Ingin menghapus gambarnya sekalian agar tidak menuhin storage?')) {
+            deleteOldImageFromGitHub(item.gh_path, item.gh_sha);
+        }
+    }
     appData.models[g].items.splice(i,1);
     renderEditor();
 }
 
-/* FITUR BARU: Geser ke Atas */
 function moveUp(g, i) {
     if (i > 0) {
-        // Tukar posisi item saat ini dengan item sebelumnya
         let temp = appData.models[g].items[i];
         appData.models[g].items[i] = appData.models[g].items[i - 1];
         appData.models[g].items[i - 1] = temp;
@@ -439,10 +272,8 @@ function moveUp(g, i) {
     }
 }
 
-/* FITUR BARU: Geser ke Bawah */
 function moveDown(g, i) {
     if (i < appData.models[g].items.length - 1) {
-        // Tukar posisi item saat ini dengan item setelahnya
         let temp = appData.models[g].items[i];
         appData.models[g].items[i] = appData.models[g].items[i + 1];
         appData.models[g].items[i + 1] = temp;
@@ -450,18 +281,129 @@ function moveDown(g, i) {
     }
 }
 
-/* FIX INPUT LAG */
 function update(g,i,k,v){
     appData.models[g].items[i][k] = v;
     updateOutput();
+    if(k === 'image') renderEditor();
+}
 
-    /* rerender hanya untuk image preview */
-    if(k === 'image'){
-        renderEditor();
+
+/* =======================================================
+   FITUR BARU: AUTO UPLOAD & DELETE GAMBAR KE GITHUB
+   ======================================================= */
+
+async function deleteOldImageFromGitHub(oldPath, oldSha) {
+    const token = document.getElementById('gh-token').value.trim();
+    const owner = document.getElementById('gh-owner').value.trim();
+    const repo = document.getElementById('gh-repo').value.trim();
+
+    if (!token || !owner || !repo || !oldPath || !oldSha) return;
+
+    try {
+        const delUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${oldPath}`;
+        await fetch(delUrl, {
+            method: 'DELETE',
+            headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                message: `🗑️ Auto-delete old banner image: ${oldPath}`, 
+                sha: oldSha 
+            })
+        });
+        console.log("Gambar lama berhasil dihapus dari repository.");
+    } catch (e) {
+        console.error("Gagal menghapus gambar lama", e);
     }
 }
 
-/* OUTPUT */
+async function uploadImageToGitHub(gIndex, iIndex, inputEl) {
+    const file = inputEl.files[0];
+    if (!file) return;
+
+    const token = document.getElementById('gh-token').value.trim();
+    const owner = document.getElementById('gh-owner').value.trim();
+    const repo = document.getElementById('gh-repo').value.trim();
+    let imgFolder = document.getElementById('gh-img-folder').value.trim();
+
+    if (!token || !owner || !repo || !imgFolder) {
+        alert("Harap lengkapi semua konfigurasi GitHub (termasuk Folder Gambar) sebelum mengupload!");
+        inputEl.value = "";
+        return;
+    }
+
+    // Hilangkan slash di akhir folder jika user tidak sengaja mengetiknya
+    if(imgFolder.endsWith('/')) imgFolder = imgFolder.slice(0, -1);
+
+    const statusEl = document.getElementById(`upload-status-${gIndex}-${iIndex}`);
+    statusEl.innerHTML = "⏳ Sedang mengupload ke GitHub... Harap tunggu.";
+    
+    const item = appData.models[gIndex].items[iIndex];
+
+    // 1. Jika ada gambar lama yang dihosting di GitHub, HAPUS DULU agar tidak penuh!
+    if (item.gh_path && item.gh_sha) {
+        statusEl.innerHTML = "🗑️ Menghapus gambar lama...";
+        await deleteOldImageFromGitHub(item.gh_path, item.gh_sha);
+    }
+
+    // 2. Persiapkan file gambar baru (konversi ke Base64)
+    const reader = new FileReader();
+    reader.onload = async function(e) {
+        const base64Data = e.target.result.split(',')[1];
+        const ext = file.name.split('.').pop();
+        
+        // Buat nama file unik dengan timestamp agar cache web otomatis ter-refresh
+        const uniqueFileName = `banner_${Date.now()}.${ext}`;
+        const fullPath = `${imgFolder}/${uniqueFileName}`;
+
+        statusEl.innerHTML = "🚀 Mengirim gambar baru...";
+
+        // 3. Upload via GitHub API
+        try {
+            const putUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${fullPath}`;
+            const res = await fetch(putUrl, {
+                method: 'PUT',
+                headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    message: `📸 Upload new banner image: ${uniqueFileName}`, 
+                    content: base64Data 
+                })
+            });
+
+            if (!res.ok) throw new Error("Gagal upload gambar. Cek Token atau Folder.");
+            
+            const data = await res.json();
+
+            // 4. Update JSON data
+            item.gh_path = data.content.path;
+            item.gh_sha = data.content.sha;
+            
+            // Generate link publik (Otomatis mendeteksi format nama repo github.io)
+            let publicUrl = "";
+            if (repo.includes('.github.io')) {
+                publicUrl = `https://${repo}/${data.content.path}`;
+            } else {
+                publicUrl = `https://${owner}.github.io/${repo}/${data.content.path}`;
+            }
+
+            item.image = publicUrl;
+
+            statusEl.innerHTML = "✅ Upload Berhasil!";
+            
+            // Re-render editor setelah 1 detik agar preview gambar langsung muncul
+            setTimeout(() => renderEditor(), 1000);
+
+        } catch (err) {
+            statusEl.innerHTML = `❌ Error: ${err.message}`;
+            statusEl.style.color = "red";
+        }
+    };
+    reader.readAsDataURL(file);
+}
+
+
+/* =======================================================
+   OUTPUT & GITHUB JSON INTEGRATION LOGIC
+   ======================================================= */
+
 function updateOutput(){
     const json = {
         banners: {
@@ -469,25 +411,15 @@ function updateOutput(){
             mobile: appData.models[1].items
         }
     };
-
-    document.getElementById('json-output').value =
-        JSON.stringify(json,null,2);
+    document.getElementById('json-output').value = JSON.stringify(json,null,2);
 }
 
 function loadJSON(){
     try{
-        const data = JSON.parse(
-            document.getElementById('json-output').value
-        );
-
-        appData.models[0].items =
-            data.banners?.desktop || [];
-
-        appData.models[1].items =
-            data.banners?.mobile || [];
-
+        const data = JSON.parse(document.getElementById('json-output').value);
+        appData.models[0].items = data.banners?.desktop || [];
+        appData.models[1].items = data.banners?.mobile || [];
         renderEditor();
-
     }catch{
         alert('JSON error');
     }
@@ -495,13 +427,175 @@ function loadJSON(){
 
 function copyJSON(){
     const el = document.getElementById('json-output');
-    el.select();
-    document.execCommand('copy');
-    alert('Copied!');
+    el.select(); document.execCommand('copy'); alert('Copied!');
+}
+
+function saveConfig() {
+    localStorage.setItem('gh_token', document.getElementById('gh-token').value.trim());
+    localStorage.setItem('gh_owner', document.getElementById('gh-owner').value.trim());
+    localStorage.setItem('gh_repo', document.getElementById('gh-repo').value.trim());
+    localStorage.setItem('gh_path', document.getElementById('gh-path').value.trim());
+    localStorage.setItem('gh_img_folder', document.getElementById('gh-img-folder').value.trim());
+}
+
+function loadConfig() {
+    document.getElementById('gh-token').value = localStorage.getItem('gh_token') || '';
+    document.getElementById('gh-owner').value = localStorage.getItem('gh_owner') || '';
+    document.getElementById('gh-repo').value = localStorage.getItem('gh_repo') || '';
+    document.getElementById('gh-path').value = localStorage.getItem('gh_path') || '';
+    document.getElementById('gh-img-folder').value = localStorage.getItem('gh_img_folder') || '';
+}
+
+async function openFileBrowser(path = '') {
+    const token = document.getElementById('gh-token').value.trim();
+    const owner = document.getElementById('gh-owner').value.trim();
+    const repo = document.getElementById('gh-repo').value.trim();
+
+    if (!token || !owner || !repo) {
+        alert("Harap isi Token PAT, Username, dan Repository terlebih dahulu untuk browsing file!");
+        return;
+    }
+
+    const modal = document.getElementById('fileBrowserModal');
+    const fileListEl = document.getElementById('file-list');
+    modal.style.display = 'flex';
+    fileListEl.innerHTML = '<div style="padding: 20px; text-align: center;">⏳ Loading folder contents...</div>';
+
+    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+
+    try {
+        const response = await fetch(url, {
+            headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if (!response.ok) throw new Error(`Folder tidak ditemukan atau Token salah (${response.status})`);
+
+        const data = await response.json();
+        renderFileList(data, path);
+    } catch (error) {
+        fileListEl.innerHTML = `<div style="padding: 20px; color: red;">❌ Error: ${error.message}</div>`;
+    }
+}
+
+function renderFileList(items, currentPath) {
+    const fileListEl = document.getElementById('file-list');
+    let html = '';
+
+    if (currentPath !== '') {
+        const parentPath = currentPath.split('/').slice(0, -1).join('/');
+        html += `<div class="file-item" onclick="openFileBrowser('${parentPath}')" style="background:#e8f4fd;">🔙 <strong>.. (Kembali)</strong></div>`;
+    }
+
+    items.sort((a, b) => {
+        if (a.type === b.type) return a.name.localeCompare(b.name);
+        return a.type === 'dir' ? -1 : 1;
+    });
+
+    items.forEach(item => {
+        if (item.type === 'dir') {
+            html += `<div class="file-item" onclick="openFileBrowser('${item.path}')">📁 <strong>${item.name}</strong></div>`;
+        } else if (item.name.endsWith('.json')) {
+            html += `<div class="file-item" onclick="selectFilePath('${item.path}')">📄 <span style="color:var(--primary); font-weight:bold;">${item.name}</span></div>`;
+        } else {
+            html += `<div class="file-item disabled">📄 ${item.name}</div>`;
+        }
+    });
+
+    fileListEl.innerHTML = html || '<div style="padding: 20px; text-align: center;">Folder kosong</div>';
+}
+
+function selectFilePath(path) {
+    document.getElementById('gh-path').value = path;
+    saveConfig();
+    closeFileBrowser();
+}
+
+function closeFileBrowser() {
+    document.getElementById('fileBrowserModal').style.display = 'none';
+}
+
+async function fetchFromGitHub() {
+    const token = document.getElementById('gh-token').value.trim();
+    const owner = document.getElementById('gh-owner').value.trim();
+    const repo = document.getElementById('gh-repo').value.trim();
+    const path = document.getElementById('gh-path').value.trim();
+
+    if (!token || !owner || !repo || !path) {
+        alert('Harap isi semua konfigurasi GitHub Integration!');
+        return;
+    }
+
+    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+
+    try {
+        const response = await fetch(url, {
+            headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+
+        if (!response.ok) throw new Error(`Gagal menarik data (${response.status}). Periksa Token/Path.`);
+
+        const data = await response.json();
+        currentFileSha = data.sha; 
+        const decodedContent = decodeURIComponent(escape(atob(data.content)));
+        const json = JSON.parse(decodedContent);
+
+        appData.models[0].items = json.banners?.desktop || [];
+        appData.models[1].items = json.banners?.mobile || [];
+
+        renderEditor();
+        alert('✅ Data JSON Berhasil ditarik dari GitHub!');
+    } catch (error) {
+        alert(error.message);
+    }
+}
+
+async function saveToGitHub() {
+    const token = document.getElementById('gh-token').value.trim();
+    const owner = document.getElementById('gh-owner').value.trim();
+    const repo = document.getElementById('gh-repo').value.trim();
+    const path = document.getElementById('gh-path').value.trim();
+
+    if (!token || !owner || !repo || !path) {
+        alert('Harap isi semua konfigurasi GitHub Integration!');
+        return;
+    }
+
+    const jsonContent = { banners: { desktop: appData.models[0].items, mobile: appData.models[1].items } };
+    const stringContent = JSON.stringify(jsonContent, null, 2);
+    const encodedContent = btoa(unescape(encodeURIComponent(stringContent)));
+
+    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+
+    if (!currentFileSha) {
+        try {
+            const checkRes = await fetch(url, { headers: { 'Authorization': `token ${token}` } });
+            if (checkRes.ok) currentFileSha = (await checkRes.json()).sha;
+        } catch (e) {}
+    }
+
+    const bodyData = { message: "⚡ Update banners via Generator", content: encodedContent };
+    if (currentFileSha) bodyData.sha = currentFileSha;
+
+    try {
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify(bodyData)
+        });
+
+        if (!response.ok) throw new Error(`Gagal menyimpan file JSON.`);
+
+        currentFileSha = (await response.json()).content.sha; 
+        alert('🎉 Hebat! File JSON berhasil disimpan/dikomit ke GitHub!');
+    } catch (error) {
+        alert(error.message);
+    }
 }
 
 /* INIT */
-window.onload = renderEditor;
+window.onload = function() {
+    loadConfig();
+    renderEditor();
+};
 
 </script>
 
