@@ -85,8 +85,10 @@ body{ margin:0; background:var(--bg); display:flex; height:100vh; overflow:hidde
 
 <div class="container">
 
+    <!-- LEFT -->
     <div class="editor-panel">
 
+        <!-- GITHUB INTEGRATION PANEL -->
         <div class="category-card" style="border-left: 4px solid var(--github);">
             <div class="category-header" style="border-bottom: 2px solid var(--github); margin-bottom: 15px;">
                 <h3 style="margin: 0; font-size: 16px;">🔗 GitHub Integration Sync</h3>
@@ -108,6 +110,7 @@ body{ margin:0; background:var(--bg); display:flex; height:100vh; overflow:hidde
                 </div>
             </div>
 
+            <!-- Path File JSON Utama -->
             <div class="form-group">
                 <label>File Path JSON Utama (.json)</label>
                 <div style="display: flex; gap: 10px;">
@@ -116,6 +119,7 @@ body{ margin:0; background:var(--bg); display:flex; height:100vh; overflow:hidde
                 </div>
             </div>
 
+            <!-- Path Folder Upload Gambar -->
             <div class="form-group" style="margin-top: 10px;">
                 <label>Folder Upload Gambar (Tanpa slash di akhir)</label>
                 <div style="display: flex; gap: 10px;">
@@ -136,6 +140,7 @@ body{ margin:0; background:var(--bg); display:flex; height:100vh; overflow:hidde
 
     </div>
 
+    <!-- RIGHT -->
     <div class="output-panel">
         <h3>Preview & Output JSON</h3>
         <textarea id="json-output"></textarea>
@@ -147,6 +152,7 @@ body{ margin:0; background:var(--bg); display:flex; height:100vh; overflow:hidde
 
 </div>
 
+<!-- MODAL BROWSER FILE & FOLDER -->
 <div id="fileBrowserModal" class="modal-overlay">
     <div class="modal-content">
         <div class="modal-header">
@@ -171,9 +177,7 @@ let appData = {
 };
 
 let currentFileSha = "";
-
-// Variabel Global untuk Modal Browser
-let currentBrowserMode = 'file'; // 'file' atau 'folder'
+let currentBrowserMode = 'file'; 
 let currentBrowsePath = '';
 
 /* RENDER */
@@ -212,7 +216,7 @@ function renderEditor(){
 
                 <div class="form-group">
                     <label>ID / Slug</label>
-                    <input class="form-control" value="${item.id || ''}" oninput="update(${gIndex},${iIndex},'id',this.value)">
+                    <input class="form-control" value="${item.id || ''}" oninput="update(${gIndex},${iIndex},'id',this.value)" placeholder="contoh: promo-brio">
                 </div>
 
                 <div class="form-group">
@@ -226,10 +230,10 @@ function renderEditor(){
                     </div>
 
                     ${
-                        item.image
+                        (item._tempImage || item.image)
                         ? `
                         <div class="image-preview">
-                            <img src="${item.image}" alt="preview" onerror="this.style.display='none'">
+                            <img src="${item._tempImage || item.image}" alt="preview" onerror="this.style.display='none'">
                         </div>
                         ` : ''
                     }
@@ -256,7 +260,7 @@ function renderEditor(){
 function addBanner(g){
     appData.models[g].items.push({
         id:'', image:'', link:'#', alt:'',
-        gh_path: '', gh_sha: '' // Menyimpan data spesifik file di repo
+        gh_path: '', gh_sha: '', _tempImage: ''
     });
     renderEditor();
 }
@@ -292,6 +296,12 @@ function moveDown(g, i) {
 
 function update(g,i,k,v){
     appData.models[g].items[i][k] = v;
+    
+    // Hapus preview lokal jika user manual mengetik Image URL baru
+    if(k === 'image' && appData.models[g].items[i]._tempImage) {
+        appData.models[g].items[i]._tempImage = '';
+    }
+    
     updateOutput();
     if(k === 'image') renderEditor();
 }
@@ -356,11 +366,18 @@ async function uploadImageToGitHub(gIndex, iIndex, inputEl) {
         const base64Data = e.target.result.split(',')[1];
         const ext = file.name.split('.').pop();
         
-        const uniqueFileName = `banner_${Date.now()}.${ext}`;
-        // Jika imgFolder kosong, simpan di root direktori
+        // Aturan Penamaan SEO Friendly dari ID/Slug
+        const rawSlug = item.id ? item.id.replace(/[^a-zA-Z0-9-]/g, '').toLowerCase() : 'banner';
+        const cleanSlug = rawSlug === '' ? 'banner' : rawSlug;
+        const uniqueFileName = `${cleanSlug}_${Date.now()}.${ext}`;
+        
         const fullPath = imgFolder ? `${imgFolder}/${uniqueFileName}` : uniqueFileName;
 
-        statusEl.innerHTML = "🚀 Mengirim gambar baru...";
+        // Tampilkan Gambar Preview Secara Instan Secara Lokal
+        item._tempImage = e.target.result;
+        renderEditor();
+
+        statusEl.innerHTML = "🚀 Mengirim gambar ke server GitHub...";
 
         try {
             const putUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${fullPath}`;
@@ -373,7 +390,7 @@ async function uploadImageToGitHub(gIndex, iIndex, inputEl) {
                 })
             });
 
-            if (!res.ok) throw new Error("Gagal upload gambar. Cek Token atau Folder.");
+            if (!res.ok) throw new Error("Gagal upload gambar. Cek Token/Folder.");
             
             const data = await res.json();
 
@@ -388,13 +405,19 @@ async function uploadImageToGitHub(gIndex, iIndex, inputEl) {
             }
 
             item.image = publicUrl;
-            statusEl.innerHTML = "✅ Upload Berhasil!";
             
-            setTimeout(() => renderEditor(), 1000);
+            // Re-select element because renderEditor might have refreshed the DOM
+            const newStatusEl = document.getElementById(`upload-status-${gIndex}-${iIndex}`);
+            if(newStatusEl) newStatusEl.innerHTML = "✅ Upload Berhasil! Link tersimpan.";
+            
+            updateOutput(); // Update output JSON dengan link GitHub baru
 
         } catch (err) {
-            statusEl.innerHTML = `❌ Error: ${err.message}`;
-            statusEl.style.color = "red";
+            const errEl = document.getElementById(`upload-status-${gIndex}-${iIndex}`);
+            if(errEl) {
+                errEl.innerHTML = `❌ Error: ${err.message}`;
+                errEl.style.color = "red";
+            }
         }
     };
     reader.readAsDataURL(file);
@@ -406,10 +429,19 @@ async function uploadImageToGitHub(gIndex, iIndex, inputEl) {
    ======================================================= */
 
 function updateOutput(){
+    // Fungsi khusus untuk memastikan temporary item/variabel sistem
+    // tidak ikut masuk (bleeding) ke hasil akhir JSON.
+    const filterItem = (item) => ({
+        id: item.id,
+        image: item.image,
+        link: item.link,
+        alt: item.alt
+    });
+
     const json = {
         banners: {
-            desktop: appData.models[0].items,
-            mobile: appData.models[1].items
+            desktop: appData.models[0].items.map(filterItem),
+            mobile: appData.models[1].items.map(filterItem)
         }
     };
     document.getElementById('json-output').value = JSON.stringify(json,null,2);
@@ -464,7 +496,6 @@ async function openFileBrowser(path = '', mode = currentBrowserMode) {
     const modalTitle = document.getElementById('modal-title');
     const btnSelectFolder = document.getElementById('btn-select-folder');
     
-    // Sesuaikan UI modal berdasarkan mode yang diklik
     if (mode === 'folder') {
         modalTitle.innerText = "📂 Pilih Folder Gambar";
         btnSelectFolder.style.display = "block";
@@ -494,7 +525,7 @@ async function openFileBrowser(path = '', mode = currentBrowserMode) {
 }
 
 function renderFileList(items, currentPath) {
-    currentBrowsePath = currentPath; // Catat path terkini saat modal terbuka
+    currentBrowsePath = currentPath;
     const fileListEl = document.getElementById('file-list');
     let html = '';
 
@@ -514,7 +545,6 @@ function renderFileList(items, currentPath) {
         } else if (item.name.endsWith('.json') && currentBrowserMode === 'file') {
             html += `<div class="file-item" onclick="selectFilePath('${item.path}')">📄 <span style="color:var(--primary); font-weight:bold;">${item.name}</span></div>`;
         } else {
-            // File lain atau jika sedang mode folder, file dibuat tidak bisa diklik
             html += `<div class="file-item disabled">📄 ${item.name}</div>`;
         }
     });
@@ -584,7 +614,18 @@ async function saveToGitHub() {
         return;
     }
 
-    const jsonContent = { banners: { desktop: appData.models[0].items, mobile: appData.models[1].items } };
+    // Gunakan updateOutput logic untuk memfilter variabel sampah
+    const filterItem = (item) => ({
+        id: item.id, image: item.image, link: item.link, alt: item.alt
+    });
+
+    const jsonContent = { 
+        banners: { 
+            desktop: appData.models[0].items.map(filterItem), 
+            mobile: appData.models[1].items.map(filterItem) 
+        } 
+    };
+    
     const stringContent = JSON.stringify(jsonContent, null, 2);
     const encodedContent = btoa(unescape(encodeURIComponent(stringContent)));
 
