@@ -374,7 +374,15 @@
             const newPassword = prompt("Masukkan password BARU yang ingin kamu buat:");
             if (newPassword) {
                 const newHash = await sha256(newPassword);
-                alert("Ini adalah Hash untuk password barumu:\n\n" + newHash + "\n\nCopy kode di atas, lalu paste/ganti di bagian 'const TARGET_HASH' di dalam source code HTML ini.");
+                try {
+                    // Perintah untuk menyalin otomatis ke clipboard
+                    await navigator.clipboard.writeText(newHash);
+                    alert("✅ BERHASIL! Kode Hash sudah OTOMATIS TER-COPY!\n\nSilakan langsung PASTE (Ctrl+V) di Notepad/VSCode pada baris 'const TARGET_HASH'.");
+                } catch (err) {
+                    // Jika browser memblokir auto-copy, gunakan prompt agar teks bisa diblok & dicopy manual
+                    prompt("Browser menolak auto-copy. Silakan blok dan COPY manual kode hash di bawah ini:", newHash);
+                }
+                console.log("Hash Baru Anda:", newHash);
             }
         }
 
