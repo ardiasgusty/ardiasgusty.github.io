@@ -36,6 +36,12 @@
         "image": "https://ardiasgusty.github.io/honda/assets/images/banner/servis-beli-honda_1781487394005.jpg",
         "link": "#",
         "alt": "Service dan beli mobil Honda sekarang lebih menguntungkan"
+      },
+      {
+        "id": "promo-jfk-honda",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/promo-jfk-honda_1781498173427.webp",
+        "link": "#",
+        "alt": "Promo terbatas Honda di Jakarta Fair"
       }
     ],
     "mobile": [
@@ -80,6 +86,12 @@
         "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqqSkwe-RFGhU2o4C89IgQjPJrw-S_vsN_2SmUGccGYZPjMU66d7tzHZplGLxfeUgausP7irkNqwWKZ2YvRnQtrKuAkV8qpkrSW_Os6eLp2PvIJ-WQERaJVFszatJ3pY56maM5ACRU5m5tMFcK8PlxEy46fFjtg8Vmtg-JIykemEl4zLB05T78qB4bm-s/s1600/WEBSITE-PORTRAIT-BANNER-PRIMA-BRIO.webp",
         "link": "#",
         "alt": "Service dan beli mobil Honda sekarang lebih menguntungkan"
+      },
+      {
+        "id": "promo-jfk-honda-mobile",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/banner_1781498202804.webp",
+        "link": "#",
+        "alt": "Promo terbatas Honda di Jakarta Fair"
       }
     ]
   }
