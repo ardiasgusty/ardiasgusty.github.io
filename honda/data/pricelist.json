@@ -5,11 +5,11 @@
       "label": "New Honda BRIO SATYA",
       "items": [
         {
-          "tipe": "S / E SE",
+          "tipe": "S",
           "trans": "CVT",
-          "harga": "Rp183.500.000",
-          "essential": "Rp188.020.000",
-          "extra": "Rp190.240.000"
+          "harga": "Rp184.500.000",
+          "essential": "Rp189.020.000",
+          "extra": "Rp191.240.000"
         },
         {
           "tipe": "E SE",
@@ -27,9 +27,9 @@
         {
           "tipe": "RS SE",
           "trans": "CVT",
-          "harga": "Rp274.100.000",
-          "essential": "Rp278.620.000",
-          "extra": "Rp280.840.000"
+          "harga": "Rp275.100.000",
+          "essential": "Rp279.620.000",
+          "extra": "Rp281.840.000"
         }
       ]
     },
@@ -40,23 +40,23 @@
         {
           "tipe": "E",
           "trans": "CVT",
-          "harga": "Rp289.100.000",
-          "essential": "Rp293.830.000",
-          "extra": "Rp295.620.000"
+          "harga": "Rp290.100.000",
+          "essential": "Rp294.830.000",
+          "extra": "Rp296.620.000"
         },
         {
           "tipe": "RS**",
           "trans": "CVT",
-          "harga": "Rp302.600.000",
-          "essential": "Rp307.330.000",
-          "extra": "Rp309.120.000"
+          "harga": "Rp303.600.000",
+          "essential": "Rp308.330.000",
+          "extra": "Rp310.120.000"
         },
         {
           "tipe": "RS with Honda Sensing**",
           "trans": "CVT",
-          "harga": "Rp326.100.000",
-          "essential": "Rp330.830.000",
-          "extra": "Rp332.620.000"
+          "harga": "Rp327.100.000",
+          "essential": "Rp331.830.000",
+          "extra": "Rp333.620.000"
         }
       ]
     },
@@ -121,37 +121,37 @@
         {
           "tipe": "1.5 E**",
           "trans": "CVT",
-          "harga": "Rp388.700.000",
-          "essential": "Rp394.060.000",
-          "extra": "Rp395.850.000"
+          "harga": "Rp389.700.000",
+          "essential": "Rp395.060.000",
+          "extra": "Rp396.850.000"
         },
         {
           "tipe": "1.5 E+**",
           "trans": "CVT",
-          "harga": "Rp411.300.000",
-          "essential": "Rp416.660.000",
-          "extra": "Rp418.450.000"
+          "harga": "Rp412.300.000",
+          "essential": "Rp417.660.000",
+          "extra": "Rp419.450.000"
         },
         {
           "tipe": "1.5 e:HEV**",
           "trans": "E-CVT",
-          "harga": "Rp449.000.000",
-          "essential": "Rp454.290.000",
-          "extra": "Rp456.080.000"
+          "harga": "Rp450.000.000",
+          "essential": "Rp455.290.000",
+          "extra": "Rp457.080.000"
         },
         {
           "tipe": "1.5 e:HEV Modulo**",
           "trans": "E-CVT",
-          "harga": "Rp460.700.000",
-          "essential": "Rp465.990.000",
-          "extra": "Rp467.780.000"
+          "harga": "Rp461.700.000",
+          "essential": "Rp466.990.000",
+          "extra": "Rp468.780.000"
         },
         {
           "tipe": "1.5 RS e:HEV**",
           "trans": "E-CVT",
-          "harga": "Rp488.000.000",
-          "essential": "Rp493.290.000",
-          "extra": "Rp495.080.000"
+          "harga": "Rp489.000.000",
+          "essential": "Rp494.290.000",
+          "extra": "Rp496.080.000"
         }
       ]
     },
@@ -162,14 +162,14 @@
         {
           "tipe": "e:HEV",
           "trans": "E-CVT",
-          "harga": "Rp775.000.000",
+          "harga": "Rp777.000.000",
           "essential": "Rp775.000.000",
           "extra": "Rp785.750.000"
         },
         {
           "tipe": "2.0 RS e:HEV",
           "trans": "CVT",
-          "harga": "Rp825.800.000",
+          "harga": "Rp827.800.000",
           "essential": "Rp825.800.000",
           "extra": "Rp836.550.000"
         }
@@ -229,7 +229,7 @@
     }
   ],
   "notes": [
-    "* Harga OTR Jakarta per 28/04/2026. ** Tersedia pilihan warna Two Tone (+2.5 Juta).",
+    "* Harga OTR Jakarta per 01/07/2026. ** Tersedia pilihan warna Two Tone (+2.5 Juta).",
     "* Tersedia tipe non SE / Special Edition, Syarat & Ketentuan berlaku.",
     "(Harga yang tertera adalah harga rekomendasi OTR Jakarta dan kepemilikan mobil pertama, dan dapat berubah sewaktu-waktu tanpa pemberitahuan sebelumnya. Perubahan warna, material serta kelengkapan dapat berubah sewaktu-waktu tanpa pemberitahuan terlebih dahulu. Spesifikasi, fitur dan material dapat berbeda dengan aktual kendaraan yang dijual.)"
   ]
