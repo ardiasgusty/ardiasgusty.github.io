@@ -14,6 +14,8 @@
             --text-main: #2d3436;
             --text-muted: #636e72;
             --border: #eaedf1;
+            --success: #27ae60;
+            --warning: #f39c12;
         }
 
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -68,8 +70,6 @@
         .btn:hover { background: #1a252f; transform: translateY(-1px); }
 
         .error-msg { color: var(--accent); font-size: 13px; margin-bottom: 15px; display: none; font-weight: bold; }
-
-        /* Rahasia Dev: Tombol Generate Hash */
         .dev-tool { margin-top: 20px; font-size: 12px; color: #aaa; cursor: pointer; text-decoration: underline; }
 
         /* ================= DASHBOARD SCREEN ================= */
@@ -109,7 +109,7 @@
             border: 1px solid var(--border);
             box-shadow: 0 4px 6px rgba(0,0,0,0.02);
             text-decoration: none; color: inherit;
-            transition: 0.2s; display: block;
+            transition: 0.2s; display: block; cursor: pointer;
         }
         .tool-card:hover {
             box-shadow: 0 8px 20px rgba(0,0,0,0.08);
@@ -125,15 +125,56 @@
         
         .icon-red { background: #ffeaa7; color: #d63031; }
         .icon-blue { background: #dfe6e9; color: #0984e3; }
-        .icon-green { background: #dff9fb; color: #22a6b3; }
-        .icon-purple { background: #f3a683; color: #574b90; }
-        .icon-yellow { background: #fefad5; color: #f39c12; }
 
         .tool-card h3 { margin: 0 0 8px 0; font-size: 18px; color: var(--primary); }
         .tool-card p { margin: 0; font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 
+        /* ================= KPI TRACKER SECTION ================= */
+        .kpi-section {
+            display: none; /* Disembunyikan di awal */
+            background: var(--card-bg);
+            padding: 30px; border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .kpi-header {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;
+            border-bottom: 2px solid var(--border); padding-bottom: 15px;
+        }
+        .kpi-header h2 { margin: 0; color: var(--primary); }
+        
+        .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        @media (max-width: 768px) { .kpi-grid { grid-template-columns: 1fr; } }
+
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 5px; color: var(--text-main); }
+        .input-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+
+        .result-box {
+            background: #f1f2f6; padding: 20px; border-radius: 8px; border: 1px solid var(--border);
+        }
+        .metric-card {
+            background: #fff; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center;
+        }
+        .metric-val { font-size: 24px; font-weight: bold; color: var(--primary); }
+        .status-badge { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: bold; color: white; }
+        .bg-success { background: var(--success); }
+        .bg-warning { background: var(--warning); }
+        .bg-danger { background: var(--accent); }
+
+        .insight-box {
+            background: #e8f4fd; border: 1px solid #74b9ff; padding: 15px; border-radius: 8px; margin-top: 20px;
+            font-size: 13px; line-height: 1.5; color: #0984e3;
+        }
+
         /* ================= SPREADSHEET SECTION ================= */
         .spreadsheet-container {
+            display: none; /* Disembunyikan di awal */
             background: var(--card-bg);
             padding: 20px; border-radius: 12px;
             border: 1px solid var(--border);
@@ -141,79 +182,27 @@
             transition: all 0.3s ease;
         }
 
-        /* HEADER & FULLSCREEN BUTTON */
-        .sheet-header-area {
-            display: flex; justify-content: space-between; align-items: center; 
-            margin-bottom: 15px; flex-wrap: wrap; gap: 10px;
-        }
-
-        .sheet-header-area h2 {
-            margin: 0; font-size: 20px; color: var(--primary);
-            display: flex; align-items: center; gap: 10px;
-        }
-
-        .btn-fullscreen {
-            background: #ecf0f1; border: none; color: var(--primary);
-            padding: 8px 15px; border-radius: 6px; cursor: pointer;
-            font-weight: bold; font-size: 13px; display: flex; align-items: center; gap: 6px;
-            transition: 0.2s;
-        }
+        .sheet-header-area { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+        .sheet-header-area h2 { margin: 0; font-size: 20px; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+        
+        .btn-fullscreen { background: #ecf0f1; border: none; color: var(--primary); padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 13px; transition: 0.2s; }
         .btn-fullscreen:hover { background: #bdc3c7; }
 
-        /* DYNAMIC TABS MENU */
-        .sheet-tabs {
-            display: flex; gap: 8px; margin-bottom: 15px;
-            overflow-x: auto; padding-bottom: 5px;
-        }
-        
-        .sheet-tabs::-webkit-scrollbar { height: 6px; }
-        .sheet-tabs::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
-
-        .tab-btn {
-            background: #f1f2f6; border: 1px solid transparent;
-            padding: 8px 16px; border-radius: 6px;
-            font-size: 14px; font-weight: 600; color: var(--text-muted);
-            cursor: pointer; transition: 0.2s; white-space: nowrap;
-        }
+        .sheet-tabs { display: flex; gap: 8px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; }
+        .tab-btn { background: #f1f2f6; border: 1px solid transparent; padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: 0.2s; white-space: nowrap; }
         .tab-btn:hover { background: #eccc68; color: #2f3542; }
-        .tab-btn.active {
-            background: var(--primary); color: white;
-            border-color: var(--primary);
-        }
+        .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-        /* IFRAME */
-        .iframe-wrapper {
-            width: 100%;
-            height: 700px; /* Tinggi default */
-            border: 1px solid var(--border); border-radius: 8px;
-            background: #fafafa; overflow: hidden;
-        }
+        .iframe-wrapper { width: 100%; height: 700px; border: 1px solid var(--border); border-radius: 8px; background: #fafafa; overflow: hidden; }
         iframe { width: 100%; height: 100%; border: none; }
 
-        /* MODE FULLSCREEN (OVERLAY) */
-        .spreadsheet-container.is-fullscreen {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: 9999; border-radius: 0; margin: 0; padding: 20px;
-            display: flex; flex-direction: column;
-        }
-        .spreadsheet-container.is-fullscreen .iframe-wrapper {
-            flex: 1; /* Memenuhi sisa ruang layar */
-            height: auto;
-        }
+        .spreadsheet-container.is-fullscreen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; border-radius: 0; margin: 0; padding: 20px; display: flex; flex-direction: column; }
+        .spreadsheet-container.is-fullscreen .iframe-wrapper { flex: 1; height: auto; }
 
-        .footer {
-            text-align: center; padding: 20px;
-            color: var(--text-muted); font-size: 13px;
-            border-top: 1px solid var(--border);
-            background: var(--card-bg);
-        }
+        .footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 13px; border-top: 1px solid var(--border); background: var(--card-bg); }
 
-        @media (max-width: 768px) {
-            .header { flex-direction: column; gap: 15px; text-align: center; }
-            .btn-logout { width: 100%; }
-            .main-content { padding: 20px 5%; }
-            .iframe-wrapper { height: 500px; }
-        }
+        .back-nav { margin-bottom: 20px; display: inline-block; color: var(--accent); font-weight: bold; cursor: pointer; font-size: 14px; display: none;}
+        .back-nav:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -237,47 +226,114 @@
         <header class="header">
             <div class="header-title">
                 <h1>Internal Marketing Tools</h1>
-                <p>Dashboard pengelolaan data JSON - Honda Bintaro</p>
+                <p>Dashboard pengelolaan strategi digital & database - Honda Bintaro</p>
             </div>
             <button class="btn-logout" onclick="logout()">Keluar Sistem</button>
         </header>
 
         <main class="main-content">
             
-            <!--div class="tools-grid">
-                <a href="blogger-editor.html" class="tool-card">
-                    <div class="tool-icon icon-red">📝</div>
-                    <h3>Blogger Editor</h3>
-                    <p>Update konten produk dan script untuk postingan Blogger secara instan.</p>
-                </a>
+            <div id="btn-back" class="back-nav" onclick="showHome()">← Kembali ke Menu Utama</div>
+
+            <div class="tools-grid" id="menu-grid">
+                <div class="tool-card" onclick="openTool('kpi')">
+                    <div class="tool-icon icon-red">📈</div>
+                    <h3>Social Media KPI & Gap Analysis</h3>
+                    <p>Hitung Engagement Rate (ER), Reach, dan evaluasi target mingguan sesuai materi RevoU.</p>
+                </div>
                 
-                <a href="pricelist-editor.html" class="tool-card">
-                    <div class="tool-icon icon-blue">📇</div>
-                    <h3>Pricelist Editor</h3>
-                    <p>Ubah daftar harga kendaraan dan simulasi kredit tanpa menyentuh code.</p>
-                </a>
-                
-                <a href="build-your-dreams.html" class="tool-card">
-                    <div class="tool-icon icon-green">🪄</div>
-                    <h3>Build Your Dreams</h3>
-                    <p>Tools konfigurasi atau fitur khusus lainnya untuk marketing campaign.</p>
-                </a>
-                
-                <a href="website-banner.html" class="tool-card">
-                    <div class="tool-icon icon-purple">💻</div>
-                    <h3>Website Banner</h3>
-                    <p>Mengubah gambar banner desktop dan mobile langsung terhubung ke GitHub.</p>
-                </a>
-                
-                <a href="image-to-webp.html" class="tool-card">
-                    <div class="tool-icon icon-yellow">🖼️</div>
-                    <h3>Image to WEBP</h3>
-                    <p>Gambarmu terlalu besar? convert dulu jadi webp. Lebih kecil, lebih hemat!</p>
-                </a>
-            </div!-->
+                <div class="tool-card" onclick="openTool('spreadsheet')">
+                    <div class="tool-icon icon-blue">📊</div>
+                    <h3>Database & Content Plan</h3>
+                    <p>Akses langsung ke spreadsheet Master Content Plan, KPI SID, dan Jadwal Live Tiktok.</p>
+                </div>
+            </div>
+
+            <div id="kpi-section" class="kpi-section">
+                <div class="kpi-header">
+                    <h2>Kalkulator Evaluasi Channel (Weekly)</h2>
+                    <button class="btn-fullscreen" onclick="calculateKPI()">Hitung Performa 🚀</button>
+                </div>
+
+                <div class="kpi-grid">
+                    <div>
+                        <h4 style="margin-top: 0; color: var(--text-muted);">Masukkan Data dari Instagram Insights</h4>
+                        <div class="input-group">
+                            <label>Jumlah Followers Saat Ini</label>
+                            <input type="number" id="inp-followers" value="15381">
+                        </div>
+                        <div style="display:flex; gap: 15px;">
+                            <div class="input-group" style="flex:1;">
+                                <label>Total Likes</label>
+                                <input type="number" id="inp-likes" placeholder="0">
+                            </div>
+                            <div class="input-group" style="flex:1;">
+                                <label>Total Comments</label>
+                                <input type="number" id="inp-comments" placeholder="0">
+                            </div>
+                        </div>
+                        <div style="display:flex; gap: 15px;">
+                            <div class="input-group" style="flex:1;">
+                                <label>Total Shares</label>
+                                <input type="number" id="inp-shares" placeholder="0">
+                            </div>
+                            <div class="input-group" style="flex:1;">
+                                <label>Total Saves (Penting!)</label>
+                                <input type="number" id="inp-saves" placeholder="0">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Accounts Reached (30 Hari / 7 Hari)</label>
+                            <input type="number" id="inp-reach" placeholder="Contoh: 111087">
+                        </div>
+                        <div style="display:flex; gap: 15px;">
+                            <div class="input-group" style="flex:1;">
+                                <label>Jumlah Posting Feed/Reels</label>
+                                <input type="number" id="inp-posts" placeholder="Contoh: 9">
+                            </div>
+                            <div class="input-group" style="flex:1;">
+                                <label>Total DM Masuk</label>
+                                <input type="number" id="inp-dm" placeholder="Target min: 5">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <h4 style="margin-top: 0; margin-bottom: 20px; color: var(--primary);">Hasil Analisis (RevoU Framework)</h4>
+                        
+                        <div class="metric-card">
+                            <div>
+                                <div style="font-size: 12px; color: var(--text-muted);">Engagement Rate (Target: 3%)</div>
+                                <div class="metric-val" id="res-er">0.00%</div>
+                            </div>
+                            <div id="badge-er" class="status-badge bg-warning">-</div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div>
+                                <div style="font-size: 12px; color: var(--text-muted);">Rata-rata Reach per Post</div>
+                                <div class="metric-val" id="res-reach">0</div>
+                            </div>
+                            <div id="badge-reach" class="status-badge bg-warning">-</div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div>
+                                <div style="font-size: 12px; color: var(--text-muted);">DM Inquiries (Target Min: 5)</div>
+                                <div class="metric-val" id="res-dm">0</div>
+                            </div>
+                            <div id="badge-dm" class="status-badge bg-warning">-</div>
+                        </div>
+
+                        <div id="insight-box" class="insight-box" style="display:none;">
+                            <strong>💡 What, So What, Now What:</strong><br>
+                            <span id="insight-text"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div id="spreadsheet-section" class="spreadsheet-container">
-                
                 <div class="sheet-header-area">
                     <h2 id="sheet-title">📊 Content Plan DM Honda Bintaro 2026</h2>
                     <button class="btn-fullscreen" id="btn-fs" onclick="toggleFullscreen()">
@@ -286,30 +342,20 @@
                 </div>
 
                 <div class="sheet-tabs" id="tab-container">
-                    <button class="tab-btn active" 
-                        onclick="changeSheet(this, '📊 Content Plan DM Honda Bintaro 2026', 'https://docs.google.com/spreadsheets/d/10YB8WrOiEVxYczKKh5auSEThddoD9NUvQXqGFHsh3d4/edit?rm=minimal')">
+                    <button class="tab-btn active" onclick="changeSheet(this, '📊 Content Plan DM Honda Bintaro 2026', 'https://docs.google.com/spreadsheets/d/10YB8WrOiEVxYczKKh5auSEThddoD9NUvQXqGFHsh3d4/edit?rm=minimal')">
                         DM Content Plan
                     </button>
-                    
-                    <button class="tab-btn" 
-                        onclick="changeSheet(this, '📈 KPI SID', 'https://docs.google.com/spreadsheets/d/1md1goO9bGrZ7WJB1JATT4Qv9xskGQ1XgipVVpWIV16c/edit?rm=minimal')">
+                    <button class="tab-btn" onclick="changeSheet(this, '📈 KPI SID', 'https://docs.google.com/spreadsheets/d/1md1goO9bGrZ7WJB1JATT4Qv9xskGQ1XgipVVpWIV16c/edit?rm=minimal')">
                         KPI SID
                     </button>
-                    
-                    <button class="tab-btn" 
-                        onclick="changeSheet(this, '📉 Jadwal Live Tiktok', 'https://docs.google.com/spreadsheets/d/1iTnaXLwHRbPaC65IsyJFBYEcFk57okzuTXk2I-Boim0/edit?rm=minimal')">
+                    <button class="tab-btn" onclick="changeSheet(this, '📉 Jadwal Live Tiktok', 'https://docs.google.com/spreadsheets/d/1iTnaXLwHRbPaC65IsyJFBYEcFk57okzuTXk2I-Boim0/edit?rm=minimal')">
                         Jadwal Live Tiktok
                     </button>
                 </div>
 
                 <div class="iframe-wrapper">
-                    <iframe 
-                        id="main-sheet-frame"
-                        src="https://docs.google.com/spreadsheets/d/10YB8WrOiEVxYczKKh5auSEThddoD9NUvQXqGFHsh3d4/edit?rm=minimal" 
-                        title="Database Area">
-                    </iframe>
+                    <iframe id="main-sheet-frame" src="https://docs.google.com/spreadsheets/d/10YB8WrOiEVxYczKKh5auSEThddoD9NUvQXqGFHsh3d4/edit?rm=minimal" title="Database Area"></iframe>
                 </div>
-
             </div>
 
         </main>
@@ -321,6 +367,87 @@
 
 
     <script>
+        /* ================= NAVIGATION LOGIC ================= */
+        function openTool(toolId) {
+            document.getElementById('menu-grid').style.display = 'none';
+            document.getElementById('btn-back').style.display = 'inline-block';
+            
+            if(toolId === 'kpi') {
+                document.getElementById('kpi-section').style.display = 'block';
+            } else if(toolId === 'spreadsheet') {
+                document.getElementById('spreadsheet-section').style.display = 'block';
+            }
+        }
+
+        function showHome() {
+            document.getElementById('menu-grid').style.display = 'grid';
+            document.getElementById('btn-back').style.display = 'none';
+            document.getElementById('kpi-section').style.display = 'none';
+            document.getElementById('spreadsheet-section').style.display = 'none';
+        }
+
+        /* ================= KPI CALCULATOR LOGIC (RevoU Formula) ================= */
+        function calculateKPI() {
+            const followers = parseFloat(document.getElementById('inp-followers').value) || 0;
+            const likes = parseFloat(document.getElementById('inp-likes').value) || 0;
+            const comments = parseFloat(document.getElementById('inp-comments').value) || 0;
+            const shares = parseFloat(document.getElementById('inp-shares').value) || 0;
+            const saves = parseFloat(document.getElementById('inp-saves').value) || 0;
+            const reach = parseFloat(document.getElementById('inp-reach').value) || 0;
+            const posts = parseFloat(document.getElementById('inp-posts').value) || 0;
+            const dm = parseFloat(document.getElementById('inp-dm').value) || 0;
+
+            if (followers === 0) return alert("Jumlah followers tidak boleh kosong!");
+
+            // 1. Hitung Engagement Rate
+            const totalInteractions = likes + comments + shares + saves;
+            const er = (totalInteractions / followers) * 100;
+            
+            document.getElementById('res-er').innerText = er.toFixed(3) + "%";
+            const badgeEr = document.getElementById('badge-er');
+            if (er >= 3.0) {
+                badgeEr.className = "status-badge bg-success"; badgeEr.innerText = "Sangat Baik (Target Tercapai)";
+            } else if (er >= 1.5) {
+                badgeEr.className = "status-badge bg-warning"; badgeEr.innerText = "Aman (Sesuai Benchmark)";
+            } else {
+                badgeEr.className = "status-badge bg-danger"; badgeEr.innerText = "Perlu Ditingkatkan";
+            }
+
+            // 2. Hitung Rata-Rata Reach
+            const avgReach = posts > 0 ? (reach / posts).toFixed(0) : 0;
+            document.getElementById('res-reach').innerText = avgReach;
+            const badgeReach = document.getElementById('badge-reach');
+            if (avgReach >= 2000) {
+                badgeReach.className = "status-badge bg-success"; badgeReach.innerText = "On Track";
+            } else {
+                badgeReach.className = "status-badge bg-warning"; badgeReach.innerText = "Evaluasi Distribusi";
+            }
+
+            // 3. Evaluasi DM Masuk
+            document.getElementById('res-dm').innerText = dm;
+            const badgeDm = document.getElementById('badge-dm');
+            let dmInsight = "";
+            if (dm >= 5) {
+                badgeDm.className = "status-badge bg-success"; badgeDm.innerText = "On Track";
+                dmInsight = "Kuantitas DM sudah mencapai target mingguan! Pastikan Response Time di bawah 1 jam untuk memperbesar peluang konversi.";
+            } else {
+                badgeDm.className = "status-badge bg-danger"; badgeDm.innerText = "Di Bawah Target";
+                dmInsight = "DM Inquiry masih di bawah 5. Ini mengindikasikan Call-To-Action (CTA) di konten kurang kuat atau audiens drop-off sebelum bertanya. Evaluasi ulang CTA pada konten minggu ini.";
+            }
+
+            // 4. Generate Insight Text
+            document.getElementById('insight-box').style.display = 'block';
+            let saveRatioText = "";
+            if (saves < 2 && posts > 0) {
+                saveRatioText = "Saves konten tergolong rendah. Calon pembeli di tahap 'Consideration' butuh lebih banyak konten infografis/edukatif yang layak disimpan.";
+            } else {
+                saveRatioText = "Tingkat Saves konten bagus. Pertahankan konten yang memberikan nilai/edukasi produk.";
+            }
+            
+            document.getElementById('insight-text').innerText = `${dmInsight} ${saveRatioText}`;
+        }
+
+
         /* ================= KEAMANAN LOGIN ================= */
         const TARGET_HASH = "9275f44871358d62238639e543218131614599e9777544265f5a36db1471c139"; // Default "123456"
 
@@ -341,7 +468,8 @@
             if (inputHash === TARGET_HASH) {
                 sessionStorage.setItem('auth_honda_bintaro', 'true');
                 errorMsg.style.display = 'none';
-                showDashboard();
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('dashboard-screen').style.display = 'flex';
             } else {
                 errorMsg.style.display = 'block';
                 document.getElementById('password-input').value = "";
@@ -352,21 +480,18 @@
             if (event.key === "Enter") verifyPassword();
         }
 
-        function showDashboard() {
-            document.getElementById('login-screen').style.display = 'none';
-            document.getElementById('dashboard-screen').style.display = 'flex';
-        }
-
         function logout() {
             sessionStorage.removeItem('auth_honda_bintaro');
             document.getElementById('login-screen').style.display = 'flex';
             document.getElementById('dashboard-screen').style.display = 'none';
             document.getElementById('password-input').value = "";
+            showHome();
         }
 
         window.onload = () => {
             if (sessionStorage.getItem('auth_honda_bintaro') === 'true') {
-                showDashboard();
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('dashboard-screen').style.display = 'flex';
             }
         };
 
@@ -375,11 +500,9 @@
             if (newPassword) {
                 const newHash = await sha256(newPassword);
                 try {
-                    // Perintah untuk menyalin otomatis ke clipboard
                     await navigator.clipboard.writeText(newHash);
                     alert("✅ BERHASIL! Kode Hash sudah OTOMATIS TER-COPY!\n\nSilakan langsung PASTE (Ctrl+V) di Notepad/VSCode pada baris 'const TARGET_HASH'.");
                 } catch (err) {
-                    // Jika browser memblokir auto-copy, gunakan prompt agar teks bisa diblok & dicopy manual
                     prompt("Browser menolak auto-copy. Silakan blok dan COPY manual kode hash di bawah ini:", newHash);
                 }
                 console.log("Hash Baru Anda:", newHash);
@@ -387,39 +510,29 @@
         }
 
         /* ================= SPREADSHEET LOGIC ================= */
-        
-        // Ganti URL Iframe & Judul Section saat Tab diklik
         function changeSheet(btnElement, title, url) {
-            // 1. Ubah state tombol yang aktif
             const tabs = document.querySelectorAll('.tab-btn');
             tabs.forEach(tab => tab.classList.remove('active'));
             btnElement.classList.add('active');
-
-            // 2. Ganti Judul
             document.getElementById('sheet-title').innerText = title;
-
-            // 3. Ganti URL Iframe
             document.getElementById('main-sheet-frame').src = url;
         }
 
-        // Toggle Fullscreen Container
         function toggleFullscreen() {
             const container = document.getElementById('spreadsheet-section');
             const btnFs = document.getElementById('btn-fs');
-
             container.classList.toggle('is-fullscreen');
 
-            // Ganti teks tombol berdasarkan kondisi
             if (container.classList.contains('is-fullscreen')) {
                 btnFs.innerHTML = "✖ Kecilkan (Minimize)";
                 btnFs.style.background = "#e74c3c";
                 btnFs.style.color = "#fff";
-                document.body.style.overflow = "hidden"; // Kunci scroll halaman utama
+                document.body.style.overflow = "hidden";
             } else {
                 btnFs.innerHTML = "⛶ Perbesar (Fullscreen)";
                 btnFs.style.background = "#ecf0f1";
                 btnFs.style.color = "var(--primary)";
-                document.body.style.overflow = "auto"; // Buka kembali scroll halaman
+                document.body.style.overflow = "auto";
             }
         }
     </script>
