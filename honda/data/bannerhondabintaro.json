@@ -3,7 +3,7 @@
     "desktop": [
       {
         "id": "honda-family-fair",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/honda-family-fair_1783062701514.webp",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/honda-family-fair_1783065104846.webp",
         "link": "#",
         "alt": "Honda Family Fair"
       },
@@ -21,21 +21,15 @@
       },
       {
         "id": "hrv-slp",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/hrv-slp_1783062737613.webp",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/hrv-slp_1783065113933.webp",
         "link": "#",
         "alt": "Extra Cashback Beli Honda HR-V"
       },
       {
         "id": "brio-slp",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/brio-slp_1783062780473.webp",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/brio-slp_1783065132437.webp",
         "link": "#",
         "alt": "Extra Cashback Beli Honda Brio"
-      },
-      {
-        "id": "servis-beli-honda",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/servis-beli-honda_1781487394005.jpg",
-        "link": "#",
-        "alt": "Service dan beli mobil Honda sekarang lebih menguntungkan"
       },
       {
         "id": "promo-jfk-honda",
@@ -47,7 +41,7 @@
     "mobile": [
       {
         "id": "honda-family-fair",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/honda-family-fair_1783062804324.webp",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/honda-family-fair_1783065152271.webp",
         "link": "#",
         "alt": "Honda Family Fair"
       },
@@ -71,21 +65,15 @@
       },
       {
         "id": "hrv-slp-mobile",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/hrv-slp-mobile_1783062815515.webp",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/hrv-slp-mobile_1783065169688.webp",
         "link": "#",
         "alt": "Extra Cashback Beli Honda HR-V"
       },
       {
         "id": "brio-slp-mobile",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/brio-slp-mobile_1783062835233.webp",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/brio-slp-mobile_1783065183403.webp",
         "link": "#",
         "alt": "Extra Cashback Beli Honda Brio"
-      },
-      {
-        "id": "servis-beli-honda",
-        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqqSkwe-RFGhU2o4C89IgQjPJrw-S_vsN_2SmUGccGYZPjMU66d7tzHZplGLxfeUgausP7irkNqwWKZ2YvRnQtrKuAkV8qpkrSW_Os6eLp2PvIJ-WQERaJVFszatJ3pY56maM5ACRU5m5tMFcK8PlxEy46fFjtg8Vmtg-JIykemEl4zLB05T78qB4bm-s/s1600/WEBSITE-PORTRAIT-BANNER-PRIMA-BRIO.webp",
-        "link": "#",
-        "alt": "Service dan beli mobil Honda sekarang lebih menguntungkan"
       },
       {
         "id": "promo-jfk-honda-mobile",
