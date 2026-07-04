@@ -34,6 +34,7 @@
         .btn:hover { background: #1a252f; transform: translateY(-1px); }
         .btn-accent { background: var(--accent); }
         .btn-accent:hover { background: #c0392b; }
+        .btn:disabled { opacity: 0.7; cursor: not-allowed; }
         .error-msg { color: var(--accent); font-size: 13px; margin-bottom: 15px; display: none; font-weight: bold; }
         .dev-tool { margin-top: 20px; font-size: 12px; color: #aaa; cursor: pointer; text-decoration: underline; }
 
@@ -60,7 +61,7 @@
         .icon-green { background: #dff9fb; color: #22a6b3; }
         .icon-purple { background: #f3a683; color: #574b90; }
         .icon-orange { background: #ffe0b2; color: #e17055; }
-        .icon-dark { background: #ced6e0; color: #2f3542; }
+        .icon-ai { background: #e8dbff; color: #8e44ad; }
 
         .tool-card h3 { margin: 0 0 8px 0; font-size: 17px; color: var(--primary); }
         .tool-card p { margin: 0; font-size: 13px; color: var(--text-muted); line-height: 1.5; }
@@ -69,7 +70,7 @@
         .tool-section { display: none; background: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid var(--border); animation: fadeIn 0.4s ease; margin-bottom: 30px;}
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .section-header { border-bottom: 2px solid var(--border); padding-bottom: 15px; margin-bottom: 25px; }
-        .section-header h2 { margin: 0; color: var(--primary); }
+        .section-header h2 { margin: 0; color: var(--primary); display: flex; align-items: center; gap: 8px;}
         .section-header p { margin: 5px 0 0 0; color: var(--text-muted); font-size: 13px; }
 
         .form-row { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
@@ -98,6 +99,10 @@
         .tab-btn.active { background: var(--primary); color: white; }
 
         .footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 13px; border-top: 1px solid var(--border); background: var(--card-bg); }
+
+        /* API KEY CONFIG BOX */
+        .api-box { background: #fff8e1; border: 1px solid #ffdca8; padding: 15px; border-radius: 8px; margin-bottom: 25px; }
+        .api-box p { margin: 0 0 10px 0; font-size: 13px; color: #d35400; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -129,6 +134,12 @@
             <!-- MENU GRID -->
             <div class="tools-grid" id="menu-grid">
                 
+                <div class="tool-card" onclick="openTool('generator')">
+                    <div class="tool-icon icon-ai">✨</div>
+                    <h3>AI Caption & Brief Generator</h3>
+                    <p>Hasilkan caption format PAS & FAB secara otomatis yang natural dan berkonversi.</p>
+                </div>
+
                 <div class="tool-card" onclick="openTool('monitor')">
                     <div class="tool-icon icon-green">🎯</div>
                     <h3>Content Performance Monitor</h3>
@@ -159,56 +170,58 @@
                     <p>Akses langsung ke spreadsheet DM Plan, KPI SID, dan Jadwal Live Tiktok.</p>
                 </div>
 
-                <div class="tool-card" onclick="openTool('generator')">
-                    <div class="tool-icon icon-dark" style="background:#dfe6e9; color:#0984e3;">🪄</div>
-                    <h3>Caption & Brief Generator</h3>
-                    <p>Hasilkan caption format PAS & FAB secara otomatis untuk dorong konversi.</p>
-                </div>
             </div>
 
-            <!-- ================= 0. CAPTION GENERATOR ================= -->
+            <!-- ================= 0. AI CAPTION GENERATOR ================= -->
             <div id="generator-section" class="tool-section">
                 <div class="section-header">
-                    <h2>Caption & Brief Generator</h2>
-                    <p>Sesi 6: Buat caption berkonversi tinggi dengan formula terstruktur tanpa pusing memikirkan kalimat awal.</p>
+                    <h2>✨ AI Caption & Brief Generator</h2>
+                    <p>Sesi 6: Didukung oleh Google Gemini API untuk meracik copywriting yang luwes dan natural sesuai karakter Honda Bintaro.</p>
+                </div>
+
+                <!-- API Key Config (Hanya di browser lokal) -->
+                <div class="api-box">
+                    <p>🔑 Google Gemini API Key</p>
+                    <input type="password" id="gemini-api-key" class="form-control" style="margin-bottom:0;" placeholder="Paste API Key Gemini kamu di sini..." oninput="saveApiKey()">
+                    <span style="font-size:11px; color:#d35400;">Kunci hanya tersimpan di memori browser laptopmu secara aman.</span>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label>Pilih Framework</label>
                         <select id="gen-framework" class="form-control">
-                            <option value="PAS">PAS (Problem, Agitate, Solution) - Cocok untuk Edukasi</option>
-                            <option value="FAB">FAB (Feature, Advantage, Benefit) - Cocok untuk Produk</option>
+                            <option value="PAS (Problem, Agitate, Solution)">PAS (Problem, Agitate, Solution) - Cocok untuk Edukasi</option>
+                            <option value="FAB (Feature, Advantage, Benefit)">FAB (Feature, Advantage, Benefit) - Cocok untuk Produk</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Nama Produk / Promo</label>
-                        <input type="text" id="gen-product" class="form-control" placeholder="Contoh: Honda HR-V e:HEV">
+                        <input type="text" id="gen-product" class="form-control" placeholder="Contoh: Honda Brio">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label>Masalah / Pain Point Konsumen</label>
-                        <input type="text" id="gen-problem" class="form-control" placeholder="Contoh: Kaki pegal karena kena macet tiap hari">
+                        <input type="text" id="gen-problem" class="form-control" placeholder="Contoh: Mati gaya saat nongkrong">
                     </div>
                     <div class="form-group">
                         <label>Fitur / Solusi Unggulan</label>
-                        <input type="text" id="gen-feature" class="form-control" placeholder="Contoh: Fitur Auto Brake Hold (ABH)">
+                        <input type="text" id="gen-feature" class="form-control" placeholder="Contoh: Desain eksterior sporty RS">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label>Call-to-Action (Satu Instruksi Jelas)</label>
-                    <input type="text" id="gen-cta" class="form-control" placeholder="Contoh: Klik link di bio buat jadwalin test drive HR-V ke rumahmu weekend ini!">
+                    <input type="text" id="gen-cta" class="form-control" placeholder="Contoh: Jangan kelamaan nunggu, test drive sekarang link ada di bio!">
                 </div>
 
-                <button class="btn btn-accent" onclick="generateCaption()">Generate Caption ⚡</button>
+                <button id="btn-generate" class="btn btn-accent" style="background:#8e44ad;" onclick="generateCaptionWithAI()">Generate Caption via AI ✨</button>
 
-                <div id="gen-result-box" class="result-box" style="display: none; background: #fff; border-left: 4px solid var(--primary);">
+                <div id="gen-result-box" class="result-box" style="display: none; background: #fff; border-left: 4px solid #8e44ad;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px;">
-                        <h4 style="margin:0; color:var(--primary);">Hasil Generate Copywriting</h4>
-                        <button class="btn-logout" style="padding:4px 8px; font-size:12px;" onclick="copyGenerator()">Copy Teks</button>
+                        <h4 style="margin:0; color:#8e44ad;">Hasil AI Copywriting</h4>
+                        <button class="btn-logout" style="padding:4px 8px; font-size:12px; border-color:#8e44ad; color:#8e44ad;" onclick="copyGenerator()">Copy Teks</button>
                     </div>
                     <p id="gen-output" style="font-size: 14px; white-space: pre-wrap; margin-bottom: 0; line-height: 1.6;"></p>
                 </div>
@@ -331,7 +344,7 @@
             </div>
 
 
-            <!-- ================= 4. WEEKLY KPI (Eksisting) ================= -->
+            <!-- ================= 4. WEEKLY KPI ================= -->
             <div id="kpi-section" class="tool-section">
                 <div class="section-header">
                     <h2>Kalkulator Evaluasi Channel (Weekly)</h2>
@@ -351,7 +364,7 @@
             </div>
 
 
-            <!-- ================= 5. SPREADSHEET (Eksisting) ================= -->
+            <!-- ================= 5. SPREADSHEET ================= -->
             <div id="spreadsheet-section" class="tool-section">
                 <div class="sheet-header-area">
                     <h2 id="sheet-title" style="margin:0; color:var(--primary);">📊 Content Plan DM Honda Bintaro</h2>
@@ -385,33 +398,88 @@
             document.querySelectorAll('.tool-section').forEach(sec => sec.style.display = 'none');
         }
 
-        /* ================= 0. CAPTION GENERATOR ================= */
-        function generateCaption() {
-            const fw = document.getElementById('gen-framework').value;
-            const prod = document.getElementById('gen-product').value || '[Nama Produk]';
-            const prob = document.getElementById('gen-problem').value || '[Sebutkan Keluhan]';
-            const feat = document.getElementById('gen-feature').value || '[Sebutkan Solusi/Fitur]';
-            const cta = document.getElementById('gen-cta').value || '[Link di Bio / Nomor WA]';
-            
-            const hashtagProd = prod.replace(/[^a-zA-Z0-9]/g, ''); // Hapus spasi untuk hashtag
-            let output = "";
-
-            if(fw === 'PAS') {
-                output = `(P): Pernah ngerasa lelah banget karena ${prob}?\n\n(A): Jangan dibiarin terus, karena hal itu bisa bikin mood dan aktivitasmu jadi berantakan setiap harinya.\n\n(S): Untungnya sekarang ada ${prod} yang dilengkapi dengan ${feat}. Dirancang khusus untuk jadi solusi praktis supaya hari-harimu jauh lebih nyaman dan tenang.\n\n👇\n${cta}\n\n#HondaBintaro #${hashtagProd} #PromoHonda`;
-            } else {
-                output = `(F): Kenalan yuk sama kecanggihan ${prod}! Kini hadir dengan inovasi ${feat} terbaru di kelasnya.\n\n(A): Berkat teknologi ini, kamu nggak perlu lagi khawatir soal ${prob} saat di perjalanan.\n\n(B): Hasilnya? Berkendara jadi jauh lebih aman, praktis, dan menyenangkan buat kamu dan keluarga!\n\n👇\n${cta}\n\n#HondaBintaro #${hashtagProd} #FiturHonda`;
+        /* ================= 0. AI CAPTION GENERATOR ================= */
+        // Load API Key saat halaman dibuka
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedKey = localStorage.getItem('gemini_api_key');
+            if(savedKey) {
+                document.getElementById('gemini-api-key').value = savedKey;
             }
+        });
 
-            document.getElementById('gen-output').innerText = output;
-            document.getElementById('gen-result-box').style.display = 'block';
+        function saveApiKey() {
+            const key = document.getElementById('gemini-api-key').value.trim();
+            localStorage.setItem('gemini_api_key', key);
+        }
+
+        async function generateCaptionWithAI() {
+            const apiKey = document.getElementById('gemini-api-key').value.trim();
+            if(!apiKey) return alert("⚠️ Silakan masukkan API Key Gemini kamu di kolom kuning terlebih dahulu!");
+
+            const fw = document.getElementById('gen-framework').value;
+            const prod = document.getElementById('gen-product').value;
+            const prob = document.getElementById('gen-problem').value;
+            const feat = document.getElementById('gen-feature').value;
+            const cta = document.getElementById('gen-cta').value;
+
+            if(!prod || !prob || !feat || !cta) return alert("Harap lengkapi semua kolom brief konten!");
+
+            const btn = document.getElementById('btn-generate');
+            btn.innerText = "⏳ Memanggil AI... Sedang Menulis Caption";
+            btn.disabled = true;
+            document.getElementById('gen-result-box').style.display = 'none';
+
+            // Meracik Prompt (Perintah) untuk AI
+            const promptText = `Kamu adalah Digital Marketer profesional yang bekerja di Honda Bintaro. Tugasmu adalah membuat caption Instagram berbahasa Indonesia yang sangat natural, luwes, menarik, dan tidak kaku (seperti gaya tulisan manusia asli).
+
+Gunakan framework copywriting: ${fw}
+
+Data produk:
+- Nama Produk: ${prod}
+- Masalah / Pain Point Audiens: ${prob}
+- Fitur Solusi: ${feat}
+- Call to Action: ${cta}
+
+Instruksi tambahan:
+1. Format hasil tulisan dengan memberikan label awalan huruf frameworknya, misal: (P) atau (F) untuk baris pertama, (A) untuk baris kedua, dan (S) atau (B) untuk baris ketiga.
+2. Gunakan emoji secukupnya agar estetik.
+3. Akhiri dengan CTA yang jelas, diikuti hashtag #HondaBintaro dan 2 hashtag relevan lainnya.
+4. JANGAN ulangi kata-kata prompt, langsung berikan hasil caption-nya saja.`;
+
+            try {
+                // Memanggil Google Gemini API
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: promptText }] }]
+                    })
+                });
+
+                const data = await response.json();
+                
+                if(data.error) throw new Error(data.error.message);
+
+                // Menampilkan hasil
+                const result = data.candidates[0].content.parts[0].text;
+                document.getElementById('gen-output').innerText = result;
+                document.getElementById('gen-result-box').style.display = 'block';
+                
+            } catch (err) {
+                alert("Gagal menghubungi AI. Pastikan koneksi internet lancar dan API Key yang dimasukkan benar!\n\nPesan Error: " + err.message);
+            } finally {
+                btn.innerText = "Generate Caption via AI ✨";
+                btn.disabled = false;
+            }
         }
 
         function copyGenerator() {
             const text = document.getElementById('gen-output').innerText;
             navigator.clipboard.writeText(text).then(() => {
-                alert("Caption berhasil di-copy ke Clipboard!");
+                alert("Caption AI berhasil di-copy ke Clipboard! Siap tayang ke Instagram.");
             });
         }
+
 
         /* ================= 1. CONTENT PERFORMANCE MONITOR ================= */
         function evaluateContent() {
@@ -521,12 +589,15 @@
         }
 
         /* ================= LOGIN & SECURITY ================= */
-        const TARGET_HASH = "9275f44871358d62238639e543218131614599e9777544265f5a36db1471c139";
-        async function sha256(m) { const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)); return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join(''); }
+        const TARGET_HASH = "b3JhdG5pYmFkbm9obWQ="; // Reversed Base64 dari dmhondabintaro
+        
         async function verifyPassword() {
             const input = document.getElementById('password-input').value;
             if(!input) return;
-            if(await sha256(input) === TARGET_HASH) {
+
+            const scrambled = btoa(input.split('').reverse().join(''));
+
+            if (scrambled === TARGET_HASH) {
                 sessionStorage.setItem('auth_hb', 'true');
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('dashboard-screen').style.display = 'flex';
@@ -536,7 +607,13 @@
         }
         function handleEnter(e) { if(e.key === 'Enter') verifyPassword(); }
         function logout() { sessionStorage.removeItem('auth_hb'); location.reload(); }
-        window.onload = () => { if(sessionStorage.getItem('auth_hb') === 'true') { document.getElementById('login-screen').style.display='none'; document.getElementById('dashboard-screen').style.display='flex'; } }
+        
+        // Pengecekan sesi saat awal load
+        if (sessionStorage.getItem('auth_hb') === 'true') { 
+            document.getElementById('login-screen').style.display='none'; 
+            document.getElementById('dashboard-screen').style.display='flex'; 
+        }
+        
     </script>
 </body>
 </html>
