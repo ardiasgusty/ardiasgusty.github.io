@@ -28,7 +28,7 @@
         .login-box { background: var(--card-bg); padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; width: 100%; max-width: 400px; }
         .login-box h2 { margin-top: 0; color: var(--primary); }
         .login-box p { color: var(--text-muted); font-size: 14px; margin-bottom: 25px; }
-        .form-control { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 8px; font-size: 16px; margin-bottom: 15px; outline: none; transition: 0.3s; }
+        .form-control { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px; margin-bottom: 15px; outline: none; transition: 0.3s; font-family: inherit;}
         .form-control:focus { border-color: var(--primary); }
         .btn { width: 100%; padding: 12px; border: none; border-radius: 8px; background: var(--primary); color: white; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; }
         .btn:hover { background: #1a252f; transform: translateY(-1px); }
@@ -159,10 +159,58 @@
                     <p>Akses langsung ke spreadsheet DM Plan, KPI SID, dan Jadwal Live Tiktok.</p>
                 </div>
 
-                <div class="tool-card" style="opacity: 0.6; cursor: not-allowed;">
-                    <div class="tool-icon icon-dark">🪄</div>
+                <div class="tool-card" onclick="openTool('generator')">
+                    <div class="tool-icon icon-dark" style="background:#dfe6e9; color:#0984e3;">🪄</div>
                     <h3>Caption & Brief Generator</h3>
-                    <p>(Segera Hadir) Generator format PAS, FAB, dan StoryBrand.</p>
+                    <p>Hasilkan caption format PAS & FAB secara otomatis untuk dorong konversi.</p>
+                </div>
+            </div>
+
+            <!-- ================= 0. CAPTION GENERATOR ================= -->
+            <div id="generator-section" class="tool-section">
+                <div class="section-header">
+                    <h2>Caption & Brief Generator</h2>
+                    <p>Sesi 6: Buat caption berkonversi tinggi dengan formula terstruktur tanpa pusing memikirkan kalimat awal.</p>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Pilih Framework</label>
+                        <select id="gen-framework" class="form-control">
+                            <option value="PAS">PAS (Problem, Agitate, Solution) - Cocok untuk Edukasi</option>
+                            <option value="FAB">FAB (Feature, Advantage, Benefit) - Cocok untuk Produk</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Produk / Promo</label>
+                        <input type="text" id="gen-product" class="form-control" placeholder="Contoh: Honda HR-V e:HEV">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Masalah / Pain Point Konsumen</label>
+                        <input type="text" id="gen-problem" class="form-control" placeholder="Contoh: Kaki pegal karena kena macet tiap hari">
+                    </div>
+                    <div class="form-group">
+                        <label>Fitur / Solusi Unggulan</label>
+                        <input type="text" id="gen-feature" class="form-control" placeholder="Contoh: Fitur Auto Brake Hold (ABH)">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Call-to-Action (Satu Instruksi Jelas)</label>
+                    <input type="text" id="gen-cta" class="form-control" placeholder="Contoh: Klik link di bio buat jadwalin test drive HR-V ke rumahmu weekend ini!">
+                </div>
+
+                <button class="btn btn-accent" onclick="generateCaption()">Generate Caption ⚡</button>
+
+                <div id="gen-result-box" class="result-box" style="display: none; background: #fff; border-left: 4px solid var(--primary);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px;">
+                        <h4 style="margin:0; color:var(--primary);">Hasil Generate Copywriting</h4>
+                        <button class="btn-logout" style="padding:4px 8px; font-size:12px;" onclick="copyGenerator()">Copy Teks</button>
+                    </div>
+                    <p id="gen-output" style="font-size: 14px; white-space: pre-wrap; margin-bottom: 0; line-height: 1.6;"></p>
                 </div>
             </div>
 
@@ -289,7 +337,7 @@
                     <h2>Kalkulator Evaluasi Channel (Weekly)</h2>
                     <p>Sesi 1: Hitung performa channel secara menyeluruh.</p>
                 </div>
-                <!-- ... Form Input dari Kode Sebelumnya ... -->
+                
                 <div class="form-row">
                     <div class="form-group"><label>Followers</label><input type="number" id="inp-followers" value="15381" class="form-control"></div>
                     <div class="form-group"><label>Reach</label><input type="number" id="inp-reach" placeholder="111087" class="form-control"></div>
@@ -327,9 +375,7 @@
             document.getElementById('menu-grid').style.display = 'none';
             document.getElementById('btn-back').style.display = 'inline-block';
             
-            // Sembunyikan semua section
             document.querySelectorAll('.tool-section').forEach(sec => sec.style.display = 'none');
-            // Tampilkan section terpilih
             document.getElementById(toolId + '-section').style.display = 'block';
         }
 
@@ -339,11 +385,39 @@
             document.querySelectorAll('.tool-section').forEach(sec => sec.style.display = 'none');
         }
 
+        /* ================= 0. CAPTION GENERATOR ================= */
+        function generateCaption() {
+            const fw = document.getElementById('gen-framework').value;
+            const prod = document.getElementById('gen-product').value || '[Nama Produk]';
+            const prob = document.getElementById('gen-problem').value || '[Sebutkan Keluhan]';
+            const feat = document.getElementById('gen-feature').value || '[Sebutkan Solusi/Fitur]';
+            const cta = document.getElementById('gen-cta').value || '[Link di Bio / Nomor WA]';
+            
+            const hashtagProd = prod.replace(/[^a-zA-Z0-9]/g, ''); // Hapus spasi untuk hashtag
+            let output = "";
+
+            if(fw === 'PAS') {
+                output = `(P): Pernah ngerasa lelah banget karena ${prob}?\n\n(A): Jangan dibiarin terus, karena hal itu bisa bikin mood dan aktivitasmu jadi berantakan setiap harinya.\n\n(S): Untungnya sekarang ada ${prod} yang dilengkapi dengan ${feat}. Dirancang khusus untuk jadi solusi praktis supaya hari-harimu jauh lebih nyaman dan tenang.\n\n👇\n${cta}\n\n#HondaBintaro #${hashtagProd} #PromoHonda`;
+            } else {
+                output = `(F): Kenalan yuk sama kecanggihan ${prod}! Kini hadir dengan inovasi ${feat} terbaru di kelasnya.\n\n(A): Berkat teknologi ini, kamu nggak perlu lagi khawatir soal ${prob} saat di perjalanan.\n\n(B): Hasilnya? Berkendara jadi jauh lebih aman, praktis, dan menyenangkan buat kamu dan keluarga!\n\n👇\n${cta}\n\n#HondaBintaro #${hashtagProd} #FiturHonda`;
+            }
+
+            document.getElementById('gen-output').innerText = output;
+            document.getElementById('gen-result-box').style.display = 'block';
+        }
+
+        function copyGenerator() {
+            const text = document.getElementById('gen-output').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Caption berhasil di-copy ke Clipboard!");
+            });
+        }
+
         /* ================= 1. CONTENT PERFORMANCE MONITOR ================= */
         function evaluateContent() {
             const pilar = document.getElementById('mon-pilar').value;
             const reach = parseFloat(document.getElementById('mon-reach').value) || 0;
-            const action = parseFloat(document.getElementById('mon-action').value) || 0; // Saves / DM
+            const action = parseFloat(document.getElementById('mon-action').value) || 0; 
 
             document.getElementById('mon-result').style.display = 'block';
             const badge = document.getElementById('mon-badge');
@@ -380,7 +454,7 @@
                 }
             }
 
-            wsw.innerHTML = `<strong>WHAT:</strong> ${what}<br><strong>SO WHAT:</strong> ${soWhat}<br><strong>NOW WHAT:</strong> ${nowWhat}`;
+            wsw.innerHTML = `<strong>WHAT:</strong> ${what}<br><br><strong>SO WHAT:</strong> ${soWhat}<br><br><strong>NOW WHAT:</strong> ${nowWhat}`;
         }
 
         /* ================= 2. 3C BRAND CHECKER & RISK MITIGATOR ================= */
@@ -391,7 +465,6 @@
                 const checked = document.querySelectorAll('.c-check:checked').length;
                 const riskStatus = document.getElementById('risk-status');
 
-                // Logika High Risk
                 const chkHarga = document.getElementById('chk-harga').checked;
                 const chkStok = document.getElementById('chk-stok').checked;
 
@@ -409,7 +482,7 @@
                     riskStatus.style.borderColor = "var(--warning)";
                     riskStatus.style.color = "var(--warning)";
                     riskStatus.style.background = "#fffcf5";
-                    riskStatus.innerHTML = "⚠️ SEDANG DIREVIEW<br><span style='font-size:12px; font-weight:normal;'>Selesaikan ${total - checked} checklist tersisa.</span>";
+                    riskStatus.innerHTML = `⚠️ SEDANG DIREVIEW<br><span style='font-size:12px; font-weight:normal;'>Selesaikan ${total - checked} checklist tersisa.</span>`;
                 }
             });
         });
@@ -432,7 +505,7 @@
             }
         }
 
-        /* ================= WEEKLY KPI & SPREADSHEET ================= */
+        /* ================= 4. WEEKLY KPI (Eksisting) ================= */
         function calculateWeekly() {
             const f = parseFloat(document.getElementById('inp-followers').value)||1;
             const i = parseFloat(document.getElementById('inp-interaction').value)||0;
