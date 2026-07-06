@@ -15,14 +15,24 @@
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { margin: 0; background-color: var(--bg); color: var(--text-main); display: flex; flex-direction: column; min-height: 100vh; }
 
+        /* ================= LOGIN SCREEN ================= */
+        #login-screen { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
+        .login-box { background: var(--card-bg); padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; width: 100%; max-width: 400px; }
+        .login-box h2 { margin-top: 0; color: var(--primary); }
+        .login-box p { color: var(--text-muted); font-size: 14px; margin-bottom: 25px; }
+        .error-msg { color: var(--accent); font-size: 13px; margin-bottom: 15px; display: none; font-weight: bold; }
+
         /* HEADER & NAV */
+        #dashboard-screen { display: none; flex: 1; flex-direction: column; }
         .header { background: var(--card-bg); padding: 20px 5%; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10; }
         .header-title h1 { margin: 0; font-size: 22px; color: var(--primary); }
         .header-title p { margin: 4px 0 0 0; font-size: 13px; color: var(--text-muted); }
-        .btn-logout { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .btn-logout { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .btn-logout:hover { background: var(--accent); color: white; }
         
         .main-content { padding: 40px 5%; flex: 1; }
         .back-nav { margin-bottom: 20px; display: inline-block; color: var(--accent); font-weight: bold; cursor: pointer; font-size: 14px; display: none;}
+        .back-nav:hover { text-decoration: underline; }
         
         /* GRID MENU */
         .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-bottom: 50px; }
@@ -51,272 +61,406 @@
         
         /* DATA TABLE */
         .data-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; }
-        .data-table th, .data-table td { border: 1px solid var(--border); padding: 10px; text-align: left; }
+        .data-table th, .data-table td { border: 1px solid var(--border); padding: 10px; text-align: left; vertical-align: top;}
         .data-table th { background: var(--primary); color: white; }
 
-        /* 3C MEDIA PREVIEW */
-        .media-preview-box { width: 100%; min-height: 200px; background: #eee; border: 2px dashed #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 15px; position: relative;}
-        .media-preview-box img, .media-preview-box video { max-width: 100%; max-height: 400px; object-fit: contain; }
-        .checklist-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 13px; }
+        /* API KEY CONFIG BOX */
+        .api-box { background: #fff8e1; border: 1px solid #ffdca8; padding: 15px; border-radius: 8px; margin-bottom: 25px; }
+        
+        /* FULLSCREEN SPREADSHEET */
+        .fullscreen-mode { position: fixed !important; top: 0; left: 0; width: 100vw !important; height: 100vh !important; z-index: 9999; background: white; border-radius:0 !important; border:none !important; padding:0 !important; margin:0 !important;}
+        
+        /* 3C CHECKLIST STYLES */
+        .doc-section { margin-bottom: 30px; }
+        .doc-title { font-size: 16px; font-weight: bold; color: #1a252f; margin-bottom: 10px; border-bottom: 2px solid var(--border); padding-bottom: 5px;}
+        .chk-list { list-style: none; padding: 0; margin: 0 0 15px 0; }
+        .chk-list li { margin-bottom: 8px; font-size: 14px; display: flex; align-items: flex-start; gap: 8px;}
+        .chk-list li input { margin-top: 3px; cursor: pointer; }
+        .audit-table th { background: #2c3e50; color: white; font-weight: normal; font-size: 14px; }
+        .audit-table td { background: white; }
     </style>
 </head>
 <body>
 
-    <header class="header">
-        <div class="header-title">
-            <h1>Marketing OS</h1>
-            <p>Digital Dealer Framework - Honda Bintaro</p>
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen">
+        <div class="login-box">
+            <h2>Restricted Access</h2>
+            <p>Honda Bintaro Marketing OS</p>
+            <div id="error-msg" class="error-msg">Password salah!</div>
+            <input type="password" id="password-input" class="form-control" placeholder="Masukkan Password" onkeypress="handleEnter(event)">
+            <button class="btn btn-accent" onclick="verifyPassword()">Masuk ke Dashboard</button>
         </div>
-        <div style="display:flex; gap:10px; align-items:center;">
-            <input type="password" id="global-api-key" class="form-control" style="margin:0; width:200px;" placeholder="🔑 Paste Gemini API Key" oninput="saveApiKey()">
-            <button class="btn-logout" onclick="alert('Pastikan untuk tidak membagikan URL ini ke pihak luar.')">Info</button>
-        </div>
-    </header>
+    </div>
 
-    <main class="main-content">
-        <div id="btn-back" class="back-nav" onclick="showHome()">← Kembali ke Menu Utama</div>
+    <!-- DASHBOARD SCREEN -->
+    <div id="dashboard-screen">
+        <header class="header">
+            <div class="header-title">
+                <h1>Marketing OS</h1>
+                <p>Digital Dealer Framework - Honda Bintaro</p>
+            </div>
+            <button class="btn-logout" onclick="logout()">Keluar</button>
+        </header>
 
-        <!-- MENU GRID (Urutan Baru) -->
-        <div class="tools-grid" id="menu-grid">
-            <div class="tool-card" onclick="openTool('spreadsheet')">
-                <div class="tool-icon" style="background: #dfe6e9; color: #0984e3;">📊</div>
-                <h3>Database & Content Plan</h3>
-                <p>Akses langsung ke spreadsheet DM Plan, KPI SID, dan Jadwal Live.</p>
-            </div>
-            <div class="tool-card" onclick="openTool('generator')">
-                <div class="tool-icon" style="background: #e8dbff; color: #8e44ad;">✨</div>
-                <h3>AI Caption & Brief Generator</h3>
-                <p>Otomatisasi pembuatan Caption dan Video Brief yang natural.</p>
-            </div>
-            <div class="tool-card" onclick="openTool('checker')">
-                <div class="tool-icon" style="background: #f3a683; color: #574b90;">✅</div>
-                <h3>3C Brand Alignment Checker</h3>
-                <p>Checklist C-C-C + Upload Preview untuk review aset visual.</p>
-            </div>
-            <div class="tool-card" onclick="openTool('monitor')">
-                <div class="tool-icon" style="background: #dff9fb; color: #22a6b3;">🎯</div>
-                <h3>Content Performance Monitor</h3>
-                <p>Audit performa per-konten dan simpan ke Database Lokal.</p>
-            </div>
-            <div class="tool-card" onclick="openTool('kpi')">
-                <div class="tool-icon" style="background: #ffeaa7; color: #d63031;">📈</div>
-                <h3>Weekly Channel Evaluator</h3>
-                <p>Hitung ER mingguan dengan Benchmark Standar Otomotif.</p>
-            </div>
-            <div class="tool-card" onclick="openTool('response')">
-                <div class="tool-icon" style="background: #ffe0b2; color: #e17055;">💬</div>
-                <h3>AI CARE Response Assistant</h3>
-                <p>Sistem balasan otomatis anti-kaku menggunakan C-A-R-E Framework.</p>
-            </div>
-        </div>
+        <main class="main-content">
+            <div id="btn-back" class="back-nav" onclick="showHome()">← Kembali ke Menu Utama</div>
 
-        <!-- 1. SPREADSHEET -->
-        <div id="spreadsheet-section" class="tool-section">
-            <div class="section-header"><h2>📊 Database & Content Plan</h2></div>
-            <div style="width: 100%; height: 600px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
-                <iframe src="https://docs.google.com/spreadsheets/d/10YB8WrOiEVxYczKKh5auSEThddoD9NUvQXqGFHsh3d4/edit?rm=minimal" style="width: 100%; height: 100%; border: none;"></iframe>
-            </div>
-        </div>
-
-        <!-- 2. AI GENERATOR -->
-        <div id="generator-section" class="tool-section">
-            <div class="section-header">
-                <h2>✨ AI Caption & Brief Generator</h2>
-                <p>Gunakan AI untuk merancang Caption yang luwes atau Script Brief untuk Video Reels/Tiktok.</p>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Tipe Output</label>
-                    <select id="gen-type" class="form-control" onchange="toggleBriefOptions()">
-                        <option value="Caption">📝 Teks Caption Instagram/TikTok</option>
-                        <option value="Brief">🎬 Video Brief / Script</option>
-                    </select>
+            <!-- MENU GRID -->
+            <div class="tools-grid" id="menu-grid">
+                <div class="tool-card" onclick="openTool('spreadsheet')">
+                    <div class="tool-icon" style="background: #dfe6e9; color: #0984e3;">📊</div>
+                    <h3>Database & Content Plan</h3>
+                    <p>Akses langsung ke spreadsheet DM Plan, KPI SID, dan Jadwal Live.</p>
                 </div>
-                <div class="form-group" id="opt-caption-length">
-                    <label>Panjang Caption</label>
-                    <select id="gen-length" class="form-control">
-                        <option value="Singkat (To the point, 2-3 paragraf pendek, cepat dibaca)">Singkat (To the point, Anti-Bosan)</option>
-                        <option value="Normal (Standar edukasi, lebih detail)">Normal (Lebih Detail)</option>
-                    </select>
+                <div class="tool-card" onclick="openTool('generator')">
+                    <div class="tool-icon" style="background: #e8dbff; color: #8e44ad;">✨</div>
+                    <h3>AI Caption & Brief Generator</h3>
+                    <p>Otomatisasi pembuatan Caption dan Video Brief yang natural.</p>
                 </div>
-                <div class="form-group" id="opt-brief-duration" style="display:none;">
-                    <label>Estimasi Durasi Video</label>
-                    <select id="gen-duration" class="form-control">
-                        <option value="15 Detik (Pace sangat cepat, cocok untuk Hook promo)">15 Detik (Short/Reels Cepat)</option>
-                        <option value="30 Detik (Standar, cukup untuk 1 fitur utama)">30 Detik (Standar Review)</option>
-                        <option value="60 Detik (Detail, cocok untuk edukasi mendalam)">60 Detik (In-depth Edukasi)</option>
-                    </select>
+                <div class="tool-card" onclick="openTool('checker')">
+                    <div class="tool-icon" style="background: #f3a683; color: #574b90;">✅</div>
+                    <h3>3C Brand Alignment Checker</h3>
+                    <p>Form Audit 15-Point, Level Refinement, dan Celah Revisi Konten.</p>
+                </div>
+                <div class="tool-card" onclick="openTool('monitor')">
+                    <div class="tool-icon" style="background: #dff9fb; color: #22a6b3;">🎯</div>
+                    <h3>Content Performance Monitor</h3>
+                    <p>Audit performa per-konten dan simpan ke Database Lokal.</p>
+                </div>
+                <div class="tool-card" onclick="openTool('kpi')">
+                    <div class="tool-icon" style="background: #ffeaa7; color: #d63031;">📈</div>
+                    <h3>Weekly Channel Evaluator</h3>
+                    <p>Hitung ER mingguan dengan Benchmark Standar Otomotif.</p>
+                </div>
+                <div class="tool-card" onclick="openTool('response')">
+                    <div class="tool-icon" style="background: #ffe0b2; color: #e17055;">💬</div>
+                    <h3>AI CARE Response Assistant</h3>
+                    <p>Sistem balasan otomatis anti-kaku menggunakan C-A-R-E Framework.</p>
+                </div>
+                <div class="tool-card" onclick="openTool('elearning')">
+                    <div class="tool-icon" style="background: #c8d6e5; color: #222f3e;">🎓</div>
+                    <h3>E-Learning Hub</h3>
+                    <p>Pusat modul pembelajaran dan materi training tim digital.</p>
                 </div>
             </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Framework Copywriting</label>
-                    <select id="gen-framework" class="form-control" onchange="updateDynamicLabels()">
-                        <option value="PAS (Problem, Agitate, Solution)">PAS (Problem, Agitate, Solution)</option>
-                        <option value="FAB (Feature, Advantage, Benefit)">FAB (Feature, Advantage, Benefit)</option>
-                    </select>
+            <!-- 1. SPREADSHEET -->
+            <div id="spreadsheet-section" class="tool-section">
+                <div class="section-header" style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <h2>📊 Database & Content Plan</h2>
+                    </div>
+                    <button class="btn btn-accent" style="width:auto; padding:8px 15px;" onclick="toggleFullScreen()">Layar Penuh ⛶</button>
                 </div>
-                <div class="form-group"><label>Nama Mobil / Promo</label><input type="text" id="gen-product" class="form-control"></div>
+                <div id="sheet-wrap" style="width: 100%; height: 600px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background:white; position:relative;">
+                    <button id="btn-exit-fs" onclick="toggleFullScreen()" style="display:none; position:absolute; top:10px; right:20px; z-index:10000; padding:10px 20px; background:var(--accent); color:white; border:none; border-radius:6px; cursor:pointer; font-weight:bold;">Tutup Layar Penuh ✖</button>
+                    <iframe src="https://docs.google.com/spreadsheets/d/10YB8WrOiEVxYczKKh5auSEThddoD9NUvQXqGFHsh3d4/edit?rm=minimal" style="width: 100%; height: 100%; border: none;"></iframe>
+                </div>
             </div>
 
-            <div class="form-row">
-                <div class="form-group"><label id="lbl-prob">Masalah / Pain Point (Problem)</label><input type="text" id="gen-problem" class="form-control"></div>
-                <div class="form-group"><label id="lbl-feat">Solusi yang Ditawarkan (Solution)</label><input type="text" id="gen-feature" class="form-control"></div>
-            </div>
-            
-            <div class="form-group"><label>Call-to-Action (CTA)</label><input type="text" id="gen-cta" class="form-control" placeholder="Contoh: Test drive sekarang, link di bio!"></div>
+            <!-- 2. AI GENERATOR -->
+            <div id="generator-section" class="tool-section">
+                <div class="section-header">
+                    <h2>✨ AI Caption & Brief Generator</h2>
+                    <p>Gunakan AI untuk merancang Caption yang luwes atau Script Brief untuk Video Reels/Tiktok.</p>
+                </div>
 
-            <button id="btn-generate" class="btn" style="background:#8e44ad;" onclick="generateAIContent()">Generate via AI 🪄</button>
+                <div class="api-box">
+                    <p>🔑 Google Gemini API Key</p>
+                    <input type="password" class="form-control api-key-input" style="margin-bottom:0;" placeholder="Paste API Key Gemini kamu di sini..." oninput="syncApiKey(this.value)">
+                    <span style="font-size:11px; color:#d35400;">Kunci hanya tersimpan di browser untuk keamanan.</span>
+                </div>
 
-            <div id="gen-result-box" class="result-box" style="display: none; border-left: 4px solid #8e44ad;">
-                <h4 style="margin-top:0; color:#8e44ad;">Hasil Generation</h4>
-                <p id="gen-output" style="font-size: 14px; white-space: pre-wrap; margin-bottom: 0;"></p>
-            </div>
-        </div>
-
-        <!-- 3. 3C CHECKER -->
-        <div id="checker-section" class="tool-section">
-            <div class="section-header"><h2>✅ 3C Brand Alignment Checker</h2><p>Upload aset visual (Foto/Video) ke layar untuk di-review langsung.</p></div>
-            
-            <div style="display:flex; gap:20px; flex-wrap:wrap;">
-                <div style="flex:1; min-width:300px;">
-                    <input type="file" id="media-upload" class="form-control" accept="image/*,video/*" onchange="previewMedia(this)">
-                    <div id="media-preview" class="media-preview-box">
-                        <span style="color:#aaa; font-size:13px;">Preview Gambar/Video akan muncul di sini (Tidak di-upload ke internet)</span>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Tipe Output</label>
+                        <select id="gen-type" class="form-control" onchange="toggleBriefOptions()">
+                            <option value="Caption">📝 Teks Caption Instagram/TikTok</option>
+                            <option value="Brief">🎬 Video Brief / Script</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="opt-caption-length">
+                        <label>Panjang Caption</label>
+                        <select id="gen-length" class="form-control">
+                            <option value="Singkat (To the point, 2-3 paragraf pendek, cepat dibaca)">Singkat (To the point, Anti-Bosan)</option>
+                            <option value="Normal (Standar edukasi, lebih detail)">Normal (Lebih Detail)</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="opt-brief-duration" style="display:none;">
+                        <label>Estimasi Durasi Video</label>
+                        <select id="gen-duration" class="form-control">
+                            <option value="15 Detik (Pace sangat cepat, cocok untuk Hook promo)">15 Detik (Short/Reels Cepat)</option>
+                            <option value="30 Detik (Standar, cukup untuk 1 fitur utama)">30 Detik (Standar Review)</option>
+                            <option value="60 Detik (Detail, cocok untuk edukasi mendalam)">60 Detik (In-depth Edukasi)</option>
+                        </select>
                     </div>
                 </div>
 
-                <div style="flex:2; min-width:350px;">
-                    <h4 style="margin-top:0; color:var(--primary);">C1 - Consistency (Visual & Identitas)</h4>
-                    <label class="checklist-item"><input type="checkbox"> Warna dominan konten aman (tidak menyerupai identitas kompetitor T/D/M)</label>
-                    <label class="checklist-item"><input type="checkbox"> Logo Honda & Logo Dealer terlihat jelas dan proporsional</label>
-                    <label class="checklist-item"><input type="checkbox"> Resolusi media tajam, tidak pecah, dan pencahayaan tidak gelap</label>
-                    <label class="checklist-item"><input type="checkbox"> Font teks overlay mudah dibaca (kontras dengan background)</label>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Framework Copywriting</label>
+                        <select id="gen-framework" class="form-control" onchange="updateDynamicLabels()">
+                            <option value="PAS (Problem, Agitate, Solution)">PAS (Problem, Agitate, Solution)</option>
+                            <option value="FAB (Feature, Advantage, Benefit)">FAB (Feature, Advantage, Benefit)</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Nama Mobil / Promo</label><input type="text" id="gen-product" class="form-control"></div>
+                </div>
 
-                    <h4 style="color:var(--primary); margin-top:15px;">C2 - Clarity (Kejelasan Pesan)</h4>
-                    <label class="checklist-item"><input type="checkbox"> Ada HOOK visual atau teks yang memancing di 3 detik pertama</label>
-                    <label class="checklist-item"><input type="checkbox"> Teks caption bebas dari typo dan menggunakan bahasa yang sesuai brand</label>
-                    <label class="checklist-item"><input type="checkbox"> Hanya ada SATU Call-to-Action (CTA) yang jelas agar audiens tidak bingung</label>
+                <div class="form-row">
+                    <div class="form-group"><label id="lbl-prob">Masalah / Pain Point (Problem)</label><input type="text" id="gen-problem" class="form-control"></div>
+                    <div class="form-group"><label id="lbl-feat">Solusi yang Ditawarkan (Solution)</label><input type="text" id="gen-feature" class="form-control"></div>
+                </div>
+                
+                <div class="form-group"><label>Call-to-Action (CTA)</label><input type="text" id="gen-cta" class="form-control" placeholder="Contoh: Test drive sekarang, link di bio!"></div>
 
-                    <h4 style="color:var(--primary); margin-top:15px;">C3 - Credibility (Risiko & Legal)</h4>
-                    <label class="checklist-item"><input type="checkbox"> Bebas kata overpromise ("Paling Sempurna", "Satu-satunya", "Terbaik")</label>
-                    <label class="checklist-item"><input type="checkbox"> Angka Promo (DP, Cicilan, Cashback) sudah ACC Sales Manager</label>
-                    <label class="checklist-item"><input type="checkbox"> Tidak menjelek-jelekkan merek kompetitor secara eksplisit</label>
+                <button id="btn-generate" class="btn" style="background:#8e44ad;" onclick="generateAIContent()">Generate via AI 🪄</button>
+
+                <div id="gen-result-box" class="result-box" style="display: none; border-left: 4px solid #8e44ad; background: white;">
+                    <h4 style="margin-top:0; color:#8e44ad;">Hasil Generation</h4>
+                    <p id="gen-output" style="font-size: 14px; white-space: pre-wrap; margin-bottom: 0;"></p>
                 </div>
             </div>
-        </div>
 
-        <!-- 4. CONTENT PERFORMANCE MONITOR (WITH LOCAL DB) -->
-        <div id="monitor-section" class="tool-section">
-            <div class="section-header"><h2>🎯 Content Performance Monitor</h2><p>Catat, analisa, dan simpan performa konten sebagai arsip tim.</p></div>
+            <!-- 3. 3C CHECKER (Sesuai Lampiran Audit) -->
+            <div id="checker-section" class="tool-section">
+                <div class="section-header" style="margin-bottom:10px;"><h2>✅ 3C Brand Alignment Checker</h2></div>
+                
+                <div style="background:#f8f9fa; border:1px solid #ddd; padding:30px; border-radius:8px;">
+                    
+                    <!-- Bagian A -->
+                    <div class="doc-section">
+                        <div class="doc-title">A. Brand Alignment Checklist — 15 Pertanyaan</div>
+                        <p style="font-size:13px; color:#555; margin-top:0;">Instruksi: Centang setiap item yang sudah terpenuhi pada konten ini. Item yang tidak dicentang adalah gap yang perlu direvisi.</p>
+                        
+                        <strong style="color:var(--primary); font-size:14px;">C1 — Consistency (Visual & Identitas)</strong>
+                        <ul class="chk-list" id="c1-list">
+                            <li><input type="checkbox"> Warna dominan selaras palet Honda?</li>
+                            <li><input type="checkbox"> Foto berkualitas baik — tidak buram?</li>
+                            <li><input type="checkbox"> Logo Honda terlihat dengan jelas?</li>
+                            <li><input type="checkbox"> Tampilan visual konsisten dengan konten sebelumnya?</li>
+                        </ul>
 
-            <div class="form-row">
-                <div class="form-group"><label>Tanggal Publish Konten</label><input type="date" id="mon-date" class="form-control"></div>
-                <div class="form-group"><label>Link / Judul Konten</label><input type="text" id="mon-link" class="form-control" placeholder="Contoh: Reels Brio Kuning"></div>
+                        <strong style="color:var(--primary); font-size:14px;">C2 — Clarity (Pesan & Tone)</strong>
+                        <ul class="chk-list" id="c2-list">
+                            <li><input type="checkbox"> Tone aspiratif dan profesional — bukan agresif?</li>
+                            <li><input type="checkbox"> Pesan utama jelas dalam 3 detik pertama?</li>
+                            <li><input type="checkbox"> Bebas dari klaim berlebihan (“TERBAIK”, “TERMURAH”)?</li>
+                            <li><input type="checkbox"> Tidak membandingkan Honda dengan kompetitor?</li>
+                            <li><input type="checkbox"> Hanya ada satu CTA yang jelas dan natural?</li>
+                            <li><input type="checkbox"> Caption panjangnya proporsional dengan jenis konten?</li>
+                        </ul>
+
+                        <strong style="color:var(--primary); font-size:14px;">C3 — Credibility (Informasi & Compliance)</strong>
+                        <ul class="chk-list" id="c3-list">
+                            <li><input type="checkbox"> Harga dan promo sudah diverifikasi dan akurat?</li>
+                            <li><input type="checkbox"> Pilar konten yang dituju jelas?</li>
+                            <li><input type="checkbox"> Bebas dari informasi sensitif yang belum disetujui HPM?</li>
+                            <li><input type="checkbox"> Hashtag relevan dan tidak lebih dari 15?</li>
+                            <li><input type="checkbox"> Konten layak dilihat tim HPM tanpa klarifikasi?</li>
+                        </ul>
+                    </div>
+
+                    <!-- Bagian B -->
+                    <div class="doc-section">
+                        <div class="doc-title">B. Level Refinement</div>
+                        <p style="font-size:13px; color:#555; margin-top:0;">Instruksi: Pilih level refinement berdasarkan jumlah dan jenis gap yang ditemukan.</p>
+                        <table class="data-table audit-table">
+                            <thead><tr><th>Level</th><th>Estimasi Waktu</th><th>Pilih</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Minor</strong></td><td>5–10 menit</td><td><label><input type="radio" name="ref_level"> Edit caption / CTA / hashtag saja</label></td></tr>
+                                <tr><td><strong>Moderate</strong></td><td>15–20 menit</td><td><label><input type="radio" name="ref_level"> Revisi tone dan sebagian elemen visual</label></td></tr>
+                                <tr><td><strong>Major</strong></td><td>30+ menit</td><td><label><input type="radio" name="ref_level"> Redesign visual dan tulis ulang caption</label></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Bagian C -->
+                    <div class="doc-section">
+                        <div class="doc-title">C. Gap Awal yang Ditemukan</div>
+                        <p style="font-size:13px; color:#555; margin-top:0;">Instruksi: Tuliskan item checklist yang belum terpenuhi dan elemen spesifik yang perlu diperbaiki.</p>
+                        <table class="data-table audit-table">
+                            <thead><tr><th width="10%">Dimensi</th><th width="40%">Item yang Belum Terpenuhi</th><th width="50%">Elemen Spesifik yang Perlu Diperbaiki</th></tr></thead>
+                            <tbody>
+                                <tr><td style="text-align:center; font-weight:bold;">C1</td><td><textarea class="form-control" style="margin:0; border:none; background:transparent;" placeholder="Ketikan di sini..."></textarea></td><td><textarea class="form-control" style="margin:0; border:none; background:transparent;" placeholder="Ketikan di sini..."></textarea></td></tr>
+                                <tr><td style="text-align:center; font-weight:bold;">C2</td><td><textarea class="form-control" style="margin:0; border:none; background:transparent;" placeholder="Ketikan di sini..."></textarea></td><td><textarea class="form-control" style="margin:0; border:none; background:transparent;" placeholder="Ketikan di sini..."></textarea></td></tr>
+                                <tr><td style="text-align:center; font-weight:bold;">C3</td><td><textarea class="form-control" style="margin:0; border:none; background:transparent;" placeholder="Ketikan di sini..."></textarea></td><td><textarea class="form-control" style="margin:0; border:none; background:transparent;" placeholder="Ketikan di sini..."></textarea></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Bagian D -->
+                    <div class="doc-section">
+                        <div class="doc-title">D. Hasil Revisi</div>
+                        <p style="font-size:13px; color:#555; margin-top:0;">Instruksi: Tuliskan versi revisi caption dan/atau catatan perubahan visual.</p>
+                        <table class="data-table audit-table">
+                            <thead><tr><th width="25%">Field</th><th>Isi</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Caption Sebelum Revisi</strong></td><td><textarea class="form-control" style="margin:0; min-height:100px; border:none; background:transparent;" placeholder="Paste caption awal..."></textarea></td></tr>
+                                <tr><td><strong>Caption Setelah Revisi</strong></td><td><textarea class="form-control" style="margin:0; min-height:100px; border:none; background:transparent;" placeholder="Paste caption hasil revisi..."></textarea></td></tr>
+                                <tr><td><strong>Perubahan Visual (jika ada)</strong></td><td><textarea class="form-control" style="margin:0; min-height:60px; border:none; background:transparent;" placeholder="Jelaskan perubahan gambar/video..."></textarea></td></tr>
+                                <tr><td><strong>Alasan Perubahan</strong></td><td><textarea class="form-control" style="margin:0; min-height:60px; border:none; background:transparent;" placeholder="Contoh: Menghapus frasa agar pesan tetap positif..."></textarea></td></tr>
+                                <tr><td><strong>Semua 15 item checklist sudah terpenuhi?</strong></td>
+                                    <td>
+                                        <label style="margin-right:15px;"><input type="radio" name="chk_full"> Ya</label>
+                                        <label><input type="radio" name="chk_full"> Tidak, masih ada gap di: <input type="text" style="border:none; border-bottom:1px solid #ccc; outline:none; background:transparent;"></label>
+                                    </td>
+                                </tr>
+                                <tr><td><strong>Konten sudah layak dilihat tim HPM tanpa klarifikasi?</strong></td>
+                                    <td>
+                                        <label style="margin-right:15px;"><input type="radio" name="hpm_ready"> Ya</label>
+                                        <label><input type="radio" name="hpm_ready"> Tidak</label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 4. CONTENT PERFORMANCE MONITOR (WITH LOCAL DB) -->
+            <div id="monitor-section" class="tool-section">
+                <div class="section-header"><h2>🎯 Content Performance Monitor</h2><p>Catat, analisa, dan simpan performa konten sebagai arsip tim.</p></div>
+                <div class="form-row">
+                    <div class="form-group"><label>Tanggal Publish</label><input type="date" id="mon-date" class="form-control"></div>
+                    <div class="form-group"><label>Link / Judul Konten</label><input type="text" id="mon-link" class="form-control"></div>
+                    <div class="form-group">
+                        <label>Pilar Konten</label>
+                        <select id="mon-pilar" class="form-control"><option>Product Education</option><option>Promo & Hard Selling</option><option>Testimonial/Story</option></select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Followers Saat Ini</label><input type="number" id="mon-foll" class="form-control" value="15381"></div>
+                    <div class="form-group"><label>Total Reach</label><input type="number" id="mon-reach" class="form-control" placeholder="0"></div>
+                    <div class="form-group"><label>Total Saves / DM (Action)</label><input type="number" id="mon-action" class="form-control" placeholder="0"></div>
+                </div>
+                <button class="btn btn-accent" onclick="evaluateAndSaveContent()">Evaluasi & Simpan ke Database</button>
+                <div id="mon-result" class="result-box" style="display:none;">
+                    <h3 style="margin-top:0;">📊 Hasil Analisa</h3>
+                    <div id="mon-wsw" style="font-size:14px; line-height:1.6;"></div>
+                </div>
+                <h4 style="margin-top:30px; border-bottom:1px solid #ccc; padding-bottom:10px;">Arsip Evaluasi Konten</h4>
+                <button onclick="exportToCSV()" style="padding:5px 10px; background:#27ae60; color:white; border:none; border-radius:4px; cursor:pointer; margin-bottom:10px;">📥 Download ke Excel (CSV)</button>
+                <div style="overflow-x:auto;">
+                    <table class="data-table" id="db-table">
+                        <thead><tr><th>Tgl Publish</th><th>Tgl Evaluasi</th><th>Konten</th><th>Pilar</th><th>Status Evaluasi</th><th>Hapus</th></tr></thead>
+                        <tbody id="db-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 5. WEEKLY CHANNEL EVALUATOR -->
+            <div id="kpi-section" class="tool-section">
+                <div class="section-header"><h2>📈 Weekly Channel Evaluator</h2><p>Audit kesehatan akun secara keseluruhan (Engagement Rate).</p></div>
+                <div style="display:flex; gap:20px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:300px;">
+                        <div class="form-group"><label>Total Followers</label><input type="number" id="kpi-foll" class="form-control" value="15381"></div>
+                        <div class="form-group"><label>Total Interaksi (Like+Komen+Share+Save)</label><input type="number" id="kpi-int" class="form-control" placeholder="0"></div>
+                        <button class="btn btn-accent" onclick="calculateKPI()">Hitung ER</button>
+                    </div>
+                    <div style="flex:1; min-width:300px; background:#f8f9fa; padding:20px; border-radius:8px; border:1px solid #ccc;">
+                        <h4 style="margin-top:0;">📋 Benchmark Otomotif (Instagram)</h4>
+                        <ul style="font-size:13px; color:#555; padding-left:15px; line-height:1.6;">
+                            <li><strong>< 1.0% (Kurang):</strong> Konten terlalu hard-selling, audiens bosan. Butuh perbanyak edukasi & hiburan.</li>
+                            <li><strong>1.0% - 3.5% (Ideal):</strong> Pertumbuhan sehat. Komposisi Promo vs Edukasi sudah pas.</li>
+                            <li><strong>> 3.5% (Sangat Baik):</strong> Konten sangat viral atau relate.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="kpi-result" class="result-box" style="display:none; text-align:center;"></div>
+            </div>
+
+            <!-- 6. AI CARE RESPONSE ASSISTANT -->
+            <div id="response-section" class="tool-section">
+                <div class="section-header">
+                    <h2>💬 AI CARE Response Assistant</h2>
+                    <p>Otomatisasi balasan DM/Komentar dengan Framework CARE (Connect, Acknowledge, Respond, Extend).</p>
+                </div>
+                
+                <div class="api-box">
+                    <p>🔑 Google Gemini API Key</p>
+                    <input type="password" class="form-control api-key-input" style="margin-bottom:0;" placeholder="Paste API Key Gemini kamu di sini..." oninput="syncApiKey(this.value)">
+                </div>
+
+                <div style="background:#e8f4fd; padding:15px; border-radius:8px; margin-bottom:20px; font-size:13px;">
+                    <strong>💡 Apa itu Framework CARE?</strong><br>
+                    <b>C</b>onnect: Sapa dengan hangat.<br>
+                    <b>A</b>cknowledge: Validasi perasaan/pertanyaannya.<br>
+                    <b>R</b>espond: Berikan jawaban faktual.<br>
+                    <b>E</b>xtend: Arahkan ke aksi lanjutan (DM, Test Drive, Link).
+                </div>
+
                 <div class="form-group">
-                    <label>Pilar Konten</label>
-                    <select id="mon-pilar" class="form-control">
-                        <option>Product Education</option><option>Promo & Hard Selling</option><option>Testimonial/Story</option>
+                    <label>Komentar / Pertanyaan Pelanggan Asli</label>
+                    <textarea id="care-input" class="form-control" placeholder="Paste komentar netizen di sini..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Pilih Arah Jawaban (Instruksi untuk AI)</label>
+                    <select id="care-direction" class="form-control">
+                        <option value="Arahkan mereka untuk klik Link di Bio untuk cek promo/harga detail.">Arahkan ke Link Bio (Cek Promo)</option>
+                        <option value="Arahkan mereka untuk melakukan Test Drive di Dealer Honda Bintaro.">Arahkan ke Test Drive</option>
+                        <option value="Minta mereka untuk DM nomor WA mereka agar bisa dihubungi Sales.">Minta Drop Nomor WA via DM</option>
+                        <option value="Berikan edukasi fitur dengan ramah, jangan menjelekkan kompetitor.">Edukasi Fitur / Klarifikasi (Defensive)</option>
                     </select>
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group"><label>Total Followers Saat Ini</label><input type="number" id="mon-foll" class="form-control" value="15381"></div>
-                <div class="form-group"><label>Total Reach (Jangkauan)</label><input type="number" id="mon-reach" class="form-control" placeholder="0"></div>
-                <div class="form-group"><label>Total Saves / DM (Action)</label><input type="number" id="mon-action" class="form-control" placeholder="0"></div>
-            </div>
 
-            <button class="btn btn-accent" onclick="evaluateAndSaveContent()">Evaluasi & Simpan ke Database</button>
+                <button id="btn-care" class="btn" style="background:#e17055;" onclick="generateCareAI()">Buat Balasan CARE via AI 💬</button>
 
-            <div id="mon-result" class="result-box" style="display:none;">
-                <h3 style="margin-top:0;">📊 Hasil Analisa</h3>
-                <div id="mon-wsw" style="font-size:14px; line-height:1.6;"></div>
-            </div>
-
-            <h4 style="margin-top:30px; border-bottom:1px solid #ccc; padding-bottom:10px;">Arsip Evaluasi Konten (Lokal)</h4>
-            <button onclick="exportToCSV()" style="padding:5px 10px; background:#27ae60; color:white; border:none; border-radius:4px; cursor:pointer; margin-bottom:10px;">📥 Download ke Excel (CSV)</button>
-            <div style="overflow-x:auto;">
-                <table class="data-table" id="db-table">
-                    <thead><tr><th>Tgl Publish</th><th>Tgl Evaluasi</th><th>Konten</th><th>Pilar</th><th>Status Evaluasi</th><th>Hapus</th></tr></thead>
-                    <tbody id="db-body"></tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- 5. WEEKLY CHANNEL EVALUATOR -->
-        <div id="kpi-section" class="tool-section">
-            <div class="section-header"><h2>📈 Weekly Channel Evaluator</h2><p>Audit kesehatan akun secara keseluruhan (Engagement Rate).</p></div>
-            
-            <div style="display:flex; gap:20px; flex-wrap:wrap;">
-                <div style="flex:1; min-width:300px;">
-                    <div class="form-group"><label>Total Followers</label><input type="number" id="kpi-foll" class="form-control" value="15381"></div>
-                    <div class="form-group"><label>Total Interaksi (Like+Komen+Share+Save dlm 1 minggu)</label><input type="number" id="kpi-int" class="form-control" placeholder="0"></div>
-                    <button class="btn btn-accent" onclick="calculateKPI()">Hitung ER</button>
-                </div>
-                <div style="flex:1; min-width:300px; background:#f8f9fa; padding:20px; border-radius:8px; border:1px solid #ccc;">
-                    <h4 style="margin-top:0;">📋 Benchmark Otomotif (Instagram)</h4>
-                    <ul style="font-size:13px; color:#555; padding-left:15px; line-height:1.6;">
-                        <li><strong>< 1.0% (Kurang):</strong> Konten terlalu hard-selling, audiens bosan. Butuh perbanyak edukasi & hiburan.</li>
-                        <li><strong>1.0% - 3.5% (Ideal):</strong> Pertumbuhan sehat. Komposisi Promo vs Edukasi sudah pas.</li>
-                        <li><strong>> 3.5% (Sangat Baik):</strong> Konten sangat viral atau relate. Perhatikan konten apa yang menyumbang angka ini dan replikasi rumusnya.</li>
-                    </ul>
+                <div id="care-result-box" class="result-box" style="display:none; border-left: 4px solid #e17055; background:white;">
+                    <h4 style="margin-top:0; color:#d35400;">Rekomendasi Balasan</h4>
+                    <p id="care-output" style="font-size: 14px; white-space: pre-wrap; margin-bottom: 0;"></p>
                 </div>
             </div>
-            <div id="kpi-result" class="result-box" style="display:none; text-align:center;"></div>
-        </div>
 
-        <!-- 6. AI CARE RESPONSE ASSISTANT -->
-        <div id="response-section" class="tool-section">
-            <div class="section-header">
-                <h2>💬 AI CARE Response Assistant</h2>
-                <p>Otomatisasi balasan DM/Komentar dengan Framework CARE (Connect, Acknowledge, Respond, Extend).</p>
-            </div>
-            
-            <div style="background:#e8f4fd; padding:15px; border-radius:8px; margin-bottom:20px; font-size:13px;">
-                <strong>💡 Apa itu Framework CARE?</strong><br>
-                <b>C</b>onnect: Sapa dengan hangat (Halo Kak).<br>
-                <b>A</b>cknowledge: Validasi perasaan/pertanyaannya (Terima kasih sudah bertanya/maaf atas ketidaknyamanannya).<br>
-                <b>R</b>espond: Berikan jawaban faktual secara profesional.<br>
-                <b>E</b>xtend: Arahkan ke aksi lanjutan (Link di bio, DM kami, Jadwalkan Test Drive).
+            <!-- 7. E-LEARNING HUB -->
+            <div id="elearning-section" class="tool-section">
+                <div class="section-header">
+                    <h2>🎓 E-Learning Hub</h2>
+                    <p>Pusat modul pembelajaran, rekaman sesi, dan materi training internal tim digital.</p>
+                </div>
+                <div style="text-align:center; padding: 50px; background:#f8f9fa; border-radius:8px; border:2px dashed #ccc;">
+                    <h3 style="color:var(--text-muted);">Materi sedang disiapkan...</h3>
+                    <p style="font-size:14px; color:#999;">Fitur integrasi LMS akan segera hadir di modul ini.</p>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label>Komentar / Pertanyaan Pelanggan Asli</label>
-                <textarea id="care-input" class="form-control" placeholder="Paste komentar netizen di sini... (Contoh: Min, kok Brio RS sekarang mahal banget sih, mending beli merk sebelah)"></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label>Pilih Arah Jawaban (Instruksi untuk AI)</label>
-                <select id="care-direction" class="form-control">
-                    <option value="Arahkan mereka untuk klik Link di Bio untuk cek promo/harga detail.">Arahkan ke Link Bio (Cek Promo)</option>
-                    <option value="Arahkan mereka untuk melakukan Test Drive di Dealer Honda Bintaro.">Arahkan ke Test Drive</option>
-                    <option value="Minta mereka untuk DM nomor WA mereka agar bisa dihubungi Sales.">Minta Drop Nomor WA via DM</option>
-                    <option value="Berikan edukasi fitur dengan ramah, jangan menjelekkan kompetitor.">Edukasi Fitur / Klarifikasi (Defensive)</option>
-                </select>
-            </div>
-
-            <button id="btn-care" class="btn" style="background:#e17055;" onclick="generateCareAI()">Buat Balasan CARE via AI 💬</button>
-
-            <div id="care-result-box" class="result-box" style="display:none; border-left: 4px solid #e17055;">
-                <h4 style="margin-top:0; color:#d35400;">Rekomendasi Balasan</h4>
-                <p id="care-output" style="font-size: 14px; white-space: pre-wrap; margin-bottom: 0;"></p>
-            </div>
-        </div>
-
-    </main>
+        </main>
+        <footer class="footer" style="text-align: center; padding: 20px; color: #636e72; font-size: 13px; border-top: 1px solid #eaedf1;">&copy; 2026 Honda Bintaro Digital Division</footer>
+    </div>
 
     <script>
-        // INIT
+        // INIT & API KEY SYNC
         window.addEventListener('DOMContentLoaded', () => {
             const savedKey = localStorage.getItem('gemini_api_key');
-            if(savedKey) document.getElementById('global-api-key').value = savedKey;
+            if(savedKey) {
+                document.querySelectorAll('.api-key-input').forEach(el => el.value = savedKey);
+            }
             loadDatabase();
         });
 
-        function saveApiKey() {
-            localStorage.setItem('gemini_api_key', document.getElementById('global-api-key').value.trim());
+        function syncApiKey(val) {
+            localStorage.setItem('gemini_api_key', val.trim());
+            document.querySelectorAll('.api-key-input').forEach(el => {
+                if(el.value !== val) el.value = val;
+            });
+        }
+
+        // FULLSCREEN SPREADSHEET
+        function toggleFullScreen() {
+            const wrap = document.getElementById('sheet-wrap');
+            const btnExit = document.getElementById('btn-exit-fs');
+            wrap.classList.toggle('fullscreen-mode');
+            
+            if(wrap.classList.contains('fullscreen-mode')) {
+                btnExit.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // cegah scroll web saat fullscreen
+            } else {
+                btnExit.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         }
 
         // NAV
@@ -338,7 +482,6 @@
             document.getElementById('opt-caption-length').style.display = isBrief ? 'none' : 'block';
             document.getElementById('opt-brief-duration').style.display = isBrief ? 'block' : 'none';
         }
-
         function updateDynamicLabels() {
             const fw = document.getElementById('gen-framework').value;
             if(fw.includes('PAS')) {
@@ -349,10 +492,9 @@
                 document.getElementById('lbl-feat').innerText = "Keuntungan & Manfaat (Advantage & Benefit)";
             }
         }
-
         async function generateAIContent() {
             const apiKey = localStorage.getItem('gemini_api_key');
-            if(!apiKey) return alert("⚠️ API Key kosong! Masukkan di header atas.");
+            if(!apiKey) return alert("⚠️ API Key kosong! Masukkan kunci di kolom kuning.");
 
             const type = document.getElementById('gen-type').value;
             const length = document.getElementById('gen-length').value;
@@ -389,26 +531,8 @@
             finally { btn.innerText = "Generate via AI 🪄"; btn.disabled = false; }
         }
 
-        // 3. 3C CHECKER (MEDIA PREVIEW)
-        function previewMedia(input) {
-            const file = input.files[0];
-            const preview = document.getElementById('media-preview');
-            preview.innerHTML = '';
-            if(file) {
-                const url = URL.createObjectURL(file);
-                if(file.type.startsWith('video/')) {
-                    preview.innerHTML = `<video src="${url}" controls></video>`;
-                } else {
-                    preview.innerHTML = `<img src="${url}">`;
-                }
-            } else {
-                preview.innerHTML = `<span style="color:#aaa; font-size:13px;">Preview Gambar/Video akan muncul di sini</span>`;
-            }
-        }
-
         // 4. PERFORMANCE MONITOR & DATABASE
         let contentDB = [];
-
         function evaluateAndSaveContent() {
             const datePub = document.getElementById('mon-date').value || "Belum Set";
             const link = document.getElementById('mon-link').value || "Tanpa Link";
@@ -417,35 +541,30 @@
             const reach = parseFloat(document.getElementById('mon-reach').value) || 0;
             const action = parseFloat(document.getElementById('mon-action').value) || 0;
             
-            // Logika Evaluasi Berbasis Data
             const reachRatio = (reach / foll) * 100;
             let status = "", explanation = "";
 
             if (reachRatio >= 15 || action >= 3) {
                 status = "✅ On Track";
-                explanation = `<strong>Dasar Analisa:</strong> Reach mencapai ${reachRatio.toFixed(1)}% dari follower (Target >15%) ATAU Action memadai.<br><strong>So What:</strong> Konten disukai algoritma & audiens.<br><strong>Now What:</strong> Konten siap di-boost Meta Ads.`;
+                explanation = `<strong>Dasar Analisa:</strong> Reach mencapai ${reachRatio.toFixed(1)}% (Target >15%) ATAU Action memadai.<br><strong>So What:</strong> Konten disukai algoritma & audiens.<br><strong>Now What:</strong> Konten siap di-boost Meta Ads.`;
             } else {
                 status = "⚠️ Off Track";
-                explanation = `<strong>Dasar Analisa:</strong> Reach hanya ${reachRatio.toFixed(1)}% (Di bawah batas ideal 15%) dan interaksi konversi minim.<br><strong>So What:</strong> Thumbnail atau 3 detik pertama gagal menahan audiens.<br><strong>Now What:</strong> Revisi strategi hook visual di konten berikutnya.`;
+                explanation = `<strong>Dasar Analisa:</strong> Reach hanya ${reachRatio.toFixed(1)}% dan interaksi minim.<br><strong>So What:</strong> Thumbnail atau 3 detik pertama gagal menahan audiens.<br><strong>Now What:</strong> Revisi strategi hook visual.`;
             }
 
             document.getElementById('mon-wsw').innerHTML = explanation;
             document.getElementById('mon-result').style.display = 'block';
 
-            // Simpan ke DB
             const today = new Date().toISOString().split('T')[0];
             const entry = { datePub, dateEval: today, link, pilar, status };
             contentDB.push(entry);
             localStorage.setItem('honda_content_db', JSON.stringify(contentDB));
             renderDatabase();
         }
-
         function loadDatabase() {
             const data = localStorage.getItem('honda_content_db');
-            if(data) contentDB = JSON.parse(data);
-            renderDatabase();
+            if(data) { contentDB = JSON.parse(data); renderDatabase(); }
         }
-
         function renderDatabase() {
             const tbody = document.getElementById('db-body');
             tbody.innerHTML = "";
@@ -458,26 +577,18 @@
                 </tr>`;
             });
         }
-
         function deleteEntry(index) {
             contentDB.splice(index, 1);
             localStorage.setItem('honda_content_db', JSON.stringify(contentDB));
             renderDatabase();
         }
-
         function exportToCSV() {
             if(contentDB.length === 0) return alert("Data kosong!");
             let csvContent = "data:text/csv;charset=utf-8,Tanggal Publish,Tanggal Evaluasi,Konten,Pilar,Status\n";
-            contentDB.forEach(row => {
-                csvContent += `${row.datePub},${row.dateEval},"${row.link}",${row.pilar},"${row.status}"\n`;
-            });
-            const encodedUri = encodeURI(csvContent);
+            contentDB.forEach(row => { csvContent += `${row.datePub},${row.dateEval},"${row.link}",${row.pilar},"${row.status}"\n`; });
             const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "Arsip_Konten_Honda_Bintaro.csv");
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            link.href = encodeURI(csvContent); link.download = "Arsip_Konten_Honda.csv";
+            document.body.appendChild(link); link.click(); document.body.removeChild(link);
         }
 
         // 5. WEEKLY KPI
@@ -486,7 +597,6 @@
             const i = parseFloat(document.getElementById('kpi-int').value)||0;
             const er = ((i/f)*100).toFixed(2);
             let status = er < 1.0 ? "Kurang (Hard Selling Terlalu Tinggi)" : er > 3.5 ? "Sangat Baik (Viral/Relatable)" : "Ideal (Proporsi Seimbang)";
-            
             document.getElementById('kpi-result').style.display = 'block';
             document.getElementById('kpi-result').innerHTML = `Engagement Rate Minggu Ini:<br><span style="color:var(--primary); font-size:32px; font-weight:bold;">${er}%</span><br>Status: <strong>${status}</strong>`;
         }
@@ -494,19 +604,13 @@
         // 6. AI CARE RESPONSE
         async function generateCareAI() {
             const apiKey = localStorage.getItem('gemini_api_key');
-            if(!apiKey) return alert("⚠️ API Key kosong! Masukkan di header atas halaman.");
-            
+            if(!apiKey) return alert("⚠️ API Key kosong! Masukkan kunci di kolom yang tersedia.");
             const comment = document.getElementById('care-input').value;
             const direction = document.getElementById('care-direction').value;
             if(!comment) return alert("Masukkan komentar pelanggan!");
-
             const btn = document.getElementById('btn-care');
             btn.innerText = "⏳ Sedang Merakit Balasan..."; btn.disabled = true;
-
-            const promptText = `Kamu adalah Customer Service Honda Bintaro. Ada komentar masuk: "${comment}". 
-Tugasmu: Buat balasan komentar menggunakan framework CARE (Connect: sapaan ramah, Acknowledge: validasi pertanyaan/keluhan, Respond: berikan info, Extend: ${direction}). 
-Gunakan bahasa Indonesia yang profesional, ramah, tidak kaku, dan sopan. Cukup berikan hasil balasannya saja tanpa basa-basi sistem.`;
-
+            const promptText = `Kamu adalah Customer Service Honda Bintaro. Komentar masuk: "${comment}". Buat balasan menggunakan framework CARE. Extend arahannya ke: ${direction}. Tulis bahasa yang ramah, langsung teks jawabannya saja.`;
             try {
                 const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${apiKey}`, {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -519,6 +623,22 @@ Gunakan bahasa Indonesia yang profesional, ramah, tidak kaku, dan sopan. Cukup b
             } catch (err) { alert("Error AI: " + err.message); } 
             finally { btn.innerText = "Buat Balasan CARE via AI 💬"; btn.disabled = false; }
         }
+
+        // LOGIN SYSTEM
+        const TARGET_HASH = "b3JhdG5pYmFkbm9obWQ=";
+        function verifyPassword() {
+            const input = document.getElementById('password-input').value;
+            if(!input) return;
+            if (btoa(input.split('').reverse().join('')) === TARGET_HASH) {
+                sessionStorage.setItem('auth_hb', 'true');
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('dashboard-screen').style.display = 'flex';
+            } else { document.getElementById('error-msg').style.display = 'block'; }
+        }
+        function handleEnter(e) { if(e.key === 'Enter') verifyPassword(); }
+        function logout() { sessionStorage.removeItem('auth_hb'); location.reload(); }
+        if (sessionStorage.getItem('auth_hb') === 'true') { document.getElementById('login-screen').style.display='none'; document.getElementById('dashboard-screen').style.display='flex'; }
+        
     </script>
 </body>
 </html>
