@@ -66,7 +66,7 @@
         .data-table th { background: var(--primary); color: white; }
         
         .btn-sm { padding: 6px 12px; font-size: 12px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; color: white;}
-        .bg-red { background: #c0392b; } .bg-green { background: #27ae60; } .bg-blue { background: #2980b9; }
+        .bg-red { background: #c0392b; } .bg-green { background: #27ae60; } .bg-blue { background: #2980b9; } .bg-dark { background: #2c3e50; }
         .badge { padding: 4px 8px; border-radius: 12px; font-size: 11px; font-weight:bold; color: white; }
         .thumb-preview { width:60px; height:60px; object-fit:cover; border-radius:6px; border:1px solid #ccc; }
 
@@ -91,7 +91,6 @@
 </head>
 <body>
 
-    <!-- LOGIN SCREEN -->
     <div id="login-screen">
         <div class="login-box">
             <h2>Restricted Access</h2>
@@ -102,7 +101,6 @@
         </div>
     </div>
 
-    <!-- DASHBOARD SCREEN -->
     <div id="dashboard-screen">
         <header class="header">
             <div class="header-title">
@@ -115,7 +113,6 @@
         <main class="main-content">
             <div id="btn-back" class="back-nav" onclick="showHome()">← Kembali ke Menu Utama</div>
 
-            <!-- MENU GRID -->
             <div class="tools-grid" id="menu-grid">
                 <div class="tool-card" onclick="openTool('spreadsheet')">
                     <div class="tool-icon" style="background: #dfe6e9; color: #0984e3;">📊</div>
@@ -154,7 +151,6 @@
                 </div>
             </div>
 
-            <!-- ================= 1. SPREADSHEET ================= -->
             <div id="spreadsheet-section" class="tool-section">
                 <div class="section-header" style="display:flex; justify-content:space-between; align-items:center;">
                     <div><h2>📊 Database & Content Plan</h2></div>
@@ -166,7 +162,6 @@
                 </div>
             </div>
 
-            <!-- ================= 2. AI GENERATOR ================= -->
             <div id="generator-section" class="tool-section">
                 <div class="section-header">
                     <h2>✨ AI Caption & Brief Generator</h2>
@@ -204,11 +199,9 @@
                 </div>
             </div>
 
-            <!-- ================= 3. 3C CHECKER ================= -->
             <div id="checker-section" class="tool-section">
                 <div class="section-header" style="margin-bottom:10px;"><h2>✅ 3C Brand Alignment Checker</h2></div>
                 
-                <!-- Media Preview Area -->
                 <div style="background:#fff; border:1px solid #ccc; padding:20px; border-radius:8px; margin-bottom:20px;">
                     <h4 style="margin-top:0; color:var(--primary);">📺 Preview Visual Konten</h4>
                     <input type="file" id="media-upload" class="form-control" accept="image/*,video/*" onchange="previewMedia(this)">
@@ -217,7 +210,6 @@
                     </div>
                 </div>
 
-                <!-- Audit Form -->
                 <div style="background:#f8f9fa; border:1px solid #ddd; padding:30px; border-radius:8px;">
                     <div class="doc-section">
                         <div class="doc-title">A. Brand Alignment Checklist — 15 Pertanyaan</div>
@@ -292,11 +284,9 @@
                 </div>
             </div>
 
-            <!-- ================= 4. CONTENT PERFORMANCE MONITOR ================= -->
             <div id="monitor-section" class="tool-section">
                 <div class="section-header"><h2>🎯 Content Performance Monitor</h2><p>Catat, analisa, dan simpan performa konten sebagai arsip Database JSON (Auto-Sync GitHub).</p></div>
                 
-                <!-- GITHUB INTEGRATION UI -->
                 <div class="gh-box">
                     <h4 style="margin-top:0; color:var(--primary); display:flex; align-items:center; gap:8px;">🔗 GitHub Integration Sync</h4>
                     <div class="form-group"><label>Personal Access Token (PAT)</label><input type="password" id="gh-token-cpm" class="form-control gh-sync-token" oninput="syncGHFields()"></div>
@@ -304,6 +294,7 @@
                         <div class="form-group"><label>Username / Owner</label><input type="text" id="gh-user-cpm" class="form-control gh-sync-user" oninput="syncGHFields()"></div>
                         <div class="form-group"><label>Repository</label><input type="text" id="gh-repo-cpm" class="form-control gh-sync-repo" oninput="syncGHFields()"></div>
                     </div>
+                    <div class="form-group"><label>File Path JSON Utama (.json)</label><input type="text" id="gh-path-cpm" class="form-control gh-sync-path-cpm" placeholder="Contoh: data/arsip_konten.json" oninput="syncGHFields()"></div>
                 </div>
 
                 <div class="form-row">
@@ -332,8 +323,7 @@
                     <div class="form-group"><label>Total Saves / DM (Action)</label><input type="number" id="mon-action" class="form-control" placeholder="0"></div>
                 </div>
                 
-                <button class="btn btn-accent" onclick="evaluateAndSaveContent()">Evaluasi & Simpan ke GitHub 🚀</button>
-                <div id="github-status-content" style="text-align:center; font-size:12px; margin-top:10px; color:var(--text-muted);"></div>
+                <button class="btn btn-accent" onclick="evaluateAndSaveContent()">Evaluasi & Tambah ke Tabel 👇</button>
                 
                 <div id="mon-result" class="result-box" style="display:none; background:#fff; border-left:4px solid var(--success);">
                     <h3 style="margin-top:0; color:var(--primary);">📊 Insight Evaluasi (W-S-W)</h3>
@@ -342,15 +332,19 @@
 
                 <h4 style="margin-top:40px; border-bottom:1px solid #ccc; padding-bottom:10px;">Arsip Konten Honda Bintaro</h4>
                 
-                <div class="filter-bar">
-                    <strong>Filter:</strong>
-                    <select id="filter-mon-month" class="form-control" style="width:150px; margin:0;" onchange="renderContentDatabase()">
-                        <option value="All">Semua Bulan</option><option>Januari</option><option>Februari</option><option>Maret</option><option>April</option><option>Mei</option><option>Juni</option><option>Juli</option><option>Agustus</option><option>September</option><option>Oktober</option><option>November</option><option>Desember</option>
-                    </select>
-                    <select id="filter-mon-week" class="form-control" style="width:150px; margin:0;" onchange="renderContentDatabase()">
-                        <option value="All">Semua Minggu</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-                    </select>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
+                    <div class="filter-bar" style="margin:0;">
+                        <strong>Filter:</strong>
+                        <select id="filter-mon-month" class="form-control" style="width:130px; margin:0;" onchange="renderContentDatabase()">
+                            <option value="All">Semua Bulan</option><option>Januari</option><option>Februari</option><option>Maret</option><option>April</option><option>Mei</option><option>Juni</option><option>Juli</option><option>Agustus</option><option>September</option><option>Oktober</option><option>November</option><option>Desember</option>
+                        </select>
+                        <select id="filter-mon-week" class="form-control" style="width:130px; margin:0;" onchange="renderContentDatabase()">
+                            <option value="All">Semua Minggu</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+                        </select>
+                    </div>
+                    <button class="btn-sm bg-dark" style="padding:10px 15px;" onclick="syncDBToGithub('content')">🚀 Sync Tabel ke GitHub</button>
                 </div>
+                <div id="github-status-content-table" style="font-size:12px; margin-bottom:10px;"></div>
 
                 <div style="overflow-x:auto;">
                     <table class="data-table">
@@ -360,11 +354,9 @@
                 </div>
             </div>
 
-            <!-- ================= 5. WEEKLY CHANNEL EVALUATOR ================= -->
             <div id="kpi-section" class="tool-section">
                 <div class="section-header"><h2>📈 Weekly Channel Evaluator</h2><p>Hitung ER mingguan dan sinkronisasi data KPI ke GitHub.</p></div>
                 
-                <!-- GITHUB INTEGRATION UI -->
                 <div class="gh-box">
                     <h4 style="margin-top:0; color:var(--primary); display:flex; align-items:center; gap:8px;">🔗 GitHub Integration Sync</h4>
                     <div class="form-group"><label>Personal Access Token (PAT)</label><input type="password" id="gh-token-kpi" class="form-control gh-sync-token" oninput="syncGHFields()"></div>
@@ -372,6 +364,7 @@
                         <div class="form-group"><label>Username / Owner</label><input type="text" id="gh-user-kpi" class="form-control gh-sync-user" oninput="syncGHFields()"></div>
                         <div class="form-group"><label>Repository</label><input type="text" id="gh-repo-kpi" class="form-control gh-sync-repo" oninput="syncGHFields()"></div>
                     </div>
+                    <div class="form-group"><label>File Path JSON KPI (.json)</label><input type="text" id="gh-path-kpi" class="form-control gh-sync-path-kpi" placeholder="Contoh: data/arsip_kpi.json" oninput="syncGHFields()"></div>
                 </div>
 
                 <div style="display:flex; gap:20px; flex-wrap:wrap;">
@@ -379,9 +372,7 @@
                         <div class="form-group"><label>Tanggal Evaluasi (Pilih Kalender)</label><input type="date" id="kpi-eval-date" class="form-control"></div>
                         <div class="form-group"><label>Total Followers</label><input type="number" id="kpi-foll" class="form-control" value="15381"></div>
                         <div class="form-group"><label>Total Interaksi (Like+Komen+Share+Save)</label><input type="number" id="kpi-int" class="form-control" placeholder="0"></div>
-                        
-                        <button class="btn btn-accent" onclick="calculateAndSaveKPI()">Hitung & Simpan KPI ke GitHub 🚀</button>
-                        <div id="github-status-kpi" style="text-align:center; font-size:12px; margin-top:10px; color:var(--text-muted);"></div>
+                        <button class="btn btn-accent" onclick="calculateAndSaveKPI()">Hitung & Tambah ke Tabel 👇</button>
                     </div>
                     
                     <div style="flex:1; min-width:300px; background:#f8f9fa; padding:20px; border-radius:8px; border:1px solid #ccc;">
@@ -398,12 +389,19 @@
 
                 <h4 style="margin-top:40px; border-bottom:1px solid #ccc; padding-bottom:10px;">Arsip KPI Mingguan</h4>
                 
-                <div class="filter-bar">
-                    <strong>Filter:</strong>
-                    <select id="filter-kpi-month" class="form-control" style="width:150px; margin:0;" onchange="renderKPIDatabase()">
-                        <option value="All">Semua Bulan</option><option>Januari</option><option>Februari</option><option>Maret</option><option>April</option><option>Mei</option><option>Juni</option><option>Juli</option><option>Agustus</option><option>September</option><option>Oktober</option><option>November</option><option>Desember</option>
-                    </select>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
+                    <div class="filter-bar" style="margin:0;">
+                        <strong>Filter:</strong>
+                        <select id="filter-kpi-month" class="form-control" style="width:130px; margin:0;" onchange="renderKPIDatabase()">
+                            <option value="All">Semua Bulan</option><option>Januari</option><option>Februari</option><option>Maret</option><option>April</option><option>Mei</option><option>Juni</option><option>Juli</option><option>Agustus</option><option>September</option><option>Oktober</option><option>November</option><option>Desember</option>
+                        </select>
+                        <select id="filter-kpi-week" class="form-control" style="width:130px; margin:0;" onchange="renderKPIDatabase()">
+                            <option value="All">Semua Minggu</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+                        </select>
+                    </div>
+                    <button class="btn-sm bg-dark" style="padding:10px 15px;" onclick="syncDBToGithub('kpi')">🚀 Sync Tabel ke GitHub</button>
                 </div>
+                <div id="github-status-kpi-table" style="font-size:12px; margin-bottom:10px;"></div>
 
                 <div style="overflow-x:auto;">
                     <table class="data-table">
@@ -413,7 +411,6 @@
                 </div>
             </div>
 
-            <!-- ================= 6. AI CARE RESPONSE ASSISTANT ================= -->
             <div id="response-section" class="tool-section">
                 <div class="section-header">
                     <h2>💬 AI CARE Response Assistant</h2>
@@ -444,6 +441,7 @@
                         <option value="Arahkan mereka untuk klik Link di Bio untuk cek promo.">Arahkan ke Link Bio (Cek Promo)</option>
                         <option value="Arahkan mereka untuk melakukan Test Drive di Dealer Honda Bintaro.">Arahkan ke Test Drive</option>
                         <option value="Minta mereka untuk DM nomor WA agar bisa dihubungi Sales.">Minta Drop Nomor WA via DM</option>
+                        <option value="Berikan edukasi fitur dengan ramah, jangan menjelekkan kompetitor.">Edukasi Fitur / Klarifikasi (Defensive)</option>
                     </select>
                 </div>
 
@@ -455,7 +453,6 @@
                 </div>
             </div>
 
-            <!-- ================= 7. E-LEARNING HUB ================= -->
             <div id="elearning-section" class="tool-section">
                 <div class="section-header" style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
@@ -489,25 +486,26 @@
 
         // ================= GITHUB INTEGRATION LOGIC =================
         function syncGHFields() {
-            // Karena ada 2 tempat config (Monitor & KPI), kita sinkronkan nilainya
             const token = document.getElementById('gh-token-cpm').value || document.getElementById('gh-token-kpi').value;
             const user = document.getElementById('gh-user-cpm').value || document.getElementById('gh-user-kpi').value;
             const repo = document.getElementById('gh-repo-cpm').value || document.getElementById('gh-repo-kpi').value;
+            const pathContent = document.getElementById('gh-path-cpm').value;
+            const pathKPI = document.getElementById('gh-path-kpi').value;
             
             document.querySelectorAll('.gh-sync-token').forEach(el => el.value = token);
             document.querySelectorAll('.gh-sync-user').forEach(el => el.value = user);
             document.querySelectorAll('.gh-sync-repo').forEach(el => el.value = repo);
             
-            localStorage.setItem('gh_config', JSON.stringify({ token, user, repo }));
+            localStorage.setItem('gh_config', JSON.stringify({ token, user, repo, pathContent, pathKPI }));
         }
 
-        async function syncToGithub(filename, dataObj, statusElementId) {
+        async function syncToGithubCore(filename, dataObj, statusElementId) {
             const config = JSON.parse(localStorage.getItem('gh_config') || '{}');
             const { token, user, repo } = config;
             const statusEl = document.getElementById(statusElementId);
             
-            if(!token || !user || !repo) {
-                statusEl.innerHTML = `<span style="color:red;">❌ Sinkronisasi Gagal: Konfigurasi GitHub (Token/User/Repo) belum diisi lengkap!</span>`;
+            if(!token || !user || !repo || !filename) {
+                statusEl.innerHTML = `<span style="color:red;">❌ Sinkronisasi Gagal: Konfigurasi GitHub (Token/User/Repo/Path) belum diisi lengkap!</span>`;
                 return;
             }
 
@@ -541,17 +539,28 @@
             }
         }
 
+        function syncDBToGithub(type) {
+            const config = JSON.parse(localStorage.getItem('gh_config') || '{}');
+            if(type === 'content') {
+                const path = config.pathContent || 'arsip_content_honda.json';
+                syncToGithubCore(path, contentDB, 'github-status-content-table');
+            } else if (type === 'kpi') {
+                const path = config.pathKPI || 'arsip_kpi_honda.json';
+                syncToGithubCore(path, kpiDB, 'github-status-kpi-table');
+            }
+        }
+
         // ================= INIT & API KEY SYNC =================
         window.addEventListener('DOMContentLoaded', () => {
-            // Load Gemini API Key
             const savedGeminiKey = localStorage.getItem('gemini_api_key');
             if(savedGeminiKey) document.querySelectorAll('.api-key-input').forEach(el => el.value = savedGeminiKey);
             
-            // Load GitHub Config
             const savedGH = JSON.parse(localStorage.getItem('gh_config') || '{}');
             if(savedGH.token) document.querySelectorAll('.gh-sync-token').forEach(el => el.value = savedGH.token);
             if(savedGH.user) document.querySelectorAll('.gh-sync-user').forEach(el => el.value = savedGH.user);
             if(savedGH.repo) document.querySelectorAll('.gh-sync-repo').forEach(el => el.value = savedGH.repo);
+            if(savedGH.pathContent && document.getElementById('gh-path-cpm')) document.getElementById('gh-path-cpm').value = savedGH.pathContent;
+            if(savedGH.pathKPI && document.getElementById('gh-path-kpi')) document.getElementById('gh-path-kpi').value = savedGH.pathKPI;
 
             loadContentDatabase();
             loadKPIDatabase();
@@ -665,7 +674,7 @@
             document.getElementById('audit-summary-box').style.display = 'block';
         }
 
-        // ================= 4. CONTENT PERFORMANCE MONITOR (WITH DATE PICKER) =================
+        // ================= 4. CONTENT PERFORMANCE MONITOR =================
         let contentDB = [];
 
         function generateThumbnailPreview(url) {
@@ -687,9 +696,7 @@
             
             if(!evalDateRaw) return alert("Pilih Tanggal Evaluasi dari Kalender!");
             
-            // Konversi Date ke Bulan & Minggu
             const { month, week } = getMonthAndWeek(evalDateRaw);
-            
             const foll = parseFloat(document.getElementById('mon-foll').value) || 1;
             const reach = parseFloat(document.getElementById('mon-reach').value) || 0;
             const action = parseFloat(document.getElementById('mon-action').value) || 0;
@@ -722,8 +729,6 @@
             contentDB.push({ title, link, shortcode, month, week, evalDateRaw, datePub, pilar, reach, action, statusBadge, what, soWhat, nowWhat });
             localStorage.setItem('honda_content_db', JSON.stringify(contentDB));
             renderContentDatabase();
-            
-            syncToGithub('arsip_content_honda.json', contentDB, 'github-status-content');
         }
 
         function loadContentDatabase() {
@@ -762,9 +767,8 @@
         }
         function delContent(idx) { 
             contentDB.splice(idx, 1); localStorage.setItem('honda_content_db', JSON.stringify(contentDB)); 
-            renderContentDatabase(); syncToGithub('arsip_content_honda.json', contentDB, 'github-status-content'); 
+            renderContentDatabase();
         }
-
 
         // ================= 5. WEEKLY CHANNEL EVALUATOR =================
         let kpiDB = [];
@@ -773,9 +777,7 @@
             const evalDateRaw = document.getElementById('kpi-eval-date').value;
             if(!evalDateRaw) return alert("Pilih Tanggal Evaluasi dari Kalender!");
             
-            // Konversi Date ke Bulan & Minggu
             const { month, week } = getMonthAndWeek(evalDateRaw);
-
             const foll = parseFloat(document.getElementById('kpi-foll').value)||1;
             const int = parseFloat(document.getElementById('kpi-int').value)||0;
             
@@ -788,8 +790,6 @@
             kpiDB.push({ month, week, evalDateRaw, foll, int, er, status });
             localStorage.setItem('honda_kpi_db', JSON.stringify(kpiDB));
             renderKPIDatabase();
-
-            syncToGithub('arsip_kpi_honda.json', kpiDB, 'github-status-kpi');
         }
 
         function loadKPIDatabase() {
@@ -799,10 +799,15 @@
 
         function renderKPIDatabase() {
             const filterMonth = document.getElementById('filter-kpi-month').value;
+            const filterWeek = document.getElementById('filter-kpi-week').value;
             const tbody = document.getElementById('kpi-db-body');
             tbody.innerHTML = "";
             
-            const filteredData = kpiDB.filter(item => filterMonth === "All" || item.month === filterMonth);
+            const filteredData = kpiDB.filter(item => {
+                const matchMonth = filterMonth === "All" || item.month === filterMonth;
+                const matchWeek = filterWeek === "All" || item.week === filterWeek;
+                return matchMonth && matchWeek;
+            });
 
             filteredData.forEach((item, idx) => {
                 tbody.innerHTML += `<tr>
@@ -818,7 +823,7 @@
         }
         function delKPI(idx) { 
             kpiDB.splice(idx, 1); localStorage.setItem('honda_kpi_db', JSON.stringify(kpiDB)); 
-            renderKPIDatabase(); syncToGithub('arsip_kpi_honda.json', kpiDB, 'github-status-kpi');
+            renderKPIDatabase();
         }
 
         // ================= 6. AI CARE RESPONSE =================
