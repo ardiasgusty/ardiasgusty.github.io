@@ -30,12 +30,6 @@
         "image": "https://ardiasgusty.github.io/honda/assets/images/banner/brio-slp_1783065132437.webp",
         "link": "#",
         "alt": "Extra Cashback Beli Honda Brio"
-      },
-      {
-        "id": "promo-jfk-honda",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/promo-jfk-honda_1781498173427.webp",
-        "link": "#",
-        "alt": "Promo terbatas Honda di Jakarta Fair"
       }
     ],
     "mobile": [
@@ -74,12 +68,6 @@
         "image": "https://ardiasgusty.github.io/honda/assets/images/banner/brio-slp-mobile_1783065183403.webp",
         "link": "#",
         "alt": "Extra Cashback Beli Honda Brio"
-      },
-      {
-        "id": "promo-jfk-honda-mobile",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/banner_1781498202804.webp",
-        "link": "#",
-        "alt": "Promo terbatas Honda di Jakarta Fair"
       }
     ]
   }
