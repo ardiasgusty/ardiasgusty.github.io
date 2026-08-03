@@ -2,6 +2,12 @@
   "banners": {
     "desktop": [
       {
+        "id": "honda-giias-2026",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/honda-giias-2026_1785727655085.webp",
+        "link": "#",
+        "alt": "Honda GIIAS 2026"
+      },
+      {
         "id": "8rio-sales-desktop",
         "image": "https://ardiasgusty.github.io/honda/assets/images/banner/8rio-sales-desktop_1785726081546.webp",
         "link": "#",
@@ -12,21 +18,15 @@
         "image": "https://ardiasgusty.github.io/honda/assets/images/banner/8rio-service-desktop_1785726062237.webp",
         "link": "#",
         "alt": "Servis Mobil Honda bisa dapat Honda Brio"
-      },
-      {
-        "id": "hrv-slp",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/hrv-slp_1783065113933.webp",
-        "link": "#",
-        "alt": "Extra Cashback Beli Honda HR-V"
-      },
-      {
-        "id": "brio-slp",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/brio-slp_1783065132437.webp",
-        "link": "#",
-        "alt": "Extra Cashback Beli Honda Brio"
       }
     ],
     "mobile": [
+      {
+        "id": "honda-giias-2026-mobile",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/honda-giias-2026-mobile_1785727679384.webp",
+        "link": "#",
+        "alt": "Honda GIIAS 2026"
+      },
       {
         "id": "8rio-sales-mobile",
         "image": "https://ardiasgusty.github.io/honda/assets/images/banner/8rio-sales-mobile_1785726379478.webp",
@@ -44,18 +44,6 @@
         "image": "https://ardiasgusty.github.io/honda/assets/images/banner/8rio-detil-mobile_1785726405483.webp",
         "link": "#",
         "alt": "Beli dan Servis Mobil Honda bisa dapat Honda Brio"
-      },
-      {
-        "id": "hrv-slp-mobile",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/hrv-slp-mobile_1783065169688.webp",
-        "link": "#",
-        "alt": "Extra Cashback Beli Honda HR-V"
-      },
-      {
-        "id": "brio-slp-mobile",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/brio-slp-mobile_1783065183403.webp",
-        "link": "#",
-        "alt": "Extra Cashback Beli Honda Brio"
       }
     ]
   }
