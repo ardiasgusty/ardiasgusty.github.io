@@ -18,6 +18,18 @@
         "image": "https://ardiasgusty.github.io/honda/assets/images/banner/8rio-service-desktop_1785726062237.webp",
         "link": "#",
         "alt": "Servis Mobil Honda bisa dapat Honda Brio"
+      },
+      {
+        "id": "brio-slp",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/banner_1786069032904.webp",
+        "link": "#",
+        "alt": "Promo Honda Brio Extra Cashback 5jt"
+      },
+      {
+        "id": "hrv-slp",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/banner_1786069086307.webp",
+        "link": "#",
+        "alt": "Promo Honda HR-V Extra Cashback 5jt"
       }
     ],
     "mobile": [
@@ -44,6 +56,18 @@
         "image": "https://ardiasgusty.github.io/honda/assets/images/banner/8rio-detil-mobile_1785726405483.webp",
         "link": "#",
         "alt": "Beli dan Servis Mobil Honda bisa dapat Honda Brio"
+      },
+      {
+        "id": "brio-slp-mobile",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/brio-slp-mobile_1786069149457.webp",
+        "link": "#",
+        "alt": "Promo Honda Brio Extra Cashback 5jt"
+      },
+      {
+        "id": "hrv-slp",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/hrv-slp_1786069167246.webp",
+        "link": "#",
+        "alt": "Promo Honda HR-V Extra Cashback 5jt"
       }
     ]
   }
