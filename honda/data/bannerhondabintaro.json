@@ -2,12 +2,6 @@
   "banners": {
     "desktop": [
       {
-        "id": "honda-giias-2026",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/honda-giias-2026_1785727655085.webp",
-        "link": "#",
-        "alt": "Honda GIIAS 2026"
-      },
-      {
         "id": "8rio-sales-desktop",
         "image": "https://ardiasgusty.github.io/honda/assets/images/banner/8rio-sales-desktop_1785726081546.webp",
         "link": "#",
@@ -33,12 +27,6 @@
       }
     ],
     "mobile": [
-      {
-        "id": "honda-giias-2026-mobile",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/honda-giias-2026-mobile_1785727679384.webp",
-        "link": "#",
-        "alt": "Honda GIIAS 2026"
-      },
       {
         "id": "8rio-sales-mobile",
         "image": "https://ardiasgusty.github.io/honda/assets/images/banner/8rio-sales-mobile_1785726379478.webp",
