@@ -38,6 +38,17 @@
             from { transform: translateY(0px); }
             to { transform: translateY(-1000px); }
         }
+        .glass-input {
+            background: rgba(2, 6, 23, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            transition: all 0.2s ease-in-out;
+        }
+        .glass-input:focus {
+            border-color: #06b6d4;
+            box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.2);
+            outline: none;
+        }
     </style>
 </head>
 <body class="min-h-screen relative overflow-x-hidden flex flex-col justify-between">
@@ -84,198 +95,194 @@
                     <p class="text-xs text-gray-400">Pengelolaan Lisensi & Telemetri Pembajakan</p>
                 </div>
             </div>
-            <button onclick="logoutSuperAdmin()" class="glass-panel text-xs text-gray-400 hover:text-white px-4 py-2 rounded-lg border border-white/5 transition flex items-center gap-1.5">
-                <i class="fa-solid fa-right-from-bracket"></i> Keluar
-            </button>
-        </header>
-
-        <!-- NO REPOSITORY CONNECTED STATE -->
-        <div id="no-connection-panel" class="hidden max-w-md mx-auto w-full glass-panel p-8 rounded-3xl border border-white/10 space-y-6">
-            <div class="text-center space-y-2">
-                <div class="mx-auto w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-500 flex items-center justify-center text-2xl">
-                    <i class="fa-solid fa-link-slash"></i>
+            <div class="flex items-center gap-3">
+                <div id="github-header-badge" class="flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full bg-yellow-500/10 text-yellow-500 border border-yellow-500/20">
+                    <span class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span> Belum Terkoneksi
                 </div>
-                <h2 class="text-lg font-bold text-white font-outfit">Repositori Belum Terhubung</h2>
-                <p class="text-xs text-gray-400">Hubungkan akun GitHub Anda untuk memuat dan mengelola database lisensi di file <code>data/security.json</code>.</p>
-            </div>
-            
-            <div class="space-y-4 text-left">
-                <div class="space-y-1">
-                    <label class="text-[10px] text-gray-500 font-bold uppercase block font-outfit">Personal Access Token (PAT)</label>
-                    <input type="password" id="setup-gh-token" class="w-full px-3 py-2.5 rounded-xl bg-slate-950/50 border border-slate-800 text-white text-xs" placeholder="ghp_xxxxxxxx">
-                </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <div class="space-y-1">
-                        <label class="text-[10px] text-gray-500 font-bold uppercase block font-outfit">GitHub Owner</label>
-                        <input type="text" id="setup-gh-owner" class="w-full px-3 py-2.5 rounded-xl bg-slate-950/50 border border-slate-800 text-white text-xs" placeholder="ardiasgusty">
-                    </div>
-                    <div class="space-y-1">
-                        <label class="text-[10px] text-gray-500 font-bold uppercase block font-outfit">Repository Name</label>
-                        <input type="text" id="setup-gh-repo" class="w-full px-3 py-2.5 rounded-xl bg-slate-950/50 border border-slate-800 text-white text-xs" placeholder="Website-Honda-Sales">
-                    </div>
-                </div>
-                <div class="space-y-1">
-                    <label class="text-[10px] text-gray-500 font-bold uppercase block font-outfit">Branch</label>
-                    <input type="text" id="setup-gh-branch" class="w-full px-3 py-2.5 rounded-xl bg-slate-950/50 border border-slate-800 text-white text-xs" value="main">
-                </div>
-                <button onclick="connectGitHubOnDashboard()" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs py-3 rounded-xl transition duration-300 shadow-lg shadow-cyan-600/20 flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-circle-check"></i> Hubungkan Repositori
+                <button onclick="logoutSuperAdmin()" class="glass-panel text-xs text-gray-400 hover:text-white px-4 py-2 rounded-lg border border-white/5 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-right-from-bracket"></i> Keluar
                 </button>
             </div>
-        </div>
+        </header>
 
-        <!-- FULL DASHBOARD STATE -->
-        <div id="full-dashboard-panel" class="hidden space-y-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- SIDEBAR: REPO CONFIG & PASSWORD (1 COL) -->
-                <div class="md:col-span-1 space-y-8">
-                    <!-- Repository Connection Info Card -->
-                    <div class="glass-panel p-6 rounded-2xl shadow-xl space-y-4 border border-white/5">
-                        <div class="flex items-center gap-2 border-b border-white/5 pb-3">
+        <!-- DASHBOARD GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- SIDEBAR: REPO CONFIG & SUPERADMIN PASSWORD (1 COL) -->
+            <div class="md:col-span-1 space-y-8">
+                <!-- Repository Connection Card -->
+                <div class="glass-panel p-6 rounded-2xl shadow-xl space-y-4 border border-white/5">
+                    <div class="flex items-center justify-between border-b border-white/5 pb-3">
+                        <div class="flex items-center gap-2">
                             <i class="fa-solid fa-plug text-cyan-500"></i>
                             <h2 class="text-base font-bold text-white font-outfit">Koneksi Repositori</h2>
                         </div>
+                    </div>
+
+                    <!-- CONNECTED STATE -->
+                    <div id="repo-connected-view" class="hidden space-y-4">
                         <div class="space-y-2 text-xs text-gray-400">
                             <div>
                                 <p class="text-[10px] text-gray-500 font-bold uppercase">Owner / Repo</p>
-                                <p class="font-mono text-white" id="info-repo-path">-</p>
+                                <p class="font-mono text-white text-sm" id="info-repo-path">-</p>
                             </div>
                             <div>
                                 <p class="text-[10px] text-gray-500 font-bold uppercase">Branch</p>
-                                <p class="font-mono text-white" id="info-repo-branch">-</p>
+                                <p class="font-mono text-white text-sm" id="info-repo-branch">-</p>
                             </div>
                         </div>
-                        <button onclick="disconnectGitHub()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs py-2 rounded-lg transition border border-slate-700">
-                            Putuskan Koneksi Repositori
+                        <div class="flex flex-col gap-2 pt-2">
+                            <button onclick="loadSecurityDataFromGitHub()" class="w-full bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-400 font-bold text-xs py-2.5 rounded-xl transition border border-cyan-500/20 flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-arrows-rotate"></i> Sinkron Ulang Data
+                            </button>
+                            <button onclick="disconnectGitHub()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-bold text-xs py-2.5 rounded-xl transition border border-slate-700 flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-link-slash"></i> Putuskan Koneksi
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- DISCONNECTED / CONFIGURATION STATE -->
+                    <div id="repo-setup-view" class="space-y-4 text-left">
+                        <p class="text-[11px] text-gray-400 leading-relaxed">
+                            Hubungkan akun GitHub Anda untuk memuat & mengelola file <code class="text-cyan-400">data/security.json</code> di repositori website target.
+                        </p>
+                        <div class="space-y-1">
+                            <label class="text-[10px] text-gray-400 font-bold uppercase block">Personal Access Token (PAT)</label>
+                            <input type="password" id="setup-gh-token" class="w-full glass-input px-3 py-2.5 rounded-xl text-xs" placeholder="ghp_xxxxxxxxxxxx">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] text-gray-400 font-bold uppercase block">GitHub Owner / Username</label>
+                            <input type="text" id="setup-gh-owner" class="w-full glass-input px-3 py-2.5 rounded-xl text-xs" placeholder="ardiasgusty">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] text-gray-400 font-bold uppercase block">Nama Repositori (Repo)</label>
+                            <input type="text" id="setup-gh-repo" class="w-full glass-input px-3 py-2.5 rounded-xl text-xs" placeholder="Website-Honda-Sales">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] text-gray-400 font-bold uppercase block">Branch</label>
+                            <input type="text" id="setup-gh-branch" class="w-full glass-input px-3 py-2.5 rounded-xl text-xs" value="main">
+                        </div>
+                        <button onclick="connectGitHubOnDashboard()" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs py-3 rounded-xl transition duration-300 shadow-lg shadow-cyan-600/20 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plug"></i> Simpan & Hubungkan
                         </button>
-                    </div>
-
-                    <!-- Password Changer Card -->
-                    <div class="glass-panel p-6 rounded-2xl shadow-xl space-y-4 border border-white/5">
-                        <div class="flex items-center gap-2 border-b border-white/5 pb-3">
-                            <i class="fa-solid fa-key text-cyan-500"></i>
-                            <h2 class="text-base font-bold text-white font-outfit">Ubah Sandi SuperAdmin</h2>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="space-y-1">
-                                <label class="text-[10px] text-gray-500 font-bold uppercase block">Kata Sandi Baru</label>
-                                <input type="password" id="new-password" class="w-full px-3 py-2 rounded-lg bg-slate-950/60 border border-slate-800 text-white text-xs" placeholder="••••••••">
-                            </div>
-                            <div class="space-y-1">
-                                <label class="text-[10px] text-gray-500 font-bold uppercase block">Ulangi Kata Sandi Baru</label>
-                                <input type="password" id="new-password-confirm" class="w-full px-3 py-2 rounded-lg bg-slate-950/60 border border-slate-800 text-white text-xs" placeholder="••••••••">
-                            </div>
-                            <button onclick="changeSuperPassword()" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-[10px] py-2.5 rounded-lg transition shadow-md shadow-cyan-600/15">
-                                Update Kata Sandi
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Reset Admin Password Card -->
-                    <div class="glass-panel p-6 rounded-2xl shadow-xl space-y-4 border border-white/5">
-                        <div class="flex items-center gap-2 border-b border-white/5 pb-3">
-                            <i class="fa-solid fa-user-lock text-cyan-500"></i>
-                            <h2 class="text-base font-bold text-white font-outfit">Reset Sandi Admin Sales</h2>
-                        </div>
-                        <p class="text-[10px] text-gray-400 leading-relaxed">Berguna jika admin sales lupa kata sandi. Ubah password secara paksa tanpa memerlukan kata sandi saat ini.</p>
-                        <div class="space-y-3">
-                            <div class="space-y-1">
-                                <label class="text-[10px] text-gray-500 font-bold uppercase block">Kata Sandi Baru</label>
-                                <input type="password" id="reset-admin-pwd" class="w-full px-3 py-2 rounded-lg bg-slate-950/60 border border-slate-800 text-white text-xs" placeholder="••••••••">
-                            </div>
-                            <div class="space-y-1">
-                                <label class="text-[10px] text-gray-500 font-bold uppercase block">Ulangi Kata Sandi</label>
-                                <input type="password" id="reset-admin-pwd-confirm" class="w-full px-3 py-2 rounded-lg bg-slate-950/60 border border-slate-800 text-white text-xs" placeholder="••••••••">
-                            </div>
-                            <button onclick="resetAdminPasswordFromSuper()" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-[10px] py-2.5 rounded-lg transition shadow-md shadow-red-600/15">
-                                Reset Kata Sandi Admin
-                            </button>
-                        </div>
                     </div>
                 </div>
 
-                <!-- CONTENT: LICENSE GENERATOR & DOMAIN LIST (2 COLS) -->
-                <div class="md:col-span-2 space-y-8">
-                    <!-- Generator Card -->
-                    <div class="glass-panel p-6 rounded-2xl shadow-xl space-y-4 border border-white/5">
-                        <div class="flex items-center gap-2 border-b border-white/5 pb-3">
-                            <i class="fa-solid fa-wand-magic-sparkles text-cyan-500"></i>
-                            <h2 class="text-base font-bold text-white font-outfit">Daftarkan Domain Baru</h2>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="space-y-1">
-                                <label class="text-[10px] text-gray-500 font-bold uppercase tracking-wider block">Domain Target (Contoh: <code>gusti.hondabintaro.com</code>)</label>
-                                <input type="text" id="target-domain" class="w-full px-4 py-2.5 rounded-xl bg-slate-950/60 border border-slate-800 text-white text-sm focus:border-cyan-500 focus:outline-none transition" placeholder="gusti.hondabintaro.com">
-                            </div>
-                            <div class="flex items-end">
-                                <button onclick="generateAndSaveLicense()" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs py-3 rounded-xl transition shadow-lg shadow-cyan-600/20">
-                                    Generate & Daftarkan Domain
-                                </button>
-                            </div>
-                        </div>
+                <!-- Password Changer Card -->
+                <div class="glass-panel p-6 rounded-2xl shadow-xl space-y-4 border border-white/5">
+                    <div class="flex items-center gap-2 border-b border-white/5 pb-3">
+                        <i class="fa-solid fa-key text-cyan-500"></i>
+                        <h2 class="text-base font-bold text-white font-outfit">Ubah Sandi SuperAdmin</h2>
                     </div>
-
-                    <!-- Domain List Card -->
-                    <div class="glass-panel p-6 rounded-2xl shadow-xl space-y-4 border border-white/5">
-                        <div class="flex items-center gap-2 border-b border-white/5 pb-3">
-                            <i class="fa-solid fa-list-check text-cyan-500"></i>
-                            <h2 class="text-base font-bold text-white font-outfit">Lisensi Aktif (Domain Terdaftar)</h2>
+                    <div class="space-y-3">
+                        <div class="space-y-1">
+                            <label class="text-[10px] text-gray-500 font-bold uppercase block">Kata Sandi Baru</label>
+                            <input type="password" id="new-password" class="w-full glass-input px-3 py-2 rounded-xl text-xs" placeholder="••••••••">
                         </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left text-xs border-collapse">
-                                <thead>
-                                    <tr class="border-b border-white/5 text-gray-500">
-                                        <th class="py-2.5 font-bold uppercase">Nama Domain</th>
-                                        <th class="py-2.5 font-bold uppercase">Kunci Lisensi (SHA-256)</th>
-                                        <th class="py-2.5 font-bold uppercase text-right">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="license-list-body">
-                                    <!-- Rendered dynamically -->
-                                </tbody>
-                            </table>
-                            <div id="license-list-loading" class="text-center py-6 text-gray-500">Memuat basis data lisensi...</div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] text-gray-500 font-bold uppercase block">Ulangi Kata Sandi Baru</label>
+                            <input type="password" id="new-password-confirm" class="w-full glass-input px-3 py-2 rounded-xl text-xs" placeholder="••••••••">
                         </div>
+                        <button onclick="changeSuperPassword()" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs py-2.5 rounded-xl transition shadow-md shadow-cyan-600/15">
+                            Update Kata Sandi
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <!-- TELEMETRY / CRACK TRACKER FEED -->
-            <div class="glass-panel p-6 rounded-2xl border border-white/5 space-y-4">
-                <div class="flex justify-between items-center border-b border-white/5 pb-3">
-                    <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-tower-broadcast text-red-500 animate-pulse"></i>
-                        <h2 class="text-base font-bold text-white font-outfit">Pelacakan Pembajakan (Telemetry Logs)</h2>
+            <!-- CONTENT: LICENSE GENERATOR & DOMAIN LIST (2 COLS) -->
+            <div class="md:col-span-2 space-y-8">
+                <!-- REPOSITORY NOT CONNECTED ALERT OVERLAY -->
+                <div id="repo-warning-banner" class="hidden glass-panel p-6 rounded-2xl border border-yellow-500/20 bg-yellow-500/5 text-yellow-400 space-y-2">
+                    <div class="flex items-center gap-2 font-bold font-outfit text-sm">
+                        <i class="fa-solid fa-triangle-exclamation text-base"></i> Repositori Belum Terhubung
                     </div>
-                    <div class="flex gap-2">
-                        <button onclick="clearTelemetryLogs()" class="bg-red-600/20 hover:bg-red-600/30 text-[10px] text-red-500 px-3 py-1.5 border border-red-500/20 rounded-lg flex items-center gap-1.5 transition">
-                            <i class="fa-solid fa-trash-can"></i> Bersihkan Log
-                        </button>
-                        <button onclick="fetchTelemetryLogs()" class="bg-slate-800 hover:bg-slate-700 text-[10px] text-white px-3 py-1.5 border border-slate-700 rounded-lg flex items-center gap-1.5 transition">
-                            <i class="fa-solid fa-arrows-rotate"></i> Refresh Tracker Feed
-                        </button>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        Silakan masukkan <b>Token PAT</b>, <b>Owner</b>, dan <b>Nama Repositori</b> pada panel <i>Koneksi Repositori</i> di sebelah kiri untuk mengaktifkan sinkronisasi lisensi.
+                    </p>
+                </div>
+
+                <!-- Generator Card -->
+                <div id="license-generator-card" class="glass-panel p-6 rounded-2xl shadow-xl space-y-4 border border-white/5 transition-all duration-300">
+                    <div class="flex items-center gap-2 border-b border-white/5 pb-3">
+                        <i class="fa-solid fa-wand-magic-sparkles text-cyan-500"></i>
+                        <h2 class="text-base font-bold text-white font-outfit">Daftarkan Domain Baru</h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-[10px] text-gray-500 font-bold uppercase tracking-wider block">Domain Target (Contoh: <code>gusti.hondabintaro.com</code>)</label>
+                            <input type="text" id="target-domain" class="w-full glass-input px-4 py-2.5 rounded-xl text-sm focus:border-cyan-500 focus:outline-none transition" placeholder="gusti.hondabintaro.com">
+                        </div>
+                        <div class="flex items-end">
+                            <button id="btn-generate-license" onclick="generateAndSaveLicense()" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs py-3 rounded-xl transition shadow-lg shadow-cyan-600/20 flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-plus-circle"></i> Generate & Daftarkan Domain
+                            </button>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs border-collapse">
-                        <thead>
-                            <tr class="border-b border-white/5 text-gray-500">
-                                <th class="py-2.5 font-bold uppercase">Domain Pembajak</th>
-                                <th class="py-2.5 font-bold uppercase">Kunci Palsu Yang Dipakai</th>
-                                <th class="py-2.5 font-bold uppercase">Waktu Kejadian</th>
-                                <th class="py-2.5 font-bold uppercase text-right">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="telemetry-table-body">
-                            <!-- Loaded dynamically from kvdb.io -->
-                        </tbody>
-                    </table>
-                    <div id="telemetry-loading" class="text-center py-8 text-gray-500">Memuat log telemetri dari server...</div>
-                    <div id="telemetry-empty" class="text-center py-8 text-gray-500 hidden">
-                        <i class="fa-solid fa-circle-check text-emerald-500 text-lg mb-1 block"></i> 
-                        Belum terdeteksi adanya domain crack / ilegal. Bersih!
+
+                <!-- Domain List Card -->
+                <div id="license-list-card" class="glass-panel p-6 rounded-2xl shadow-xl space-y-4 border border-white/5 transition-all duration-300">
+                    <div class="flex items-center justify-between border-b border-white/5 pb-3">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-cyan-500"></i>
+                            <h2 class="text-base font-bold text-white font-outfit">Lisensi Aktif (Domain Terdaftar)</h2>
+                        </div>
+                        <span id="license-count-badge" class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">0 Domain</span>
                     </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs border-collapse">
+                            <thead>
+                                <tr class="border-b border-white/5 text-gray-500">
+                                    <th class="py-2.5 font-bold uppercase">Nama Domain</th>
+                                    <th class="py-2.5 font-bold uppercase">Kunci Lisensi (SHA-256)</th>
+                                    <th class="py-2.5 font-bold uppercase text-right">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="license-list-body">
+                                <!-- Rendered dynamically -->
+                            </tbody>
+                        </table>
+                        <div id="license-list-loading" class="text-center py-6 text-gray-500">Memuat basis data lisensi...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TELEMETRY / CRACK TRACKER FEED -->
+        <div class="glass-panel p-6 rounded-2xl border border-white/5 space-y-4">
+            <div class="flex justify-between items-center border-b border-white/5 pb-3">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-tower-broadcast text-red-500 animate-pulse"></i>
+                    <h2 class="text-base font-bold text-white font-outfit">Pelacakan Pembajakan (Telemetry Logs)</h2>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="clearTelemetryLogs()" class="bg-red-600/20 hover:bg-red-600/30 text-[10px] text-red-500 px-3 py-1.5 border border-red-500/20 rounded-lg flex items-center gap-1.5 transition">
+                        <i class="fa-solid fa-trash-can"></i> Bersihkan Log
+                    </button>
+                    <button onclick="fetchTelemetryLogs()" class="bg-slate-800 hover:bg-slate-700 text-[10px] text-white px-3 py-1.5 border border-slate-700 rounded-lg flex items-center gap-1.5 transition">
+                        <i class="fa-solid fa-arrows-rotate"></i> Refresh Tracker Feed
+                    </button>
+                </div>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="border-b border-white/5 text-gray-500">
+                            <th class="py-2.5 font-bold uppercase">Domain Pembajak</th>
+                            <th class="py-2.5 font-bold uppercase">Kunci Palsu Yang Dipakai</th>
+                            <th class="py-2.5 font-bold uppercase">Waktu Kejadian</th>
+                            <th class="py-2.5 font-bold uppercase text-right">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="telemetry-table-body">
+                        <!-- Loaded dynamically from kvdb.io -->
+                    </tbody>
+                </table>
+                <div id="telemetry-loading" class="text-center py-8 text-gray-500">Memuat log telemetri dari server...</div>
+                <div id="telemetry-empty" class="text-center py-8 text-gray-500 hidden">
+                    <i class="fa-solid fa-circle-check text-emerald-500 text-lg mb-1 block"></i> 
+                    Belum terdeteksi adanya domain crack / ilegal. Bersih!
                 </div>
             </div>
         </div>
@@ -303,7 +310,7 @@
         }
 
         window.addEventListener('DOMContentLoaded', async () => {
-            // Load Dynamic Favicon from config
+            // Load Dynamic Favicon from config if exists
             try {
                 const res = await fetch('../data/site_config.json');
                 if (res.ok) {
@@ -316,7 +323,7 @@
             } catch(e) {}
         });
 
-        // 1. Password Verification First (Fallback to default if no connection)
+        // 1. Password Verification First (SuperAdmin Gate)
         async function verifySuperGate() {
             const pwdInput = document.getElementById('gate-password');
             const pwd = pwdInput.value;
@@ -341,63 +348,107 @@
                         securitySha = resData.sha;
                         const decoded = decodeURIComponent(escape(atob(resData.content.replace(/\s/g, ''))));
                         securityData = JSON.parse(decoded);
-                        targetHash = securityData.superAdminPasswordHash;
+                        if (securityData.superAdminPasswordHash) {
+                            targetHash = securityData.superAdminPasswordHash;
+                        }
                     }
                 } catch (e) {
-                    console.warn('Gagal memuat security.json dari GitHub, menggunakan default hash...', e);
+                    console.warn('Gagal memuat security.json dari GitHub, menggunakan fallback...', e);
                 }
-            } else {
-                // If not connected, try reading local fallback data/security.json if it exists
+            }
+
+            // Fallback to local security.json if not loaded yet from GitHub
+            if (!securityData) {
                 try {
-                    const res = await fetch('../data/security.json');
+                    const res = await fetch('data/security.json');
                     if (res.ok) {
                         securityData = await res.json();
-                        targetHash = securityData.superAdminPasswordHash;
+                        if (securityData.superAdminPasswordHash) {
+                            targetHash = securityData.superAdminPasswordHash;
+                        }
                     }
-                } catch(e) {}
+                } catch(e) {
+                    console.warn('Gagal memuat security.json lokal.', e);
+                }
             }
 
             if (hash === targetHash) {
                 document.getElementById('super-gate').remove();
                 document.getElementById('super-panel').classList.remove('hidden');
                 
-                // Route user based on GitHub Connection Status
-                checkGitHubConnectionStatus();
+                // Initialize Dashboard UI & Status
+                updateGitHubUI();
+                fetchTelemetryLogs();
             } else {
                 alert('Kata sandi SuperAdmin salah!');
                 pwdInput.value = '';
             }
         }
 
-        // 2. Route user view based on GitHub connection
-        function checkGitHubConnectionStatus() {
-            const noConn = document.getElementById('no-connection-panel');
-            const fullDash = document.getElementById('full-dashboard-panel');
+        // 2. Update UI based on GitHub Connection Status
+        function updateGitHubUI() {
+            const connectedView = document.getElementById('repo-connected-view');
+            const setupView = document.getElementById('repo-setup-view');
+            const headerBadge = document.getElementById('github-header-badge');
+            const warningBanner = document.getElementById('repo-warning-banner');
+            const generatorCard = document.getElementById('license-generator-card');
+            const listCard = document.getElementById('license-list-card');
+            const btnGenerate = document.getElementById('btn-generate-license');
+            const targetDomain = document.getElementById('target-domain');
 
-            if (ghConfig.token && ghConfig.owner && ghConfig.repo) {
-                noConn.classList.add('hidden');
-                fullDash.classList.remove('hidden');
-                
+            const isConnected = !!(ghConfig.token && ghConfig.owner && ghConfig.repo);
+
+            if (isConnected) {
+                // Connected State
+                connectedView.classList.remove('hidden');
+                setupView.classList.add('hidden');
+                warningBanner.classList.add('hidden');
+
+                headerBadge.className = "flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
+                headerBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Terkoneksi: ${ghConfig.owner}/${ghConfig.repo}`;
+
                 document.getElementById('info-repo-path').innerText = `${ghConfig.owner}/${ghConfig.repo}`;
                 document.getElementById('info-repo-branch').innerText = ghConfig.branch;
-                
-                // Fetch dynamic data from GitHub
+
+                generatorCard.classList.remove('opacity-50');
+                listCard.classList.remove('opacity-50');
+                btnGenerate.disabled = false;
+                targetDomain.disabled = false;
+
+                // Load Data
                 loadSecurityDataFromGitHub();
-                fetchTelemetryLogs();
             } else {
-                fullDash.classList.add('hidden');
-                noConn.classList.remove('hidden');
-                
-                // Pre-populate connection form if empty
-                document.getElementById('setup-gh-token').value = ghConfig.token;
-                document.getElementById('setup-gh-owner').value = ghConfig.owner;
-                document.getElementById('setup-gh-repo').value = ghConfig.repo;
-                document.getElementById('setup-gh-branch').value = ghConfig.branch;
+                // Disconnected State
+                connectedView.classList.add('hidden');
+                setupView.classList.remove('hidden');
+                warningBanner.classList.remove('hidden');
+
+                headerBadge.className = "flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full bg-yellow-500/10 text-yellow-500 border border-yellow-500/20";
+                headerBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span> Belum Terkoneksi`;
+
+                document.getElementById('setup-gh-token').value = ghConfig.token || '';
+                document.getElementById('setup-gh-owner').value = ghConfig.owner || 'ardiasgusty';
+                document.getElementById('setup-gh-repo').value = ghConfig.repo || 'Website-Honda-Sales';
+                document.getElementById('setup-gh-branch').value = ghConfig.branch || 'main';
+
+                // Keep accessible but notify
+                generatorCard.classList.remove('opacity-50');
+                listCard.classList.remove('opacity-50');
+                btnGenerate.disabled = false;
+                targetDomain.disabled = false;
+
+                // Render local fallback data
+                renderLicensesTable();
             }
         }
 
-        // Load security.json from GitHub
+        // 3. Load security.json from GitHub
         async function loadSecurityDataFromGitHub() {
+            if (!ghConfig.token || !ghConfig.owner || !ghConfig.repo) return;
+
+            const loader = document.getElementById('license-list-loading');
+            if (loader) loader.classList.remove('hidden');
+
             const url = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/data/security.json?ref=${ghConfig.branch}`;
             try {
                 const res = await fetch(url, {
@@ -412,25 +463,28 @@
                     const decoded = decodeURIComponent(escape(atob(resData.content.replace(/\s/g, ''))));
                     securityData = JSON.parse(decoded);
                     renderLicensesTable();
-                } else {
-                    // Create securityData template if it does not exist
+                } else if (res.status === 404) {
+                    // Create securityData template if it does not exist yet on repo
                     securityData = {
                         superAdminPasswordHash: "070b2280a7318111d4a1e64ec2f8c058972f25aaa1a16094e7d1869a3ac83adf",
                         licenses: []
                     };
                     renderLicensesTable();
+                } else {
+                    throw new Error(`HTTP ${res.status}: Gagal memuat data dari GitHub`);
                 }
             } catch(e) {
+                if (loader) loader.classList.add('hidden');
                 alert('Gagal mengambil data lisensi dari GitHub: ' + e.message);
             }
         }
 
-        // 3. Connect GitHub from Dashboard state
+        // 4. Connect GitHub from Sidebar Form
         async function connectGitHubOnDashboard() {
             const token = document.getElementById('setup-gh-token').value.trim();
             const owner = document.getElementById('setup-gh-owner').value.trim();
             const repo = document.getElementById('setup-gh-repo').value.trim();
-            const branch = document.getElementById('setup-gh-branch').value.trim();
+            const branch = document.getElementById('setup-gh-branch').value.trim() || 'main';
 
             if (!token || !owner || !repo || !branch) {
                 alert('Harap isi semua kolom konfigurasi GitHub!');
@@ -447,16 +501,15 @@
                     }
                 });
 
-                // If file doesn't exist, we can create it later. But repo must be correct.
                 if (res.status === 404) {
-                    // Test connection to verify repository exists
+                    // Check if repository itself exists
                     const repoUrl = `https://api.github.com/repos/${owner}/${repo}`;
                     const repoRes = await fetch(repoUrl, {
                         headers: { 'Authorization': `token ${token}` }
                     });
                     if (!repoRes.ok) throw new Error('Repositori tidak ditemukan. Harap periksa Owner & nama repo.');
                 } else if (!res.ok) {
-                    throw new Error('Gagal menghubungkan ke repositori GitHub.');
+                    throw new Error('Gagal menghubungkan ke repositori GitHub. Periksa apakah PAT valid.');
                 }
 
                 // Save to local storage
@@ -467,22 +520,24 @@
 
                 ghConfig = { token, owner, repo, branch };
                 
-                alert('Koneksi repositori GitHub berhasil dikonfigurasi!');
-                checkGitHubConnectionStatus();
+                alert('Koneksi repositori GitHub berhasil dikonfigurasi & terhubung!');
+                updateGitHubUI();
             } catch (err) {
                 alert('Koneksi Gagal: ' + err.message);
             }
         }
 
-        // 4. Disconnect GitHub Connection
+        // 5. Disconnect GitHub Connection
         function disconnectGitHub() {
-            if (confirm('Apakah Anda yakin ingin memutuskan koneksi repositori? Kredensial GitHub akan dihapus dari domain ini.')) {
+            if (confirm('Apakah Anda yakin ingin memutuskan koneksi repositori? Kredensial GitHub akan dihapus dari browser ini.')) {
                 localStorage.removeItem('super_gh_token');
                 localStorage.removeItem('super_gh_owner');
                 localStorage.removeItem('super_gh_repo');
                 localStorage.removeItem('super_gh_branch');
                 ghConfig = { token: '', owner: '', repo: '', branch: 'main' };
-                checkGitHubConnectionStatus();
+                securityData = null;
+                securitySha = '';
+                updateGitHubUI();
             }
         }
 
@@ -493,24 +548,50 @@
         function renderLicensesTable() {
             const body = document.getElementById('license-list-body');
             const loader = document.getElementById('license-list-loading');
+            const countBadge = document.getElementById('license-count-badge');
             if (loader) loader.classList.add('hidden');
             body.innerHTML = '';
 
-            if (!securityData.licenses || securityData.licenses.length === 0) {
-                body.innerHTML = `<tr><td colspan="3" class="py-4 text-center text-gray-500">Belum ada domain terdaftar.</td></tr>`;
+            if (!securityData || !securityData.licenses || securityData.licenses.length === 0) {
+                body.innerHTML = `<tr><td colspan="3" class="py-6 text-center text-gray-500">Belum ada domain terdaftar di repositori ini.</td></tr>`;
+                if (countBadge) countBadge.innerText = `0 Domain`;
                 return;
             }
 
+            if (countBadge) countBadge.innerText = `${securityData.licenses.length} Domain`;
+
             securityData.licenses.forEach((lic, idx) => {
                 body.innerHTML += `
-                    <tr class="border-b border-white/5 text-slate-300">
-                        <td class="py-3 font-semibold text-white">${lic.domain}</td>
-                        <td class="py-3 font-mono text-[10px] text-emerald-400">${lic.key}</td>
+                    <tr class="border-b border-white/5 text-slate-300 hover:bg-slate-900/30 transition">
+                        <td class="py-3 font-semibold text-white">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-globe text-cyan-500 text-xs"></i>
+                                <span>${lic.domain}</span>
+                            </div>
+                        </td>
+                        <td class="py-3 font-mono text-[11px] text-emerald-400">
+                            <div class="flex items-center gap-2">
+                                <span class="break-all">${lic.key}</span>
+                                <button onclick="copyToClipboard('${lic.key}')" class="text-gray-400 hover:text-white transition px-1 py-0.5" title="Salin License Key">
+                                    <i class="fa-regular fa-copy"></i>
+                                </button>
+                            </div>
+                        </td>
                         <td class="py-3 text-right">
-                            <button onclick="deleteLicense(${idx})" class="text-red-500 hover:text-red-400 transition" title="Hapus Lisensi"><i class="fa-solid fa-trash-can text-base"></i></button>
+                            <button onclick="deleteLicense(${idx})" class="text-red-500 hover:text-red-400 transition p-1.5 rounded-lg hover:bg-red-500/10" title="Cabut / Hapus Lisensi">
+                                <i class="fa-solid fa-trash-can text-sm"></i>
+                            </button>
                         </td>
                     </tr>
                 `;
+            });
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Kunci lisensi berhasil disalin ke clipboard!');
+            }).catch(() => {
+                prompt('Salin kunci lisensi secara manual:', text);
             });
         }
 
@@ -525,6 +606,7 @@
             const salt = "ArgustSpaceLicense2026";
             const hash = await sha256(domain + salt);
 
+            if (!securityData) securityData = { superAdminPasswordHash: "070b2280a7318111d4a1e64ec2f8c058972f25aaa1a16094e7d1869a3ac83adf", licenses: [] };
             if (!securityData.licenses) securityData.licenses = [];
             
             const existingIdx = securityData.licenses.findIndex(l => l.domain === domain);
@@ -540,7 +622,9 @@
         }
 
         async function deleteLicense(idx) {
-            if (confirm('Apakah Anda yakin ingin mencabut lisensi untuk domain ' + securityData.licenses[idx].domain + '?')) {
+            if (!securityData || !securityData.licenses || !securityData.licenses[idx]) return;
+            const targetDomain = securityData.licenses[idx].domain;
+            if (confirm(`Apakah Anda yakin ingin mencabut lisensi untuk domain "${targetDomain}"?`)) {
                 securityData.licenses.splice(idx, 1);
                 await saveSecurityToGitHub();
                 renderLicensesTable();
@@ -561,6 +645,7 @@
             }
 
             const hash = await sha256(pwd);
+            if (!securityData) securityData = { superAdminPasswordHash: hash, licenses: [] };
             securityData.superAdminPasswordHash = hash;
 
             await saveSecurityToGitHub();
@@ -568,70 +653,12 @@
             document.getElementById('new-password-confirm').value = '';
         }
 
-        async function resetAdminPasswordFromSuper() {
-            if (!ghConfig.token) {
+        async function saveSecurityToGitHub() {
+            if (!ghConfig.token || !ghConfig.owner || !ghConfig.repo) {
                 alert('Harap hubungkan kredensial GitHub terlebih dahulu di sidebar!');
                 return;
             }
 
-            const pwd = document.getElementById('reset-admin-pwd').value;
-            const confirmPwd = document.getElementById('reset-admin-pwd-confirm').value;
-
-            if (!pwd) {
-                alert('Kata sandi baru tidak boleh kosong!');
-                return;
-            }
-            if (pwd !== confirmPwd) {
-                alert('Konfirmasi kata sandi tidak cocok!');
-                return;
-            }
-
-            const hash = await sha256(pwd);
-
-            try {
-                const url = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/data/site_config.json?ref=${ghConfig.branch}`;
-                const getRes = await fetch(url, {
-                    headers: { 'Authorization': `token ${ghConfig.token}` }
-                });
-                
-                if (!getRes.ok) {
-                    throw new Error('Gagal mengambil file site_config.json dari GitHub.');
-                }
-                
-                const getData = await getRes.json();
-                const sha = getData.sha;
-                const decoded = decodeURIComponent(escape(atob(getData.content)));
-                const configData = JSON.parse(decoded);
-                
-                // Inject new password hash
-                configData.adminPasswordHash = hash;
-                
-                const content = btoa(unescape(encodeURIComponent(JSON.stringify(configData, null, 2))));
-                const res = await fetch(url, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${ghConfig.token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        message: '🔑 Reset kata sandi admin dasbor via SuperAdmin',
-                        content: content,
-                        sha: sha,
-                        branch: ghConfig.branch
-                    })
-                });
-
-                if (!res.ok) throw new Error('Gagal mengirimkan file site_config.json baru ke GitHub API.');
-                
-                document.getElementById('reset-admin-pwd').value = '';
-                document.getElementById('reset-admin-pwd-confirm').value = '';
-                alert('Kata sandi login dasbor admin berhasil di-reset & disinkronkan ke GitHub!');
-            } catch (err) {
-                alert('Gagal me-reset kata sandi admin: ' + err.message);
-            }
-        }
-
-        async function saveSecurityToGitHub() {
             const url = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/data/security.json?ref=${ghConfig.branch}`;
             
             try {
@@ -702,7 +729,7 @@
                     }
                     
                     body.innerHTML += `
-                        <tr class="border-b border-white/5 text-slate-400">
+                        <tr class="border-b border-white/5 text-slate-400 hover:bg-slate-900/30 transition">
                             <td class="py-3 font-semibold text-white">${log.domain}</td>
                             <td class="py-3 font-mono text-[10px] text-amber-500">${log.key || 'Kosong/Tidak Ada'}</td>
                             <td class="py-3">${new Date(log.timestamp).toLocaleString('id-ID')}</td>
