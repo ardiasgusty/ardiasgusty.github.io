@@ -129,6 +129,10 @@
                                 <p class="text-[10px] text-gray-500 font-bold uppercase">Branch</p>
                                 <p class="font-mono text-white text-sm" id="info-repo-branch">-</p>
                             </div>
+                            <div>
+                                <p class="text-[10px] text-gray-500 font-bold uppercase">Path File Keamanan</p>
+                                <p class="font-mono text-white text-sm" id="info-repo-path-file">-</p>
+                            </div>
                         </div>
                         <div class="flex flex-col gap-2 pt-2">
                             <button onclick="loadSecurityDataFromGitHub()" class="w-full bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-400 font-bold text-xs py-2.5 rounded-xl transition border border-cyan-500/20 flex items-center justify-center gap-2">
@@ -143,7 +147,7 @@
                     <!-- DISCONNECTED / CONFIGURATION STATE -->
                     <div id="repo-setup-view" class="space-y-4 text-left">
                         <p class="text-[11px] text-gray-400 leading-relaxed">
-                            Hubungkan akun GitHub Anda untuk memuat & mengelola file <code class="text-cyan-400">data/security.json</code> di repositori website target.
+                            Hubungkan akun GitHub Anda untuk memuat & mengelola file konfigurasi lisensi di repositori website target.
                         </p>
                         <div class="space-y-1">
                             <label class="text-[10px] text-gray-400 font-bold uppercase block">Personal Access Token (PAT)</label>
@@ -160,6 +164,10 @@
                         <div class="space-y-1">
                             <label class="text-[10px] text-gray-400 font-bold uppercase block">Branch</label>
                             <input type="text" id="setup-gh-branch" class="w-full glass-input px-3 py-2.5 rounded-xl text-xs" value="main">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] text-gray-400 font-bold uppercase block">Path File Keamanan</label>
+                            <input type="text" id="setup-gh-path" class="w-full glass-input px-3 py-2.5 rounded-xl text-xs" value="data/security.json" placeholder="data/security.json">
                         </div>
                         <button onclick="connectGitHubOnDashboard()" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs py-3 rounded-xl transition duration-300 shadow-lg shadow-cyan-600/20 flex items-center justify-center gap-2">
                             <i class="fa-solid fa-plug"></i> Simpan & Hubungkan
@@ -297,7 +305,8 @@
             token: localStorage.getItem('super_gh_token') || '',
             owner: localStorage.getItem('super_gh_owner') || '',
             repo: localStorage.getItem('super_gh_repo') || '',
-            branch: localStorage.getItem('super_gh_branch') || 'main'
+            branch: localStorage.getItem('super_gh_branch') || 'main',
+            path: localStorage.getItem('super_gh_path') || 'data/security.json'
         };
         let securityData = null;
         let securitySha = '';
@@ -332,9 +341,9 @@
             // Default fallback hash (sha256 of "argustsuperadmin")
             let targetHash = "070b2280a7318111d4a1e64ec2f8c058972f25aaa1a16094e7d1869a3ac83adf";
 
-            // If GitHub is connected, try to fetch security.json directly from GitHub API
+            // If GitHub is connected, try to fetch security.json directly from GitHub API (cache-busted)
             if (ghConfig.token && ghConfig.owner && ghConfig.repo) {
-                const url = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/data/security.json?ref=${ghConfig.branch}`;
+                const url = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/${ghConfig.path}?ref=${ghConfig.branch}&t=${Date.now()}`;
                 try {
                     const res = await fetch(url, {
                         headers: { 
@@ -409,9 +418,11 @@
 
                 document.getElementById('info-repo-path').innerText = `${ghConfig.owner}/${ghConfig.repo}`;
                 document.getElementById('info-repo-branch').innerText = ghConfig.branch;
+                document.getElementById('info-repo-path-file').innerText = ghConfig.path;
 
-                generatorCard.classList.remove('opacity-50');
-                listCard.classList.remove('opacity-50');
+                // Enable cards and inputs
+                generatorCard.classList.remove('opacity-50', 'pointer-events-none');
+                listCard.classList.remove('opacity-50', 'pointer-events-none');
                 btnGenerate.disabled = false;
                 targetDomain.disabled = false;
 
@@ -430,26 +441,28 @@
                 document.getElementById('setup-gh-owner').value = ghConfig.owner || 'ardiasgusty';
                 document.getElementById('setup-gh-repo').value = ghConfig.repo || 'Website-Honda-Sales';
                 document.getElementById('setup-gh-branch').value = ghConfig.branch || 'main';
+                document.getElementById('setup-gh-path').value = ghConfig.path || 'data/security.json';
 
-                // Keep accessible but notify
-                generatorCard.classList.remove('opacity-50');
-                listCard.classList.remove('opacity-50');
-                btnGenerate.disabled = false;
-                targetDomain.disabled = false;
+                // Disable and visually fade cards when not connected
+                generatorCard.classList.add('opacity-50', 'pointer-events-none');
+                listCard.classList.add('opacity-50', 'pointer-events-none');
+                btnGenerate.disabled = true;
+                targetDomain.disabled = true;
 
-                // Render local fallback data
+                // Clear/Reset securityData and licenses table when disconnected
+                securityData = null;
                 renderLicensesTable();
             }
         }
 
-        // 3. Load security.json from GitHub
+        // 3. Load security.json from GitHub (cache-busted)
         async function loadSecurityDataFromGitHub() {
             if (!ghConfig.token || !ghConfig.owner || !ghConfig.repo) return;
 
             const loader = document.getElementById('license-list-loading');
             if (loader) loader.classList.remove('hidden');
 
-            const url = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/data/security.json?ref=${ghConfig.branch}`;
+            const url = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/${ghConfig.path}?ref=${ghConfig.branch}&t=${Date.now()}`;
             try {
                 const res = await fetch(url, {
                     headers: { 
@@ -464,11 +477,20 @@
                     securityData = JSON.parse(decoded);
                     renderLicensesTable();
                 } else if (res.status === 404) {
-                    // Create securityData template if it does not exist yet on repo
-                    securityData = {
-                        superAdminPasswordHash: "070b2280a7318111d4a1e64ec2f8c058972f25aaa1a16094e7d1869a3ac83adf",
-                        licenses: []
-                    };
+                    // Try to load from local security.json as starting template instead of blank
+                    try {
+                        const localRes = await fetch('data/security.json');
+                        if (localRes.ok) {
+                            securityData = await localRes.json();
+                        } else {
+                            throw new Error();
+                        }
+                    } catch (e) {
+                        securityData = {
+                            superAdminPasswordHash: "070b2280a7318111d4a1e64ec2f8c058972f25aaa1a16094e7d1869a3ac83adf",
+                            licenses: []
+                        };
+                    }
                     renderLicensesTable();
                 } else {
                     throw new Error(`HTTP ${res.status}: Gagal memuat data dari GitHub`);
@@ -485,13 +507,14 @@
             const owner = document.getElementById('setup-gh-owner').value.trim();
             const repo = document.getElementById('setup-gh-repo').value.trim();
             const branch = document.getElementById('setup-gh-branch').value.trim() || 'main';
+            const path = document.getElementById('setup-gh-path').value.trim() || 'data/security.json';
 
-            if (!token || !owner || !repo || !branch) {
+            if (!token || !owner || !repo || !branch || !path) {
                 alert('Harap isi semua kolom konfigurasi GitHub!');
                 return;
             }
 
-            const url = `https://api.github.com/repos/${owner}/${repo}/contents/data/security.json?ref=${branch}`;
+            const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`;
             
             try {
                 const res = await fetch(url, {
@@ -517,8 +540,9 @@
                 localStorage.setItem('super_gh_owner', owner);
                 localStorage.setItem('super_gh_repo', repo);
                 localStorage.setItem('super_gh_branch', branch);
+                localStorage.setItem('super_gh_path', path);
 
-                ghConfig = { token, owner, repo, branch };
+                ghConfig = { token, owner, repo, branch, path };
                 
                 alert('Koneksi repositori GitHub berhasil dikonfigurasi & terhubung!');
                 updateGitHubUI();
@@ -534,7 +558,8 @@
                 localStorage.removeItem('super_gh_owner');
                 localStorage.removeItem('super_gh_repo');
                 localStorage.removeItem('super_gh_branch');
-                ghConfig = { token: '', owner: '', repo: '', branch: 'main' };
+                localStorage.removeItem('super_gh_path');
+                ghConfig = { token: '', owner: '', repo: '', branch: 'main', path: 'data/security.json' };
                 securityData = null;
                 securitySha = '';
                 updateGitHubUI();
@@ -553,7 +578,9 @@
             body.innerHTML = '';
 
             if (!securityData || !securityData.licenses || securityData.licenses.length === 0) {
-                body.innerHTML = `<tr><td colspan="3" class="py-6 text-center text-gray-500">Belum ada domain terdaftar di repositori ini.</td></tr>`;
+                const isConnected = !!(ghConfig.token && ghConfig.owner && ghConfig.repo);
+                const msg = isConnected ? 'Belum ada domain terdaftar di repositori ini.' : 'Silakan hubungkan repositori GitHub Anda terlebih dahulu.';
+                body.innerHTML = `<tr><td colspan="3" class="py-6 text-center text-gray-500">${msg}</td></tr>`;
                 if (countBadge) countBadge.innerText = `0 Domain`;
                 return;
             }
@@ -659,10 +686,11 @@
                 return;
             }
 
-            const url = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/data/security.json?ref=${ghConfig.branch}`;
+            const url = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/${ghConfig.path}?ref=${ghConfig.branch}`;
+            const fetchUrl = `${url}&t=${Date.now()}`;
             
             try {
-                const getRes = await fetch(url, {
+                const getRes = await fetch(fetchUrl, {
                     headers: { 'Authorization': `token ${ghConfig.token}` }
                 });
                 if (getRes.ok) {
