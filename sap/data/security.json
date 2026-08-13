@@ -1,0 +1,17 @@
+{
+  "superAdminPasswordHash": "070b2280a7318111d4a1e64ec2f8c058972f25aaa1a16094e7d1869a3ac83adf",
+  "licenses": [
+    {
+      "domain": "gusti.honda-bintaro.com",
+      "key": "e2a5496d20ed43637d34fa66b6d14dd3b30d719085c09f9780cfd8014ac5257b"
+    },
+    {
+      "domain": "gusti.hondabintaro.com",
+      "key": "fe1506a60ba23cf1e33cdc9765700edbe70d7b1846880dd86fc59dfe76d0cecf"
+    },
+    {
+      "domain": "wafie.hondabintaro.com",
+      "key": "18695e2f721629a132ca5256bbb7ded2debbf10af5603eea1b9f1ce70404231c"
+    }
+  ]
+}
