@@ -661,6 +661,130 @@
                 transition: none !important
             }
         }
+
+        /* GitHub Sync Styles */
+        .sync-banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 14px 20px;
+            margin-top: -24px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            z-index: 5;
+            position: relative;
+            flex-wrap: wrap;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+        .sync-banner.offline {
+            border-left: 5px solid var(--muted);
+        }
+        .sync-banner.connected {
+            border-left: 5px solid var(--green);
+        }
+        .sync-banner.unsaved {
+            border-left: 5px solid var(--yellow);
+            background: rgba(255, 249, 230, 0.9);
+            box-shadow: 0 10px 30px rgba(201, 130, 0, 0.08);
+        }
+        .sync-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+        }
+        .sync-status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .sync-banner.offline .sync-status-dot { background: var(--muted); }
+        .sync-banner.connected .sync-status-dot { background: var(--green); }
+        .sync-banner.unsaved .sync-status-dot { 
+            background: var(--yellow); 
+            animation: pulse-dot 1.5s infinite alternate;
+        }
+        .sync-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .sync-btn {
+            border: 1px solid var(--line);
+            background: #fff;
+            color: var(--text);
+            padding: 9px 14px;
+            border-radius: 11px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+        .sync-btn:hover {
+            background: #fafbfc;
+            border-color: #cbd0d7;
+            transform: translateY(-1px);
+        }
+        .sync-btn.primary {
+            background: var(--red);
+            border-color: var(--red);
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(196, 0, 0, 0.15);
+        }
+        .sync-btn.primary:hover {
+            background: #b00000;
+            box-shadow: 0 4px 12px rgba(196, 0, 0, 0.25);
+        }
+        .sync-btn.pulse {
+            animation: pulse-btn 2.0s infinite;
+        }
+        .sync-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        .pat-input-wrapper {
+            position: relative;
+            display: flex;
+            gap: 8px;
+            width: 100%;
+        }
+        
+        @keyframes pulse-dot {
+            from { opacity: 0.4; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1.2); }
+        }
+        @keyframes pulse-btn {
+            0% { box-shadow: 0 0 0 0 rgba(196, 0, 0, 0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(196, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(196, 0, 0, 0); }
+        }
+
+        @media(max-width:620px) {
+            .sync-banner {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 14px;
+            }
+            .sync-actions {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+            .sync-actions button:last-child {
+                grid-column: 1 / -1;
+            }
+        }
     </style>
 </head>
 
@@ -683,6 +807,24 @@
     </header>
 
     <main class="wrap content">
+        <div class="sync-banner offline" id="syncBanner">
+            <div class="sync-info">
+                <span class="sync-status-dot"></span>
+                <span id="syncStatusText">Mengecek status sinkronisasi...</span>
+            </div>
+            <div class="sync-actions">
+                <button class="sync-btn" id="btnPull" onclick="pullFromGitHub()" title="Tarik data terbaru dari GitHub">
+                    📥 Tarik (Pull)
+                </button>
+                <button class="sync-btn primary" id="btnPush" onclick="pushToGitHub()" title="Simpan perubahan ke GitHub">
+                    📤 Simpan ke GitHub
+                </button>
+                <button class="sync-btn" onclick="openPatModal()" title="Pengaturan GitHub Token">
+                    🔑 Token PAT
+                </button>
+            </div>
+        </div>
+
         <section class="stats">
             <div class="stat">
                 <div class="icon">🌐</div>
@@ -767,16 +909,45 @@
             </div>
         </div>
     </div>
-    <div class="toast" id="toast"></div>
 
-    <script>
+    <div class="overlay" id="patModal">
+        <div class="modal">
+            <h2>Pengaturan GitHub Token</h2>
+            <p>Gunakan GitHub Personal Access Token (PAT) untuk menarik dan menyimpan data secara otomatis ke file <b>domain-hosting.json</b> di repositori <b>ardiasgusty.github.io</b>.</p>
+            <div class="notice">
+                Token disimpan lokal di browser Anda. Butuh token klasik dengan hak akses <b>repo</b> atau fine-grained token dengan hak akses write content ke repositori Anda.
+            </div>
+            <div class="form">
+                <div class="field full">
+                    <label>GITHUB PERSONAL ACCESS TOKEN (PAT)</label>
+                    <div class="pat-input-wrapper">
+                        <input type="password" id="patInput" placeholder="ghp_xxxxxxxxxxxx atau github_pat_xxxxx">
+                        <button type="button" class="btn light" id="btnTogglePat" onclick="togglePatVisibility()" style="padding: 11px;">👁️</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn light" onclick="closeModal('patModal')">Batal</button>
+                <button class="btn light" onclick="clearPat()" id="btnClearPat" style="color: var(--red);">Hapus Token</button>
+                <button class="btn primary" onclick="savePat()">Simpan & Hubungkan</button>
+            </div>
+        </div>
+    </div>
+
+    <d    <script>
         const KEY = 'domainHostingCenterData';
-        let data = JSON.parse(localStorage.getItem(KEY) || '[]');
+        const SERVER_KEY = 'domainHostingCenterServerData';
+        const SHA_KEY = 'domainHostingCenterSHA';
+        const PAT_KEY = 'domainHostingCenterPAT';
+
+        let data = [];
+        let hasLocalChanges = false;
 
         function today() { let d = new Date(); d.setHours(0, 0, 0, 0); return d }
         function date(s) { let [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d) }
         function days(a, b) { return Math.round((b - a) / 86400000) }
         function fmt(s) { return date(s).toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }) }
+        
         function state(x) {
             let n = days(today(), date(x.expDate));
             if (n < 0 && Math.abs(n) >= 60) return { key: 'renew', label: 'Wajib diperpanjang', days: n };
@@ -784,8 +955,37 @@
             if (n <= 30) return { key: 'soon', label: 'Reminder ≤ 30 hari', days: n };
             return { key: 'active', label: 'Aktif', days: n };
         }
+        
         function esc(s) { return String(s ?? '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m])) }
-        function persist() { localStorage.setItem(KEY, JSON.stringify(data)); document.getElementById('updated').textContent = 'Terakhir disimpan: ' + new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) }
+        
+        function getPat() {
+            return localStorage.getItem(PAT_KEY) || '';
+        }
+
+        function checkLocalChanges() {
+            const serverDataStr = localStorage.getItem(SERVER_KEY) || '[]';
+            const localDataStr = JSON.stringify(data);
+            
+            // Normalize JSON spacing to make robust comparison
+            let isDiff = false;
+            try {
+                const sObj = JSON.parse(serverDataStr);
+                const lObj = JSON.parse(localDataStr);
+                isDiff = JSON.stringify(sObj) !== JSON.stringify(lObj);
+            } catch (e) {
+                isDiff = serverDataStr !== localDataStr;
+            }
+            
+            hasLocalChanges = isDiff;
+            checkSyncState();
+        }
+
+        function persist() { 
+            localStorage.setItem(KEY, JSON.stringify(data)); 
+            document.getElementById('updated').textContent = 'Terakhir disimpan: ' + new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+            checkLocalChanges();
+        }
+
         function render() {
             const q = document.getElementById('search').value.toLowerCase(), f = document.getElementById('filter').value;
             const states = data.map(state);
@@ -793,9 +993,19 @@
             document.getElementById('active').textContent = states.filter(s => s.key === 'active').length;
             document.getElementById('soon').textContent = states.filter(s => s.key === 'soon').length;
             document.getElementById('renew').textContent = states.filter(s => s.key === 'renew').length;
-            let arr = data.filter(x => { let s = state(x); let hit = (x.domain + ' ' + x.provider + ' ' + (x.note || '')).toLowerCase().includes(q); return hit && (f === 'all' || s.key === f) }).sort((a, b) => date(a.expDate) - date(b.expDate));
+            
+            let arr = data.filter(x => { 
+                let s = state(x); 
+                let hit = (x.domain + ' ' + x.provider + ' ' + (x.note || '')).toLowerCase().includes(q); 
+                return hit && (f === 'all' || s.key === f); 
+            }).sort((a, b) => date(a.expDate) - date(b.expDate));
+            
             let box = document.getElementById('cards');
-            if (!arr.length) { box.className = ''; box.innerHTML = '<div class="empty">✨ Belum ada layanan yang sesuai.<br>Tambahkan domain/hosting atau ubah filter.</div>'; return }
+            if (!arr.length) { 
+                box.className = ''; 
+                box.innerHTML = '<div class="empty">✨ Belum ada layanan yang sesuai.<br>Tambahkan domain/hosting atau ubah filter.</div>'; 
+                return; 
+            }
             box.className = 'grid';
             box.innerHTML = arr.map((x, i) => {
                 let s = state(x), total = Math.max(1, days(date(x.startDate), date(x.expDate))), remain = Math.max(0, s.days), p = s.key === 'renew' ? 100 : Math.max(2, Math.min(100, 100 - (remain / total * 100)));
@@ -806,33 +1016,426 @@
     <div class="progress"><i style="--p:${p}%"></i></div>
     <div class="count">${countdown}</div><div class="note">${esc(x.note) || 'Tidak ada catatan.'}</div>
     <div class="actions">${x.loginUrl ? `<a class="btn primary" href="${esc(x.loginUrl)}" target="_blank" rel="noopener">Login & Bayar</a>` : ''}<button class="btn light" onclick="editItem('${esc(x.id)}')">Edit</button><button class="btn light" onclick="deleteItem('${esc(x.id)}')">Hapus</button></div>
-   </article>`
+    </article>`
             }).join('');
         }
+
         function openItem(x = null) {
-            document.getElementById('itemModal').style.display = 'flex'; document.getElementById('itemTitle').textContent = x ? 'Edit layanan' : 'Tambah layanan';
-            document.getElementById('itemId').value = x?.id || ''; document.getElementById('domain').value = x?.domain || ''; document.getElementById('provider').value = x?.provider || '';
-            document.getElementById('loginUrl').value = x?.loginUrl || ''; document.getElementById('startDate').value = x?.startDate || ''; document.getElementById('expDate').value = x?.expDate || ''; document.getElementById('note').value = x?.note || '';
+            document.getElementById('itemModal').style.display = 'flex'; 
+            document.getElementById('itemTitle').textContent = x ? 'Edit layanan' : 'Tambah layanan';
+            document.getElementById('itemId').value = x?.id || ''; 
+            document.getElementById('domain').value = x?.domain || ''; 
+            document.getElementById('provider').value = x?.provider || '';
+            document.getElementById('loginUrl').value = x?.loginUrl || ''; 
+            document.getElementById('startDate').value = x?.startDate || ''; 
+            document.getElementById('expDate').value = x?.expDate || ''; 
+            document.getElementById('note').value = x?.note || '';
         }
+
         function closeModal(id) { document.getElementById(id).style.display = 'none' }
+        
         function editItem(id) { let x = data.find(v => v.id === id); if (x) openItem(x) }
-        function deleteItem(id) { let x = data.find(v => v.id === id); if (x && confirm('Hapus ' + x.domain + ' dari daftar?')) { data = data.filter(v => v.id !== id); persist(); render(); toast('Data dihapus') } }
+        
+        function deleteItem(id) { 
+            let x = data.find(v => v.id === id); 
+            if (x && confirm('Hapus ' + x.domain + ' dari daftar?')) { 
+                data = data.filter(v => v.id !== id); 
+                persist(); 
+                render(); 
+                toast('Data dihapus'); 
+            } 
+        }
+
         document.getElementById('itemForm').addEventListener('submit', e => {
             e.preventDefault();
             let id = document.getElementById('itemId').value || crypto.randomUUID();
-            let x = { id, domain: domain.value.trim(), provider: provider.value.trim(), loginUrl: loginUrl.value.trim(), startDate: startDate.value, expDate: expDate.value, note: note.value.trim() };
+            let x = { 
+                id, 
+                domain: document.getElementById('domain').value.trim(), 
+                provider: document.getElementById('provider').value.trim(), 
+                loginUrl: document.getElementById('loginUrl').value.trim(), 
+                startDate: document.getElementById('startDate').value, 
+                expDate: document.getElementById('expDate').value, 
+                note: document.getElementById('note').value.trim() 
+            };
             if (date(x.expDate) < date(x.startDate)) { alert('Tanggal expired tidak boleh sebelum tanggal daftar.'); return }
-            let i = data.findIndex(v => v.id === id); i >= 0 ? data[i] = x : data.push(x); persist(); closeModal('itemModal'); e.target.reset(); render(); toast('Data berhasil disimpan');
+            let i = data.findIndex(v => v.id === id); 
+            i >= 0 ? data[i] = x : data.push(x); 
+            persist(); 
+            closeModal('itemModal'); 
+            e.target.reset(); 
+            render(); 
+            toast('Data berhasil disimpan');
         });
-        function openJSON() { document.getElementById('jsonBox').value = JSON.stringify(data, null, 2); document.getElementById('jsonModal').style.display = 'flex' }
-        function formatJSON() { try { let x = JSON.parse(document.getElementById('jsonBox').value); document.getElementById('jsonBox').value = JSON.stringify(x, null, 2) } catch (e) { alert('JSON tidak valid: ' + e.message) } }
-        function applyJSON() { try { let x = JSON.parse(document.getElementById('jsonBox').value); if (!Array.isArray(x)) throw Error('Data utama harus berupa array [].'); data = x; persist(); render(); closeModal('jsonModal'); toast('JSON berhasil diterapkan') } catch (e) { alert('JSON tidak valid: ' + e.message) } }
-        function downloadText(name, text, type = 'application/json') { let a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; a.click(); URL.revokeObjectURL(a.href) }
-        function downloadCurrentJSON() { try { let x = JSON.parse(document.getElementById('jsonBox').value); downloadText('domain-hosting.json', JSON.stringify(x, null, 2)); toast('File JSON disimpan') } catch (e) { alert('Periksa JSON terlebih dahulu.') } }
-        function exportJSON() { downloadText('domain-hosting.json', JSON.stringify(data, null, 2)); toast('File JSON disimpan') }
-        function toast(t) { let x = document.getElementById('toast'); x.textContent = t; x.style.display = 'block'; clearTimeout(window._toast); window._toast = setTimeout(() => x.style.display = 'none', 2200) }
-        document.getElementById('search').addEventListener('input', render); document.getElementById('filter').addEventListener('change', render);
-        render();
+
+        function openJSON() { 
+            document.getElementById('jsonBox').value = JSON.stringify(data, null, 2); 
+            document.getElementById('jsonModal').style.display = 'flex'; 
+        }
+        
+        function formatJSON() { 
+            try { 
+                let x = JSON.parse(document.getElementById('jsonBox').value); 
+                document.getElementById('jsonBox').value = JSON.stringify(x, null, 2); 
+            } catch (e) { 
+                alert('JSON tidak valid: ' + e.message); 
+            } 
+        }
+        
+        function applyJSON() { 
+            try { 
+                let x = JSON.parse(document.getElementById('jsonBox').value); 
+                if (!Array.isArray(x)) throw Error('Data utama harus berupa array [].'); 
+                data = x; 
+                persist(); 
+                render(); 
+                closeModal('jsonModal'); 
+                toast('JSON berhasil diterapkan'); 
+            } catch (e) { 
+                alert('JSON tidak valid: ' + e.message); 
+            } 
+        }
+        
+        function downloadText(name, text, type = 'application/json') { 
+            let a = document.createElement('a'); 
+            a.href = URL.createObjectURL(new Blob([text], { type })); 
+            a.download = name; 
+            a.click(); 
+            URL.revokeObjectURL(a.href); 
+        }
+        
+        function downloadCurrentJSON() { 
+            try { 
+                let x = JSON.parse(document.getElementById('jsonBox').value); 
+                downloadText('domain-hosting.json', JSON.stringify(x, null, 2)); 
+                toast('File JSON disimpan'); 
+            } catch (e) { 
+                alert('Periksa JSON terlebih dahulu.'); 
+            } 
+        }
+        
+        function exportJSON() { 
+            downloadText('domain-hosting.json', JSON.stringify(data, null, 2)); 
+            toast('File JSON disimpan'); 
+        }
+        
+        function toast(t) { 
+            let x = document.getElementById('toast'); 
+            x.innerHTML = t; 
+            x.style.display = 'block'; 
+            clearTimeout(window._toast); 
+            window._toast = setTimeout(() => x.style.display = 'none', 2800); 
+        }
+
+        // GitHub PAT Sync Logic
+        function checkSyncState() {
+            const pat = getPat();
+            const banner = document.getElementById('syncBanner');
+            const statusText = document.getElementById('syncStatusText');
+            const btnPull = document.getElementById('btnPull');
+            const btnPush = document.getElementById('btnPush');
+
+            if (!pat) {
+                banner.className = 'sync-banner offline';
+                statusText.innerHTML = '🔴 <b>Mode Offline (Lokal)</b>. Hubungkan GitHub PAT untuk menyimpan langsung ke awan.';
+                btnPull.disabled = true;
+                btnPush.disabled = true;
+                btnPush.classList.remove('pulse');
+            } else {
+                if (hasLocalChanges) {
+                    banner.className = 'sync-banner unsaved';
+                    statusText.innerHTML = '🟡 <b>Ada perubahan lokal</b> yang belum disimpan ke GitHub.';
+                    btnPull.disabled = false;
+                    btnPush.disabled = false;
+                    btnPush.classList.add('pulse');
+                } else {
+                    banner.className = 'sync-banner connected';
+                    statusText.innerHTML = '🟢 <b>Terhubung ke GitHub</b>. Data sinkron dengan repositori.';
+                    btnPull.disabled = false;
+                    btnPush.disabled = false;
+                    btnPush.classList.remove('pulse');
+                }
+            }
+        }
+
+        async function initData() {
+            document.getElementById('syncStatusText').textContent = '🔄 Memuat data...';
+            
+            // 1. Fetch local file baseline
+            let localBaseline = [];
+            try {
+                const res = await fetch('./data/domain-hosting.json');
+                if (res.ok) {
+                    localBaseline = await res.json();
+                }
+            } catch (err) {
+                console.warn('Gagal memuat domain-hosting.json lokal:', err);
+            }
+
+            // 2. Check localStorage for cached local edits
+            const localStored = localStorage.getItem(KEY);
+            if (localStored) {
+                try {
+                    data = JSON.parse(localStored);
+                } catch(e) {
+                    data = localBaseline;
+                }
+            } else {
+                data = localBaseline;
+                localStorage.setItem(KEY, JSON.stringify(data));
+            }
+
+            // Establish local server baseline in cache if not exists
+            if (!localStorage.getItem(SERVER_KEY)) {
+                localStorage.setItem(SERVER_KEY, JSON.stringify(localBaseline));
+            }
+
+            render();
+            checkSyncState();
+
+            // 3. If PAT is configured, auto pull/verify
+            if (getPat()) {
+                await pullFromGitHub(false);
+            } else {
+                checkLocalChanges();
+            }
+        }
+
+        async function pullFromGitHub(interactive = true) {
+            const pat = getPat();
+            if (!pat) {
+                if (interactive) alert('GitHub Token belum diatur. Silakan masukkan token terlebih dahulu.');
+                return;
+            }
+
+            if (interactive) {
+                toast('🔄 Menarik data terbaru dari GitHub...');
+            } else {
+                document.getElementById('syncStatusText').innerHTML = '🔄 Menarik data terbaru dari GitHub...';
+            }
+
+            try {
+                const url = 'https://api.github.com/repos/ardiasgusty/ardiasgusty.github.io/contents/domain/data/domain-hosting.json';
+                const response = await fetch(url, {
+                    headers: {
+                        'Authorization': `token ${pat}`,
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Cache-Control': 'no-cache'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+                }
+
+                const fileInfo = await response.json();
+                // Handle base64 decoding correctly for UTF-8
+                const remoteContent = decodeURIComponent(escape(atob(fileInfo.content.replace(/\s/g, ''))));
+                const remoteData = JSON.parse(remoteContent);
+                const remoteSHA = fileInfo.sha;
+
+                localStorage.setItem(SHA_KEY, remoteSHA);
+                localStorage.setItem(SERVER_KEY, remoteContent);
+
+                const currentLocalStr = localStorage.getItem(KEY) || '[]';
+                
+                // Compare normalized strings
+                let isSame = false;
+                try {
+                    isSame = JSON.stringify(JSON.parse(currentLocalStr)) === JSON.stringify(remoteData);
+                } catch (e) {
+                    isSame = currentLocalStr === remoteContent;
+                }
+
+                if (!isSame) {
+                    if (hasLocalChanges) {
+                        if (interactive) {
+                            if (!confirm('Ditemukan perbedaan! Anda memiliki perubahan lokal yang belum di-push ke GitHub.\n\nMenarik data dari GitHub akan MENIMPA perubahan lokal Anda. Lanjutkan?')) {
+                                toast('⚠️ Penarikan dibatalkan. Mempertahankan perubahan lokal.');
+                                return;
+                            }
+                        } else {
+                            // On load auto-pull: if there are unsaved local changes, do not overwrite silently!
+                            // Just tell the user there is a conflict/unsaved data.
+                            document.getElementById('syncStatusText').innerHTML = '🟡 <b>Ada draf lokal</b> yang berbeda dengan GitHub.';
+                            hasLocalChanges = true;
+                            checkSyncState();
+                            return;
+                        }
+                    }
+                    
+                    data = remoteData;
+                    localStorage.setItem(KEY, remoteContent);
+                    render();
+                    if (interactive) toast('✅ Data berhasil diperbarui dari GitHub!');
+                } else {
+                    if (interactive) toast('✅ Data sudah sinkron dengan GitHub.');
+                }
+
+                hasLocalChanges = false;
+                checkSyncState();
+            } catch (err) {
+                console.error(err);
+                if (interactive) {
+                    alert('Gagal menarik data dari GitHub: ' + err.message);
+                } else {
+                    document.getElementById('syncStatusText').innerHTML = '❌ Gagal sinkronisasi dengan GitHub.';
+                }
+            }
+        }
+
+        async function pushToGitHub() {
+            const pat = getPat();
+            if (!pat) {
+                alert('GitHub Token belum diatur. Silakan masukkan token terlebih dahulu.');
+                return;
+            }
+
+            const btnPush = document.getElementById('btnPush');
+            const originalText = btnPush.innerHTML;
+            btnPush.disabled = true;
+            btnPush.innerHTML = '🔄 Menyimpan...';
+            toast('🔄 Menghubungkan ke GitHub...');
+
+            try {
+                const url = 'https://api.github.com/repos/ardiasgusty/ardiasgusty.github.io/contents/domain/data/domain-hosting.json';
+                
+                // Get current latest SHA directly from API to avoid conflict (409)
+                let currentSHA = localStorage.getItem(SHA_KEY) || '';
+                try {
+                    const getRes = await fetch(url, {
+                        headers: {
+                            'Authorization': `token ${pat}`,
+                            'Accept': 'application/vnd.github.v3+json',
+                            'Cache-Control': 'no-cache'
+                        }
+                    });
+                    if (getRes.ok) {
+                        const getInfo = await getRes.json();
+                        currentSHA = getInfo.sha;
+                        localStorage.setItem(SHA_KEY, currentSHA);
+                    }
+                } catch (e) {
+                    console.warn('Gagal mendapatkan SHA terbaru, menggunakan SHA lokal:', e);
+                }
+
+                const contentStr = JSON.stringify(data, null, 4);
+                // Correct base64 encoding for UTF-8 characters
+                const base64Content = btoa(unescape(encodeURIComponent(contentStr)));
+
+                const putRes = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${pat}`,
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: 'Update domain-hosting.json via Domain Manager UI',
+                        content: base64Content,
+                        sha: currentSHA,
+                        branch: 'main'
+                    })
+                });
+
+                if (!putRes.ok) {
+                    const errData = await putRes.json();
+                    throw new Error(errData.message || `HTTP ${putRes.status}`);
+                }
+
+                const putResult = await putRes.json();
+                
+                localStorage.setItem(SHA_KEY, putResult.content.sha);
+                localStorage.setItem(SERVER_KEY, contentStr);
+                localStorage.setItem(KEY, contentStr);
+
+                hasLocalChanges = false;
+                checkSyncState();
+                toast('✅ Berhasil disimpan ke GitHub!');
+            } catch (err) {
+                console.error(err);
+                alert('Gagal menyimpan ke GitHub: ' + err.message);
+            } finally {
+                btnPush.disabled = false;
+                btnPush.innerHTML = originalText;
+            }
+        }
+
+        // Token PAT Modal UI
+        function openPatModal() {
+            document.getElementById('patModal').style.display = 'flex';
+            document.getElementById('patInput').value = getPat();
+            toggleClearPatBtn();
+        }
+
+        function togglePatVisibility() {
+            const input = document.getElementById('patInput');
+            const btn = document.getElementById('btnTogglePat');
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.textContent = '🙈';
+            } else {
+                input.type = 'password';
+                btn.textContent = '👁️';
+            }
+        }
+
+        function toggleClearPatBtn() {
+            const btnClear = document.getElementById('btnClearPat');
+            if (getPat()) {
+                btnClear.style.display = 'inline-block';
+            } else {
+                btnClear.style.display = 'none';
+            }
+        }
+
+        async function savePat() {
+            const token = document.getElementById('patInput').value.trim();
+            if (!token) {
+                alert('Token tidak boleh kosong.');
+                return;
+            }
+
+            toast('🔄 Memverifikasi token...');
+            try {
+                // Verify by checking the API user endpoint
+                const res = await fetch('https://api.github.com/user', {
+                    headers: {
+                        'Authorization': `token ${token}`
+                    }
+                });
+                
+                if (!res.ok) {
+                    throw new Error('Token tidak valid atau tidak memiliki cakupan/scope yang sesuai.');
+                }
+                
+                localStorage.setItem(PAT_KEY, token);
+                closeModal('patModal');
+                toast('✅ Token terhubung dan disimpan!');
+                
+                // Pull latest data
+                await pullFromGitHub(true);
+            } catch (err) {
+                alert('Gagal memverifikasi token: ' + err.message + '\n\nPastikan token benar, aktif, dan komputer terhubung ke internet.');
+            }
+        }
+
+        function clearPat() {
+            if (confirm('Hapus token GitHub dari browser ini? Halaman akan kembali ke Mode Offline.')) {
+                localStorage.removeItem(PAT_KEY);
+                localStorage.removeItem(SHA_KEY);
+                localStorage.removeItem(SERVER_KEY);
+                closeModal('patModal');
+                toast('🗑️ Token dihapus.');
+                checkSyncState();
+            }
+        }
+
+        document.getElementById('search').addEventListener('input', render); 
+        document.getElementById('filter').addEventListener('change', render);
+        
+        // Initial setup
+        initData();
     </script>
 </body>
 
