@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="theme-color" content="#b40000">
+    <title>Domain & Hosting Center</title>
+    <style>
+        :root {
+            --red: #c40000;
+            --red2: #ff3b30;
+            --dark: #17191d;
+            --text: #20242b;
+            --muted: #707782;
+            --bg: #f3f5f8;
+            --card: #fff;
+            --line: #e6e9ee;
+            --green: #159447;
+            --yellow: #c98200;
+            --shadow: 0 14px 40px rgba(23, 25, 29, .08);
+            --radius: 20px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit
+        }
+
+        button,
+        a {
+            tap-highlight-color: transparent
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        .top {
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            background: linear-gradient(135deg, #710000 0%, #c40000 48%, #f13b2f 100%);
+            padding: 34px 18px 78px
+        }
+
+        .top:before,
+        .top:after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: #fff;
+            opacity: .07;
+            animation: float 9s ease-in-out infinite
+        }
+
+        .top:before {
+            width: 310px;
+            height: 310px;
+            right: -80px;
+            top: -130px
+        }
+
+        .top:after {
+            width: 180px;
+            height: 180px;
+            left: -70px;
+            bottom: -100px;
+            animation-delay: -3s
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto;
+            position: relative;
+            z-index: 1
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px
+        }
+
+        .brand {
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: -.3px
+        }
+
+        .brand span {
+            opacity: .7;
+            font-weight: 600
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 8px
+        }
+
+        .nav-btn {
+            border: 1px solid #ffffff42;
+            background: #ffffff16;
+            color: #fff;
+            padding: 9px 12px;
+            border-radius: 11px;
+            cursor: pointer
+        }
+
+        .hero {
+            padding-top: 36px
+        }
+
+        .hero h1 {
+            font-size: clamp(30px, 5vw, 48px);
+            line-height: 1.03;
+            margin: 0 0 10px;
+            letter-spacing: -1.8px
+        }
+
+        .hero p {
+            margin: 0;
+            max-width: 650px;
+            color: #ffe7e5;
+            line-height: 1.6
+        }
+
+        .content {
+            margin-top: -44px;
+            padding-bottom: 50px
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px
+        }
+
+        .stat {
+            background: var(--card);
+            border: 1px solid #fff;
+            border-radius: 18px;
+            padding: 17px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden
+        }
+
+        .stat:after {
+            content: "";
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            right: -25px;
+            top: -25px;
+            background: #f5f6f8
+        }
+
+        .stat .icon {
+            font-size: 19px
+        }
+
+        .num {
+            font-size: 29px;
+            font-weight: 900;
+            margin-top: 7px
+        }
+
+        .label {
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: 700
+        }
+
+        .panel {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-top: 18px;
+            padding: 18px
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap
+        }
+
+        .search {
+            flex: 1;
+            min-width: 190px
+        }
+
+        input,
+        select,
+        textarea {
+            border: 1px solid var(--line);
+            background: #fafbfc;
+            color: var(--text);
+            border-radius: 12px;
+            padding: 11px 13px;
+            outline: none
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #d45a5a;
+            box-shadow: 0 0 0 3px #c4000012
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 12px;
+            padding: 11px 14px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: .2s transform, .2s box-shadow
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .primary {
+            background: var(--red);
+            color: #fff;
+            box-shadow: 0 7px 18px #c4000030
+        }
+
+        .light {
+            background: #fff;
+            border: 1px solid var(--line);
+            color: var(--text)
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 16px
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 17px;
+            position: relative;
+            overflow: hidden;
+            animation: rise .45s ease both;
+            box-shadow: 0 8px 25px rgba(23, 25, 29, .05);
+            transition: .22s
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow)
+        }
+
+        .card:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #cbd0d7
+        }
+
+        .card.active:before {
+            background: var(--green)
+        }
+
+        .card.soon:before {
+            background: #e4a100
+        }
+
+        .card.renew:before {
+            background: var(--red)
+        }
+
+        .card-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px
+        }
+
+        .domain {
+            font-weight: 900;
+            font-size: 18px;
+            word-break: break-word
+        }
+
+        .provider {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 4px
+        }
+
+        .badge {
+            font-size: 10px;
+            font-weight: 900;
+            border-radius: 999px;
+            padding: 6px 9px;
+            white-space: nowrap;
+            height: max-content
+        }
+
+        .badge.active {
+            background: #e8f8ef;
+            color: var(--green)
+        }
+
+        .badge.soon {
+            background: #fff5d9;
+            color: #a56a00
+        }
+
+        .badge.expired {
+            background: #f0f2f4;
+            color: #68707b
+        }
+
+        .badge.renew {
+            background: #ffe9e8;
+            color: var(--red)
+        }
+
+        .dates {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 9px;
+            margin-top: 15px
+        }
+
+        .date {
+            background: #f7f8fa;
+            border-radius: 12px;
+            padding: 10px
+        }
+
+        .date small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            margin-bottom: 3px
+        }
+
+        .date b {
+            font-size: 12px
+        }
+
+        .progress {
+            height: 6px;
+            background: #edf0f3;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 13px
+        }
+
+        .progress i {
+            display: block;
+            height: 100%;
+            width: var(--p);
+            background: linear-gradient(90deg, var(--red), #ff7167);
+            border-radius: 20px
+        }
+
+        .count {
+            font-weight: 900;
+            font-size: 13px;
+            margin-top: 11px
+        }
+
+        .note {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.5;
+            margin-top: 7px;
+            min-height: 18px
+        }
+
+        .actions {
+            display: flex;
+            gap: 7px;
+            margin-top: 14px
+        }
+
+        .actions .btn {
+            flex: 1;
+            padding: 9px 7px;
+            font-size: 11px;
+            text-align: center
+        }
+
+        .empty {
+            text-align: center;
+            padding: 55px 15px;
+            color: var(--muted);
+            border: 1px dashed #cfd4db;
+            border-radius: 18px;
+            margin-top: 16px;
+            background: #fff
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px
+        }
+
+        .section-title h2 {
+            font-size: 17px;
+            margin: 0
+        }
+
+        .section-title span {
+            font-size: 11px;
+            color: var(--muted)
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: #101216b8;
+            backdrop-filter: blur(5px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            z-index: 20
+        }
+
+        .modal {
+            width: min(700px, 100%);
+            max-height: 92vh;
+            overflow: auto;
+            background: #fff;
+            border-radius: 22px;
+            padding: 22px;
+            box-shadow: 0 30px 80px #0005
+        }
+
+        .modal h2 {
+            margin: 0 0 4px
+        }
+
+        .modal p {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: 12px
+        }
+
+        .form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px
+        }
+
+        .full {
+            grid-column: 1/-1
+        }
+
+        .field label {
+            display: block;
+            font-size: 11px;
+            font-weight: 900;
+            margin-bottom: 6px
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-top: 18px
+        }
+
+        .jsonbox {
+            width: 100%;
+            min-height: 390px;
+            resize: vertical;
+            font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+            font-size: 12px;
+            line-height: 1.5
+        }
+
+        .notice {
+            background: #fff7e0;
+            border: 1px solid #f0d890;
+            color: #775300;
+            border-radius: 12px;
+            padding: 11px;
+            font-size: 11px;
+            line-height: 1.5;
+            margin-bottom: 12px
+        }
+
+        .toast {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            background: #181a1e;
+            color: #fff;
+            padding: 12px 15px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            display: none;
+            z-index: 30;
+            font-size: 12px
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 11px;
+            padding: 25px 0
+        }
+
+        @keyframes float {
+            50% {
+                transform: translateY(22px) translateX(12px)
+            }
+        }
+
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(10px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        @media(max-width:900px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media(max-width:620px) {
+            .wrap {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .top {
+                padding: 24px 10px 70px
+            }
+
+            .nav-btn {
+                font-size: 11px;
+                padding: 8px
+            }
+
+            .hero {
+                padding-top: 28px
+            }
+
+            .hero h1 {
+                letter-spacing: -1px
+            }
+
+            .stats {
+                gap: 9px
+            }
+
+            .stat {
+                padding: 13px
+            }
+
+            .num {
+                font-size: 24px
+            }
+
+            .panel {
+                padding: 12px;
+                border-radius: 16px
+            }
+
+            .toolbar {
+                display: grid;
+                grid-template-columns: 1fr 1fr
+            }
+
+            .search {
+                grid-column: 1/-1;
+                width: 100%
+            }
+
+            .toolbar .primary {
+                grid-column: 1/-1
+            }
+
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            .form {
+                grid-template-columns: 1fr
+            }
+
+            .full {
+                grid-column: auto
+            }
+
+            .modal {
+                padding: 18px;
+                border-radius: 18px
+            }
+
+            .modal-actions {
+                position: sticky;
+                bottom: 0;
+                background: #fff;
+                padding-top: 10px
+            }
+
+            .nav-actions .nav-btn:first-child {
+                display: none
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            * {
+                animation: none !important;
+                transition: none !important
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top">
+        <div class="wrap">
+            <nav class="nav">
+                <div class="brand">DOMAIN <span>&</span> HOSTING CENTER</div>
+                <div class="nav-actions">
+                    <button class="nav-btn" onclick="openJSON()">JSON Editor</button>
+                    <button class="nav-btn" onclick="exportJSON()">Export JSON</button>
+                </div>
+            </nav>
+            <div class="hero">
+                <h1>Semua domain & hosting,<br>terpantau dalam satu tempat.</h1>
+                <p>Pantau tanggal daftar, expired, status perpanjangan, serta langsung menuju provider tempat kamu
+                    melakukan pembayaran.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrap content">
+        <section class="stats">
+            <div class="stat">
+                <div class="icon">🌐</div>
+                <div class="num" id="total">0</div>
+                <div class="label">Total layanan</div>
+            </div>
+            <div class="stat">
+                <div class="icon">🟢</div>
+                <div class="num" id="active">0</div>
+                <div class="label">Masih aktif</div>
+            </div>
+            <div class="stat">
+                <div class="icon">⏰</div>
+                <div class="num" id="soon">0</div>
+                <div class="label">Reminder ≤ 30 hari</div>
+            </div>
+            <div class="stat">
+                <div class="icon">🔴</div>
+                <div class="num" id="renew">0</div>
+                <div class="label">Wajib diperpanjang</div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="section-title">
+                <h2>Daftar Layanan</h2><span id="updated">Data lokal</span>
+            </div>
+            <div class="toolbar">
+                <input class="search" id="search" placeholder="🔎  Cari domain, provider, atau catatan...">
+                <select id="filter">
+                    <option value="all">Semua status</option>
+                    <option value="active">Aktif</option>
+                    <option value="soon">≤ 30 hari</option>
+                    <option value="expired">Expired</option>
+                    <option value="renew">≥ 60 hari expired</option>
+                </select>
+                <button class="btn primary" onclick="openItem()">＋ Tambah layanan</button>
+            </div>
+            <div id="cards" class="grid"></div>
+        </section>
+        <div class="footer">Domain & Hosting Center • Data tersimpan di browser dan dapat disimpan sebagai JSON.</div>
+    </main>
+
+    <div class="overlay" id="itemModal">
+        <div class="modal">
+            <h2 id="itemTitle">Tambah layanan</h2>
+            <p>Masukkan informasi domain/hosting agar reminder dapat dihitung otomatis.</p>
+            <form id="itemForm">
+                <input type="hidden" id="itemId">
+                <div class="form">
+                    <div class="field full"><label>DOMAIN</label><input id="domain" required placeholder="contoh.com">
+                    </div>
+                    <div class="field"><label>PROVIDER / HOSTING</label><input id="provider" required
+                            placeholder="Rumahweb"></div>
+                    <div class="field"><label>URL LOGIN / PEMBAYARAN</label><input id="loginUrl" type="url"
+                            placeholder="https://..."></div>
+                    <div class="field"><label>TANGGAL DAFTAR</label><input id="startDate" type="date" required></div>
+                    <div class="field"><label>TANGGAL EXPIRED</label><input id="expDate" type="date" required></div>
+                    <div class="field full"><label>CATATAN</label><textarea id="note" rows="3"
+                            placeholder="Dipakai untuk website promo Honda Bintaro..."></textarea></div>
+                </div>
+                <div class="modal-actions"><button type="button" class="btn light"
+                        onclick="closeModal('itemModal')">Batal</button><button class="btn primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="overlay" id="jsonModal">
+        <div class="modal">
+            <h2>JSON Editor</h2>
+            <p>File JSON menjadi sumber data. Setelah mengedit, klik <b>Terapkan JSON</b>. Kamu juga dapat menyimpannya
+                sebagai file .json.</p>
+            <div class="notice">Format yang digunakan adalah array objek: <b>id, domain, provider, loginUrl, startDate,
+                    expDate, note</b>. Tanggal gunakan format YYYY-MM-DD.</div>
+            <textarea id="jsonBox" class="jsonbox" spellcheck="false"></textarea>
+            <div class="modal-actions">
+                <button class="btn light" onclick="closeModal('jsonModal')">Tutup</button>
+                <button class="btn light" onclick="formatJSON()">Format</button>
+                <button class="btn light" onclick="downloadCurrentJSON()">Simpan JSON</button>
+                <button class="btn primary" onclick="applyJSON()">Terapkan JSON</button>
+            </div>
+        </div>
+    </div>
+    <div class="toast" id="toast"></div>
+
+    <script>
+        const KEY = 'domainHostingCenterData';
+        let data = JSON.parse(localStorage.getItem(KEY) || '[]');
+
+        function today() { let d = new Date(); d.setHours(0, 0, 0, 0); return d }
+        function date(s) { let [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d) }
+        function days(a, b) { return Math.round((b - a) / 86400000) }
+        function fmt(s) { return date(s).toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }) }
+        function state(x) {
+            let n = days(today(), date(x.expDate));
+            if (n < 0 && Math.abs(n) >= 60) return { key: 'renew', label: 'Wajib diperpanjang', days: n };
+            if (n < 0) return { key: 'expired', label: 'Expired', days: n };
+            if (n <= 30) return { key: 'soon', label: 'Reminder ≤ 30 hari', days: n };
+            return { key: 'active', label: 'Aktif', days: n };
+        }
+        function esc(s) { return String(s ?? '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m])) }
+        function persist() { localStorage.setItem(KEY, JSON.stringify(data)); document.getElementById('updated').textContent = 'Terakhir disimpan: ' + new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) }
+        function render() {
+            const q = document.getElementById('search').value.toLowerCase(), f = document.getElementById('filter').value;
+            const states = data.map(state);
+            document.getElementById('total').textContent = data.length;
+            document.getElementById('active').textContent = states.filter(s => s.key === 'active').length;
+            document.getElementById('soon').textContent = states.filter(s => s.key === 'soon').length;
+            document.getElementById('renew').textContent = states.filter(s => s.key === 'renew').length;
+            let arr = data.filter(x => { let s = state(x); let hit = (x.domain + ' ' + x.provider + ' ' + (x.note || '')).toLowerCase().includes(q); return hit && (f === 'all' || s.key === f) }).sort((a, b) => date(a.expDate) - date(b.expDate));
+            let box = document.getElementById('cards');
+            if (!arr.length) { box.className = ''; box.innerHTML = '<div class="empty">✨ Belum ada layanan yang sesuai.<br>Tambahkan domain/hosting atau ubah filter.</div>'; return }
+            box.className = 'grid';
+            box.innerHTML = arr.map((x, i) => {
+                let s = state(x), total = Math.max(1, days(date(x.startDate), date(x.expDate))), remain = Math.max(0, s.days), p = s.key === 'renew' ? 100 : Math.max(2, Math.min(100, 100 - (remain / total * 100)));
+                let countdown = s.days > 0 ? `${s.days} hari lagi menuju expired` : s.days === 0 ? 'Expired hari ini' : `Sudah ${Math.abs(s.days)} hari sejak expired`;
+                return `<article class="card ${s.key}" style="animation-delay:${Math.min(i * 45, 400)}ms">
+    <div class="card-head"><div><div class="domain">${esc(x.domain)}</div><div class="provider">Hosting / provider: <b>${esc(x.provider)}</b></div></div><span class="badge ${s.key}">${s.label}</span></div>
+    <div class="dates"><div class="date"><small>TERDAFTAR</small><b>${fmt(x.startDate)}</b></div><div class="date"><small>EXPIRED</small><b>${fmt(x.expDate)}</b></div></div>
+    <div class="progress"><i style="--p:${p}%"></i></div>
+    <div class="count">${countdown}</div><div class="note">${esc(x.note) || 'Tidak ada catatan.'}</div>
+    <div class="actions">${x.loginUrl ? `<a class="btn primary" href="${esc(x.loginUrl)}" target="_blank" rel="noopener">Login & Bayar</a>` : ''}<button class="btn light" onclick="editItem('${esc(x.id)}')">Edit</button><button class="btn light" onclick="deleteItem('${esc(x.id)}')">Hapus</button></div>
+   </article>`
+            }).join('');
+        }
+        function openItem(x = null) {
+            document.getElementById('itemModal').style.display = 'flex'; document.getElementById('itemTitle').textContent = x ? 'Edit layanan' : 'Tambah layanan';
+            document.getElementById('itemId').value = x?.id || ''; document.getElementById('domain').value = x?.domain || ''; document.getElementById('provider').value = x?.provider || '';
+            document.getElementById('loginUrl').value = x?.loginUrl || ''; document.getElementById('startDate').value = x?.startDate || ''; document.getElementById('expDate').value = x?.expDate || ''; document.getElementById('note').value = x?.note || '';
+        }
+        function closeModal(id) { document.getElementById(id).style.display = 'none' }
+        function editItem(id) { let x = data.find(v => v.id === id); if (x) openItem(x) }
+        function deleteItem(id) { let x = data.find(v => v.id === id); if (x && confirm('Hapus ' + x.domain + ' dari daftar?')) { data = data.filter(v => v.id !== id); persist(); render(); toast('Data dihapus') } }
+        document.getElementById('itemForm').addEventListener('submit', e => {
+            e.preventDefault();
+            let id = document.getElementById('itemId').value || crypto.randomUUID();
+            let x = { id, domain: domain.value.trim(), provider: provider.value.trim(), loginUrl: loginUrl.value.trim(), startDate: startDate.value, expDate: expDate.value, note: note.value.trim() };
+            if (date(x.expDate) < date(x.startDate)) { alert('Tanggal expired tidak boleh sebelum tanggal daftar.'); return }
+            let i = data.findIndex(v => v.id === id); i >= 0 ? data[i] = x : data.push(x); persist(); closeModal('itemModal'); e.target.reset(); render(); toast('Data berhasil disimpan');
+        });
+        function openJSON() { document.getElementById('jsonBox').value = JSON.stringify(data, null, 2); document.getElementById('jsonModal').style.display = 'flex' }
+        function formatJSON() { try { let x = JSON.parse(document.getElementById('jsonBox').value); document.getElementById('jsonBox').value = JSON.stringify(x, null, 2) } catch (e) { alert('JSON tidak valid: ' + e.message) } }
+        function applyJSON() { try { let x = JSON.parse(document.getElementById('jsonBox').value); if (!Array.isArray(x)) throw Error('Data utama harus berupa array [].'); data = x; persist(); render(); closeModal('jsonModal'); toast('JSON berhasil diterapkan') } catch (e) { alert('JSON tidak valid: ' + e.message) } }
+        function downloadText(name, text, type = 'application/json') { let a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; a.click(); URL.revokeObjectURL(a.href) }
+        function downloadCurrentJSON() { try { let x = JSON.parse(document.getElementById('jsonBox').value); downloadText('domain-hosting.json', JSON.stringify(x, null, 2)); toast('File JSON disimpan') } catch (e) { alert('Periksa JSON terlebih dahulu.') } }
+        function exportJSON() { downloadText('domain-hosting.json', JSON.stringify(data, null, 2)); toast('File JSON disimpan') }
+        function toast(t) { let x = document.getElementById('toast'); x.textContent = t; x.style.display = 'block'; clearTimeout(window._toast); window._toast = setTimeout(() => x.style.display = 'none', 2200) }
+        document.getElementById('search').addEventListener('input', render); document.getElementById('filter').addEventListener('change', render);
+        render();
+    </script>
+</body>
+
+</html>

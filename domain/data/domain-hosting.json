@@ -1,0 +1,20 @@
+[
+    {
+        "id": "demo-1",
+        "domain": "honda-bintaro.com",
+        "provider": "Rumahweb",
+        "loginUrl": "https://www.rumahweb.com/",
+        "startDate": "2026-01-15",
+        "expDate": "2027-01-15",
+        "note": "Website utama Honda Bintaro"
+    },
+    {
+        "id": "demo-2",
+        "domain": "promo.honda-bintaro.com",
+        "provider": "CloudKilat",
+        "loginUrl": "https://www.cloudkilat.com/",
+        "startDate": "2026-02-10",
+        "expDate": "2026-09-10",
+        "note": "Website promo / landing page"
+    }
+]
