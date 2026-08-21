@@ -61,5 +61,77 @@
         "startDate": "2024-09-11",
         "expDate": "2027-09-11",
         "note": "Landing Page Jualan Welda"
+    },
+    {
+        "id": "3d1623e8-81b8-424c-a5f2-d3caecdf7820",
+        "domain": "promohondaberkah.com",
+        "provider": "Cloud Kilat",
+        "loginUrl": "https://portal.cloudkilat.com",
+        "startDate": "2023-10-06",
+        "expDate": "2025-10-06",
+        "note": "Website Yugros"
+    },
+    {
+        "id": "a8886a67-6fec-40cd-8bd9-6748d1c227e4",
+        "domain": "hondabintaro.id",
+        "provider": "Cloud Kilat",
+        "loginUrl": "https://portal.cloudkilat.com",
+        "startDate": "2022-04-20",
+        "expDate": "2025-04-20",
+        "note": "Website jualannya Gusti"
+    },
+    {
+        "id": "8ccd848f-9e19-4a08-b80e-23126c9685ca",
+        "domain": "hondabintaro.biz.id",
+        "provider": "Cloud Kilat",
+        "loginUrl": "https://portal.cloudkilat.com",
+        "startDate": "2024-04-18",
+        "expDate": "2025-04-18",
+        "note": "Website jualannya Gusti"
+    },
+    {
+        "id": "957d4409-01c4-4fdd-abc7-3a10c8402500",
+        "domain": "triminsulation.com",
+        "provider": "Cloud Kilat",
+        "loginUrl": "https://portal.cloudkilat.com",
+        "startDate": "2022-01-07",
+        "expDate": "2025-01-07",
+        "note": "Website Wildy"
+    },
+    {
+        "id": "98eb5a8d-f9fd-420a-b5d9-48780a34be03",
+        "domain": "kawinku.my.id",
+        "provider": "Cloud Kilat",
+        "loginUrl": "https://portal.cloudkilat.com",
+        "startDate": "2021-08-29",
+        "expDate": "2024-08-29",
+        "note": "Website Undangan Nikah Online"
+    },
+    {
+        "id": "bff7b38d-a15a-48e9-9225-cbf752acd6ed",
+        "domain": "quick.my.id",
+        "provider": "Cloud Kilat",
+        "loginUrl": "https://portal.cloudkilat.com",
+        "startDate": "2020-08-27",
+        "expDate": "2024-08-27",
+        "note": "Short Link"
+    },
+    {
+        "id": "31c29f84-83bd-4594-b248-29ae273c0eec",
+        "domain": "suzukiciputat.id",
+        "provider": "Cloud Kilat",
+        "loginUrl": "https://portal.cloudkilat.com",
+        "startDate": "2022-12-15",
+        "expDate": "2023-12-15",
+        "note": "Website Jualan -"
+    },
+    {
+        "id": "f38e2880-413e-46e8-9270-3a46681420cf",
+        "domain": "otocia.com",
+        "provider": "Cloud Kilat",
+        "loginUrl": "https://portal.cloudkilat.com",
+        "startDate": "2022-05-12",
+        "expDate": "2023-05-07",
+        "note": "Website jualannya Gusti"
     }
 ]
