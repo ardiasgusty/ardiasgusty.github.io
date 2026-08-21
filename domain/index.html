@@ -943,6 +943,7 @@
 
         let data = [];
         let hasLocalChanges = false;
+        let isSyncFailed = false;
 
         function today() { let d = new Date(); d.setHours(0, 0, 0, 0); return d }
         function date(s) { let [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d) }
@@ -1142,6 +1143,12 @@
                 btnPull.disabled = true;
                 btnPush.disabled = true;
                 btnPush.classList.remove('pulse');
+            } else if (isSyncFailed) {
+                banner.className = 'sync-banner offline';
+                statusText.innerHTML = '❌ <b>Gagal terhubung ke GitHub</b>. Hubungan bermasalah (periksa token/koneksi).';
+                btnPull.disabled = false;
+                btnPush.disabled = false;
+                btnPush.classList.remove('pulse');
             } else {
                 if (hasLocalChanges) {
                     banner.className = 'sync-banner unsaved';
@@ -1219,9 +1226,7 @@
                 const url = 'https://api.github.com/repos/ardiasgusty/ardiasgusty.github.io/contents/domain/data/domain-hosting.json';
                 const response = await fetch(url, {
                     headers: {
-                        'Authorization': `token ${pat}`,
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Cache-Control': 'no-cache'
+                        'Authorization': `token ${pat}`
                     }
                 });
 
@@ -1260,6 +1265,7 @@
                             // Just tell the user there is a conflict/unsaved data.
                             document.getElementById('syncStatusText').innerHTML = '🟡 <b>Ada draf lokal</b> yang berbeda dengan GitHub.';
                             hasLocalChanges = true;
+                            isSyncFailed = false;
                             checkSyncState();
                             return;
                         }
@@ -1274,14 +1280,17 @@
                 }
 
                 hasLocalChanges = false;
+                isSyncFailed = false;
                 checkSyncState();
             } catch (err) {
                 console.error(err);
+                isSyncFailed = true;
                 if (interactive) {
                     alert('Gagal menarik data dari GitHub: ' + err.message);
                 } else {
                     document.getElementById('syncStatusText').innerHTML = '❌ Gagal sinkronisasi dengan GitHub.';
                 }
+                checkSyncState();
             }
         }
 
@@ -1306,9 +1315,7 @@
                 try {
                     const getRes = await fetch(url, {
                         headers: {
-                            'Authorization': `token ${pat}`,
-                            'Accept': 'application/vnd.github.v3+json',
-                            'Cache-Control': 'no-cache'
+                            'Authorization': `token ${pat}`
                         }
                     });
                     if (getRes.ok) {
@@ -1328,7 +1335,6 @@
                     method: 'PUT',
                     headers: {
                         'Authorization': `token ${pat}`,
-                        'Accept': 'application/vnd.github.v3+json',
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
@@ -1351,11 +1357,14 @@
                 localStorage.setItem(KEY, contentStr);
 
                 hasLocalChanges = false;
+                isSyncFailed = false;
                 checkSyncState();
                 toast('✅ Berhasil disimpan ke GitHub!');
             } catch (err) {
                 console.error(err);
+                isSyncFailed = true;
                 alert('Gagal menyimpan ke GitHub: ' + err.message);
+                checkSyncState();
             } finally {
                 btnPush.disabled = false;
                 btnPush.innerHTML = originalText;
@@ -1426,6 +1435,7 @@
                 localStorage.removeItem(PAT_KEY);
                 localStorage.removeItem(SHA_KEY);
                 localStorage.removeItem(SERVER_KEY);
+                isSyncFailed = false;
                 closeModal('patModal');
                 toast('🗑️ Token dihapus.');
                 checkSyncState();
