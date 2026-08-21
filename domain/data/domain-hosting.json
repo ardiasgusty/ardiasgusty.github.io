@@ -1,20 +1,65 @@
 [
     {
-        "id": "demo-1",
-        "domain": "honda-bintaro.com",
-        "provider": "Rumahweb",
-        "loginUrl": "https://www.rumahweb.com/",
-        "startDate": "2026-01-15",
-        "expDate": "2027-01-15",
-        "note": "Website utama Honda Bintaro"
+        "id": "6b5164fb-b135-458b-8cae-747723770381",
+        "domain": "argust.my.id",
+        "provider": "Cloud Kilat",
+        "loginUrl": "https://portal.cloudkilat.com",
+        "startDate": "2021-07-22",
+        "expDate": "2028-08-03",
+        "note": "Blognya Gusti"
     },
     {
-        "id": "demo-2",
-        "domain": "promo.honda-bintaro.com",
-        "provider": "CloudKilat",
-        "loginUrl": "https://www.cloudkilat.com/",
-        "startDate": "2026-02-10",
-        "expDate": "2026-09-10",
-        "note": "Website promo / landing page"
+        "id": "022b8ffe-47bc-438b-8180-3a180133f9e2",
+        "domain": "imajinasiasha.web.id",
+        "provider": "Cloud Kilat",
+        "loginUrl": "https://portal.cloudkilat.com",
+        "startDate": "2016-03-03",
+        "expDate": "2028-03-03",
+        "note": "Blognya Faycha"
+    },
+    {
+        "id": "6df28f46-7673-4859-a0fc-696302d07e34",
+        "domain": "rumahcerdasku.sch.id",
+        "provider": "Cloud Kilat",
+        "loginUrl": "https://portal.cloudkilat.com",
+        "startDate": "2022-09-23",
+        "expDate": "2027-09-23",
+        "note": "Website Les Welda"
+    },
+    {
+        "id": "609c1a73-8830-48f5-b051-fb5054e3b30c",
+        "domain": "maribelajar.web.id",
+        "provider": "Cloud Kilat",
+        "loginUrl": "https://portal.cloudkilat.com",
+        "startDate": "2021-05-30",
+        "expDate": "2027-09-14",
+        "note": "Blognya Gusti dan Welda"
+    },
+    {
+        "id": "a4b076ee-b39d-4a2f-ba3a-d194959fee23",
+        "domain": "promohondabintaro.com",
+        "provider": "Cloud Kilat",
+        "loginUrl": "https://portal.cloudkilat.com",
+        "startDate": "2021-12-11",
+        "expDate": "2026-12-11",
+        "note": "Website Mella"
+    },
+    {
+        "id": "5720c4ed-575d-40d0-a56d-d7d046286348",
+        "domain": "hondabintaro.com",
+        "provider": "Rumahweb",
+        "loginUrl": "https://new.clientzone.rumahweb.com",
+        "startDate": "2024-10-31",
+        "expDate": "2027-10-31",
+        "note": "Website jualannya Gusti"
+    },
+    {
+        "id": "6ac83844-c6aa-4851-98c4-722d9f65a79d",
+        "domain": "myprelovedmysecond.my.id",
+        "provider": "Rumahweb",
+        "loginUrl": "https://new.clientzone.rumahweb.com",
+        "startDate": "2024-09-11",
+        "expDate": "2027-09-11",
+        "note": "Landing Page Jualan Welda"
     }
 ]
