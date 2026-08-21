@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="theme-color" content="#b40000">
     <title>Domain & Hosting Center</title>
+    <link href="https://www.argust.my.id/favicon.ico" rel="icon" type="image/x-icon">
     <style>
         :root {
             --red: #c40000;
@@ -150,7 +151,7 @@
 
         .stats {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 14px
         }
 
@@ -301,6 +302,10 @@
             background: var(--red)
         }
 
+        .card.hangus:before {
+            background: #475569
+        }
+
         .card-head {
             display: flex;
             justify-content: space-between;
@@ -346,6 +351,11 @@
         .badge.renew {
             background: #ffe9e8;
             color: var(--red)
+        }
+
+        .badge.hangus {
+            background: #f1f5f9;
+            color: #475569
         }
 
         .dates {
@@ -568,6 +578,10 @@
                 grid-template-columns: repeat(2, 1fr)
             }
 
+            .stats .stat:nth-child(5) {
+                grid-column: 1 / span 2;
+            }
+
             .grid {
                 grid-template-columns: repeat(2, 1fr)
             }
@@ -748,7 +762,8 @@
         .sync-btn.pulse {
             animation: pulse-btn 2.0s infinite;
         }
-        .sync-btn:disabled {
+        button:disabled,
+        .btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none !important;
@@ -846,6 +861,11 @@
                 <div class="num" id="renew">0</div>
                 <div class="label">Wajib diperpanjang</div>
             </div>
+            <div class="stat">
+                <div class="icon">⚫</div>
+                <div class="num" id="hangus">0</div>
+                <div class="label">Hangus / Lewat batas</div>
+            </div>
         </section>
 
         <section class="panel">
@@ -858,10 +878,10 @@
                     <option value="all">Semua status</option>
                     <option value="active">Aktif</option>
                     <option value="soon">≤ 30 hari</option>
-                    <option value="expired">Expired</option>
-                    <option value="renew">≥ 60 hari expired</option>
+                    <option value="renew">Wajib diperpanjang (≤ 60 hari)</option>
+                    <option value="hangus">Hangus / Lewat batas (> 60 hari)</option>
                 </select>
-                <button class="btn primary" onclick="openItem()">＋ Tambah layanan</button>
+                <button class="btn primary" id="btnAddService" onclick="openItem()">＋ Tambah layanan</button>
             </div>
             <div id="cards" class="grid"></div>
         </section>
@@ -952,10 +972,31 @@
         
         function state(x) {
             let n = days(today(), date(x.expDate));
-            if (n < 0 && Math.abs(n) >= 60) return { key: 'renew', label: 'Wajib diperpanjang', days: n };
-            if (n < 0) return { key: 'expired', label: 'Expired', days: n };
+            if (n < 0 && Math.abs(n) >= 60) return { key: 'hangus', label: 'Hangus / Lewat batas', days: n };
+            if (n < 0) return { key: 'renew', label: 'Wajib diperpanjang', days: n };
             if (n <= 30) return { key: 'soon', label: 'Reminder ≤ 30 hari', days: n };
             return { key: 'active', label: 'Aktif', days: n };
+        }
+
+        function getDomainAge(startStr) {
+            let start = date(startStr);
+            let now = today();
+            let diffMs = now - start;
+            if (diffMs < 0) return 'Belum berjalan';
+            
+            let diffDays = Math.round(diffMs / 86400000);
+            
+            let years = Math.floor(diffDays / 365);
+            let remainingDays = diffDays % 365;
+            let months = Math.floor(remainingDays / 30);
+            remainingDays = remainingDays % 30;
+            
+            let parts = [];
+            if (years > 0) parts.push(`${years} tahun`);
+            if (months > 0) parts.push(`${months} bulan`);
+            if (remainingDays > 0 || parts.length === 0) parts.push(`${remainingDays} hari`);
+            
+            return parts.join(' ');
         }
         
         function esc(s) { return String(s ?? '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m])) }
@@ -995,6 +1036,7 @@
             document.getElementById('active').textContent = states.filter(s => s.key === 'active').length;
             document.getElementById('soon').textContent = states.filter(s => s.key === 'soon').length;
             document.getElementById('renew').textContent = states.filter(s => s.key === 'renew').length;
+            document.getElementById('hangus').textContent = states.filter(s => s.key === 'hangus').length;
             
             let arr = data.filter(x => { 
                 let s = state(x); 
@@ -1008,16 +1050,22 @@
                 box.innerHTML = '<div class="empty">✨ Belum ada layanan yang sesuai.<br>Tambahkan domain/hosting atau ubah filter.</div>'; 
                 return; 
             }
+            const isOffline = !getPat();
             box.className = 'grid';
             box.innerHTML = arr.map((x, i) => {
-                let s = state(x), total = Math.max(1, days(date(x.startDate), date(x.expDate))), remain = Math.max(0, s.days), p = s.key === 'renew' ? 100 : Math.max(2, Math.min(100, 100 - (remain / total * 100)));
+                let s = state(x), total = Math.max(1, days(date(x.startDate), date(x.expDate))), remain = Math.max(0, s.days), p = (s.key === 'renew' || s.key === 'hangus') ? 100 : Math.max(2, Math.min(100, 100 - (remain / total * 100)));
                 let countdown = s.days > 0 ? `${s.days} hari lagi menuju expired` : s.days === 0 ? 'Expired hari ini' : `Sudah ${Math.abs(s.days)} hari sejak expired`;
                 return `<article class="card ${s.key}" style="animation-delay:${Math.min(i * 45, 400)}ms">
     <div class="card-head"><div><div class="domain">${esc(x.domain)}</div><div class="provider">Hosting / provider: <b>${esc(x.provider)}</b></div></div><span class="badge ${s.key}">${s.label}</span></div>
     <div class="dates"><div class="date"><small>TERDAFTAR</small><b>${fmt(x.startDate)}</b></div><div class="date"><small>EXPIRED</small><b>${fmt(x.expDate)}</b></div></div>
     <div class="progress"><i style="--p:${p}%"></i></div>
-    <div class="count">${countdown}</div><div class="note">${esc(x.note) || 'Tidak ada catatan.'}</div>
-    <div class="actions">${x.loginUrl ? `<a class="btn primary" href="${esc(x.loginUrl)}" target="_blank" rel="noopener">Login & Bayar</a>` : ''}<button class="btn light" onclick="editItem('${esc(x.id)}')">Edit</button><button class="btn light" onclick="deleteItem('${esc(x.id)}')">Hapus</button></div>
+    <div class="age-info" style="font-size: 11px; color: var(--muted); margin-top: 13px; display: flex; justify-content: space-between;">
+        <span>Umur domain:</span>
+        <b>${getDomainAge(x.startDate)}</b>
+    </div>
+    <div class="count" style="margin-top: 5px;">${countdown}</div>
+    <div class="note">${esc(x.note) || 'Tidak ada catatan.'}</div>
+    <div class="actions">${x.loginUrl ? `<a class="btn primary" href="${esc(x.loginUrl)}" target="_blank" rel="noopener">Login & Bayar</a>` : ''}<button class="btn light" onclick="editItem('${esc(x.id)}')" ${isOffline ? 'disabled title="Hubungkan token PAT untuk mengedit"' : ''}>Edit</button><button class="btn light" onclick="deleteItem('${esc(x.id)}')" ${isOffline ? 'disabled title="Hubungkan token PAT untuk menghapus"' : ''}>Hapus</button></div>
     </article>`
             }).join('');
         }
@@ -1136,6 +1184,7 @@
             const statusText = document.getElementById('syncStatusText');
             const btnPull = document.getElementById('btnPull');
             const btnPush = document.getElementById('btnPush');
+            const btnAddService = document.getElementById('btnAddService');
 
             if (!pat) {
                 banner.className = 'sync-banner offline';
@@ -1143,13 +1192,25 @@
                 btnPull.disabled = true;
                 btnPush.disabled = true;
                 btnPush.classList.remove('pulse');
+                if (btnAddService) {
+                    btnAddService.disabled = true;
+                    btnAddService.setAttribute('title', 'Hubungkan token PAT untuk menambah layanan');
+                }
             } else if (isSyncFailed) {
                 banner.className = 'sync-banner offline';
                 statusText.innerHTML = '❌ <b>Gagal terhubung ke GitHub</b>. Hubungan bermasalah (periksa token/koneksi).';
                 btnPull.disabled = false;
                 btnPush.disabled = false;
                 btnPush.classList.remove('pulse');
+                if (btnAddService) {
+                    btnAddService.disabled = false;
+                    btnAddService.removeAttribute('title');
+                }
             } else {
+                if (btnAddService) {
+                    btnAddService.disabled = false;
+                    btnAddService.removeAttribute('title');
+                }
                 if (hasLocalChanges) {
                     banner.className = 'sync-banner unsaved';
                     statusText.innerHTML = '🟡 <b>Ada perubahan lokal</b> yang belum disimpan ke GitHub.';
@@ -1425,6 +1486,7 @@
                 
                 // Pull latest data
                 await pullFromGitHub(true);
+                render();
             } catch (err) {
                 alert('Gagal memverifikasi token: ' + err.message + '\n\nPastikan token benar, aktif, dan komputer terhubung ke internet.');
             }
@@ -1439,6 +1501,7 @@
                 closeModal('patModal');
                 toast('🗑️ Token dihapus.');
                 checkSyncState();
+                render();
             }
         }
 
