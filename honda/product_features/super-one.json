@@ -4,34 +4,40 @@
     "label": "Exterior",
     "items": [
       {
-        "slug": "rs-front-grille",
-        "title": "RS Front Grille",
-        "desc": "<p>Desain front grille yang tegas dan modern, mendorong kepercayaan diri Anda untuk melangkah.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/rs_front_grille_d_8__1770275923849.png?w=1000&s=72985d8f5c1fe48a2ca953a64a6b68d1"
+        "slug": "a-perfect-fit",
+        "title": "A Perfect Fit",
+        "desc": "<p>Proporsinya terasa alami di tengah kehidupan kota, mudah dibawa ke mana saja dan selalu menemukan tempat dalam setiap rencana.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/a_perfect_fit_d_8__1785138445288.png?w=1000&s=5f8876c583187c0938db712b65021859"
       },
       {
-        "slug": "led-fog-lights",
-        "title": "LED Fog Lights",
-        "desc": "<p>LED Fog Lights membantu menjaga visibilitas di berbagai kondisi, mendukung langkah Anda untuk tetap pasti saat jalanan tak selalu ideal</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/led_fog_lights_d_8__1770276004158.png?w=1000&s=0e978ded22b984c3c5b45fa6ab3c913d"
+        "slug": "full-led-headlight",
+        "title": "Full LED Headlight",
+        "desc": "<p>Tatapan yang memadukan karakter klasik dan modern, membuat Honda Super-ONE mudah dikenali tanpa perlu tampil berlebihan.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/led_headlight_d_8__1785138515449.png?w=1000&s=8f1017db74add9aa45cf70d483ac8dcf"
       },
       {
-        "slug": "roof-garnish-rs-sensing-type",
-        "title": "Roof Garnish (RS Sensing Type)",
-        "desc": "<p>Sentuhan roof garnish hitam menambah karakter yang lebih berani, menyempurnakan siluet New Honda WR-V</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/roof_garnish_(rs_sensing_type)_d_8__1770797953524.png?w=1000&s=af208e9056767ad0db69647b670614ed"
+        "slug": "recycled-bumpers",
+        "title": "Recycled Bumpers",
+        "desc": "<p>Honda Super-ONE menghadirkan material yang lebih peduli terhadap lingkungan, tanpa kehilangan karakter desain yang membuatnya terasa personal.</p>\n\n<p>Bumper Honda yang tidak lagi digunakan diolah kembali menjadi bagian depan Honda Super-ONE memberikan material lama kehidupan baru sekaligus membawa jejak perjalanan Honda ke masa depan.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/recycled_bumpers_d_8__1785138588143.png?w=1000&s=831c02a30b243db64934dc15ddcc2880"
       },
       {
-        "slug": "rear-combi-lights-with-led-light-bars",
-        "title": "Rear Combi Lights with LED Light Bars",
-        "desc": "<p>Rear Combi Lights with LED Light Bars menghadirkan tampilan modern yang mendukung rasa percaya diri, bahkan saat berkendara di malam hari</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/rear_combi_lights_with_led_lights_bars_d_8__1770276166124.png?w=1000&s=9c07db2bde0bb219e9e044c93cc80c99"
+        "slug": "15-matte-berlina-black-machined-alloy-wheels",
+        "title": "15\" Matte Berlina Black + Machined Alloy Wheels",
+        "desc": "<p>Memberikan pijakan yang lebih percaya diri sekaligus memperkuat sikap sporty dalam bentuknya yang compact.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/15_matte_berlina_black_+_machined_alloy_wheels_d_8__1785138648400.png?w=1000&s=3e95080f6cb503228efbba4762fcc52e"
       },
       {
-        "slug": "17-stylish-alloy-wheel",
-        "title": "17” Stylish Alloy Wheel",
-        "desc": "<p>Desain velg dengan proporsi yang seimbang dan tampilan yang mantap, pas untuk ritme hidup Anda yang terus bergerak</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/17_stylish_alloy_wheels_d_8__1770278858081.png?w=1000&s=52b2a52ce81c46223b3a62e8f8da55c0"
+        "slug": "air-curtain-ducts-blister-fender",
+        "title": "Air Curtain Ducts & Blister Fender",
+        "desc": "<p>Aliran udara di sekitar dan bawah kendaraan dirancang untuk membantu Honda Super-ONE tetap stabil dan terasa lebih menempel pada jalan, sehingga perjalanan sehari-hari terasa lebih tenang dan percaya diri.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/air_curtain_ducts_&_breather_ducts_d_8__1785138707658.png?w=1000&s=2bc7c31f18984197b13411bb7c97161b"
+      },
+      {
+        "slug": "front-spoiler-rear-under-cover",
+        "title": "Front Spoiler & Rear Under Cover",
+        "desc": "<p>Mengendalikan aliran udara di bawah kendaraan untuk menjaga kestabilan, terutama ketika berkendara pada kecepatan yang lebih tinggi.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/front_spoiler_&_rear_under_cover_d_8__1785138677859.png?w=1000&s=cc387eb03ef204b795165a73f8cdbc77"
       }
     ]
   },
@@ -40,166 +46,64 @@
     "label": "Interior",
     "items": [
       {
-        "slug": "trust-in-comfort",
-        "title": "Trust in Comfort",
-        "desc": "<p>Interior New Honda WR-V dirancang sebagai ruang yang mendukung fokus dan rasa percaya diri. Memberi kenyamanan yang membuat Anda siap menjalani setiap proses dengan tenang</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/trust_the_comfort_d_8__1770276377102.png?w=1000&s=51dce672312bb6fae659ab85ab94fbb8"
+        "slug": "dashboard",
+        "title": "Dashboard",
+        "desc": "<p>Sebuah ruang yang tenang dan tidak berlebihan, agar perhatian tetap tertuju pada perjalanan di depan.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/dashboard_d_8__1785138776497.png?w=1000&s=f21206b084a3218952a21c0989b03fa3"
       },
       {
-        "slug": "42-interactive-tft-meter-cluster",
-        "title": "4.2\" Interactive TFT Meter Cluster",
-        "desc": "<p>Sebagian besar informasi pada mobil akan ditampilkan melalui&nbsp;<i>meter cluster</i>, meliputi&nbsp;<i>Honda Sensing</i>, konsumsi bahan bakar,&nbsp;<i>rear seat reminder</i>&nbsp;dan lainnya.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0005s_0004_tftmetercluster_interactive_ssuv_hpm_min__1666708072007.jpg?w=1000&s=c8ba2d9971c8bf70272cd6d0bf23bb02"
+        "slug": "bio-resin-interior",
+        "title": "Bio-Resin Interior",
+        "desc": "<p>Material berbasis hayati menghadirkan detail kabin yang ekspresif sekaligus menjadi pilihan yang lebih bertanggung jawab untuk masa depan.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/bio_resin_interior_d_8__1785138809335.png?w=1000&s=b841355da801159c4c17f4aabf65f3c8"
       },
       {
-        "slug": "leather-wrapped-steering-wheel",
-        "title": "Leather Wrapped Steering Wheel",
-        "desc": "<p>Roda kemudi yang dilapisi dengan kulit berkualitas tinggi semakin meningkatkan kenyamanan di sepanjang perjalanan.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0005s_0006_leatherwrappedsteeringwheel_ssuv_hpm_min__1666710120735.jpg?w=1000&s=869513976a7f7f53cadae038cd21c304"
+        "slug": "7-inch-interactive-tft-meter",
+        "title": "7-inch Interactive TFT Meter",
+        "desc": "<p>Menampilkan informasi penting seperti kecepatan, suhu baterai, penggunaan energi, dan tenaga secara jelas dalam satu layar.</p>\n\n<p>Saat SPORT atau BOOST Mode diaktifkan, tampilannya berubah lebih dinamis untuk membuat pengalaman berkendara terasa semakin hidup. Untuk keseharian, pengguna juga dapat memilih tampilan yang lebih sederhana.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/7_inch_tft_lcd_meter_d_8__1785138962289.png?w=1000&s=8cd1f41f5b8a6e671d7a77b00837e06f"
+      },
+      {
+        "slug": "ambient-lighting",
+        "title": "Ambient Lighting",
+        "desc": "<p>Menghadirkan suasana kabin yang tenang untuk keseharian, lalu berubah lebih ekspresif dengan pencahayaan ungu saat BOOST Mode diaktifkan membuat setiap perjalanan terasa lebih hidup.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/ambient_lighting_d_8__1785139000339.png?w=1000&s=f2f881f68fe3994692267495897539f6"
+      },
+      {
+        "slug": "ultra-seats",
+        "title": "ULTRA Seats",
+        "desc": "<p>Memberikan kebebasan untuk membawa lebih banyak kemungkinan, dari kebutuhan harian hingga rencana spontan.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/ultra_seat_d_8__1785139050513.png?w=1000&s=20a94b92fce82142d5de744e9418033c"
       },
       {
         "slug": "spacious-trunk",
         "title": "Spacious Trunk",
-        "desc": "<p>Ruang bagasi yang luas siap menampung berbagai kebutuhan, memberi keleluasaan untuk membawa apa pun yang mendukung langkah Anda.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/spacious_trunk_&_utility_mode_d_8__1770276809063.png?w=1000&s=45197255fc0b1340ace8888f01870fc9"
-      },
-      {
-        "slug": "2nd-row-armrest-rs-sensing-type",
-        "title": "2nd Row Armrest (RS SENSING Type)",
-        "desc": "<p>Perjalanan panjang tetap nyaman dan menyenangkan dengan adanya armrest di baris kedua bagi penumpang.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/2nd_row_armrest_d_8__1770276879766.png?w=1000&s=2ef1c0de0481e9706099885508dde2af"
-      },
-      {
-        "slug": "leather-wrapped-console-box-with-armrest",
-        "title": "Leather-Wrapped Console Box with Armrest",
-        "desc": "<p>Di desain dengan elegan menggunakan bahan kulit. Sandaran tangan berfungsi agar tidak lelah saat menyetir dan bisa menyimpan barang-barang Anda selama perjalanan.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/armrest__1666710085241.jpg?w=1000&s=7dd8e9f4df2e300bb89c654520a2c317"
-      },
-      {
-        "slug": "auto-ac",
-        "title": "Auto A/C",
-        "desc": "<p>Sistem pendingin otomatis menjaga suhu kabin tetap nyaman, membantu mempertahankan fokus di tengah perjalanan yang panjang.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/auto_ac_d_8__1770277853417.png?w=1000&s=cb7a75e8d844b092108ca376faed17cc"
-      },
-      {
-        "slug": "one-push-ignition-system",
-        "title": "One Push Ignition System",
-        "desc": "<p>Dengan fitur One Push Ignition System menghidupkan mesin mobil jauh lebih mudah hanya dalam satu sentuhan</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0005s_0005_rectangle_1_copy_20_min__1666760074982.jpg?w=1000&s=1cef01bf0724bb34728586d13b91d700"
-      },
-      {
-        "slug": "leather-trimmed-seat-with-red-stitches",
-        "title": "Leather Trimmed Seat With Red Stitches",
-        "desc": "<p>Jok berbalut kulit dengan jahitan merah menghadirkan suasana yang lebih intens dan berkarakter, memperkuat ambisi di setiap perjalanan</p>\n",
-        "img": ""
-      },
-      {
-        "slug": "tilt-steering-wheel",
-        "title": "Tilt Steering Wheel",
-        "desc": "<p>Anda bebas mengatur posisi naik atau turun roda kemudi sesuai dengan keinginan dan postur tubuh Anda.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0005s_0003_tiltsteeringwheel_ssuv_hpm_min__1666760339739.jpg?w=1000&s=04d017293f7fffeeca8a96890b7e72c9"
-      },
-      {
-        "slug": "red-ambient-light",
-        "title": "Red Ambient Light",
-        "desc": "<p>Sentuhan red ambient light di dalam kabin menciptakan suasana yang lebih fokus dan ambisius</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/red_ambient_light_d_8__1770277527619.png?w=1000&s=0ef0322f0ac1d14f767683cc8744e3de"
+        "desc": "<p>Ruang untuk segala hal yang ikut bergerak bersama kehidupan pemiliknya, baik perjalanan besar maupun momen sederhana.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/trunk_d_8__1785139083222.png?w=1000&s=12342403b34618ff1c552a8be4c66958"
       }
     ]
   },
   {
-    "id": "honda-sensing",
-    "label": "Honda SENSING™",
-    "items": [
-      {
-        "slug": "colision-mitigation-braking-system-cmbs",
-        "title": "Colision Mitigation Braking System (CMBS)",
-        "desc": "<h3 :id=\"sectionItemId\" id=\"colision-mitigation-braking-system-cmbs\">Colision Mitigation Braking System (CMBS)</h3>\n\n<p>Collision Mitigation Braking System (CMBS&trade;) membantu Anda ketika terdapat kemungkinan kendaraan berbenturan dengan kendaraan lain atau pejalan kaki yang terdeteksi di depan. CMBS&trade; didesain untuk dapat memberi tanda ketika potensi berbenturan dapat terjadi, yang membantu mengurangi kecepatan kendaraan untuk mengurangi dampak benturan yang tidak terhindarkan.</p>\n\n<p>CMBS&trade; dirancang untuk mengurangi tingkat kekerasan tabrakan yang tak terelakkan. Sistem ini tidak mencegah tabrakan atau menghentikan kendaraan secara otomatis. Masih merupakan kewajiban Anda untuk menjalankan pedal rem dan roda kemudi secara benar sesuai kondisi berkendara. Untuk keterangan lebih lanjut mengenai ketentuan dan batasan kondisi tertentu, dapat merujuk pada buku pedoman Honda WR-V.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0004s_0003_cmbs_ssuv_hpm_min__1666708188962.jpg?w=1000&s=1d81b3c27a5972106e7cec7a6830f7bf"
-      },
-      {
-        "slug": "lane-keeping-assist-system-lkas",
-        "title": "Lane Keeping Assist System (LKAS)",
-        "desc": "<p>Lane Keeping Assist System (LKAS) membantu kemudi untuk menjaga kendaraan tetap berada pada jalur dengan mendeteksi marka jalan di kiri dan kanan mobil kemudian mengkoreksi setir jika mobil terdeteksi keluar dari jalur.</p>\n\n<p>Sistem ini bukanlah pengganti dari kontrol kendaraan. Masih merupakan kewajiban Anda untuk menjalankan pedal rem dan roda kemudi secara benar sesuai dengan kondisi berkendara. Untuk keterangan lebih lanjut mengenai ketentuan dan batas kondisi tertentu, dapat merujuk pada buku pedoman pemilik Honda WR-V.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0004s_0001_lkas_ssuv_hpm_min__1666708222821.jpg?w=1000&s=48e941f9aefeac16628e88c95de8d672"
-      },
-      {
-        "slug": "road-departure-mitigation-system-rdm",
-        "title": "Road Departure Mitigation System (RDM)",
-        "desc": "<p>Road Departure Mitigation (RDM) menjaga dan membantu Anda ketika sistem mendeteksi kemungkinan kendaraan Anda keluar dari garis jalur dan/atau meninggalkan jalan.</p>\n\n<p>Sistem RDM memiliki batas. Terlalu percaya pada sistem RDM mungkin akan berakibat pada tabrakan. Tetap menjadi kewajiban Anda untuk menjaga kendaraan tetap pada jalur berkendara Anda. Untuk keterangan lebih lanjut mengenai ketentuan dan batasan kondisi tertentu, dapat merujuk pada pedoman pemilik Honda WR-V.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0004s_0000_rdm_ssuv_hpm_min__1666708281493.jpg?w=1000&s=7f2a4f9ffd0f0d275993f243d8d61827"
-      },
-      {
-        "slug": "adaptive-cruise-control-acc",
-        "title": "Adaptive Cruise Control (ACC)",
-        "desc": "<p>Adaptive Cruise Control (ACC) membantu menjaga kestabilan&nbsp; kecepatan kendaraan dan mengatur jarak di belakang kendaraan&nbsp; yang terdeteksi di depan.</p>\n\n<p>Dengan sistem apa pun, ada batasan untuk ACC. Gunakan pedal rem kapan pun jika dibutuhkan dan selalu jaga jarak aman dengan kendaraan lain.</p>\n\n<p>Masih merupakan kewajiban Anda untuk menjalankan pedal rem dan roda kemudi secara benar sesuai kondisi berkendara. Untuk keterangan lebih lanjut mengenai ketentuan dan batasan kondisi tertentu, dapat merujuk pada buku pedoman Honda WR-V.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0004s_0005_acc_ssuv_hpm_min__1666708310085.jpg?w=1000&s=7c74916b97c6826e260d45979e9e9f03"
-      },
-      {
-        "slug": "lead-departure-notification-system-lcdn",
-        "title": "Lead Departure Notification System (LCDN)",
-        "desc": "<p>Lead-Car Departure Notification (LCDN) adalah fitur terbaru Honda Sensing&trade; yang hadir di Honda WR-V. Ketika dalam kondisi berhenti di jalan dan kendaraan di depan mulai berjalan, pada jarak tertentu bila Anda belum mulai berjalan, notifikasi ini akan membantu mengingatkan Anda.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0004s_0002_lcdn_ssuv_hpm_min__1666708353163.jpg?w=1000&s=e58743e6ba74b757854d9aeb82ce995b"
-      },
-      {
-        "slug": "auto-high-beam-ahb",
-        "title": "Auto High Beam (AHB)",
-        "desc": "<p>Auto High-Beam (AHB) dapat diaktifkan saat Anda berkendara di atas kecepatan 30 km/jam dengan posisi tuas lampu diputar dari OFF ke posisi AUTO.</p>\n\n<p>Sistem ini secara intuitif akan berganti antara lampu besar dan lampu normal tergantung pada situasi jalan.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0004s_0004_ahb_ssuv_hpm_min__1666708382451.jpg?w=1000&s=1d508378962e11dc6b91c2ab75543857"
-      }
-    ]
-  },
-  {
-    "id": "technology",
+    "id": "9-display-audio-with-google-built-in",
     "label": "Technology",
     "items": [
       {
-        "slug": "1025-advanced-capacitive-touchscreen-display-audio",
-        "title": "10.25” Advanced Capacitive Touchscreen Display Audio",
-        "desc": "<p>Layar sentuh berukuran 10.25 inci menghadirkan tampilan yang luas dan responsif, memudahkan akses informasi tanpa mengganggu alur perjalanan.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/display_audio_d_8__1770277608777.png?w=1000&s=270dc5e3b98a975fe1fc3b8805f3846b"
+        "slug": "9-display-audio-with-google-built-in",
+        "title": "9” Display Audio with Google built-in",
+        "desc": "<p>Menghubungkan perjalanan dengan dunia digital penggunanya, tanpa membuat teknologi terasa mendominasi.</p>\n\n<p>&nbsp;</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/9_display_audio_with_google_built_in_d_8__1785139355220.png?w=1000&s=d5034a62656a11c822116942204608e2"
       },
       {
-        "slug": "honda-lanewatch-rs-sensing-type",
-        "title": "Honda LaneWatch™ (RS SENSING Type)",
-        "desc": "<p>Honda WR-V telah dilengkapi dengan LaneWatch&trade; untuk meningkatkan penglihatan pada bagian samping kiri kendaraan, dan meminimalkan blind spot area.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/honda_lanewatch_d_8__1770277643794.png?w=1000&s=513e0dc4f01dc4bca78472eadb681fc7"
+        "slug": "honda-connect-with-digital-key",
+        "title": "Honda CONNECT with Digital Key",
+        "desc": "<p>Honda Connect menjaga kamu tetap terhubung dengan kendaraan, bahkan saat tidak berada di dalamnya. Memberi ketenangan lewat akses dan informasi penting yang selalu siap di genggaman.</p>\n\n<p>Mulai dari memantau kondisi mobil, memastikan keamanan, manajemen pengisian daya hingga mendapatkan notifikasi saat dibutuhkan semua dirancang untuk membuat kamu merasa lebih yakin, ke mana pun hari membawamu</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/honda_connect_with_digital_key_d_8__1785142690426.png?w=1000&s=77438acb8f78b9bc723da1a1b74b7c08"
       },
       {
-        "slug": "amfm-radio",
-        "title": "AM/FM Radio",
-        "desc": "",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/radio_d_8__1770278559890.png?w=1000&s=f5e24e08ec43f1b02d3337d1a8d4c351"
-      },
-      {
-        "slug": "wireless-smartphone-connection",
-        "title": "Wireless Smartphone Connection",
-        "desc": "<p>Konektivitas nirkabel memungkinkan ponsel Anda terhubung dengan mudah, menjaga semuanya tetap terhubung tanpa perlu banyak langkah</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/wireless_smart_connection_d_8__1770277981121.png?w=1000&s=f962eff4513ad099159f10ca6839dbb4"
-      },
-      {
-        "slug": "remote-engine-start",
-        "title": "Remote Engine Start",
-        "desc": "<p><i>Remote engine start&nbsp;</i>akan menyalakan mesin dari jarak jauh melalui&nbsp;<i>keyless remote</i>. Saat ditekan, mesin kendaraan akan aktif dengan keadaan terkunci dan menyalakan AC secara otomatis, sehingga kabin terasa sejuk setelah Anda memasuki mobil.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/remote_engine_start_d_8__1770278476138.png?w=1000&s=ac4c61d77501ef3ad1fe60a53ca778e0"
-      },
-      {
-        "slug": "wireless-charging-console-rs-sensing-type",
-        "title": "Wireless Charging Console (RS SENSING Type)",
-        "desc": "<p>Cukup letakkan perangkat Anda, dan pengisian daya pun berjalan dengan sendirinya, detail kecil yang menjaga ritme tetap lancar.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/wireless_charger_d_8__1770278039229.png?w=1000&s=6d20549f7283cc94af5f1d48323d2447"
-      },
-      {
-        "slug": "multi-angle-rear-view-parking-camera",
-        "title": "Multi-Angle Rear View Parking Camera",
-        "desc": "<p>Kamera parkir multi-sudut membantu melihat sekitar kendaraan dengan lebih jelas, membuat manuver terasa lebih pasti di berbagai situasi.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/multi_angle_rear_parking_camera_d_8__1770278234281.png?w=1000&s=5acef0a7764e56c090a6c55f3faf241f"
-      },
-      {
-        "slug": "auto-foldable-mirror",
-        "title": "Auto Foldable Mirror",
-        "desc": "<p>Berkendara semakin praktis dengan Auto Foldable Mirror yang secara otomatis terbuka dan tertutup saat mobil tidak terkunci/terkunci.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0006s_0008_autofoldablemirror_ssuv_hpm_min__1666759424434.jpg?w=1000&s=97c9e68fbcb0c942e51a04204c238d68"
+        "slug": "7-1-bose-speakers-with-subwoofer",
+        "title": "7 + 1 BOSE Speakers with Subwoofer",
+        "desc": "<p>Mengubah kabin menjadi ruang personal tempat musik, suasana, dan perjalanan terasa lebih hidup.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/7_+_1_bose_speakers_with_subwoofer_d_8__1785142893158.png?w=1000&s=5aa72c74a60ab7b1e66762c82778813a"
       }
     ]
   },
@@ -208,88 +112,22 @@
     "label": "Safety",
     "items": [
       {
-        "slug": "vehicle-stabillity-assist-vsa",
-        "title": "Vehicle Stabillity Assist (VSA)",
-        "desc": "<p>Dilengkapi teknologi keselamatan terkini yang didesain secara khusus untuk menstabilkan manuver kendaraan Anda sehingga mencegah gejala understeer dan oversteer.</p>\n",
+        "slug": "honda-sensing",
+        "title": "Honda SENSING™",
+        "desc": "<p>Honda SENSING&trade; sebagai sistem keamanan canggih Honda bantu Anda tetap aman dan fokus.</p>\n\n<p><strong>Honda SENSING Features</strong></p>\n\n<table>\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t<ul>\n\t\t\t\t<li>CMBS&trade; (Collision Mitigation Braking System&trade;</li>\n\t\t\t\t<li>LKAS (Lane Keeping Assist System)</li>\n\t\t\t\t<li>ACC with LSF (Adaptive Cruise Control with Low-Speed Follow)</li>\n\t\t\t</ul>\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t<ul>\n\t\t\t\t<li>AHB (Auto High Beam)</li>\n\t\t\t\t<li>LCDN (Lead Car Departure Notification System)</li>\n\t\t\t\t<li>RDM (Road Departure Mitigation System)</li>\n\t\t\t</ul>\n\t\t\t</td>\n\t\t</tr>\n\t</tbody>\n</table>\n\n<p>*Untuk informasi lebih lengkap, kunjungi www.honda-indonesia.com/hondasensing.  Seluruh kendali kendaraan ada pada pengemudi, teknologi Honda SENSING hanya membantu mengurangi risiko terjadinya kecelakaan jika semua variabel terpenuhi.</p>\n",
         "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0002s_0000_vsa_ssuv_hpm_min__1666711955649.jpg?w=1000&s=02412a4e604a64f24c22722e71caeb18"
       },
       {
-        "slug": "6-airbags",
-        "title": "6 Airbags",
-        "desc": "<p>Mengemudi dengan Honda WR-V semakin aman dengan fitur 6 airbags untuk tipe RS with Honda Sensing, dan 4 airbags untuk tipe RS dan E.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0002s_0001_rectangle_1_copy_17_min__1666711991979.jpg?w=1000&s=bb0169a2047c6c119f94ae8341f5ba3f"
+        "slug": "parking-sensor-4-point-front-4-point-rear",
+        "title": "Parking Sensor (4-Point Front & 4-Point Rear)",
+        "desc": "<p>Delapan sensor pada bagian depan dan belakang membantu mendeteksi objek di sekitar kendaraan ketika bermanuver atau parkir di ruang terbatas.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/whatsapp_image_2026_07_29_at_13__1785310946597.jpeg?w=1000&s=fd4b42e60e9ad33b3308c5190d013191"
       },
       {
-        "slug": "hill-start-assist-hsa",
-        "title": "Hill Start Assist (HSA)",
-        "desc": "<p>Fitur untuk memudahkan saat stop and go di tanjakan, sehingga mencegah mobil mundur saat mulai melaju dari posisi berhenti.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/hsa_d_8__1770364827635.png?w=1000&s=3c25231ee2fc45be04ca8c2b9d3acfbb"
-      },
-      {
-        "slug": "abs-ebd-ba",
-        "title": "ABS + EBD + BA",
-        "desc": "<p>Anti-Lock Breaking System (ABS) mencegah roda terkunci saat pengereman mendadak di permukaan licin, sedangkan Electronic Braking Distribution (EBD) membagi daya pengereman ke setiap roda sesuai beban kendaraan. Selain itu, Braking Assist (BA) turut menambah efektivitas pengereman.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/abs_ebd_d_copy_8__1770367253566.png?w=1000&s=c7cee4e7512c61606ad3cb84c4dba4c0"
-      },
-      {
-        "slug": "emergency-stop-signal",
-        "title": "Emergency Stop Signal",
-        "desc": "<p>Fitur keselamatan guna memperkecil resiko kecelakaan, berfungsi memberikan peringatan pada pengendara lain di belakang ketika melakukan rem mendadak.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/emergency_stop_signal_d_copy_2_8__1770367282954.png?w=1000&s=f416f09d45b296c469c3573f11081849"
-      },
-      {
-        "slug": "walk-away-auto-lock",
-        "title": "Walk-Away Auto Lock",
-        "desc": "<p>Fitur teknologi terkini berfungsi mengaktifkan &amp; mengunci pintu mobil secara otomatis&nbsp; pada jarak sekitar 2 meter dari mobil.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/walk_away_auto_lock_d_copy_3_8__1770798429218.png?w=1000&s=11f8008d4efcd910056b651d04303240"
-      },
-      {
-        "slug": "rear-seat-reminder",
-        "title": "Rear Seat Reminder",
-        "desc": "<p>Fitur canggih guna mendeteksi saat Anda meninggalkan barang di baris kedua kendaraan dan akan ada peringatan melalui layar MID.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0001s_0001_rearseatreminder_ssuv_hpm_min__1666712159540.jpg?w=1000&s=4e0f5b2d163257a945add681d74ddcf1"
-      }
-    ]
-  },
-  {
-    "id": "comfort-enhancement",
-    "label": "Comfort Enhancement",
-    "items": [
-      {
-        "slug": "front-rear-door-pocket-with-drink-holder",
-        "title": "Front & Rear Door Pocket With Drink Holder",
-        "desc": "<p>Berkendara menjadi lebih mudah dan tetap terhidrasi di perjalanan dengan cup holder di bagian depan kabin.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/side_cup_holder_d_8__1770279392650.png?w=1000&s=59cd9f0d3a4dfaae976303553b0cd517"
-      },
-      {
-        "slug": "cup-holder",
-        "title": "Cup Holder",
-        "desc": "<p>Dengan adanya cup holder, Anda semakin nyaman membawa botol minuman selama perjalanan panjang.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/cup_holder_d_8__1770279080197.png?w=1000&s=46e55f15c6c63d7ae40ef33f7597c936"
-      },
-      {
-        "slug": "1st-row-power-outlet-usb-type-a-and-usb-type-c",
-        "title": "1st Row Power Outlet, USB Type A, and USB Type C",
-        "desc": "<p>Kemanapun perjalanan Anda, tidak perlu khawatir kehabisan daya baterai ponsel dan gagdet. Anda dapat mengisi daya baterai ponsel sambil berjalan ke tempat tujuan.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/power_outlet_d_copy_2_8__1770279041132.png?w=1000&s=83f0bd6f66f72de8acbd321c80223087"
-      },
-      {
-        "slug": "spacious-glove-box",
-        "title": "Spacious Glove Box",
-        "desc": "<p>Honda WR-V memiliki banyak ruang penyimpanan yang multi-fungsi, seperti&nbsp;<i>glove box&nbsp;</i>yang satu ini.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0007s_0003_rectangle_1_copy_27_min__1666789309985.jpg?w=1000&s=58a844e2bd78d685f070a4b78550f961"
-      },
-      {
-        "slug": "day-night-rear-view-mirror-map-light",
-        "title": "Day Night Rear View Mirror & Map Light",
-        "desc": "<p>Dengan fitur ini, Anda dapat mengatur kaca spion tengah dengan lebih mudah dan menghindari pantulan cahaya dari kendaraan lain dibelakang.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/mirrormap__1666789274481.jpg?w=1000&s=be35c5d150949b13f06f92b19048d82d"
-      },
-      {
-        "slug": "sun-visor-with-vanity-mirror-lamp",
-        "title": "Sun Visor With Vanity Mirror & Lamp",
-        "desc": "<p>Kehadiran&nbsp;<i>sun visor&nbsp;</i>dirancang sebagai pelindung penglihatan pengendara agar tidak terganggu sinar matahari yang menyilaukan, dan dilengkapi kaca untuk bercermin.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/sunvisor__1666789068074.jpg?w=1000&s=6dbe3cc6398d060c766a3f5bf617cad3"
+        "slug": "6-airbags-dual-front-srs-side-side-curtain",
+        "title": "6 Airbags (Dual Front SRS, Side, Side Curtain)",
+        "desc": "<p>Enam airbag ditempatkan pada sejumlah area kabin untuk membantu memberikan perlindungan bagi pengemudi dan penumpang apabila terjadi benturan.</p>\n\n<p>&nbsp;</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/6_airbags_(dual_front_srs,_side,_side_curtain)_d_8__1785145206141.png?w=1000&s=8393a4dc717c1e24ebcb2c560d4a74f8"
       }
     ]
   },
@@ -298,34 +136,160 @@
     "label": "Performance",
     "items": [
       {
-        "slug": "15l-dohc-i-vtec-engine",
-        "title": "1.5L DOHC i-VTEC Engine",
-        "desc": "<p>Rasakan sensasi mesin 1500cc yang menghasilkan tenaga 121 PS pada torsi maksimal 145 Nm&nbsp; untuk aktivitas harian Anda.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0003s_0000_rectangle_1_copy_22_min__1666712300880.jpg?w=1000&s=d98c100cb0304e8a2d62f7ce59c4b08b"
+        "slug": "battery-capacity",
+        "title": "Battery Capacity",
+        "desc": "<p>Kapasitas yang dirancang untuk kebutuhan mobilitas sehari-hari, dipadukan dengan bodi ringan agar perjalanan terasa lebih efisien. (Kapasitas Baterai 29,6 kWh)</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/batre_center_gravity__1785143969099.png?w=1000&s=69304e00f1c745a38417e2e6fda9a9ec"
       },
       {
-        "slug": "transmission-cvt",
-        "title": "Transmission CVT",
-        "desc": "<p>Dilengkapi dengan teknologi terbaru yang merupakan pengembangan dari transmisi matik konvensional, transmisi CVT membuat pengalaman berkendara Anda lebih mudah.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/master_detail_0003s_0001_rectangle_1_copy_21_min__1666788413551.jpg?w=1000&s=9bd49c822d2e60008ede062e6df0a22b"
+        "slug": "slim-battery",
+        "title": "Slim Battery",
+        "desc": "<p>Desain baterai yang ramping ditempatkan di bawah lantai, sehingga kebutuhan daya tetap terpenuhi tanpa banyak mengurangi ruang di dalam kabin.</p>\n\n<p><b>Temperature Control</b></p>\n\n<p>Suhu baterai dijaga tetap optimal dalam kondisi panas maupun dingin, membantu menjaga performa, jarak tempuh, dan proses pengisian daya tetap konsisten.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/slim_battery_d_8__1785144069553.png?w=1000&s=414bfd27e587c903af46cdc8164b8583"
       },
       {
-        "slug": "paddle-shift",
-        "title": "Paddle Shift",
-        "desc": "<p>Paddle shift memberi kendali di ujung jari, saat kamu ingin berkendara dengan ritme yang lebih pas.</p>\n",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/paddle_shift_d_8__1770279243720.png?w=1000&s=5046224681ee1566544d770ca64cd4be"
+        "slug": "drive-modes",
+        "title": "Drive Modes",
+        "desc": "<p>Setiap perjalanan memiliki kebutuhan dan suasana yang berbeda. Pilih mode berkendara yang paling sesuai, dari mobilitas harian yang efisien hingga pengalaman yang lebih ekspresif.</p>\n\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"2\" width=\"100%\">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td width=\"“30%”\"><b>ECON Mode</b></td>\n\t\t\t<td width=\"“70%”\">Mengoptimalkan penggunaan energi agar perjalanan terasa lebih tenang, terutama saat menempuh jarak lebih jauh.</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td width=\"“30%”\"><b>CITY Mode</b></td>\n\t\t\t<td width=\"“70%”\">Membuat perjalanan di tengah lalu lintas perkotaan terasa lebih praktis melalui kemudahan akselerasi dan deselerasi dengan satu pedal.</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td width=\"“30%”\"><b>NORMAL Mode</b></td>\n\t\t\t<td width=\"“70%”\">Menghadirkan respons yang halus dan seimbang untuk menemani berbagai aktivitas sehari-hari.</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td width=\"“30%”\"><b>SPORT Mode</b></td>\n\t\t\t<td width=\"“70%”\">Memberikan respons yang lebih tegas dan bertenaga, lengkap dengan karakter suara dinamis untuk perjalanan yang terasa lebih hidup.</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td width=\"“30%”\"><b>BOOST Mode</b></td>\n\t\t\t<td width=\"“70%”\">Satu sentuhan untuk mengubah suasana perjalanan. BOOST Mode menghadirkan tenaga hingga 70 kW, karakter suara yang lebih kuat, serta visual kabin berwarna ungu untuk pengalaman berkendara yang lebih hidup.</td>\n\t\t</tr>\n\t</tbody>\n</table>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/drive_mode_d_8__1785144264671.png?w=1000&s=9944ff94147fda5d829de1eb352622fd"
+      },
+      {
+        "slug": "deceleration-paddle-selector",
+        "title": "Deceleration Paddle Selector",
+        "desc": "<p>Memberikan ruang bagi pengemudi untuk menentukan bagaimana mobil merespons, sehingga setiap perjalanan terasa lebih personal.</p>\n\n<p>(ECON, City, Normal Driving Modes)</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/deceleration_selector_d_8__1785144307228.png?w=1000&s=12c1a2fba706eeaca9ddefad580fda81"
+      },
+      {
+        "slug": "push-button-shifter",
+        "title": "Push Button Shifter",
+        "desc": "<p>Sistem pemindah gigi modern dan praktis dengan tombol intuitif, memberikan pengalaman berkendara yang lebih nyaman dan futuristik.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/push_button_shifter_d_8__1785144360743.png?w=1000&s=8befbeb54b41064474513c69198522b6"
+      },
+      {
+        "slug": "single-pedal-control-city-driving-mode",
+        "title": "Single Pedal Control [City Driving Mode]",
+        "desc": "<p>Saat CITY Mode diaktifkan, akselerasi, deselerasi, hingga berhenti dapat dikendalikan melalui satu pedal. Tingkat perlambatan juga dapat disesuaikan melalui paddle shift.</p>\n\n<p>Membuat perjalanan di tengah kemacetan dan kondisi stop-and-go terasa lebih praktis, ringan, dan tidak melelahkan.</p>\n",
+        "img": ""
       }
     ]
   },
   {
-    "id": "colors",
-    "label": "Colors",
+    "id": "s",
+    "label": "Specification",
     "items": [
       {
-        "slug": "colors",
-        "title": "Colors",
+        "slug": "dimension",
+        "title": "Dimension",
+        "desc": "<table border=\"0\" cellpadding=\"2\" cellspacing=\"2\" width=\"100%\">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td width=\"15%\">Length x Width x Height</td>\n\t\t\t<td width=\"10%\">mm</td>\n\t\t\t<td width=\"75%\">3.569 x 1.573 x 1.616</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Wheelbase</td>\n\t\t\t<td>mm</td>\n\t\t\t<td>2.520</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Ground Clearance</td>\n\t\t\t<td>mm</td>\n\t\t\t<td>140</td>\n\t\t</tr>\n\t</tbody>\n</table>\n",
+        "img": ""
+      },
+      {
+        "slug": "electric-motor-and-battery",
+        "title": "Electric Motor and Battery",
+        "desc": "<table border=\"0\" cellpadding=\"2\" cellspacing=\"2\" width=\"100%\">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td width=\"15%\">Powertrain</td>\n\t\t\t<td width=\"10%\">&nbsp;</td>\n\t\t\t<td width=\"75%\">Electric</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Battery Type</td>\n\t\t\t<td>&nbsp;</td>\n\t\t\t<td>Lithium-Ion</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Maximum Power Output</td>\n\t\t\t<td>kW/PS</td>\n\t\t\t<td>70/95</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Maximum Torque</td>\n\t\t\t<td>Nm</td>\n\t\t\t<td>162 Nm</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>EV Battery Capacity</td>\n\t\t\t<td>kWh</td>\n\t\t\t<td>29.6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Driving Range (NEDC)</td>\n\t\t\t<td>km</td>\n\t\t\t<td>252 km</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Drivetrain</td>\n\t\t\t<td>&nbsp;</td>\n\t\t\t<td>Front-Wheel Drive</td>\n\t\t</tr>\n\t</tbody>\n</table>\n",
+        "img": ""
+      },
+      {
+        "slug": "charging-type",
+        "title": "Charging Type",
+        "desc": "<table border=\"0\" cellpadding=\"2\" cellspacing=\"2\" width=\"100%\">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td width=\"15%\">Charging Port Type</td>\n\t\t\t<td width=\"10%\">AC/DC</td>\n\t\t\t<td width=\"75%\">Type 2/CCS 2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>DC Max Input</td>\n\t\t\t<td>kW</td>\n\t\t\t<td>50</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>AC 1-Phase Max Input</td>\n\t\t\t<td>kW</td>\n\t\t\t<td>6.6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>AC 3-Phase Max Input</td>\n\t\t\t<td>kW</td>\n\t\t\t<td>10</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>AC 6.0 kW Charging Time</td>\n\t\t\t<td>hours</td>\n\t\t\t<td>4.5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>DC 50 kW Quick Charging Time</td>\n\t\t\t<td>minutes</td>\n\t\t\t<td>30</td>\n\t\t</tr>\n\t</tbody>\n</table>\n",
+        "img": ""
+      }
+    ]
+  },
+  {
+    "id": "v",
+    "label": "Variant Color",
+    "items": [
+      {
+        "slug": "variant-color",
+        "title": "Variant Color",
         "desc": "",
-        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/wr_v_color_d_8__1770282980159.png?w=1000&s=a09d2b1f470a1ba62fbd6364838f9b40"
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/color_variant_d_8__1785147276852.png?w=1000&s=242c585fce0e7171a478ae265830ba5a"
+      }
+    ]
+  },
+  {
+    "id": "c",
+    "label": "Charging",
+    "items": [
+      {
+        "slug": "charging-options",
+        "title": "Charging Options",
+        "desc": "<p style=\"box-sizing:border-box; border:0px solid #e5e7eb; scrollbar-color:auto; scrollbar-width:auto; --tw-border-spacing-x:0; --tw-border-spacing-y:0; --tw-translate-x:0; --tw-translate-y:0; --tw-rotate:0; --tw-skew-x:0; --tw-skew-y:0; --tw-scale-x:1; --tw-scale-y:1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness:proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width:0px; --tw-ring-offset-color:#ffffff; --tw-ring-color:rgb(59 130 246/0.5); --tw-ring-offset-shadow:0 0 #0000; --tw-ring-shadow:0 0 #0000; --tw-shadow:0 0 #0000; --tw-shadow-colored:0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; color:#374151; font-family:&quot;Roboto Condensed&quot;, sans-serif; font-size:16px; font-style:normal; font-variant-ligatures:normal; font-weight:400; text-align:start; white-space:normal; background-color:#ffffff; text-decoration-thickness:initial; text-decoration-style:initial; text-decoration-color:initial; margin-bottom:20px\">Honda Super-ONE mendukung pengisian normal dan cepat, sehingga pengisian daya dapat menyesuaikan waktu serta aktivitas Anda, baik saat beristirahat di rumah maupun ketika harus kembali melanjutkan perjalanan.</p>\n\n<table class=\"table table-bordered\" style=\"box-sizing:border-box; border:1px solid #dddddd; scrollbar-color:auto; scrollbar-width:auto; --tw-border-spacing-x:0; --tw-border-spacing-y:0; --tw-translate-x:0; --tw-translate-y:0; --tw-rotate:0; --tw-skew-x:0; --tw-skew-y:0; --tw-scale-x:1; --tw-scale-y:1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness:proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width:0px; --tw-ring-offset-color:#ffffff; --tw-ring-color:rgb(59 130 246/0.5); --tw-ring-offset-shadow:0 0 #0000; --tw-ring-shadow:0 0 #0000; --tw-shadow:0 0 #0000; --tw-shadow-colored:0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; border-collapse:collapse; border-spacing:0px; background-color:#ffffff; margin-bottom:32px; width:600px; max-width:100%; font-size:0.875em; line-height:1.71429; margin-top:32px; table-layout:auto; text-align:left; color:#374151; font-family:&quot;Roboto Condensed&quot;, sans-serif; font-style:normal; font-variant-ligatures:normal; font-weight:400; white-space:normal; text-decoration-thickness:initial; text-decoration-style:initial; text-decoration-color:initial\">\n\t<tbody style=\"box-sizing:border-box; border:0px solid #e5e7eb; scrollbar-color:auto; scrollbar-width:auto; --tw-border-spacing-x:0; --tw-border-spacing-y:0; --tw-translate-x:0; --tw-translate-y:0; --tw-rotate:0; --tw-skew-x:0; --tw-skew-y:0; --tw-scale-x:1; --tw-scale-y:1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness:proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width:0px; --tw-ring-offset-color:#ffffff; --tw-ring-color:rgb(59 130 246/0.5); --tw-ring-offset-shadow:0 0 #0000; --tw-ring-shadow:0 0 #0000; --tw-shadow:0 0 #0000; --tw-shadow-colored:0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: \">\n\t\t<tr>\n\t\t\t<td style=\"border-bottom:1px solid #dddddd; scrollbar-width:auto; --tw-border-spacing-x:0; --tw-border-spacing-y:0; --tw-ring-offset-width:0px; padding:8px; vertical-align:top; line-height:1.42857; background-color:#ffffff; border-top:1px solid #dddddd; border-right:1px solid #dddddd; border-left:1px solid #dddddd\">\n\t\t\t<p style=\"box-sizing:border-box; border:0px solid #e5e7eb; scrollbar-color:auto; scrollbar-width:auto; --tw-border-spacing-x:0; --tw-border-spacing-y:0; --tw-translate-x:0; --tw-translate-y:0; --tw-rotate:0; --tw-skew-x:0; --tw-skew-y:0; --tw-scale-x:1; --tw-scale-y:1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness:proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width:0px; --tw-ring-offset-color:#ffffff; --tw-ring-color:rgb(59 130 246/0.5); --tw-ring-offset-shadow:0 0 #0000; --tw-ring-shadow:0 0 #0000; --tw-shadow:0 0 #0000; --tw-shadow-colored:0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; line-height:1.2\"><span style=\"box-sizing:border-box\"><span style=\"scrollbar-color:auto\"><span style=\"--tw-translate-x:0\"><span style=\"--tw-translate-y:0\"><span style=\"--tw-rotate:0\"><span style=\"--tw-skew-x:0\"><span style=\"--tw-skew-y:0\"><span style=\"--tw-scale-x:1\"><span style=\"--tw-scale-y:1\"><span style=\"--tw-scroll-snap-strictness:proximity\"><span style=\"--tw-ring-offset-color:#ffffff\"><span style=\"--tw-ring-color:rgb(59 130 246/0.5)\"><span style=\"--tw-ring-offset-shadow:0 0 #0000\"><span style=\"--tw-ring-shadow:0 0 #0000\"><span style=\"--tw-shadow:0 0 #0000\"><span style=\"--tw-shadow-colored:0 0 #0000\"><span style=\"border:0px solid #e5e7eb\"><span style=\"box-sizing:border-box\"><span style=\"scrollbar-color:auto\"><span style=\"scrollbar-width:auto\"><span style=\"--tw-border-spacing-x:0\"><span style=\"--tw-border-spacing-y:0\"><span style=\"--tw-translate-x:0\"><span style=\"--tw-translate-y:0\"><span style=\"--tw-rotate:0\"><span style=\"--tw-skew-x:0\"><span style=\"--tw-skew-y:0\"><span style=\"--tw-scale-x:1\"><span style=\"--tw-scale-y:1\"><span style=\"--tw-pan-x: \"><span style=\"--tw-pan-y: \"><span style=\"--tw-pinch-zoom: \"><span style=\"--tw-scroll-snap-strictness:proximity\"><span style=\"--tw-gradient-from-position: \"><span style=\"--tw-gradient-via-position: \"><span style=\"--tw-gradient-to-position: \"><span style=\"--tw-ordinal: \"><span style=\"--tw-slashed-zero: \"><span style=\"--tw-numeric-figure: \"><span style=\"--tw-numeric-spacing: \"><span style=\"--tw-numeric-fraction: \"><span style=\"--tw-ring-inset: \"><span style=\"--tw-ring-offset-width:0px\"><span style=\"--tw-ring-offset-color:#ffffff\"><span style=\"--tw-ring-color:rgb(59 130 246/0.5)\"><span style=\"--tw-ring-offset-shadow:0 0 #0000\"><span style=\"--tw-ring-shadow:0 0 #0000\"><span style=\"--tw-shadow:0 0 #0000\"><span style=\"--tw-shadow-colored:0 0 #0000\"><span style=\"--tw-blur: \"><span style=\"--tw-brightness: \"><span style=\"--tw-contrast: \"><span style=\"--tw-grayscale: \"><span style=\"--tw-hue-rotate: \"><span style=\"--tw-invert: \"><span style=\"--tw-saturate: \"><span style=\"--tw-sepia: \"><span style=\"--tw-drop-shadow: \"><span style=\"--tw-backdrop-blur: \"><span style=\"--tw-backdrop-brightness: \"><span style=\"--tw-backdrop-contrast: \"><span style=\"--tw-backdrop-grayscale: \"><span style=\"--tw-backdrop-hue-rotate: \"><span style=\"--tw-backdrop-invert: \"><span style=\"--tw-backdrop-opacity: \"><span style=\"--tw-backdrop-saturate: \"><span style=\"--tw-backdrop-sepia: \"><span style=\"border:0px solid #e5e7eb; font-variant:normal; white-space:pre-wrap\"><span style=\"font-size:18px\"><span style=\"box-sizing:border-box\"><span style=\"scrollbar-color:auto\"><span style=\"scrollbar-width:auto\"><span style=\"--tw-border-spacing-x:0\"><span style=\"--tw-border-spacing-y:0\"><span style=\"--tw-translate-x:0\"><span style=\"--tw-translate-y:0\"><span style=\"--tw-rotate:0\"><span style=\"--tw-skew-x:0\"><span style=\"--tw-skew-y:0\"><span style=\"--tw-scale-x:1\"><span style=\"--tw-scale-y:1\"><span style=\"--tw-pan-x: \"><span style=\"--tw-pan-y: \"><span style=\"--tw-pinch-zoom: \"><span style=\"--tw-scroll-snap-strictness:proximity\"><span style=\"--tw-gradient-from-position: \"><span style=\"--tw-gradient-via-position: \"><span style=\"--tw-gradient-to-position: \"><span style=\"--tw-ordinal: \"><span style=\"--tw-slashed-zero: \"><span style=\"--tw-numeric-figure: \"><span style=\"--tw-numeric-spacing: \"><span style=\"--tw-numeric-fraction: \"><span style=\"--tw-ring-inset: \"><span style=\"--tw-ring-offset-width:0px\"><span style=\"--tw-ring-offset-color:#ffffff\"><span style=\"--tw-ring-color:rgb(59 130 246/0.5)\"><span style=\"--tw-ring-offset-shadow:0 0 #0000\"><span style=\"--tw-ring-shadow:0 0 #0000\"><span style=\"--tw-shadow:0 0 #0000\"><span style=\"--tw-shadow-colored:0 0 #0000\"><span style=\"--tw-blur: \"><span style=\"--tw-brightness: \"><span style=\"--tw-contrast: \"><span style=\"--tw-grayscale: \"><span style=\"--tw-hue-rotate: \"><span style=\"--tw-invert: \"><span style=\"--tw-saturate: \"><span style=\"--tw-sepia: \"><span style=\"--tw-drop-shadow: \"><span style=\"--tw-backdrop-blur: \"><span style=\"--tw-backdrop-brightness: \"><span style=\"--tw-backdrop-contrast: \"><span style=\"--tw-backdrop-grayscale: \"><span style=\"--tw-backdrop-hue-rotate: \"><span style=\"--tw-backdrop-invert: \"><span style=\"--tw-backdrop-opacity: \"><span style=\"--tw-backdrop-saturate: \"><span style=\"--tw-backdrop-sepia: \"><span style=\"font-family:Arial, sans-serif\"><span style=\"color:#595959\">Normal Charging</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>\n\t\t\t</td>\n\t\t\t<td style=\"border-bottom:1px solid #dddddd; scrollbar-width:auto; --tw-border-spacing-x:0; --tw-border-spacing-y:0; --tw-ring-offset-width:0px; padding:8px; vertical-align:top; line-height:1.42857; background-color:#ffffff; border-top:1px solid #dddddd; border-right:1px solid #dddddd; border-left:1px solid #dddddd\">\n\t\t\t<p style=\"box-sizing:border-box; border:0px solid #e5e7eb; scrollbar-color:auto; scrollbar-width:auto; --tw-border-spacing-x:0; --tw-border-spacing-y:0; --tw-translate-x:0; --tw-translate-y:0; --tw-rotate:0; --tw-skew-x:0; --tw-skew-y:0; --tw-scale-x:1; --tw-scale-y:1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness:proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width:0px; --tw-ring-offset-color:#ffffff; --tw-ring-color:rgb(59 130 246/0.5); --tw-ring-offset-shadow:0 0 #0000; --tw-ring-shadow:0 0 #0000; --tw-shadow:0 0 #0000; --tw-shadow-colored:0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; line-height:1.2\"><span style=\"box-sizing:border-box\"><span style=\"scrollbar-color:auto\"><span style=\"--tw-translate-x:0\"><span style=\"--tw-translate-y:0\"><span style=\"--tw-rotate:0\"><span style=\"--tw-skew-x:0\"><span style=\"--tw-skew-y:0\"><span style=\"--tw-scale-x:1\"><span style=\"--tw-scale-y:1\"><span style=\"--tw-scroll-snap-strictness:proximity\"><span style=\"--tw-ring-offset-color:#ffffff\"><span style=\"--tw-ring-color:rgb(59 130 246/0.5)\"><span style=\"--tw-ring-offset-shadow:0 0 #0000\"><span style=\"--tw-ring-shadow:0 0 #0000\"><span style=\"--tw-shadow:0 0 #0000\"><span style=\"--tw-shadow-colored:0 0 #0000\"><span style=\"border:0px solid #e5e7eb\"><span style=\"box-sizing:border-box\"><span style=\"scrollbar-color:auto\"><span style=\"scrollbar-width:auto\"><span style=\"--tw-border-spacing-x:0\"><span style=\"--tw-border-spacing-y:0\"><span style=\"--tw-translate-x:0\"><span style=\"--tw-translate-y:0\"><span style=\"--tw-rotate:0\"><span style=\"--tw-skew-x:0\"><span style=\"--tw-skew-y:0\"><span style=\"--tw-scale-x:1\"><span style=\"--tw-scale-y:1\"><span style=\"--tw-pan-x: \"><span style=\"--tw-pan-y: \"><span style=\"--tw-pinch-zoom: \"><span style=\"--tw-scroll-snap-strictness:proximity\"><span style=\"--tw-gradient-from-position: \"><span style=\"--tw-gradient-via-position: \"><span style=\"--tw-gradient-to-position: \"><span style=\"--tw-ordinal: \"><span style=\"--tw-slashed-zero: \"><span style=\"--tw-numeric-figure: \"><span style=\"--tw-numeric-spacing: \"><span style=\"--tw-numeric-fraction: \"><span style=\"--tw-ring-inset: \"><span style=\"--tw-ring-offset-width:0px\"><span style=\"--tw-ring-offset-color:#ffffff\"><span style=\"--tw-ring-color:rgb(59 130 246/0.5)\"><span style=\"--tw-ring-offset-shadow:0 0 #0000\"><span style=\"--tw-ring-shadow:0 0 #0000\"><span style=\"--tw-shadow:0 0 #0000\"><span style=\"--tw-shadow-colored:0 0 #0000\"><span style=\"--tw-blur: \"><span style=\"--tw-brightness: \"><span style=\"--tw-contrast: \"><span style=\"--tw-grayscale: \"><span style=\"--tw-hue-rotate: \"><span style=\"--tw-invert: \"><span style=\"--tw-saturate: \"><span style=\"--tw-sepia: \"><span style=\"--tw-drop-shadow: \"><span style=\"--tw-backdrop-blur: \"><span style=\"--tw-backdrop-brightness: \"><span style=\"--tw-backdrop-contrast: \"><span style=\"--tw-backdrop-grayscale: \"><span style=\"--tw-backdrop-hue-rotate: \"><span style=\"--tw-backdrop-invert: \"><span style=\"--tw-backdrop-opacity: \"><span style=\"--tw-backdrop-saturate: \"><span style=\"--tw-backdrop-sepia: \"><span style=\"border:0px solid #e5e7eb; font-variant:normal; white-space:pre-wrap\"><span style=\"font-size:18px\"><span style=\"box-sizing:border-box\"><span style=\"scrollbar-color:auto\"><span style=\"scrollbar-width:auto\"><span style=\"--tw-border-spacing-x:0\"><span style=\"--tw-border-spacing-y:0\"><span style=\"--tw-translate-x:0\"><span style=\"--tw-translate-y:0\"><span style=\"--tw-rotate:0\"><span style=\"--tw-skew-x:0\"><span style=\"--tw-skew-y:0\"><span style=\"--tw-scale-x:1\"><span style=\"--tw-scale-y:1\"><span style=\"--tw-pan-x: \"><span style=\"--tw-pan-y: \"><span style=\"--tw-pinch-zoom: \"><span style=\"--tw-scroll-snap-strictness:proximity\"><span style=\"--tw-gradient-from-position: \"><span style=\"--tw-gradient-via-position: \"><span style=\"--tw-gradient-to-position: \"><span style=\"--tw-ordinal: \"><span style=\"--tw-slashed-zero: \"><span style=\"--tw-numeric-figure: \"><span style=\"--tw-numeric-spacing: \"><span style=\"--tw-numeric-fraction: \"><span style=\"--tw-ring-inset: \"><span style=\"--tw-ring-offset-width:0px\"><span style=\"--tw-ring-offset-color:#ffffff\"><span style=\"--tw-ring-color:rgb(59 130 246/0.5)\"><span style=\"--tw-ring-offset-shadow:0 0 #0000\"><span style=\"--tw-ring-shadow:0 0 #0000\"><span style=\"--tw-shadow:0 0 #0000\"><span style=\"--tw-shadow-colored:0 0 #0000\"><span style=\"--tw-blur: \"><span style=\"--tw-brightness: \"><span style=\"--tw-contrast: \"><span style=\"--tw-grayscale: \"><span style=\"--tw-hue-rotate: \"><span style=\"--tw-invert: \"><span style=\"--tw-saturate: \"><span style=\"--tw-sepia: \"><span style=\"--tw-drop-shadow: \"><span style=\"--tw-backdrop-blur: \"><span style=\"--tw-backdrop-brightness: \"><span style=\"--tw-backdrop-contrast: \"><span style=\"--tw-backdrop-grayscale: \"><span style=\"--tw-backdrop-hue-rotate: \"><span style=\"--tw-backdrop-invert: \"><span style=\"--tw-backdrop-opacity: \"><span style=\"--tw-backdrop-saturate: \"><span style=\"--tw-backdrop-sepia: \"><span style=\"font-family:Arial, sans-serif\"><span style=\"color:#595959\">Fast Charging</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td style=\"border-bottom:1px solid #dddddd; scrollbar-width:auto; --tw-border-spacing-x:0; --tw-border-spacing-y:0; --tw-ring-offset-width:0px; padding:8px; vertical-align:top; line-height:1.42857; background-color:#ffffff; border-top:1px solid #dddddd; border-right:1px solid #dddddd; border-left:1px solid #dddddd\">\n\t\t\t<p style=\"box-sizing:border-box; border:0px solid #e5e7eb; scrollbar-color:auto; scrollbar-width:auto; --tw-border-spacing-x:0; --tw-border-spacing-y:0; --tw-translate-x:0; --tw-translate-y:0; --tw-rotate:0; --tw-skew-x:0; --tw-skew-y:0; --tw-scale-x:1; --tw-scale-y:1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness:proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width:0px; --tw-ring-offset-color:#ffffff; --tw-ring-color:rgb(59 130 246/0.5); --tw-ring-offset-shadow:0 0 #0000; --tw-ring-shadow:0 0 #0000; --tw-shadow:0 0 #0000; --tw-shadow-colored:0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; line-height:1.2\"><span style=\"box-sizing:border-box\"><span style=\"scrollbar-color:auto\"><span style=\"--tw-translate-x:0\"><span style=\"--tw-translate-y:0\"><span style=\"--tw-rotate:0\"><span style=\"--tw-skew-x:0\"><span style=\"--tw-skew-y:0\"><span style=\"--tw-scale-x:1\"><span style=\"--tw-scale-y:1\"><span style=\"--tw-scroll-snap-strictness:proximity\"><span style=\"--tw-ring-offset-color:#ffffff\"><span style=\"--tw-ring-color:rgb(59 130 246/0.5)\"><span style=\"--tw-ring-offset-shadow:0 0 #0000\"><span style=\"--tw-ring-shadow:0 0 #0000\"><span style=\"--tw-shadow:0 0 #0000\"><span style=\"--tw-shadow-colored:0 0 #0000\"><span style=\"border:0px solid #e5e7eb\"><span style=\"box-sizing:border-box\"><span style=\"scrollbar-color:auto\"><span style=\"scrollbar-width:auto\"><span style=\"--tw-border-spacing-x:0\"><span style=\"--tw-border-spacing-y:0\"><span style=\"--tw-translate-x:0\"><span style=\"--tw-translate-y:0\"><span style=\"--tw-rotate:0\"><span style=\"--tw-skew-x:0\"><span style=\"--tw-skew-y:0\"><span style=\"--tw-scale-x:1\"><span style=\"--tw-scale-y:1\"><span style=\"--tw-pan-x: \"><span style=\"--tw-pan-y: \"><span style=\"--tw-pinch-zoom: \"><span style=\"--tw-scroll-snap-strictness:proximity\"><span style=\"--tw-gradient-from-position: \"><span style=\"--tw-gradient-via-position: \"><span style=\"--tw-gradient-to-position: \"><span style=\"--tw-ordinal: \"><span style=\"--tw-slashed-zero: \"><span style=\"--tw-numeric-figure: \"><span style=\"--tw-numeric-spacing: \"><span style=\"--tw-numeric-fraction: \"><span style=\"--tw-ring-inset: \"><span style=\"--tw-ring-offset-width:0px\"><span style=\"--tw-ring-offset-color:#ffffff\"><span style=\"--tw-ring-color:rgb(59 130 246/0.5)\"><span style=\"--tw-ring-offset-shadow:0 0 #0000\"><span style=\"--tw-ring-shadow:0 0 #0000\"><span style=\"--tw-shadow:0 0 #0000\"><span style=\"--tw-shadow-colored:0 0 #0000\"><span style=\"--tw-blur: \"><span style=\"--tw-brightness: \"><span style=\"--tw-contrast: \"><span style=\"--tw-grayscale: \"><span style=\"--tw-hue-rotate: \"><span style=\"--tw-invert: \"><span style=\"--tw-saturate: \"><span style=\"--tw-sepia: \"><span style=\"--tw-drop-shadow: \"><span style=\"--tw-backdrop-blur: \"><span style=\"--tw-backdrop-brightness: \"><span style=\"--tw-backdrop-contrast: \"><span style=\"--tw-backdrop-grayscale: \"><span style=\"--tw-backdrop-hue-rotate: \"><span style=\"--tw-backdrop-invert: \"><span style=\"--tw-backdrop-opacity: \"><span style=\"--tw-backdrop-saturate: \"><span style=\"--tw-backdrop-sepia: \"><span style=\"border:0px solid #e5e7eb; font-variant-numeric:normal; font-variant-east-asian:normal; font-variant-alternates:normal; font-variant-position:normal; font-variant-emoji:normal\"><span style=\"box-sizing:border-box\"><span style=\"scrollbar-color:auto\"><span style=\"scrollbar-width:auto\"><span style=\"--tw-border-spacing-x:0\"><span style=\"--tw-border-spacing-y:0\"><span style=\"--tw-translate-x:0\"><span style=\"--tw-translate-y:0\"><span style=\"--tw-rotate:0\"><span style=\"--tw-skew-x:0\"><span style=\"--tw-skew-y:0\"><span style=\"--tw-scale-x:1\"><span style=\"--tw-scale-y:1\"><span style=\"--tw-pan-x: \"><span style=\"--tw-pan-y: \"><span style=\"--tw-pinch-zoom: \"><span style=\"--tw-scroll-snap-strictness:proximity\"><span style=\"--tw-gradient-from-position: \"><span style=\"--tw-gradient-via-position: \"><span style=\"--tw-gradient-to-position: \"><span style=\"--tw-ordinal: \"><span style=\"--tw-slashed-zero: \"><span style=\"--tw-numeric-figure: \"><span style=\"--tw-numeric-spacing: \"><span style=\"--tw-numeric-fraction: \"><span style=\"--tw-ring-inset: \"><span style=\"--tw-ring-offset-width:0px\"><span style=\"--tw-ring-offset-color:#ffffff\"><span style=\"--tw-ring-color:rgb(59 130 246/0.5)\"><span style=\"--tw-ring-offset-shadow:0 0 #0000\"><span style=\"--tw-ring-shadow:0 0 #0000\"><span style=\"--tw-shadow:0 0 #0000\"><span style=\"--tw-shadow-colored:0 0 #0000\"><span style=\"--tw-blur: \"><span style=\"--tw-brightness: \"><span style=\"--tw-contrast: \"><span style=\"--tw-grayscale: \"><span style=\"--tw-hue-rotate: \"><span style=\"--tw-invert: \"><span style=\"--tw-saturate: \"><span style=\"--tw-sepia: \"><span style=\"--tw-drop-shadow: \"><span style=\"--tw-backdrop-blur: \"><span style=\"--tw-backdrop-brightness: \"><span style=\"--tw-backdrop-contrast: \"><span style=\"--tw-backdrop-grayscale: \"><span style=\"--tw-backdrop-hue-rotate: \"><span style=\"--tw-backdrop-invert: \"><span style=\"--tw-backdrop-opacity: \"><span style=\"--tw-backdrop-saturate: \"><span style=\"--tw-backdrop-sepia: \">Isi daya di rumah saat Anda beristirahat, lalu mulai hari berikutnya dengan Honda Super-ONE yang siap kembali menemani aktivitas. (6kW &plusmn; 4,5 jam)</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>\n\n\t\t\t<div style=\"box-sizing:border-box; border:0px solid #e5e7eb; scrollbar-color:auto; scrollbar-width:auto; --tw-border-spacing-x:0; --tw-border-spacing-y:0; --tw-translate-x:0; --tw-translate-y:0; --tw-rotate:0; --tw-skew-x:0; --tw-skew-y:0; --tw-scale-x:1; --tw-scale-y:1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness:proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width:0px; --tw-ring-offset-color:#ffffff; --tw-ring-color:rgb(59 130 246/0.5); --tw-ring-offset-shadow:0 0 #0000; --tw-ring-shadow:0 0 #0000; --tw-shadow:0 0 #0000; --tw-shadow-colored:0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: \">&nbsp;</div>\n\t\t\t</td>\n\t\t\t<td style=\"border-bottom:1px solid #dddddd; scrollbar-width:auto; --tw-border-spacing-x:0; --tw-border-spacing-y:0; --tw-ring-offset-width:0px; padding:8px; vertical-align:top; line-height:1.42857; background-color:#ffffff; border-top:1px solid #dddddd; border-right:1px solid #dddddd; border-left:1px solid #dddddd\">\n\t\t\t<p style=\"box-sizing:border-box; border:0px solid #e5e7eb; scrollbar-color:auto; scrollbar-width:auto; --tw-border-spacing-x:0; --tw-border-spacing-y:0; --tw-translate-x:0; --tw-translate-y:0; --tw-rotate:0; --tw-skew-x:0; --tw-skew-y:0; --tw-scale-x:1; --tw-scale-y:1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness:proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width:0px; --tw-ring-offset-color:#ffffff; --tw-ring-color:rgb(59 130 246/0.5); --tw-ring-offset-shadow:0 0 #0000; --tw-ring-shadow:0 0 #0000; --tw-shadow:0 0 #0000; --tw-shadow-colored:0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; line-height:1.2\"><span style=\"box-sizing:border-box\"><span style=\"scrollbar-color:auto\"><span style=\"--tw-translate-x:0\"><span style=\"--tw-translate-y:0\"><span style=\"--tw-rotate:0\"><span style=\"--tw-skew-x:0\"><span style=\"--tw-skew-y:0\"><span style=\"--tw-scale-x:1\"><span style=\"--tw-scale-y:1\"><span style=\"--tw-scroll-snap-strictness:proximity\"><span style=\"--tw-ring-offset-color:#ffffff\"><span style=\"--tw-ring-color:rgb(59 130 246/0.5)\"><span style=\"--tw-ring-offset-shadow:0 0 #0000\"><span style=\"--tw-ring-shadow:0 0 #0000\"><span style=\"--tw-shadow:0 0 #0000\"><span style=\"--tw-shadow-colored:0 0 #0000\"><span style=\"border:0px solid #e5e7eb\"><span style=\"box-sizing:border-box\"><span style=\"scrollbar-color:auto\"><span style=\"scrollbar-width:auto\"><span style=\"--tw-border-spacing-x:0\"><span style=\"--tw-border-spacing-y:0\"><span style=\"--tw-translate-x:0\"><span style=\"--tw-translate-y:0\"><span style=\"--tw-rotate:0\"><span style=\"--tw-skew-x:0\"><span style=\"--tw-skew-y:0\"><span style=\"--tw-scale-x:1\"><span style=\"--tw-scale-y:1\"><span style=\"--tw-pan-x: \"><span style=\"--tw-pan-y: \"><span style=\"--tw-pinch-zoom: \"><span style=\"--tw-scroll-snap-strictness:proximity\"><span style=\"--tw-gradient-from-position: \"><span style=\"--tw-gradient-via-position: \"><span style=\"--tw-gradient-to-position: \"><span style=\"--tw-ordinal: \"><span style=\"--tw-slashed-zero: \"><span style=\"--tw-numeric-figure: \"><span style=\"--tw-numeric-spacing: \"><span style=\"--tw-numeric-fraction: \"><span style=\"--tw-ring-inset: \"><span style=\"--tw-ring-offset-width:0px\"><span style=\"--tw-ring-offset-color:#ffffff\"><span style=\"--tw-ring-color:rgb(59 130 246/0.5)\"><span style=\"--tw-ring-offset-shadow:0 0 #0000\"><span style=\"--tw-ring-shadow:0 0 #0000\"><span style=\"--tw-shadow:0 0 #0000\"><span style=\"--tw-shadow-colored:0 0 #0000\"><span style=\"--tw-blur: \"><span style=\"--tw-brightness: \"><span style=\"--tw-contrast: \"><span style=\"--tw-grayscale: \"><span style=\"--tw-hue-rotate: \"><span style=\"--tw-invert: \"><span style=\"--tw-saturate: \"><span style=\"--tw-sepia: \"><span style=\"--tw-drop-shadow: \"><span style=\"--tw-backdrop-blur: \"><span style=\"--tw-backdrop-brightness: \"><span style=\"--tw-backdrop-contrast: \"><span style=\"--tw-backdrop-grayscale: \"><span style=\"--tw-backdrop-hue-rotate: \"><span style=\"--tw-backdrop-invert: \"><span style=\"--tw-backdrop-opacity: \"><span style=\"--tw-backdrop-saturate: \"><span style=\"--tw-backdrop-sepia: \"><span style=\"border:0px solid #e5e7eb; font-variant-numeric:normal; font-variant-east-asian:normal; font-variant-alternates:normal; font-variant-position:normal; font-variant-emoji:normal\"><span style=\"box-sizing:border-box\"><span style=\"scrollbar-color:auto\"><span style=\"scrollbar-width:auto\"><span style=\"--tw-border-spacing-x:0\"><span style=\"--tw-border-spacing-y:0\"><span style=\"--tw-translate-x:0\"><span style=\"--tw-translate-y:0\"><span style=\"--tw-rotate:0\"><span style=\"--tw-skew-x:0\"><span style=\"--tw-skew-y:0\"><span style=\"--tw-scale-x:1\"><span style=\"--tw-scale-y:1\"><span style=\"--tw-pan-x: \"><span style=\"--tw-pan-y: \"><span style=\"--tw-pinch-zoom: \"><span style=\"--tw-scroll-snap-strictness:proximity\"><span style=\"--tw-gradient-from-position: \"><span style=\"--tw-gradient-via-position: \"><span style=\"--tw-gradient-to-position: \"><span style=\"--tw-ordinal: \"><span style=\"--tw-slashed-zero: \"><span style=\"--tw-numeric-figure: \"><span style=\"--tw-numeric-spacing: \"><span style=\"--tw-numeric-fraction: \"><span style=\"--tw-ring-inset: \"><span style=\"--tw-ring-offset-width:0px\"><span style=\"--tw-ring-offset-color:#ffffff\"><span style=\"--tw-ring-color:rgb(59 130 246/0.5)\"><span style=\"--tw-ring-offset-shadow:0 0 #0000\"><span style=\"--tw-ring-shadow:0 0 #0000\"><span style=\"--tw-shadow:0 0 #0000\"><span style=\"--tw-shadow-colored:0 0 #0000\"><span style=\"--tw-blur: \"><span style=\"--tw-brightness: \"><span style=\"--tw-contrast: \"><span style=\"--tw-grayscale: \"><span style=\"--tw-hue-rotate: \"><span style=\"--tw-invert: \"><span style=\"--tw-saturate: \"><span style=\"--tw-sepia: \"><span style=\"--tw-drop-shadow: \"><span style=\"--tw-backdrop-blur: \"><span style=\"--tw-backdrop-brightness: \"><span style=\"--tw-backdrop-contrast: \"><span style=\"--tw-backdrop-grayscale: \"><span style=\"--tw-backdrop-hue-rotate: \"><span style=\"--tw-backdrop-invert: \"><span style=\"--tw-backdrop-opacity: \"><span style=\"--tw-backdrop-saturate: \"><span style=\"--tw-backdrop-sepia: \">Saat waktu terbatas, pengisian cepat memberi kesempatan untuk menambah daya sambil menikmati jeda singkat di tengah perjalanan. (50 kW &plusmn; 30 menit)</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>\n\t\t\t</td>\n\t\t</tr>\n\t</tbody>\n</table>\n",
+        "img": ""
+      },
+      {
+        "slug": "accessible-charging-port",
+        "title": "Accessible Charging Port",
+        "desc": "<p>Ditempatkan agar pengisian daya terasa lebih mudah dan menjadi bagian yang natural dari rutinitas sehari-hari.</p>\n\n<p>*Catatan: Waktu dan kapasitas pengisian dapat berbeda tergantung spesifikasi charger, suhu lingkungan, kondisi baterai, dan kondisi kendaraan. Instalasi fasilitas pengisian di rumah atau tempat usaha mungkin diperlukan. Detail fitur dan kompatibilitas perlu disesuaikan dengan spesifikasi Honda Super-ONE untuk pasar Indonesia.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/honda_connect_with_digital_key_d_copy_8__1785143093797.png?w=1000&s=55189d3b94379a4660f449fb8161afbe"
+      },
+      {
+        "slug": "portable-charger",
+        "title": "Portable Charger",
+        "desc": "<p>Portable charger sudah termasuk dalam paket kendaraan, memberikan fleksibilitas untuk mengisi daya Super-ONE melalui sumber listrik yang kompatibel di rumah maupun saat dibutuhkan di lokasi lain.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/portable_charger__1785985188042.png?w=1000&s=77d5f2392ddd203340ce713e405bd0be"
+      },
+      {
+        "slug": "wall-charger",
+        "title": "Wall Charger",
+        "desc": "<p>Wall charger dapat dibeli secara terpisah sebagai solusi pengisian daya yang lebih praktis di rumah. Cukup hubungkan Super-ONE saat tiba, lalu biarkan daya terisi selama Anda beristirahat atau menjalani aktivitas lainnya.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/wall_charger__1785985211608.png?w=1000&s=18c7b087415d7013fd85ca1fc40545d8"
+      }
+    ]
+  },
+  {
+    "id": "b",
+    "label": "BOOST Mode",
+    "items": [
+      {
+        "slug": "boost-mode",
+        "title": "BOOST Mode",
+        "desc": "<p>BOOST Mode diciptakan bukan hanya untuk menambah tenaga, tetapi untuk mengubah perjalanan sehari-hari menjadi pengalaman yang lebih hidup melalui respons, perpindahan virtual, suara, dan suasana kabin yang bekerja sebagai satu kesatuan.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/boost_mode_d_8__1785143220203.png?w=1000&s=d4b2e2b5000c140e3ba73820db4d5777"
+      },
+      {
+        "slug": "active-sound-control",
+        "title": "Active Sound Control",
+        "desc": "<p>Suara menjadi bagian dari komunikasi antara mobil dan pengemudinya, membantu setiap gerak, akselerasi, dan perubahan ritme terasa lebih nyata.</p>\n\n<p>BOOST Mode dikembangkan untuk membawa kembali keterlibatan emosional dalam berkendara elektrik melalui respons, suara, perpindahan virtual, dan perubahan atmosfer kabin. Honda menyebut tujuan akhirnya sebagai upaya membagikan joy of driving kepada lebih banyak orang di era EV.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/active_sound_control_d_8__1785143278902.png?w=1000&s=f245db877139338c215c9385864c233fhttps://www.honda-indonesia.com/glide/local/uploads/images/sections_items/active_sound_control_d_8__1785143278902.png?w=1000&s=f245db877139338c215c9385864c233f"
+      },
+      {
+        "slug": "maximum-motor-output",
+        "title": "Maximum Motor Output",
+        "desc": "<p>BOOST Mode membuka potensi motor hingga 70 kW, sekitar 1,5 kali output model Honda Electric yang menjadi basis pengembangannya.</p>\n\n<p>Tenaga lebih besar ini dicapai tanpa memperbesar motor dan baterai, sehingga Honda Super-ONE tetap ringan, lincah, dan menyenangkan untuk digunakan setiap hari.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/grafis_website_performance_3bw_06__1785143575918.jpeg?w=1000&s=bf3642557cfe7f17cad85f8d382ccda4"
+      },
+      {
+        "slug": "speed-change-effect",
+        "title": "Speed Change Effect",
+        "desc": "<p>Perubahan torsi, dorongan, dan suara dirancang untuk menciptakan sensasi perpindahan yang tegas namun tetap nyaman.</p>\n\n<p>Tidak berlebihan, tetapi cukup untuk membuat pengemudi merasakan bahwa setiap input memiliki respons.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/grafis_website_performance_3bw_01__1785143532226.jpeg?w=1000&s=530ef94f4f374b353b7ee95bb8c3caaf"
+      },
+      {
+        "slug": "sport-adaptive-control",
+        "title": "Sport Adaptive Control",
+        "desc": "<p>Sistem membaca cara pengemudi berkendara serta kondisi jalan, kemudian menyesuaikan perpindahan virtual agar respons tetap siap ketika dibutuhkan.</p>\n\n<p>Saat keluar dari tikungan atau kembali berakselerasi, Honda Super-ONE terasa mengikuti ritme Anda tanpa perlu banyak intervensi.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/grafis_website_performance_3bw_02__1785143633236.jpeg?w=1000&s=41245b6d683011d5dffc461876d4cc05"
+      },
+      {
+        "slug": "tone-development",
+        "title": "Tone Development",
+        "desc": "<p>Karakter suara BOOST Mode terinspirasi oleh mesin performa Honda, termasuk Honda City Turbo II dan Integra Type R.</p>\n\n<p>Bukan sekadar meniru suara mesin, tetapi membawa kembali energi, ritme, dan emosi dari kultur performa Honda ke era elektrik.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/grafis_website_performance_3bw_05__1785143662348.jpeg?w=1000&s=c573982b644fc3288942e0969622bbda"
+      },
+      {
+        "slug": "immersive-visual-experience",
+        "title": "Immersive Visual Experience",
+        "desc": "<p>Ketika BOOST Mode diaktifkan, tampilan meter dan ambient lighting berubah dari biru menjadi ungu, sementara informasi berkendara tampil lebih dinamis.</p>\n\n<p>Kabin ikut berubah bersama karakter mobil memberikan batas yang jelas antara perjalanan rutin dan momen ketika Anda ingin menikmatinya lebih jauh.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/grafis_website_performance_3bw_04__1785143735897.jpeg?w=1000&s=f5c10ffca0e3fb8429e807274c8543ec"
+      },
+      {
+        "slug": "simulated-7-speed-gear-shift",
+        "title": "Simulated 7-Speed Gear Shift",
+        "desc": "<p>Sistem perpindahan virtual 7-percepatan menghadirkan sensasi perpindahan gigi yang lebih terasa, lengkap dengan paddle shift untuk kontrol yang lebih personal.</p>\n\n<p>Saat SPORT atau BOOST Mode diaktifkan, perjalanan sehari-hari terasa lebih hidup memberikan akselerasi, deselerasi, dan keterlibatan berkendara yang lebih menyenangkan.</p>\n",
+        "img": "https://www.honda-indonesia.com/glide/local/uploads/images/sections_items/grafis_website_performance_3bw_03__1785143849190.jpeg?w=1000&s=60cbd79b42fa9db27558ee77f11f3e5d"
       }
     ]
   }
