@@ -8,15 +8,15 @@
           "tipe": "S",
           "trans": "CVT",
           "harga": "Rp184.500.000",
-          "essential": "Rp189.020.000",
-          "extra": "Rp191.240.000"
+          "essential": "Rp189.580.000",
+          "extra": "Rp191.860.000"
         },
         {
-          "tipe": "E SE",
+          "tipe": "E",
           "trans": "CVT",
-          "harga": "Rp221.700.000",
-          "essential": "Rp226.220.000",
-          "extra": "Rp228.440.000"
+          "harga": "Rp211.700.000",
+          "essential": "Rp216.780.000",
+          "extra": "Rp219.060.000"
         }
       ]
     },
@@ -28,8 +28,8 @@
           "tipe": "RS SE",
           "trans": "CVT",
           "harga": "Rp275.100.000",
-          "essential": "Rp279.620.000",
-          "extra": "Rp281.840.000"
+          "essential": "Rp280.180.000",
+          "extra": "Rp282.460.000"
         }
       ]
     },
@@ -41,22 +41,22 @@
           "tipe": "E",
           "trans": "CVT",
           "harga": "Rp290.100.000",
-          "essential": "Rp294.830.000",
-          "extra": "Rp296.620.000"
+          "essential": "Rp295.410.000",
+          "extra": "Rp297.260.000"
         },
         {
           "tipe": "RS**",
           "trans": "CVT",
           "harga": "Rp303.600.000",
-          "essential": "Rp308.330.000",
-          "extra": "Rp310.120.000"
+          "essential": "Rp308.910.000",
+          "extra": "Rp310.760.000"
         },
         {
           "tipe": "RS with Honda Sensing**",
           "trans": "CVT",
           "harga": "Rp327.100.000",
-          "essential": "Rp331.830.000",
-          "extra": "Rp333.620.000"
+          "essential": "Rp332.410.000",
+          "extra": "Rp334.260.000"
         }
       ]
     },
@@ -68,8 +68,8 @@
           "tipe": "RS with Honda Sensing**",
           "trans": "CVT",
           "harga": "Rp384.500.000",
-          "essential": "Rp389.090.000",
-          "extra": "Rp390.690.000"
+          "essential": "Rp390.480.000",
+          "extra": "Rp392.330.000"
         }
       ]
     },
@@ -81,36 +81,36 @@
           "tipe": "S",
           "trans": "MT",
           "harga": "Rp307.100.000",
-          "essential": "Rp311.520.000",
-          "extra": "Rp313.310.000"
+          "essential": "Rp311.970.000",
+          "extra": "Rp313.820.000"
         },
         {
           "tipe": "E",
           "trans": "MT",
           "harga": "Rp323.000.000",
-          "essential": "Rp327.420.000",
-          "extra": "Rp329.210.000"
+          "essential": "Rp327.870.000",
+          "extra": "Rp329.720.000"
         },
         {
           "tipe": "E N7X Edition",
           "trans": "CVT",
           "harga": "Rp335.700.000",
-          "essential": "Rp340.410.000 ",
-          "extra": "Rp342.200.000"
+          "essential": "Rp340.990.000 ",
+          "extra": "Rp342.840.000"
         },
         {
           "tipe": "PRES N7X Edition",
           "trans": "CVT",
           "harga": "Rp361.200.000",
-          "essential": "Rp365.910.000",
-          "extra": "Rp367.700.000"
+          "essential": "Rp366.490.000",
+          "extra": "Rp368.340.000"
         },
         {
           "tipe": "PRES with Sensing N7X",
           "trans": "CVT",
           "harga": "Rp381.200.000",
-          "essential": "Rp385.910.000",
-          "extra": "Rp387.700.000"
+          "essential": "Rp386.490.000",
+          "extra": "Rp388.340.000"
         }
       ]
     },
@@ -122,36 +122,36 @@
           "tipe": "1.5 E**",
           "trans": "CVT",
           "harga": "Rp389.700.000",
-          "essential": "Rp395.060.000",
-          "extra": "Rp396.850.000"
+          "essential": "Rp394.960.000",
+          "extra": "Rp396.750.000"
         },
         {
           "tipe": "1.5 E+**",
           "trans": "CVT",
           "harga": "Rp412.300.000",
-          "essential": "Rp417.660.000",
-          "extra": "Rp419.450.000"
+          "essential": "Rp417.560.000",
+          "extra": "Rp419.350.000"
         },
         {
           "tipe": "1.5 e:HEV**",
           "trans": "E-CVT",
           "harga": "Rp450.000.000",
-          "essential": "Rp455.290.000",
-          "extra": "Rp457.080.000"
+          "essential": "Rp455.790.000",
+          "extra": "Rp457.640.000"
         },
         {
           "tipe": "1.5 e:HEV Modulo**",
           "trans": "E-CVT",
           "harga": "Rp461.700.000",
-          "essential": "Rp466.990.000",
-          "extra": "Rp468.780.000"
+          "essential": "Rp467.490.000",
+          "extra": "Rp469.340.000"
         },
         {
           "tipe": "1.5 RS e:HEV**",
           "trans": "E-CVT",
           "harga": "Rp489.000.000",
-          "essential": "Rp494.290.000",
-          "extra": "Rp496.080.000"
+          "essential": "Rp494.790.000",
+          "extra": "Rp496.640.000"
         }
       ]
     },
@@ -163,15 +163,15 @@
           "tipe": "e:HEV",
           "trans": "E-CVT",
           "harga": "Rp777.000.000",
-          "essential": "Rp783.280.000",
-          "extra": "Rp784.410.000"
+          "essential": "Rp783.800.000",
+          "extra": "Rp784.960.000"
         },
         {
           "tipe": "2.0 RS e:HEV",
           "trans": "CVT",
           "harga": "Rp827.800.000",
-          "essential": "Rp834.080.000",
-          "extra": "Rp835.210.000"
+          "essential": "Rp834.600.000",
+          "extra": "Rp835.760.000"
         }
       ]
     },
@@ -183,8 +183,8 @@
           "tipe": "2.0 RS e:HEV",
           "trans": "E-CVT",
           "harga": "Rp699.000.000",
-          "essential": "Rp705.310.000",
-          "extra": "Rp706.440.000"
+          "essential": "Rp705.830.000",
+          "extra": "Rp706.990.000"
         }
       ]
     },
@@ -197,7 +197,7 @@
           "trans": "E-CVT",
           "harga": "Rp970.900.000",
           "essential": "-",
-          "extra": "Rp981.650.000"
+          "extra": "Rp982.210.000"
         }
       ]
     },
@@ -210,7 +210,7 @@
           "trans": "E-CVT",
           "harga": "Rp974.900.000 ",
           "essential": "-",
-          "extra": "Rp986.330.000"
+          "extra": "Rp986.620.000"
         }
       ]
     },
@@ -223,13 +223,26 @@
           "trans": "E-CVT",
           "harga": "Rp637.800.000",
           "essential": "Rp644.680.000",
-          "extra": "Rp645.500.000"
+          "extra": "Rp646.030.000"
+        }
+      ]
+    },
+    {
+      "id": "super-one",
+      "label": "Honda Super-ONE",
+      "items": [
+        {
+          "tipe": "BEV",
+          "trans": "Reduction Gear Box",
+          "harga": "Rp438.000.000",
+          "essential": "-",
+          "extra": "-"
         }
       ]
     }
   ],
   "notes": [
-    "* Harga OTR Jakarta per 01/07/2026. ** Tersedia pilihan warna Two Tone (+2.5 Juta).",
+    "* Harga OTR Jakarta per 05/08/2026. ** Tersedia pilihan warna Two Tone (+2.5 Juta).",
     "* Tersedia tipe non SE / Special Edition, Syarat & Ketentuan berlaku.",
     "(Harga yang tertera adalah harga rekomendasi OTR Jakarta dan kepemilikan mobil pertama, dan dapat berubah sewaktu-waktu tanpa pemberitahuan sebelumnya. Perubahan warna, material serta kelengkapan dapat berubah sewaktu-waktu tanpa pemberitahuan terlebih dahulu. Spesifikasi, fitur dan material dapat berbeda dengan aktual kendaraan yang dijual.)"
   ]
