@@ -175,7 +175,7 @@
   },
   "en1": {
     "name": "Honda e:N1",
-    "price": 0,
+    "price": null,
     "variants": [
       "Hubungi Dealer"
     ],
