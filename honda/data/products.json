@@ -141,8 +141,8 @@
       "Prestige N7X Edition CVT OTR : Rp361.200.000",
       "Prestige N7X Edition with Honda SENSING CVT OTR : Rp381.200.000"
     ],
-    "dp": "Rp. 24.000.000",
-    "angsuran": "Rp. 4.700.000",
+    "dp": "0",
+    "angsuran": "0",
     "seats": "7-Seater",
     "engine": "1.5L DOHC i-VTEC Engine",
     "description": "<p><b>The Biggest Power</b></p><p>Mesin 1.5L i-VTEC hasilkan tenaga 121 PS tertinggi dikelasnya.</p><p><br /><b>The Biggest Cabin</b></p><p>Dengan kabin dan bagasi terluas dikelasnya, dukung aktivitas Anda bersama keluarga.</p><p><br /><b>Advanced Safety</b></p><p>Teknologi keselamatan &ldquo;Honda Sensing&rdquo; menggunakan sensor canggih untuk melindungi Anda di perjalanan.</p><p><br /><b>Intuitive Technology</b></p><p>Dilengkapi dengan Remote Engine Start, Walk-Away Auto Lock dan LaneWatch&trade; untuk kepraktisan Anda.</p><p><br /><small><b>Informasi:</b>&nbsp;Pembelian unit Honda di Honda Bintaro sangatlah aman, karena pembayaran menggunakan virtual account dengan nomor unik disetiap customer. Pastikan nama virtual account yang muncul adalah atas nama Honda Bintaro.</small></p>",
@@ -157,10 +157,9 @@
     "name": "New Honda Brio",
     "price": 184500000,
     "variants": [
-      "Satya S CVT OTR : Rp183.500.000",
-      "Satya E CVT SE OTR : Rp221.700.000",
-      "RS MT SE OTR : Rp264.100.000",
-      "RS CVT SE OTR : Rp274.100.000"
+      "Satya S CVT OTR : Rp184.500.000",
+      "Satya E CVT SE OTR : Rp211.700.000",
+      "RS CVT SE OTR : Rp275.100.000"
     ],
     "dp": "Rp. 29.000.000",
     "angsuran": "Rp. 3.500.000",
@@ -176,7 +175,7 @@
   },
   "en1": {
     "name": "Honda e:N1",
-    "price": null,
+    "price": 0,
     "variants": [
       "Hubungi Dealer"
     ],
@@ -194,9 +193,9 @@
   },
   "super-one": {
     "name": "Honda Super-ONE",
-    "price": null,
+    "price": 438000000,
     "variants": [
-      "Hubungi Dealer"
+      "BEV Rp438.000.000"
     ],
     "dp": "0",
     "angsuran": "0",
