@@ -1,8 +1,0 @@
-[
-  {"id":"jakarta","name":"Monas Sprint","city":"Jakarta","difficulty":"EASY","sky1":"#44266d","sky2":"#f08765","landmark":"#14161e","shape":"polygon(0 100%,0 78%,30% 78%,30% 64%,47% 64%,48% 19%,52% 0,55% 64%,72% 64%,72% 79%,100% 79%,100% 100%)","road":"#30323a","accent":"#ffc15a"},
-  {"id":"tangsel","name":"Bintaro Rush","city":"Tangerang Selatan","difficulty":"EASY","sky1":"#174b73","sky2":"#6cc6ce","landmark":"#15352f","shape":"polygon(0 100%,0 78%,12% 65%,24% 80%,38% 55%,50% 78%,66% 52%,80% 80%,100% 63%,100% 100%)","road":"#373b42","accent":"#7ae6b2"},
-  {"id":"bandung","name":"Braga Night Drift","city":"Bandung","difficulty":"MEDIUM","sky1":"#111936","sky2":"#3d2455","landmark":"#101218","shape":"polygon(0 100%,0 64%,12% 64%,12% 48%,26% 48%,26% 70%,42% 70%,42% 35%,61% 35%,61% 62%,75% 62%,75% 44%,92% 44%,92% 70%,100% 70%,100% 100%)","road":"#272831","accent":"#ae7dff"},
-  {"id":"yogyakarta","name":"Tugu Dash","city":"Yogyakarta","difficulty":"MEDIUM","sky1":"#8d4028","sky2":"#efb66f","landmark":"#1a1513","shape":"polygon(0 100%,0 78%,35% 78%,42% 60%,48% 60%,49% 20%,52% 4%,55% 60%,62% 60%,68% 78%,100% 78%,100% 100%)","road":"#35302e","accent":"#ffd077"},
-  {"id":"surabaya","name":"Suramadu Run","city":"Surabaya","difficulty":"HARD","sky1":"#124b6a","sky2":"#6db2c8","landmark":"#1c2830","shape":"polygon(0 100%,0 82%,18% 82%,24% 20%,29% 82%,45% 82%,49% 48%,54% 82%,69% 82%,76% 18%,81% 82%,100% 82%,100% 100%)","road":"#35383c","accent":"#78d9ff"},
-  {"id":"bali","name":"Sunset Coast Run","city":"Bali","difficulty":"HARD","sky1":"#9d2850","sky2":"#ff8d57","landmark":"#2b1423","shape":"polygon(0 100%,0 78%,11% 61%,18% 78%,27% 55%,35% 78%,47% 64%,55% 78%,67% 52%,75% 78%,87% 58%,100% 72%,100% 100%)","road":"#362b31","accent":"#ffbe72"}
-]
