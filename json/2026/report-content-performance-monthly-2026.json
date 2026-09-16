@@ -1,0 +1,36 @@
+[
+  {
+    "title": "Honda Bintaro",
+    "platform": "Instagram",
+    "dateStart": "2026-07-01",
+    "dateEnd": "2026-07-31",
+    "month": "Juli",
+    "foll": 15395,
+    "postCount": 48,
+    "reach": 79714,
+    "interaksi": 1595,
+    "erByReach": 2.0009032290438316,
+    "avgReachPerPost": 1660.7083333333333,
+    "statusBadge": "<div style=\"margin-bottom:2px;\"><b>ER by Reach:</b> 2,0% <span class=\"badge bg-red\">Off Track</span></div><div><b>Avg Reach/Post:</b> 1.661 <span class=\"badge bg-green\">On Track</span></div>",
+    "what": "Platform: <b>Instagram</b>. Periode: 2026-07-01 s/d 2026-07-31 (48 post). ER by Reach: <b>2.00%</b>. Avg Reach/Post: <b>1.661</b>. Target -> ER >3.5% | Avg Reach >1.000.",
+    "soWhat": "Interaksi terhadap reach masih rendah, indikasi konten kurang relevan dengan audiens yang terjangkau.",
+    "nowWhat": "Pertahankan konsistensi jumlah dan jam tayang post."
+  },
+  {
+    "title": "Honda Bintaro",
+    "platform": "Instagram",
+    "dateStart": "2026-08-01",
+    "dateEnd": "2026-08-31",
+    "month": "Agustus",
+    "foll": 15402,
+    "postCount": 53,
+    "reach": 47142,
+    "interaksi": 1214,
+    "erByReach": 2.5751983369394593,
+    "avgReachPerPost": 889.4716981132076,
+    "statusBadge": "<div style=\"margin-bottom:2px;\"><b>ER by Reach:</b> 2,58% <span class=\"badge bg-red\">Off Track</span></div><div><b>Avg Reach/Post:</b> 889 <span class=\"badge bg-red\">Off Track</span></div>",
+    "what": "Platform: <b>Instagram</b>. Periode: 2026-08-01 s/d 2026-08-31 (53 post). ER by Reach: <b>2.58%</b>. Avg Reach/Post: <b>889</b>. Target -> ER >3.5% | Avg Reach >1.000.",
+    "soWhat": "Interaksi terhadap reach masih rendah, indikasi konten kurang relevan dengan audiens yang terjangkau.",
+    "nowWhat": "Tingkatkan distribusi (hashtag, kolaborasi, boosting) agar reach per post naik."
+  }
+]
