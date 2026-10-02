@@ -9,67 +9,77 @@
           "trans": "CVT",
           "harga": "Rp184.500.000",
           "essential": "Rp189.580.000",
-          "extra": "Rp191.860.000"
+          "extra": "Rp191.860.000",
+          "specialColor": "-"
         },
         {
           "tipe": "E",
           "trans": "CVT",
           "harga": "Rp211.700.000",
           "essential": "Rp216.780.000",
-          "extra": "Rp219.060.000"
+          "extra": "Rp219.060.000",
+          "specialColor": "-"
         }
       ]
     },
     {
       "id": "brio-rs",
-      "label": "New Honda BRIO RS**",
+      "label": "New Honda BRIO RS",
+      "note": "Tersedia dalam two tone special color dengan penambahan harga 3 juta dari harga normal.",
       "items": [
         {
-          "tipe": "RS SE",
+          "tipe": "RS",
           "trans": "CVT",
           "harga": "Rp275.100.000",
           "essential": "Rp280.180.000",
-          "extra": "Rp282.460.000"
+          "extra": "Rp282.460.000",
+          "specialColor": "+Rp500.000"
         }
       ]
     },
     {
       "id": "wr-v",
-      "label": "New Honda WR-V**",
+      "label": "New Honda WR-V",
+      "note": "Tersedia dalam two tone special color dengan penambahan harga 4 juta dari harga normal.",
       "items": [
         {
           "tipe": "E",
           "trans": "CVT",
           "harga": "Rp290.100.000",
           "essential": "Rp295.410.000",
-          "extra": "Rp297.260.000"
+          "extra": "Rp297.260.000",
+          "specialColor": "-"
         },
         {
-          "tipe": "RS**",
+          "tipe": "RS",
           "trans": "CVT",
           "harga": "Rp303.600.000",
           "essential": "Rp308.910.000",
-          "extra": "Rp310.760.000"
+          "extra": "Rp310.760.000",
+          "specialColor": "+Rp1.500.000"
         },
         {
-          "tipe": "RS with Honda Sensing**",
+          "tipe": "RS with Honda Sensing",
           "trans": "CVT",
           "harga": "Rp327.100.000",
           "essential": "Rp332.410.000",
-          "extra": "Rp334.260.000"
+          "extra": "Rp334.260.000",
+          "specialColor": "+Rp1.500.000"
         }
       ]
     },
     {
       "id": "city-hatchback",
-      "label": "New Honda CITY HATCHBACK RS**",
+      "label": "New Honda CITY HATCHBACK RS",
+      "note": "Tersedia dalam two tone color dengan penambahan harga 2,5 juta dari harga normal.",
       "items": [
         {
-          "tipe": "RS with Honda Sensing**",
+          "tipe": "RS with Honda Sensing",
           "trans": "CVT",
           "harga": "Rp384.500.000",
           "essential": "Rp390.480.000",
-          "extra": "Rp392.330.000"
+          "extra": "Rp392.330.000",
+          "specialColor": "-"
         }
       ]
     },
@@ -82,76 +92,87 @@
           "trans": "MT",
           "harga": "Rp307.100.000",
           "essential": "Rp311.970.000",
-          "extra": "Rp313.820.000"
+          "extra": "Rp313.820.000",
+          "specialColor": "-"
         },
         {
           "tipe": "E",
           "trans": "MT",
           "harga": "Rp323.000.000",
           "essential": "Rp327.870.000",
-          "extra": "Rp329.720.000"
+          "extra": "Rp329.720.000",
+          "specialColor": "+Rp1.500.000"
         },
         {
           "tipe": "E N7X Edition",
           "trans": "CVT",
           "harga": "Rp335.700.000",
-          "essential": "Rp340.990.000 ",
-          "extra": "Rp342.840.000"
+          "essential": "Rp340.990.000",
+          "extra": "Rp342.840.000",
+          "specialColor": "+Rp1.500.000"
         },
         {
           "tipe": "PRES N7X Edition",
           "trans": "CVT",
           "harga": "Rp361.200.000",
           "essential": "Rp366.490.000",
-          "extra": "Rp368.340.000"
+          "extra": "Rp368.340.000",
+          "specialColor": "+Rp1.500.000"
         },
         {
-          "tipe": "PRES with Sensing N7X",
+          "tipe": "PRES with Honda Sensing N7X Edition",
           "trans": "CVT",
           "harga": "Rp381.200.000",
           "essential": "Rp386.490.000",
-          "extra": "Rp388.340.000"
+          "extra": "Rp388.340.000",
+          "specialColor": "+Rp1.500.000"
         }
       ]
     },
     {
       "id": "hr-v",
-      "label": "New Honda HR-V**",
+      "label": "New Honda HR-V",
+      "note": "Tersedia dalam two tone special color dengan penambahan harga 4,5 juta dari harga normal.",
       "items": [
         {
-          "tipe": "1.5 E**",
+          "tipe": "1.5 E",
           "trans": "CVT",
           "harga": "Rp389.700.000",
           "essential": "Rp394.960.000",
-          "extra": "Rp396.750.000"
+          "extra": "Rp396.750.000",
+          "specialColor": "+Rp2.000.000"
         },
         {
-          "tipe": "1.5 E+**",
+          "tipe": "1.5 E+",
           "trans": "CVT",
           "harga": "Rp412.300.000",
           "essential": "Rp417.560.000",
-          "extra": "Rp419.350.000"
+          "extra": "Rp419.350.000",
+          "specialColor": "+Rp2.000.000"
         },
         {
-          "tipe": "1.5 e:HEV**",
+          "tipe": "1.5 e:HEV",
           "trans": "E-CVT",
           "harga": "Rp450.000.000",
           "essential": "Rp455.790.000",
-          "extra": "Rp457.640.000"
+          "extra": "Rp457.640.000",
+          "specialColor": "+Rp2.000.000"
         },
         {
-          "tipe": "1.5 e:HEV Modulo**",
+          "tipe": "1.5 e:HEV Modulo",
           "trans": "E-CVT",
           "harga": "Rp461.700.000",
           "essential": "Rp467.490.000",
-          "extra": "Rp469.340.000"
+          "extra": "Rp469.340.000",
+          "specialColor": "+Rp2.000.000"
         },
         {
-          "tipe": "1.5 RS e:HEV**",
+          "tipe": "1.5 RS e:HEV",
           "trans": "E-CVT",
           "harga": "Rp489.000.000",
           "essential": "Rp494.790.000",
-          "extra": "Rp496.640.000"
+          "extra": "Rp496.640.000",
+          "specialColor": "+Rp2.000.000"
         }
       ]
     },
@@ -160,18 +181,20 @@
       "label": "All New Honda CR-V",
       "items": [
         {
-          "tipe": "e:HEV",
+          "tipe": "2.0 e:HEV",
           "trans": "E-CVT",
           "harga": "Rp777.000.000",
           "essential": "Rp783.800.000",
-          "extra": "Rp784.960.000"
+          "extra": "Rp784.960.000",
+          "specialColor": "+Rp2.000.000"
         },
         {
           "tipe": "2.0 RS e:HEV",
-          "trans": "CVT",
+          "trans": "E-CVT",
           "harga": "Rp827.800.000",
           "essential": "Rp834.600.000",
-          "extra": "Rp835.760.000"
+          "extra": "Rp835.760.000",
+          "specialColor": "+Rp2.000.000"
         }
       ]
     },
@@ -184,7 +207,8 @@
           "trans": "E-CVT",
           "harga": "Rp699.000.000",
           "essential": "Rp705.830.000",
-          "extra": "Rp706.990.000"
+          "extra": "Rp706.990.000",
+          "specialColor": "+Rp2.000.000"
         }
       ]
     },
@@ -197,7 +221,8 @@
           "trans": "E-CVT",
           "harga": "Rp970.900.000",
           "essential": "-",
-          "extra": "Rp982.210.000"
+          "extra": "Rp982.210.000",
+          "specialColor": "+Rp2.000.000"
         }
       ]
     },
@@ -208,9 +233,10 @@
         {
           "tipe": "2.0 e:HEV",
           "trans": "E-CVT",
-          "harga": "Rp974.900.000 ",
+          "harga": "Rp974.900.000",
           "essential": "-",
-          "extra": "Rp986.620.000"
+          "extra": "Rp986.620.000",
+          "specialColor": "-"
         }
       ]
     },
@@ -222,28 +248,32 @@
           "tipe": "2.0 e:HEV",
           "trans": "E-CVT",
           "harga": "Rp637.800.000",
-          "essential": "Rp644.680.000",
-          "extra": "Rp646.030.000"
+          "essential": "Rp645.170.000",
+          "extra": "Rp646.030.000",
+          "specialColor": "+Rp2.000.000"
         }
       ]
     },
     {
       "id": "super-one",
       "label": "Honda Super-ONE",
+      "note": "Tersedia dalam two tone special color dengan penambahan harga 10 juta dari harga normal.",
       "items": [
         {
           "tipe": "BEV",
           "trans": "Reduction Gear Box",
           "harga": "Rp438.000.000",
           "essential": "-",
-          "extra": "-"
+          "extra": "-",
+          "specialColor": "+Rp10.000.000"
         }
       ]
     }
   ],
   "notes": [
-    "* Harga OTR Jakarta per 05/08/2026. ** Tersedia pilihan warna Two Tone (+2.5 Juta).",
-    "* Tersedia tipe non SE / Special Edition, Syarat & Ketentuan berlaku.",
-    "(Harga yang tertera adalah harga rekomendasi OTR Jakarta dan kepemilikan mobil pertama, dan dapat berubah sewaktu-waktu tanpa pemberitahuan sebelumnya. Perubahan warna, material serta kelengkapan dapat berubah sewaktu-waktu tanpa pemberitahuan terlebih dahulu. Spesifikasi, fitur dan material dapat berbeda dengan aktual kendaraan yang dijual.)"
+    "* Syarat & Ketentuan berlaku.",
+    "Harga OTR Jakarta per 01/10/2026.",
+    "(Harga yang tertera adalah harga rekomendasi OTR Jakarta dan kepemilikan mobil pertama, dan dapat berubah sewaktu-waktu tanpa pemberitahuan sebelumnya. Perubahan warna, material serta kelengkapan dapat berubah sewaktu-waktu tanpa pemberitahuan terlebih dahulu. Spesifikasi, fitur dan material dapat berbeda dengan aktual kendaraan yang dijual.)",
+    "** Harga tertera untuk warna reguler (Electric Lime Metallic, Taffeta White, Rallye Red, Crystal Black Pearl, Platinum White Pearl, Meteroid Gray Metallic) dan tersedia dalam warna special dengan penambahan harga."
   ]
 }
