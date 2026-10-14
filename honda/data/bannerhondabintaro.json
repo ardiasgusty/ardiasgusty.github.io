@@ -2,18 +2,6 @@
   "banners": {
     "desktop": [
       {
-        "id": "dapatkan-double-kupon-undian-honda-brio",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/dapatkan-double-kupon-undian-honda-brio_1790996065633.webp",
-        "link": "#",
-        "alt": "Dapatkan Double Kupon Undian Honda Brio"
-      },
-      {
-        "id": "honda-family-fair",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/honda-family-fair_1790995992880.webp",
-        "link": "#",
-        "alt": "Program Honda Family Fair"
-      },
-      {
         "id": "brio-sales-desktop",
         "image": "https://ardiasgusty.github.io/honda/assets/images/banner/brio-sales-desktop_1790836567748.webp",
         "link": "#",
@@ -26,19 +14,31 @@
         "alt": "Servis Mobil Honda bisa dapat Honda Brio"
       },
       {
+        "id": "dapatkan-double-kupon-undian-honda-brio",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/dapatkan-double-kupon-undian-honda-brio_1790996065633.webp",
+        "link": "#",
+        "alt": "Dapatkan Double Kupon Undian Honda Brio"
+      },
+      {
         "id": "brio-hrv-slp",
         "image": "https://ardiasgusty.github.io/honda/assets/images/banner/brio-hrv-slp_1790996091910.webp",
         "link": "#",
         "alt": "Promo Honda Brio Extra Cashback 5jt"
+      },
+      {
+        "id": "honda-flexy-pay-desktop",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/banner_1791942624924.webp",
+        "link": "#",
+        "alt": "Honda Flexy Pay, Beli Mobil Honda Makin Fleksibel Pembayarannya!"
+      },
+      {
+        "id": "honda-family-fair",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/honda-family-fair_1790995992880.webp",
+        "link": "#",
+        "alt": "Program Honda Family Fair"
       }
     ],
     "mobile": [
-      {
-        "id": "honda-family-fair-banner",
-        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/honda-family-fair-banner_1790996117179.webp",
-        "link": "#",
-        "alt": "Program Honda Family Fair"
-      },
       {
         "id": "brio-sales-mobile",
         "image": "https://ardiasgusty.github.io/honda/assets/images/banner/brio-sales-mobile_1790836536646.webp",
@@ -64,6 +64,12 @@
         "alt": "Promo Honda Brio & HR-V Extra Cashback 5jt"
       },
       {
+        "id": "honda-flexy-pay-mobile",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/banner_1791942738846.webp",
+        "link": "#",
+        "alt": "Honda Flexy Pay, Beli Mobil Honda Makin Fleksibel Pembayarannya!"
+      },
+      {
         "id": "dapatkan-double-kupon-undian-honda-brio-mobile-1",
         "image": "https://ardiasgusty.github.io/honda/assets/images/banner/dapatkan-double-kupon-undian-honda-brio-mobile-1_1790996172237.webp",
         "link": "#",
@@ -74,6 +80,12 @@
         "image": "https://ardiasgusty.github.io/honda/assets/images/banner/dapatkan-double-kupon-undian-honda-brio-mobile-2_1790996189237.webp",
         "link": "#",
         "alt": "Beli dan Servis Mobil Honda bisa dapat Honda Brio"
+      },
+      {
+        "id": "honda-family-fair-banner",
+        "image": "https://ardiasgusty.github.io/honda/assets/images/banner/honda-family-fair-banner_1790996117179.webp",
+        "link": "#",
+        "alt": "Program Honda Family Fair"
       }
     ]
   }
