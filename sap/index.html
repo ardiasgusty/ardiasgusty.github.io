@@ -633,6 +633,7 @@
             const salt = "ArgustSpaceLicense2026";
             const hash = await sha256(domain + salt);
 
+            const previousData = securityData ? JSON.parse(JSON.stringify(securityData)) : null;
             if (!securityData) securityData = { superAdminPasswordHash: "070b2280a7318111d4a1e64ec2f8c058972f25aaa1a16094e7d1869a3ac83adf", licenses: [] };
             if (!securityData.licenses) securityData.licenses = [];
             
@@ -643,17 +644,22 @@
                 securityData.licenses.push({ domain: domain, key: hash });
             }
 
-            await saveSecurityToGitHub();
-            domainInput.value = '';
-            renderLicensesTable();
+            if (await saveSecurityToGitHub()) {
+                domainInput.value = '';
+                renderLicensesTable();
+            } else {
+                securityData = previousData;
+                renderLicensesTable();
+            }
         }
 
         async function deleteLicense(idx) {
             if (!securityData || !securityData.licenses || !securityData.licenses[idx]) return;
             const targetDomain = securityData.licenses[idx].domain;
             if (confirm(`Apakah Anda yakin ingin mencabut lisensi untuk domain "${targetDomain}"?`)) {
+                const previousData = JSON.parse(JSON.stringify(securityData));
                 securityData.licenses.splice(idx, 1);
-                await saveSecurityToGitHub();
+                if (!(await saveSecurityToGitHub())) securityData = previousData;
                 renderLicensesTable();
             }
         }
@@ -672,18 +678,22 @@
             }
 
             const hash = await sha256(pwd);
+            const previousData = securityData ? JSON.parse(JSON.stringify(securityData)) : null;
             if (!securityData) securityData = { superAdminPasswordHash: hash, licenses: [] };
             securityData.superAdminPasswordHash = hash;
 
-            await saveSecurityToGitHub();
-            document.getElementById('new-password').value = '';
-            document.getElementById('new-password-confirm').value = '';
+            if (await saveSecurityToGitHub()) {
+                document.getElementById('new-password').value = '';
+                document.getElementById('new-password-confirm').value = '';
+            } else {
+                securityData = previousData;
+            }
         }
 
         async function saveSecurityToGitHub() {
             if (!ghConfig.token || !ghConfig.owner || !ghConfig.repo) {
                 alert('Harap hubungkan kredensial GitHub terlebih dahulu di sidebar!');
-                return;
+                return false;
             }
 
             const url = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/${ghConfig.path}?ref=${ghConfig.branch}`;
@@ -696,6 +706,12 @@
                 if (getRes.ok) {
                     const getData = await getRes.json();
                     securitySha = getData.sha;
+                } else if (getRes.status === 404) {
+                    // File belum ada: PUT akan membuatnya tanpa SHA.
+                    securitySha = '';
+                } else {
+                    const errorData = await getRes.json().catch(() => ({}));
+                    throw new Error(errorData.message || `Gagal membaca file dari GitHub (HTTP ${getRes.status}).`);
                 }
 
                 const content = btoa(unescape(encodeURIComponent(JSON.stringify(securityData, null, 2))));
@@ -713,12 +729,17 @@
                     })
                 });
 
-                if (!res.ok) throw new Error('Gagal menyimpan file ke GitHub API.');
+                if (!res.ok) {
+                    const errorData = await res.json().catch(() => ({}));
+                    throw new Error(errorData.message || `GitHub menolak penyimpanan (HTTP ${res.status}). Periksa izin PAT, branch, dan path file.`);
+                }
                 const resData = await res.json();
                 securitySha = resData.content.sha;
                 alert('Database keamanan berhasil diunggah & disinkronkan ke GitHub!');
+                return true;
             } catch (err) {
                 alert('Gagal menyinkronkan ke GitHub: ' + err.message);
+                return false;
             }
         }
 
